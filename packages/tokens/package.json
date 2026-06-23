@@ -1,0 +1,30 @@
+{
+  "name": "@tantu/tokens",
+  "version": "0.1.0",
+  "description": "Framework-agnostic design tokens for TantuUI (--tui-* CSS variables)",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types":   "./dist/index.d.ts",
+      "import":  "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./css":              "./dist/tokens.css",
+    "./css/base":         "./dist/base.css",
+    "./tailwind-preset":  "./dist/tailwind-preset.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.5"
+  }
+}

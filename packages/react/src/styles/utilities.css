@@ -1,0 +1,34 @@
+/* ─── Focus ring utility ─────────────────────────────────────────────────────
+ *
+ * Add .tui-focus-ring to any interactive element (button, input, link,
+ * checkbox wrapper, etc.) to get a consistent, token-driven focus ring.
+ *
+ * Usage:
+ *   <button class="tui-focus-ring">...</button>
+ *   <a class="tui-focus-ring">...</a>
+ *   <div role="button" tabindex="0" class="tui-focus-ring">...</div>
+ *
+ * The ring uses box-shadow so it follows the element's border-radius.
+ * Override --tui-color-focus-ring / --tui-color-focus-ring-gap globally
+ * to retheme all focus rings at once.
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+.tui-focus-ring {
+  /* Remove the browser default so our ring is the only one */
+  outline: none;
+}
+
+.tui-focus-ring:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 0.5px var(--tui-color-focus-ring-gap),
+    0 0 1px 2px var(--tui-color-focus-ring);
+}
+
+/* ─── Variant: inset ring (for elements inside a bordered container) ─────── */
+.tui-focus-ring--inset:focus-visible {
+  outline: none;
+  box-shadow:
+    inset 0 0 0 0.5px var(--tui-color-focus-ring-gap),
+    inset 0 0 1px 2px var(--tui-color-focus-ring);
+}

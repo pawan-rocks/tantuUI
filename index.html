@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TantuUI — Coming Soon</title>
+    <style>
+      /* ── Reset ── */
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* ── Design tokens (inline for standalone page) ── */
+      :root {
+        --tui-color-primary-500: #6366f1;
+        --tui-color-primary-600: #4f46e5;
+        --tui-color-primary-400: #818cf8;
+        --tui-color-neutral-50:  #f8fafc;
+        --tui-color-neutral-100: #f1f5f9;
+        --tui-color-neutral-200: #e2e8f0;
+        --tui-color-neutral-500: #64748b;
+        --tui-color-neutral-700: #334155;
+        --tui-color-neutral-900: #0f172a;
+        --tui-font-family:       'Inter', system-ui, -apple-system, sans-serif;
+        --tui-radius-xl:         1rem;
+        --tui-radius-full:       9999px;
+        --tui-shadow-lg:         0 10px 40px -8px rgba(99, 102, 241, 0.25);
+        --tui-duration-normal:   250ms;
+        --tui-ease-out:          cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* ── Base ── */
+      html, body {
+        height: 100%;
+      }
+
+      body {
+        font-family: var(--tui-font-family);
+        background-color: var(--tui-color-neutral-50);
+        color: var(--tui-color-neutral-900);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 2rem;
+      }
+
+      /* ── Card ── */
+      .card {
+        background: #ffffff;
+        border: 1px solid var(--tui-color-neutral-200);
+        border-radius: var(--tui-radius-xl);
+        box-shadow: var(--tui-shadow-lg);
+        padding: 3rem 2.5rem;
+        max-width: 480px;
+        width: 100%;
+        text-align: center;
+        animation: fadeUp 0.6s var(--tui-ease-out) both;
+      }
+
+      /* ── Logo / image ── */
+      .logo-wrap {
+        width: 96px;
+        height: 96px;
+        margin: 0 auto 1.75rem;
+        border-radius: var(--tui-radius-xl);
+        overflow: hidden;
+        background: linear-gradient(135deg, var(--tui-color-primary-500), var(--tui-color-primary-400));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+      }
+
+      .logo-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Fallback monogram shown when image fails */
+      .logo-wrap .monogram {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #ffffff;
+        letter-spacing: -0.03em;
+        display: none;
+      }
+
+      .logo-wrap img.error + .monogram {
+        display: block;
+      }
+
+      /* ── Heading ── */
+      .brand {
+        font-size: 2.25rem;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        line-height: 1.1;
+        background: linear-gradient(135deg, var(--tui-color-primary-600), var(--tui-color-primary-400));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+      }
+
+      .tagline {
+        font-size: 1rem;
+        color: var(--tui-color-neutral-500);
+        margin-bottom: 2rem;
+        line-height: 1.5;
+      }
+
+      /* ── Badge ── */
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+        color: var(--tui-color-primary-600);
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 0.35rem 0.9rem;
+        border-radius: var(--tui-radius-full);
+        border: 1px solid #c7d2fe;
+        margin-bottom: 1.5rem;
+      }
+
+      .badge::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--tui-color-primary-500);
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      /* ── Divider ── */
+      .divider {
+        height: 1px;
+        background: var(--tui-color-neutral-100);
+        margin: 1.75rem 0;
+      }
+
+      /* ── Token chips ── */
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+        margin-bottom: 0.25rem;
+      }
+
+      .chip {
+        font-size: 0.72rem;
+        font-family: 'SF Mono', 'Fira Code', monospace;
+        color: var(--tui-color-neutral-700);
+        background: var(--tui-color-neutral-100);
+        border: 1px solid var(--tui-color-neutral-200);
+        padding: 0.2rem 0.55rem;
+        border-radius: var(--tui-radius-full);
+      }
+
+      .chips-label {
+        font-size: 0.75rem;
+        color: var(--tui-color-neutral-500);
+        margin-bottom: 0.75rem;
+      }
+
+      /* ── Animations ── */
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50%       { opacity: 0.4; }
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 480px) {
+        .card { padding: 2rem 1.5rem; }
+        .brand { font-size: 1.85rem; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Root mount point (matches React app convention) -->
+    <div id="root">
+
+      <div class="card">
+        <!-- Logo -->
+        <div class="logo-wrap">
+          <img
+            src="ChatGPT Image Jun 22, 2026, 02_07_11 AM.png"
+            alt="TantuUI logo"
+            onerror="this.classList.add('error')"
+          />
+          <span class="monogram">T</span>
+        </div>
+
+        <!-- Coming soon badge -->
+        <div class="badge">Coming Soon</div>
+
+        <!-- Brand name -->
+        <h1 class="brand">TantuUI</h1>
+
+        <!-- Tagline -->
+        <p class="tagline">
+          A token-based design system — framework-agnostic tokens,<br />
+          React components, and a Tailwind preset.
+        </p>
+
+        <div class="divider"></div>
+
+        <!-- Token preview chips -->
+        <p class="chips-label">Built around <code>--tui-*</code> design tokens</p>
+        <div class="chips">
+          <span class="chip">color</span>
+          <span class="chip">spacing</span>
+          <span class="chip">typography</span>
+          <span class="chip">radius</span>
+          <span class="chip">shadow</span>
+          <span class="chip">animation</span>
+          <span class="chip">z-index</span>
+          <span class="chip">opacity</span>
+        </div>
+      </div>
+
+    </div><!-- #root -->
+  </body>
+</html>

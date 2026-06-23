@@ -1,0 +1,65 @@
+/* ─── Box base ───────────────────────────────────────────────────────────── */
+/*
+ * Box uses locally-scoped CSS custom properties set via the style attribute.
+ * The style attribute only carries --tui-box-* variable *values*, never
+ * actual CSS properties — so there are zero inline property declarations.
+ *
+ * Example rendered HTML:
+ *   <div class="tui-box tui-box--flex" style="--tui-box-p:var(--tui-spacing-4);--tui-box-gap:var(--tui-spacing-3)">
+ */
+
+.tui-box {
+  /* Spacing — driven by --tui-box-* vars when set */
+  padding:        var(--tui-box-p,  initial);
+  padding-top:    var(--tui-box-pt, var(--tui-box-py, initial));
+  padding-bottom: var(--tui-box-pb, var(--tui-box-py, initial));
+  padding-left:   var(--tui-box-pl, var(--tui-box-px, initial));
+  padding-right:  var(--tui-box-pr, var(--tui-box-px, initial));
+
+  margin:        var(--tui-box-m,  initial);
+  margin-top:    var(--tui-box-mt, var(--tui-box-my, initial));
+  margin-bottom: var(--tui-box-mb, var(--tui-box-my, initial));
+  margin-left:   var(--tui-box-ml, var(--tui-box-mx, initial));
+  margin-right:  var(--tui-box-mr, var(--tui-box-mx, initial));
+
+  /* Visual */
+  border-radius:    var(--tui-box-radius,  initial);
+  box-shadow:       var(--tui-box-shadow,  initial);
+  background-color: var(--tui-box-bg,      initial);
+  color:            var(--tui-box-color,   initial);
+}
+
+/* ─── Display variants ───────────────────────────────────────────────────── */
+.tui-box--block        { display: block;        }
+.tui-box--inline       { display: inline;       }
+.tui-box--inline-block { display: inline-block; }
+.tui-box--flex         { display: flex; gap: var(--tui-box-gap, initial); }
+.tui-box--inline-flex  { display: inline-flex; gap: var(--tui-box-gap, initial); }
+.tui-box--grid         { display: grid; gap: var(--tui-box-gap, initial); }
+.tui-box--none         { display: none;         }
+
+/* ─── Flex direction ─────────────────────────────────────────────────────── */
+.tui-box--row            { flex-direction: row;            }
+.tui-box--column         { flex-direction: column;         }
+.tui-box--row-reverse    { flex-direction: row-reverse;    }
+.tui-box--column-reverse { flex-direction: column-reverse; }
+
+/* ─── Align items ────────────────────────────────────────────────────────── */
+.tui-box--align-start    { align-items: flex-start; }
+.tui-box--align-end      { align-items: flex-end;   }
+.tui-box--align-center   { align-items: center;     }
+.tui-box--align-stretch  { align-items: stretch;    }
+.tui-box--align-baseline { align-items: baseline;   }
+
+/* ─── Justify content ────────────────────────────────────────────────────── */
+.tui-box--justify-start   { justify-content: flex-start;    }
+.tui-box--justify-end     { justify-content: flex-end;      }
+.tui-box--justify-center  { justify-content: center;        }
+.tui-box--justify-between { justify-content: space-between; }
+.tui-box--justify-around  { justify-content: space-around;  }
+.tui-box--justify-evenly  { justify-content: space-evenly;  }
+
+/* ─── Flex wrap ──────────────────────────────────────────────────────────── */
+.tui-box--nowrap       { flex-wrap: nowrap;       }
+.tui-box--wrap         { flex-wrap: wrap;         }
+.tui-box--wrap-reverse { flex-wrap: wrap-reverse; }

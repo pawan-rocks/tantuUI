@@ -1,0 +1,40 @@
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import dts from "vite-plugin-dts";
+import { resolve } from "path";
+
+export default defineConfig({
+  plugins: [
+    react(),
+    dts({
+      include: ["src"],
+      outDir: "dist",
+      rollupTypes: true,
+    }),
+  ],
+
+  build: {
+    lib: {
+      entry:    resolve(__dirname, "src/index.ts"),
+      name:     "TantuReact",
+      formats:  ["es", "cjs"],
+      fileName: (format) => format === "es" ? "index.js" : "index.cjs",
+    },
+
+    rollupOptions: {
+      external: ["react", "react-dom", "react/jsx-runtime"],
+      output: {
+        globals: {
+          react:               "React",
+          "react-dom":         "ReactDOM",
+          "react/jsx-runtime": "jsxRuntime",
+        },
+        // Vite emits the bundled CSS as "style.css" — renamed to "index.css" post-build
+        assetFileNames: "index.css",
+      },
+    },
+
+    sourcemap: true,
+    emptyOutDir: true,
+  },
+});

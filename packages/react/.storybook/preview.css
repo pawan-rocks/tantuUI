@@ -1,0 +1,58 @@
+/* ─── Storybook canvas overrides ────────────────────────────────────────── */
+
+/* Load Inter font from Google Fonts — must be first */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400;500&display=swap");
+
+/* Spin keyframe used by Button loading spinner */
+@keyframes tui-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Light theme (default) ─────────────────────────────────────────────── */
+:root,
+[data-theme="light"] {
+  --tui-color-bg-base:           #ffffff;
+  --tui-color-bg-subtle:         #f9fafb;
+  --tui-color-bg-muted:          #f3f4f6;
+  --tui-color-surface-default:   #ffffff;
+  --tui-color-text-primary:      #111827;
+  --tui-color-text-secondary:    #4b5563;
+  --tui-color-text-tertiary:     #9ca3af;
+  --tui-color-text-disabled:     #d1d5db;
+  --tui-color-text-inverse:      #ffffff;
+  --tui-color-border-default:    #e5e7eb;
+  --tui-color-border-strong:     #9ca3af;
+}
+
+/* ─── Dark theme ─────────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --tui-color-bg-base:           #111827;
+  --tui-color-bg-subtle:         #1f2937;
+  --tui-color-bg-muted:          #374151;
+  --tui-color-surface-default:   #1f2937;
+  --tui-color-text-primary:      #f9fafb;
+  --tui-color-text-secondary:    #d1d5db;
+  --tui-color-text-tertiary:     #9ca3af;
+  --tui-color-text-disabled:     #4b5563;
+  --tui-color-text-inverse:      #111827;
+  --tui-color-border-default:    #374151;
+  --tui-color-border-strong:     #6b7280;
+
+  /* In dark mode the gap should match the dark background */
+  --tui-color-focus-ring-gap:    #111827;
+
+  /* Brand colors stay the same in dark mode — adjust if desired */  --tui-color-brand-subtle:      #1e3a8a;
+}
+
+/* ─── Story canvas base styles ───────────────────────────────────────────── */
+.sb-show-main {
+  background-color: var(--tui-color-bg-base);
+  color: var(--tui-color-text-primary);
+  font-family: var(--tui-font-family-sans, 'Inter', sans-serif);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+/* Story padding */
+.sb-show-main.sb-main-padded {
+  padding: 2rem;
+}

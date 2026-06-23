@@ -1,0 +1,11 @@
+/*
+ * @tantu/react — all component styles
+ *
+ * Usage:
+ *   import "@tantu/tokens/css/base";   ← token variables + reset
+ *   import "@tantu/react/css";         ← component classes
+ */
+@import "./styles/utilities.css";
+@import "./components/Button/Button.css";
+@import "./components/Text/Text.css";
+@import "./components/Box/Box.css";

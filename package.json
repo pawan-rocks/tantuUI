@@ -1,0 +1,22 @@
+{
+  "name": "tantuui",
+  "private": true,
+  "version": "0.0.1",
+  "description": "TantuUI — token-based design system",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "dev": "npm run dev --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "clean": "npm run clean --workspaces --if-present",
+    "storybook": "npm run storybook --workspace=packages/react"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
