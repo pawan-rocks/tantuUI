@@ -82,7 +82,7 @@ const SpacingPage = () => {
       <h2 style={{ fontSize: "var(--tui-font-size-lg)", fontWeight: "var(--tui-font-weight-semibold)", marginBottom: "var(--tui-spacing-6)", color: "var(--tui-color-text-primary)" }}>Spacing Scale</h2>
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)" }}>
         {steps.map((step) => {
-          const varName = `--tui-spacing-${String(step).replace(".", "-")}`;
+          const varName = `--tui-spacing-${String(step).replace(".", "_")}`;
           return (
             <div key={step} style={{ display: "flex", alignItems: "center", gap: "var(--tui-spacing-4)" }}>
               <span style={{ width: 40, flexShrink: 0, fontFamily: "var(--tui-font-family-mono)", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)" }}>{step}</span>
