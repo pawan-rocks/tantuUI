@@ -4,38 +4,40 @@
  * The style attribute only carries --tui-box-* variable *values*, never
  * actual CSS properties — so there are zero inline property declarations.
  *
+ * Padding/Margin resolution order:
+ *   individual (pt/pb/pl/pr) > axis (px/py) > shorthand (p)
+ *
  * Example rendered HTML:
- *   <div class="tui-box tui-box--flex" style="--tui-box-p:var(--tui-spacing-4);--tui-box-gap:var(--tui-spacing-3)">
+ *   <div class="tui-box tui-box--flex" style="--tui-box-p:var(--tui-spacing-4)">
  */
 
 .tui-box {
-  /* Spacing — driven by --tui-box-* vars when set */
-  padding:        var(--tui-box-p,  initial);
-  padding-top:    var(--tui-box-pt, var(--tui-box-py, initial));
-  padding-bottom: var(--tui-box-pb, var(--tui-box-py, initial));
-  padding-left:   var(--tui-box-pl, var(--tui-box-px, initial));
-  padding-right:  var(--tui-box-pr, var(--tui-box-px, initial));
+  /* Padding: individual → axis → shorthand fallback chain */
+  padding-top:    var(--tui-box-pt, var(--tui-box-py, var(--tui-box-p)));
+  padding-bottom: var(--tui-box-pb, var(--tui-box-py, var(--tui-box-p)));
+  padding-left:   var(--tui-box-pl, var(--tui-box-px, var(--tui-box-p)));
+  padding-right:  var(--tui-box-pr, var(--tui-box-px, var(--tui-box-p)));
 
-  margin:        var(--tui-box-m,  initial);
-  margin-top:    var(--tui-box-mt, var(--tui-box-my, initial));
-  margin-bottom: var(--tui-box-mb, var(--tui-box-my, initial));
-  margin-left:   var(--tui-box-ml, var(--tui-box-mx, initial));
-  margin-right:  var(--tui-box-mr, var(--tui-box-mx, initial));
+  /* Margin: individual → axis → shorthand fallback chain */
+  margin-top:    var(--tui-box-mt, var(--tui-box-my, var(--tui-box-m)));
+  margin-bottom: var(--tui-box-mb, var(--tui-box-my, var(--tui-box-m)));
+  margin-left:   var(--tui-box-ml, var(--tui-box-mx, var(--tui-box-m)));
+  margin-right:  var(--tui-box-mr, var(--tui-box-mx, var(--tui-box-m)));
 
   /* Visual */
-  border-radius:    var(--tui-box-radius,  initial);
-  box-shadow:       var(--tui-box-shadow,  initial);
-  background-color: var(--tui-box-bg,      initial);
-  color:            var(--tui-box-color,   initial);
+  border-radius:    var(--tui-box-radius);
+  box-shadow:       var(--tui-box-shadow);
+  background-color: var(--tui-box-bg);
+  color:            var(--tui-box-color);
 }
 
 /* ─── Display variants ───────────────────────────────────────────────────── */
 .tui-box--block        { display: block;        }
 .tui-box--inline       { display: inline;       }
 .tui-box--inline-block { display: inline-block; }
-.tui-box--flex         { display: flex; gap: var(--tui-box-gap, initial); }
-.tui-box--inline-flex  { display: inline-flex; gap: var(--tui-box-gap, initial); }
-.tui-box--grid         { display: grid; gap: var(--tui-box-gap, initial); }
+.tui-box--flex         { display: flex; gap: var(--tui-box-gap); }
+.tui-box--inline-flex  { display: inline-flex; gap: var(--tui-box-gap); }
+.tui-box--grid         { display: grid; gap: var(--tui-box-gap); }
 .tui-box--none         { display: none;         }
 
 /* ─── Flex direction ─────────────────────────────────────────────────────── */
