@@ -11,7 +11,8 @@
     "dev": "npm run dev --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "clean": "npm run clean --workspaces --if-present",
-    "storybook": "npm run storybook --workspace=packages/react"
+    "storybook": "npm run storybook --workspace=packages/react",
+    "deploy:storybook": "bash packages/react/scripts/deploy-storybook.sh"
   },
   "devDependencies": {
     "typescript": "^5.4.5"

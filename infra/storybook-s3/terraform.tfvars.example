@@ -1,0 +1,6 @@
+# Copy this to terraform.tfvars and fill in your values
+# terraform.tfvars is gitignored — never commit real values
+
+aws_region        = "us-east-1"
+bucket_name       = "tantuui-storybook"   # must be globally unique
+enable_cloudfront = true

@@ -1,13 +1,16 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 
+// When deployed to tantuui.com/storybook, set STORYBOOK_BASE_PATH=/storybook
+// Locally it stays as "/" so nothing breaks in dev
+const basePath = process.env.STORYBOOK_BASE_PATH ?? "/";
+
 const config: StorybookConfig = {
-  // All stories live in src/stories/**
   stories: ["../src/stories/**/*.stories.@(ts|tsx)"],
 
   addons: [
-    "@storybook/addon-essentials",   // controls, actions, docs, viewport, backgrounds
-    "@storybook/addon-a11y",          // accessibility panel
-    "@storybook/addon-themes",        // dark/light mode switcher
+    "@storybook/addon-essentials",
+    "@storybook/addon-a11y",
+    "@storybook/addon-themes",
   ],
 
   framework: {
@@ -16,15 +19,18 @@ const config: StorybookConfig = {
   },
 
   docs: {
-    autodocs: "tag", // generate autodocs page for stories tagged with `autodocs`
+    autodocs: "tag",
+  },
+
+  // Tells Storybook all asset paths are relative to /storybook/
+  viteFinal(config) {
+    return { ...config, base: basePath };
   },
 
   typescript: {
-    check: false,    // vite handles ts; skip storybook's own tsc check
+    check: false,
     reactDocgen: "react-docgen-typescript",
     reactDocgenTypescriptOptions: {
-      // Only include props that are explicitly defined on the component,
-      // not every inherited HTML attribute
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
       propFilter: (prop) =>

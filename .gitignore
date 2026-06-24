@@ -1,7 +1,14 @@
 node_modules
 dist
+storybook-static
 .DS_Store
 *.local
 .env
+.env.deploy
 .turbo
 *.tsbuildinfo
+# Terraform
+infra/**/*.tfvars
+infra/**/.terraform
+infra/**/*.tfstate
+infra/**/*.tfstate.backup

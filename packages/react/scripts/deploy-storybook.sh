@@ -1,29 +1,26 @@
 #!/usr/bin/env bash
 # ─────────────────────────────────────────────────────────────────────────────
-# deploy-storybook.sh
+# deploy-storybook.sh  —  manual deploy from local machine
 #
-# Builds Storybook and syncs it to an S3 bucket + optionally invalidates
-# a CloudFront distribution.
+# Region, bucket, and CloudFront ID are set here (same values as the workflow).
+# Only credentials need to come from the environment / .env.deploy file.
 #
-# Required env vars:
-#   AWS_ACCESS_KEY_ID
-#   AWS_SECRET_ACCESS_KEY
-#   AWS_REGION          (e.g. us-east-1)
-#   S3_BUCKET           (e.g. my-storybook-bucket)
-#
-# Optional env vars:
-#   CLOUDFRONT_DISTRIBUTION_ID   (triggers a cache invalidation if set)
-#   STORYBOOK_OUT_DIR            (default: storybook-static)
+# Usage:
+#   source .env.deploy && bash packages/react/scripts/deploy-storybook.sh
 # ─────────────────────────────────────────────────────────────────────────────
 set -euo pipefail
 
+# ── Config (non-sensitive — edit freely) ─────────────────────────────────────
+AWS_REGION="${AWS_REGION:-us-east-1}"
+S3_BUCKET="${S3_BUCKET:-tantuui-storybook}"
+CLOUDFRONT_DISTRIBUTION_ID="${CLOUDFRONT_DISTRIBUTION_ID:-}"
 OUT_DIR="${STORYBOOK_OUT_DIR:-storybook-static}"
 
-# ── Validate required vars ────────────────────────────────────────────────────
-required_vars=(AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_REGION S3_BUCKET)
-for var in "${required_vars[@]}"; do
+# ── Validate credentials are present ─────────────────────────────────────────
+for var in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY; do
   if [[ -z "${!var:-}" ]]; then
-    echo "❌  Missing required env var: $var"
+    echo "❌  Missing: $var"
+    echo "    Run: source .env.deploy && bash packages/react/scripts/deploy-storybook.sh"
     exit 1
   fi
 done
