@@ -1,0 +1,221 @@
+/* ─── Select base ────────────────────────────────────────────────────────── */
+.tui-select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-family: inherit;
+  font-size: var(--tui-select-font-size, var(--tui-font-size-sm));
+  line-height: var(--tui-leading-normal);
+  border-radius: var(--tui-select-radius, var(--tui-radius-md));
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: var(--tui-color-neutral-900);
+  transition:
+    background-color var(--tui-duration-normal) var(--tui-ease-in-out),
+    border-color     var(--tui-duration-normal) var(--tui-ease-in-out),
+    box-shadow       var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+/* ─── Sizes ──────────────────────────────────────────────────────────────── */
+.tui-select--xs {
+  --tui-select-py:        var(--tui-spacing-1);
+  --tui-select-px:        var(--tui-spacing-2);
+  --tui-select-font-size: var(--tui-font-size-xs);
+  --tui-select-radius:    var(--tui-radius-sm);
+}
+.tui-select--sm {
+  --tui-select-py:        var(--tui-spacing-1_5);
+  --tui-select-px:        var(--tui-spacing-3);
+  --tui-select-font-size: var(--tui-font-size-sm);
+  --tui-select-radius:    var(--tui-radius-md);
+}
+.tui-select--md {
+  --tui-select-py:        var(--tui-spacing-2);
+  --tui-select-px:        var(--tui-spacing-3);
+  --tui-select-font-size: var(--tui-font-size-sm);
+  --tui-select-radius:    var(--tui-radius-md);
+}
+.tui-select--lg {
+  --tui-select-py:        var(--tui-spacing-2_5);
+  --tui-select-px:        var(--tui-spacing-4);
+  --tui-select-font-size: var(--tui-font-size-md);
+  --tui-select-radius:    var(--tui-radius-lg);
+}
+.tui-select--xl {
+  --tui-select-py:        var(--tui-spacing-3);
+  --tui-select-px:        var(--tui-spacing-5);
+  --tui-select-font-size: var(--tui-font-size-lg);
+  --tui-select-radius:    var(--tui-radius-lg);
+}
+
+/* ─── Variants ───────────────────────────────────────────────────────────── */
+
+/* Outline */
+.tui-select--outline {
+  background-color: transparent;
+  border-color: var(--tui-color-neutral-300);
+}
+.tui-select--outline:hover:not(.tui-select--disabled) {
+  border-color: var(--tui-color-neutral-400);
+}
+
+/* Soft */
+.tui-select--soft {
+  background-color: transparent;
+  border-color: var(--tui-color-neutral-100);
+}
+.tui-select--soft:hover:not(.tui-select--disabled) {
+  border-color: var(--tui-color-neutral-200);
+}
+
+/* Plain */
+.tui-select--plain {
+  background-color: transparent;
+  border-color: var(--tui-color-neutral-50);
+}
+.tui-select--plain:hover:not(.tui-select--disabled) {
+  border-color: var(--tui-color-neutral-100);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   INTENTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── primary ────────────────────────────────────────────────────────────── */
+.tui-select--primary.tui-select--outline  { border-color: var(--tui-color-primary-500); }
+.tui-select--primary.tui-select--outline:hover:not(.tui-select--disabled) { border-color: var(--tui-color-primary-600); }
+.tui-select--primary.tui-select--soft     { border-color: var(--tui-color-primary-200); }
+.tui-select--primary.tui-select--soft:hover:not(.tui-select--disabled) { border-color: var(--tui-color-primary-300); }
+.tui-select--primary.tui-select--plain    { border-color: var(--tui-color-primary-50); }
+.tui-select--primary.tui-select--plain:hover:not(.tui-select--disabled) { border-color: var(--tui-color-primary-100); }
+
+/* ─── secondary ──────────────────────────────────────────────────────────── */
+.tui-select--secondary.tui-select--outline  { border-color: var(--tui-color-secondary-300); }
+.tui-select--secondary.tui-select--outline:hover:not(.tui-select--disabled) { border-color: var(--tui-color-secondary-400); }
+.tui-select--secondary.tui-select--soft     { border-color: var(--tui-color-secondary-200); }
+.tui-select--secondary.tui-select--soft:hover:not(.tui-select--disabled) { border-color: var(--tui-color-secondary-300); }
+.tui-select--secondary.tui-select--plain    { border-color: var(--tui-color-secondary-50); }
+.tui-select--secondary.tui-select--plain:hover:not(.tui-select--disabled) { border-color: var(--tui-color-secondary-100); }
+
+/* ─── success ────────────────────────────────────────────────────────────── */
+.tui-select--success.tui-select--outline  { border-color: var(--tui-color-success-500); }
+.tui-select--success.tui-select--outline:hover:not(.tui-select--disabled) { border-color: var(--tui-color-success-600); }
+.tui-select--success.tui-select--soft     { border-color: var(--tui-color-success-200); }
+.tui-select--success.tui-select--soft:hover:not(.tui-select--disabled) { border-color: var(--tui-color-success-300); }
+.tui-select--success.tui-select--plain    { border-color: var(--tui-color-success-50); }
+.tui-select--success.tui-select--plain:hover:not(.tui-select--disabled) { border-color: var(--tui-color-success-100); }
+
+/* ─── warning ────────────────────────────────────────────────────────────── */
+.tui-select--warning.tui-select--outline  { border-color: var(--tui-color-warning-500); }
+.tui-select--warning.tui-select--outline:hover:not(.tui-select--disabled) { border-color: var(--tui-color-warning-600); }
+.tui-select--warning.tui-select--soft     { border-color: var(--tui-color-warning-200); }
+.tui-select--warning.tui-select--soft:hover:not(.tui-select--disabled) { border-color: var(--tui-color-warning-300); }
+.tui-select--warning.tui-select--plain    { border-color: var(--tui-color-warning-50); }
+.tui-select--warning.tui-select--plain:hover:not(.tui-select--disabled) { border-color: var(--tui-color-warning-100); }
+
+/* ─── danger (error state) ───────────────────────────────────────────────── */
+.tui-select--danger.tui-select--outline   { border-color: var(--tui-color-danger-500); }
+.tui-select--danger.tui-select--outline:hover:not(.tui-select--disabled) { border-color: var(--tui-color-danger-600); }
+.tui-select--danger.tui-select--soft      { border-color: var(--tui-color-danger-200); }
+.tui-select--danger.tui-select--soft:hover:not(.tui-select--disabled) { border-color: var(--tui-color-danger-300); }
+.tui-select--danger.tui-select--plain     { border-color: var(--tui-color-danger-50); }
+.tui-select--danger.tui-select--plain:hover:not(.tui-select--disabled) { border-color: var(--tui-color-danger-100); }
+
+/* ─── info ───────────────────────────────────────────────────────────────── */
+.tui-select--info.tui-select--outline     { border-color: var(--tui-color-info-500); }
+.tui-select--info.tui-select--outline:hover:not(.tui-select--disabled) { border-color: var(--tui-color-info-600); }
+.tui-select--info.tui-select--soft        { border-color: var(--tui-color-info-200); }
+.tui-select--info.tui-select--soft:hover:not(.tui-select--disabled) { border-color: var(--tui-color-info-300); }
+.tui-select--info.tui-select--plain       { border-color: var(--tui-color-info-50); }
+.tui-select--info.tui-select--plain:hover:not(.tui-select--disabled) { border-color: var(--tui-color-info-100); }
+
+/* ─── white ──────────────────────────────────────────────────────────────── */
+.tui-select--white.tui-select--outline  { border-color: var(--tui-color-neutral-200); }
+.tui-select--white.tui-select--outline:hover:not(.tui-select--disabled) { border-color: var(--tui-color-neutral-300); }
+.tui-select--white.tui-select--soft     { border-color: var(--tui-color-neutral-100); }
+.tui-select--white.tui-select--soft:hover:not(.tui-select--disabled) { border-color: var(--tui-color-neutral-200); }
+.tui-select--white.tui-select--plain    { border-color: var(--tui-color-neutral-50); }
+.tui-select--white.tui-select--plain:hover:not(.tui-select--disabled) { border-color: var(--tui-color-neutral-100); }
+
+/* ─── black ──────────────────────────────────────────────────────────────── */
+.tui-select--black.tui-select--outline  { border-color: var(--tui-color-neutral-800); }
+.tui-select--black.tui-select--outline:hover:not(.tui-select--disabled) { border-color: var(--tui-color-neutral-900); }
+.tui-select--black.tui-select--soft     { border-color: var(--tui-color-neutral-600); }
+.tui-select--black.tui-select--soft:hover:not(.tui-select--disabled) { border-color: var(--tui-color-neutral-700); }
+.tui-select--black.tui-select--plain    { border-color: var(--tui-color-neutral-400); }
+.tui-select--black.tui-select--plain:hover:not(.tui-select--disabled) { border-color: var(--tui-color-neutral-500); }
+
+/* Intent-based ring color */
+.tui-select--primary:has(.tui-select__native:focus-visible)   { --tui-ring-color: var(--tui-color-primary-400); }
+.tui-select--secondary:has(.tui-select__native:focus-visible) { --tui-ring-color: var(--tui-color-secondary-400); }
+.tui-select--success:has(.tui-select__native:focus-visible)   { --tui-ring-color: var(--tui-color-success-400); }
+.tui-select--warning:has(.tui-select__native:focus-visible)   { --tui-ring-color: var(--tui-color-warning-400); }
+.tui-select--danger:has(.tui-select__native:focus-visible)    { --tui-ring-color: var(--tui-color-danger-400); }
+.tui-select--info:has(.tui-select__native:focus-visible)      { --tui-ring-color: var(--tui-color-info-400); }
+.tui-select--white:has(.tui-select__native:focus-visible)     { --tui-ring-color: var(--tui-color-neutral-300); }
+.tui-select--black:has(.tui-select__native:focus-visible)     { --tui-ring-color: var(--tui-color-neutral-600); }
+
+/* ─── Disabled state (overrides all intents/variants) ────────────────────── */
+.tui-select.tui-select--disabled {
+  background-color: var(--tui-color-neutral-100);
+  color: var(--tui-color-neutral-500);
+  border-color: var(--tui-color-neutral-200);
+  cursor: not-allowed;
+}
+
+.tui-select--disabled .tui-select__native {
+  color: var(--tui-color-neutral-500);
+  cursor: not-allowed;
+}
+
+/* ─── Native select ─────────────────────────────────────────────────────── */
+.tui-select__native {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  padding-block: var(--tui-select-py, var(--tui-spacing-2));
+  padding-inline-start: var(--tui-select-px, var(--tui-spacing-3));
+  padding-inline-end: calc(var(--tui-select-px, var(--tui-spacing-3)) + 20px);
+  margin: 0;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.tui-select__native:focus-visible {
+  outline: none;
+}
+
+.tui-select--disabled .tui-select__native {
+  cursor: not-allowed;
+}
+
+/* Focus ring on wrapper when native select is focused */
+.tui-select:has(.tui-select__native:focus-visible) {
+  box-shadow:
+    0 0 0 0.5px var(--tui-color-focus-ring-gap),
+    0 0 1px 2px var(--tui-ring-color, var(--tui-color-focus-ring));
+}
+
+/* ─── Chevron icon ───────────────────────────────────────────────────────── */
+.tui-select__icon {
+  position: absolute;
+  right: var(--tui-select-px, var(--tui-spacing-3));
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  color: var(--tui-color-neutral-500);
+}
+
+.tui-select--disabled .tui-select__icon {
+  color: var(--tui-color-neutral-300);
+}

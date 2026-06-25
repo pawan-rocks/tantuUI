@@ -1,0 +1,143 @@
+/* ─── Switch base ────────────────────────────────────────────────────────── */
+.tui-switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tui-switch:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 0.5px var(--tui-color-focus-ring-gap),
+    0 0 1px 2px var(--tui-ring-color, var(--tui-color-focus-ring));
+  border-radius: var(--tui-radius-full);
+}
+
+/* ─── Track ──────────────────────────────────────────────────────────────── */
+.tui-switch__track {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: var(--tui-switch-track-w, 36px);
+  height: var(--tui-switch-track-h, 20px);
+  border-radius: var(--tui-radius-full);
+  background-color: var(--tui-color-neutral-300);
+  transition:
+    background-color var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+/* ─── Thumb ──────────────────────────────────────────────────────────────── */
+.tui-switch__thumb {
+  position: absolute;
+  top: 50%;
+  left: var(--tui-switch-thumb-offset, 2px);
+  width: var(--tui-switch-thumb-size, 16px);
+  height: var(--tui-switch-thumb-size, 16px);
+  border-radius: var(--tui-radius-full);
+  background-color: var(--tui-color-white);
+  transform: translateY(-50%) translateX(0);
+  transition:
+    transform var(--tui-duration-normal) var(--tui-ease-in-out);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* ─── Checked state ──────────────────────────────────────────────────────── */
+.tui-switch--checked .tui-switch__track {
+  background-color: var(--tui-color-primary-600);
+}
+
+.tui-switch--checked .tui-switch__thumb {
+  transform: translateY(-50%) translateX(var(--tui-switch-thumb-travel));
+}
+
+/* ─── Sizes ──────────────────────────────────────────────────────────────── */
+.tui-switch--xs {
+  --tui-switch-track-w:     28px;
+  --tui-switch-track-h:     16px;
+  --tui-switch-thumb-size:  12px;
+  --tui-switch-thumb-offset: 2px;
+  --tui-switch-thumb-travel: 12px;
+}
+
+.tui-switch--xs {
+  --tui-switch-track-w:     28px;
+  --tui-switch-track-h:     16px;
+  --tui-switch-thumb-size:  12px;
+  --tui-switch-thumb-offset: 2px;
+  --tui-switch-thumb-travel: 12px;
+}
+
+.tui-switch--sm {
+  --tui-switch-track-w:     32px;
+  --tui-switch-track-h:     18px;
+  --tui-switch-thumb-size:  14px;
+  --tui-switch-thumb-offset: 2px;
+  --tui-switch-thumb-travel: 14px;
+}
+
+.tui-switch--md {
+  --tui-switch-track-w:     36px;
+  --tui-switch-track-h:     20px;
+  --tui-switch-thumb-size:  16px;
+  --tui-switch-thumb-offset: 2px;
+  --tui-switch-thumb-travel: 16px;
+}
+
+.tui-switch--lg {
+  --tui-switch-track-w:     42px;
+  --tui-switch-track-h:     24px;
+  --tui-switch-thumb-size:  20px;
+  --tui-switch-thumb-offset: 2px;
+  --tui-switch-thumb-travel: 18px;
+}
+
+.tui-switch--xl {
+  --tui-switch-track-w:     48px;
+  --tui-switch-track-h:     28px;
+  --tui-switch-thumb-size:  24px;
+  --tui-switch-thumb-offset: 2px;
+  --tui-switch-thumb-travel: 20px;
+}
+
+/* ─── Disabled state ─────────────────────────────────────────────────────── */
+.tui-switch--disabled {
+  cursor: not-allowed;
+}
+
+.tui-switch--disabled .tui-switch__track {
+  background-color: var(--tui-color-neutral-100);
+}
+
+.tui-switch--disabled .tui-switch__thumb {
+  box-shadow: none;
+}
+
+/* ─── Label ──────────────────────────────────────────────────────────────── */
+.tui-switch__label {
+  font-family: inherit;
+  font-size: var(--tui-font-size-sm);
+  line-height: var(--tui-leading-normal);
+  color: var(--tui-color-neutral-900);
+  cursor: pointer;
+  user-select: none;
+}
+
+.tui-switch__label--disabled {
+  color: var(--tui-color-neutral-500);
+  cursor: not-allowed;
+}
+
+/* ─── Wrapper (label + switch layout) ────────────────────────────────────── */
+.tui-switch-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tui-spacing-2);
+}

@@ -9,12 +9,18 @@
  *   <div role="button" tabindex="0" class="tui-focus-ring">...</div>
  *
  * The ring uses box-shadow so it follows the element's border-radius.
+ *
+ * Intent-based ring:
+ *   The ring color is driven by --tui-ring-color. By default it uses
+ *   --tui-color-focus-ring (the global blue). Components set --tui-ring-color
+ *   via intent modifier classes (e.g. .tui-ring--primary, .tui-ring--danger).
+ *
  * Override --tui-color-focus-ring / --tui-color-focus-ring-gap globally
  * to retheme all focus rings at once.
  * ─────────────────────────────────────────────────────────────────────────── */
 
 .tui-focus-ring {
-  /* Remove the browser default so our ring is the only one */
+  --tui-ring-color: var(--tui-color-focus-ring);
   outline: none;
 }
 
@@ -22,7 +28,7 @@
   outline: none;
   box-shadow:
     0 0 0 0.5px var(--tui-color-focus-ring-gap),
-    0 0 1px 2px var(--tui-color-focus-ring);
+    0 0 1px 2px var(--tui-ring-color);
 }
 
 /* ─── Variant: inset ring (for elements inside a bordered container) ─────── */
@@ -30,5 +36,21 @@
   outline: none;
   box-shadow:
     inset 0 0 0 0.5px var(--tui-color-focus-ring-gap),
-    inset 0 0 1px 2px var(--tui-color-focus-ring);
+    inset 0 0 1px 2px var(--tui-ring-color);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   INTENT-BASED RING COLORS
+
+   Add .tui-ring--{intent} alongside .tui-focus-ring to tint the ring.
+   Works on any component: Button, Input, Switch, Checkbox, etc.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.tui-ring--primary  { --tui-ring-color: var(--tui-color-primary-400); }
+.tui-ring--secondary { --tui-ring-color: var(--tui-color-secondary-400); }
+.tui-ring--success  { --tui-ring-color: var(--tui-color-success-400); }
+.tui-ring--warning  { --tui-ring-color: var(--tui-color-warning-400); }
+.tui-ring--danger   { --tui-ring-color: var(--tui-color-danger-400); }
+.tui-ring--info     { --tui-ring-color: var(--tui-color-info-400); }
+.tui-ring--white    { --tui-ring-color: var(--tui-color-neutral-300); }
+.tui-ring--black    { --tui-ring-color: var(--tui-color-neutral-600); }

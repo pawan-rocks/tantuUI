@@ -1,0 +1,340 @@
+/* ─── Input base ─────────────────────────────────────────────────────────── */
+.tui-input {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tui-spacing-2);
+  width: 100%;
+  font-family: inherit;
+  font-size: var(--tui-input-font-size, var(--tui-font-size-sm));
+  line-height: var(--tui-leading-normal);
+  padding-block: var(--tui-input-py, var(--tui-spacing-2));
+  padding-inline: var(--tui-input-px, var(--tui-spacing-3));
+  border-radius: var(--tui-input-radius, var(--tui-radius-md));
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: var(--tui-color-neutral-900);
+  transition:
+    background-color var(--tui-duration-normal) var(--tui-ease-in-out),
+    border-color     var(--tui-duration-normal) var(--tui-ease-in-out),
+    box-shadow       var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+/* ─── Sizes ──────────────────────────────────────────────────────────────── */
+.tui-input--xs {
+  --tui-input-py:        var(--tui-spacing-1);
+  --tui-input-px:        var(--tui-spacing-2);
+  --tui-input-font-size: var(--tui-font-size-xs);
+  --tui-input-radius:    var(--tui-radius-sm);
+}
+.tui-input--sm {
+  --tui-input-py:        var(--tui-spacing-1_5);
+  --tui-input-px:        var(--tui-spacing-3);
+  --tui-input-font-size: var(--tui-font-size-sm);
+  --tui-input-radius:    var(--tui-radius-md);
+}
+.tui-input--md {
+  --tui-input-py:        var(--tui-spacing-2);
+  --tui-input-px:        var(--tui-spacing-3);
+  --tui-input-font-size: var(--tui-font-size-sm);
+  --tui-input-radius:    var(--tui-radius-md);
+}
+.tui-input--lg {
+  --tui-input-py:        var(--tui-spacing-2_5);
+  --tui-input-px:        var(--tui-spacing-4);
+  --tui-input-font-size: var(--tui-font-size-md);
+  --tui-input-radius:    var(--tui-radius-lg);
+}
+.tui-input--xl {
+  --tui-input-py:        var(--tui-spacing-3);
+  --tui-input-px:        var(--tui-spacing-5);
+  --tui-input-font-size: var(--tui-font-size-lg);
+  --tui-input-radius:    var(--tui-radius-lg);
+}
+
+/* ─── Variants ───────────────────────────────────────────────────────────── */
+
+/* Outline */
+.tui-input--outline {
+  background-color: transparent;
+  border-color: var(--tui-color-neutral-300);
+}
+.tui-input--outline:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-neutral-400);
+}
+
+/* Soft */
+.tui-input--soft {
+  background-color: transparent;
+  border-color: var(--tui-color-neutral-100);
+}
+.tui-input--soft:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-neutral-200);
+}
+
+/* Plain */
+.tui-input--plain {
+  background-color: transparent;
+  border-color: var(--tui-color-neutral-50);
+}
+.tui-input--plain:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-neutral-100);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   INTENTS — color-coded border for outline variant, tinted bg for soft
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── primary ────────────────────────────────────────────────────────────── */
+.tui-input--primary.tui-input--outline {
+  border-color: var(--tui-color-primary-500);
+}
+.tui-input--primary.tui-input--outline:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-primary-600);
+}
+.tui-input--primary.tui-input--soft {
+  border-color: var(--tui-color-primary-200);
+}
+.tui-input--primary.tui-input--soft:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-primary-300);
+}
+.tui-input--primary.tui-input--plain {
+  border-color: var(--tui-color-primary-50);
+}
+.tui-input--primary.tui-input--plain:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-primary-100);
+}
+
+/* ─── secondary ──────────────────────────────────────────────────────────── */
+.tui-input--secondary.tui-input--outline {
+  border-color: var(--tui-color-secondary-300);
+}
+.tui-input--secondary.tui-input--outline:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-secondary-400);
+}
+.tui-input--secondary.tui-input--soft {
+  border-color: var(--tui-color-secondary-200);
+}
+.tui-input--secondary.tui-input--soft:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-secondary-300);
+}
+.tui-input--secondary.tui-input--plain {
+  border-color: var(--tui-color-secondary-50);
+}
+.tui-input--secondary.tui-input--plain:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-secondary-100);
+}
+
+/* ─── success ────────────────────────────────────────────────────────────── */
+.tui-input--success.tui-input--outline {
+  border-color: var(--tui-color-success-500);
+}
+.tui-input--success.tui-input--outline:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-success-600);
+}
+.tui-input--success.tui-input--soft {
+  border-color: var(--tui-color-success-200);
+}
+.tui-input--success.tui-input--soft:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-success-300);
+}
+.tui-input--success.tui-input--plain {
+  border-color: var(--tui-color-success-50);
+}
+.tui-input--success.tui-input--plain:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-success-100);
+}
+
+/* ─── warning ────────────────────────────────────────────────────────────── */
+.tui-input--warning.tui-input--outline {
+  border-color: var(--tui-color-warning-500);
+}
+.tui-input--warning.tui-input--outline:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-warning-600);
+}
+.tui-input--warning.tui-input--soft {
+  border-color: var(--tui-color-warning-200);
+}
+.tui-input--warning.tui-input--soft:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-warning-300);
+}
+.tui-input--warning.tui-input--plain {
+  border-color: var(--tui-color-warning-50);
+}
+.tui-input--warning.tui-input--plain:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-warning-100);
+}
+
+/* ─── danger (error state) ───────────────────────────────────────────────── */
+.tui-input--danger.tui-input--outline {
+  border-color: var(--tui-color-danger-500);
+}
+.tui-input--danger.tui-input--outline:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-danger-600);
+}
+.tui-input--danger.tui-input--soft {
+  border-color: var(--tui-color-danger-200);
+}
+.tui-input--danger.tui-input--soft:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-danger-300);
+}
+.tui-input--danger.tui-input--plain {
+  border-color: var(--tui-color-danger-50);
+}
+.tui-input--danger.tui-input--plain:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-danger-100);
+}
+
+/* ─── info ───────────────────────────────────────────────────────────────── */
+.tui-input--info.tui-input--outline {
+  border-color: var(--tui-color-info-500);
+}
+.tui-input--info.tui-input--outline:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-info-600);
+}
+.tui-input--info.tui-input--soft {
+  border-color: var(--tui-color-info-200);
+}
+.tui-input--info.tui-input--soft:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-info-300);
+}
+.tui-input--info.tui-input--plain {
+  border-color: var(--tui-color-info-50);
+}
+.tui-input--info.tui-input--plain:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-info-100);
+}
+
+/* ─── white ──────────────────────────────────────────────────────────────── */
+.tui-input--white.tui-input--outline {
+  border-color: var(--tui-color-neutral-200);
+}
+.tui-input--white.tui-input--outline:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-neutral-300);
+}
+.tui-input--white.tui-input--soft {
+  border-color: var(--tui-color-neutral-100);
+}
+.tui-input--white.tui-input--soft:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-neutral-200);
+}
+.tui-input--white.tui-input--plain {
+  border-color: var(--tui-color-neutral-50);
+}
+.tui-input--white.tui-input--plain:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-neutral-100);
+}
+
+/* ─── black ──────────────────────────────────────────────────────────────── */
+.tui-input--black.tui-input--outline {
+  border-color: var(--tui-color-neutral-800);
+}
+.tui-input--black.tui-input--outline:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-neutral-900);
+}
+.tui-input--black.tui-input--soft {
+  border-color: var(--tui-color-neutral-600);
+}
+.tui-input--black.tui-input--soft:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-neutral-700);
+}
+.tui-input--black.tui-input--plain {
+  border-color: var(--tui-color-neutral-400);
+}
+.tui-input--black.tui-input--plain:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-neutral-500);
+}
+
+/* ─── Disabled state (overrides all intents/variants) ────────────────────── */
+.tui-input.tui-input--disabled {
+  background-color: var(--tui-color-neutral-100);
+  color: var(--tui-color-neutral-500);
+  border-color: var(--tui-color-neutral-200);
+  cursor: not-allowed;
+}
+
+.tui-input--disabled .tui-input__native {
+  color: var(--tui-color-neutral-500);
+  cursor: not-allowed;
+}
+
+/* ─── Native input ───────────────────────────────────────────────────────── */
+.tui-input__native {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+.tui-input__native:focus,
+.tui-input__native:focus-visible {
+  outline: none;
+}
+
+.tui-input__native::placeholder {
+  color: var(--tui-color-neutral-400);
+}
+
+/* Focus ring on wrapper when native input is focused */
+.tui-input:has(.tui-input__native:focus-visible) {
+  box-shadow:
+    0 0 0 0.5px var(--tui-color-focus-ring-gap),
+    0 0 1px 2px var(--tui-ring-color, var(--tui-color-focus-ring));
+}
+
+/* Intent-based ring color on Input wrapper */
+.tui-input--primary:has(.tui-input__native:focus-visible)   { --tui-ring-color: var(--tui-color-primary-400); }
+.tui-input--secondary:has(.tui-input__native:focus-visible) { --tui-ring-color: var(--tui-color-secondary-400); }
+.tui-input--success:has(.tui-input__native:focus-visible)   { --tui-ring-color: var(--tui-color-success-400); }
+.tui-input--warning:has(.tui-input__native:focus-visible)   { --tui-ring-color: var(--tui-color-warning-400); }
+.tui-input--danger:has(.tui-input__native:focus-visible)    { --tui-ring-color: var(--tui-color-danger-400); }
+.tui-input--info:has(.tui-input__native:focus-visible)      { --tui-ring-color: var(--tui-color-info-400); }
+.tui-input--white:has(.tui-input__native:focus-visible)     { --tui-ring-color: var(--tui-color-neutral-300); }
+.tui-input--black:has(.tui-input__native:focus-visible)     { --tui-ring-color: var(--tui-color-neutral-600); }
+
+/* ─── Leading / Trailing icons ───────────────────────────────────────────── */
+.tui-input__leading,
+.tui-input__trailing {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--tui-color-neutral-500);
+}
+
+/* ─── Prefix / Suffix ────────────────────────────────────────────────────── */
+.tui-input__prefix,
+.tui-input__suffix {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--tui-color-neutral-500);
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* ─── Clear button ───────────────────────────────────────────────────────── */
+.tui-input__clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: var(--tui-color-neutral-400);
+  cursor: pointer;
+  padding: var(--tui-spacing-0_5);
+  border-radius: var(--tui-radius-sm);
+  transition:
+    color var(--tui-duration-normal) var(--tui-ease-in-out),
+    background-color var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+.tui-input__clear:hover {
+  color: var(--tui-color-neutral-700);
+  background-color: var(--tui-color-neutral-100);
+}

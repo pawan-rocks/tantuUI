@@ -1,0 +1,53 @@
+/* ─── Label base ─────────────────────────────────────────────────────────── */
+.tui-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tui-spacing-0_5);
+  font-family: inherit;
+  font-weight: var(--tui-font-weight-medium);
+  line-height: var(--tui-leading-normal);
+  color: var(--tui-color-neutral-900);
+  cursor: inherit;
+}
+
+/* Clickable label (has htmlFor association) */
+.tui-label[for] {
+  cursor: pointer;
+}
+
+/* ─── Sizes ──────────────────────────────────────────────────────────────── */
+.tui-label--xs {
+  font-size: var(--tui-font-size-xs);
+}
+.tui-label--sm {
+  font-size: var(--tui-font-size-sm);
+}
+.tui-label--md {
+  font-size: var(--tui-font-size-sm);
+}
+.tui-label--lg {
+  font-size: var(--tui-font-size-md);
+}
+.tui-label--xl {
+  font-size: var(--tui-font-size-lg);
+}
+
+/* ─── Disabled ───────────────────────────────────────────────────────────── */
+.tui-label--disabled {
+  color: var(--tui-color-neutral-500);
+  cursor: not-allowed;
+}
+
+/* Disabled label inside disabled form controls */
+.tui-checkbox--disabled .tui-label,
+.tui-radio--disabled .tui-label,
+.tui-switch--disabled ~ .tui-label {
+  color: var(--tui-color-neutral-500);
+  cursor: not-allowed;
+}
+
+/* ─── Required asterisk ──────────────────────────────────────────────────── */
+.tui-label__required {
+  color: var(--tui-color-danger-500);
+  margin-inline-start: var(--tui-spacing-0_5);
+}

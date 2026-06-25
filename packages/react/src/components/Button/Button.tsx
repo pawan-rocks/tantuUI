@@ -90,6 +90,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(
           "tui-btn",
           "tui-focus-ring",
+          intent !== "default" && `tui-ring--${intent}`,
           `tui-btn--${size}`,
           `tui-btn--${variant}`,
           `tui-btn--${intent}`,

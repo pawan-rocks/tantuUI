@@ -20,6 +20,8 @@
     "build": "vite build",
     "dev": "vite build --watch",
     "clean": "rm -rf dist",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build -o storybook-static"
   },
@@ -31,20 +33,27 @@
     "@tantu/tokens": "*"
   },
   "devDependencies": {
+    "@fast-check/vitest": "^0.4.1",
     "@storybook/addon-a11y": "^8.6.18",
     "@storybook/addon-essentials": "^8.6.14",
     "@storybook/addon-themes": "^8.6.18",
     "@storybook/blocks": "^8.6.14",
     "@storybook/react": "^8.6.18",
     "@storybook/react-vite": "^8.6.18",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.3.2",
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.0",
+    "fast-check": "^4.8.0",
+    "jsdom": "^29.1.1",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "storybook": "^8.6.18",
     "typescript": "^5.4.5",
     "vite": "^5.4.0",
-    "vite-plugin-dts": "^3.9.0"
+    "vite-plugin-dts": "^3.9.0",
+    "vitest": "^4.1.9"
   }
 }

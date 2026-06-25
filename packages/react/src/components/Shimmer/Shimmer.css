@@ -12,15 +12,15 @@
   border: none !important;
   overflow: hidden;
   min-height: 1em;
-  background-color: transparent;
+  background-color: transparent !important;
   background-image: linear-gradient(
     90deg,
     var(--tui-shimmer-from, var(--tui-color-gray-300, #e5e7eb)) 0%,
     var(--tui-shimmer-via,  var(--tui-color-gray-100, #f3f4f6)) 50%,
     var(--tui-shimmer-from, var(--tui-color-gray-300, #e5e7eb)) 100%
-  );
-  background-size: 200% 50%;
-  animation: tui-shimmer 2s infinite linear;
+  ) !important;
+  background-size: 200% 100% !important;
+  animation: tui-shimmer 2s infinite linear !important;
 }
 
 /* Hides any content inside while preserving the element's box model */

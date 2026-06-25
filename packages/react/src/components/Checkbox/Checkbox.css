@@ -1,0 +1,227 @@
+/* ─── Checkbox base ──────────────────────────────────────────────────────── */
+.tui-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tui-spacing-2);
+  font-family: inherit;
+  font-size: var(--tui-checkbox-font-size, var(--tui-font-size-sm));
+  line-height: var(--tui-leading-normal);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ─── Sizes ──────────────────────────────────────────────────────────────── */
+.tui-checkbox--xs {
+  --tui-checkbox-font-size: var(--tui-font-size-xs);
+  --tui-checkbox-indicator-size: 14px;
+}
+.tui-checkbox--sm {
+  --tui-checkbox-font-size: var(--tui-font-size-sm);
+  --tui-checkbox-indicator-size: 16px;
+}
+.tui-checkbox--md {
+  --tui-checkbox-font-size: var(--tui-font-size-sm);
+  --tui-checkbox-indicator-size: 18px;
+}
+.tui-checkbox--lg {
+  --tui-checkbox-font-size: var(--tui-font-size-md);
+  --tui-checkbox-indicator-size: 20px;
+}
+.tui-checkbox--xl {
+  --tui-checkbox-font-size: var(--tui-font-size-lg);
+  --tui-checkbox-indicator-size: 22px;
+}
+
+/* ─── Native input (visually hidden but accessible) ──────────────────────── */
+.tui-checkbox__native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ─── Indicator (visual box) ─────────────────────────────────────────────── */
+.tui-checkbox__indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--tui-checkbox-indicator-size, 18px);
+  height: var(--tui-checkbox-indicator-size, 18px);
+  border: var(--tui-border-width-1, 1px) solid var(--tui-color-neutral-400);
+  border-radius: var(--tui-radius-sm);
+  background-color: transparent;
+  color: transparent;
+  transition:
+    background-color var(--tui-duration-normal) var(--tui-ease-in-out),
+    border-color     var(--tui-duration-normal) var(--tui-ease-in-out),
+    color            var(--tui-duration-normal) var(--tui-ease-in-out),
+    box-shadow       var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+/* Hover state on indicator */
+.tui-checkbox:hover:not(.tui-checkbox--disabled) .tui-checkbox__indicator {
+  border-color: var(--tui-color-neutral-500);
+}
+
+/* ─── Checked state ──────────────────────────────────────────────────────── */
+.tui-checkbox__indicator--checked {
+  background-color: var(--tui-checkbox-active, var(--tui-color-neutral-600));
+  border-color: var(--tui-checkbox-active, var(--tui-color-neutral-600));
+  color: white;
+}
+
+.tui-checkbox:hover:not(.tui-checkbox--disabled) .tui-checkbox__indicator--checked {
+  background-color: var(--tui-checkbox-active-hover, var(--tui-color-neutral-700));
+  border-color: var(--tui-checkbox-active-hover, var(--tui-color-neutral-700));
+}
+
+/* ─── Indeterminate state ────────────────────────────────────────────────── */
+.tui-checkbox__indicator--indeterminate {
+  background-color: var(--tui-checkbox-active, var(--tui-color-neutral-600));
+  border-color: var(--tui-checkbox-active, var(--tui-color-neutral-600));
+  color: white;
+}
+
+.tui-checkbox:hover:not(.tui-checkbox--disabled) .tui-checkbox__indicator--indeterminate {
+  background-color: var(--tui-checkbox-active-hover, var(--tui-color-neutral-700));
+  border-color: var(--tui-checkbox-active-hover, var(--tui-color-neutral-700));
+}
+
+/* ─── Icon ───────────────────────────────────────────────────────────────── */
+.tui-checkbox__icon {
+  display: block;
+}
+
+/* ─── Label ──────────────────────────────────────────────────────────────── */
+.tui-checkbox__label {
+  cursor: pointer;
+  color: var(--tui-color-neutral-900);
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* ─── Intent: danger state ────────────────────────────────────────────────── */
+.tui-checkbox--danger {
+  --tui-checkbox-active: var(--tui-color-danger-600);
+  --tui-checkbox-active-hover: var(--tui-color-danger-700);
+}
+.tui-checkbox--danger .tui-checkbox__indicator {
+  border-color: var(--tui-color-danger-500);
+}
+.tui-checkbox--danger:hover:not(.tui-checkbox--disabled) .tui-checkbox__indicator {
+  border-color: var(--tui-color-danger-600);
+}
+
+/* ─── Intent: primary state ───────────────────────────────────────────────── */
+.tui-checkbox--primary {
+  --tui-checkbox-active: var(--tui-color-primary-600);
+  --tui-checkbox-active-hover: var(--tui-color-primary-700);
+}
+.tui-checkbox--primary .tui-checkbox__indicator {
+  border-color: var(--tui-color-primary-500);
+}
+.tui-checkbox--primary:hover:not(.tui-checkbox--disabled) .tui-checkbox__indicator {
+  border-color: var(--tui-color-primary-600);
+}
+
+/* ─── Intent: secondary state ─────────────────────────────────────────────── */
+.tui-checkbox--secondary {
+  --tui-checkbox-active: var(--tui-color-secondary-600);
+  --tui-checkbox-active-hover: var(--tui-color-secondary-700);
+}
+.tui-checkbox--secondary .tui-checkbox__indicator {
+  border-color: var(--tui-color-secondary-300);
+}
+.tui-checkbox--secondary:hover:not(.tui-checkbox--disabled) .tui-checkbox__indicator {
+  border-color: var(--tui-color-secondary-400);
+}
+
+/* ─── Intent: success state ───────────────────────────────────────────────── */
+.tui-checkbox--success {
+  --tui-checkbox-active: var(--tui-color-success-600);
+  --tui-checkbox-active-hover: var(--tui-color-success-700);
+}
+.tui-checkbox--success .tui-checkbox__indicator {
+  border-color: var(--tui-color-success-500);
+}
+.tui-checkbox--success:hover:not(.tui-checkbox--disabled) .tui-checkbox__indicator {
+  border-color: var(--tui-color-success-600);
+}
+
+/* ─── Intent: warning state ───────────────────────────────────────────────── */
+.tui-checkbox--warning {
+  --tui-checkbox-active: var(--tui-color-warning-600);
+  --tui-checkbox-active-hover: var(--tui-color-warning-700);
+}
+.tui-checkbox--warning .tui-checkbox__indicator {
+  border-color: var(--tui-color-warning-500);
+}
+.tui-checkbox--warning:hover:not(.tui-checkbox--disabled) .tui-checkbox__indicator {
+  border-color: var(--tui-color-warning-600);
+}
+
+/* ─── Intent: info state ──────────────────────────────────────────────────── */
+.tui-checkbox--info {
+  --tui-checkbox-active: var(--tui-color-info-600);
+  --tui-checkbox-active-hover: var(--tui-color-info-700);
+}
+.tui-checkbox--info .tui-checkbox__indicator {
+  border-color: var(--tui-color-info-500);
+}
+.tui-checkbox--info:hover:not(.tui-checkbox--disabled) .tui-checkbox__indicator {
+  border-color: var(--tui-color-info-600);
+}
+
+/* ─── Intent: white state ─────────────────────────────────────────────────── */
+.tui-checkbox--white {
+  --tui-checkbox-active: var(--tui-color-neutral-400);
+  --tui-checkbox-active-hover: var(--tui-color-neutral-500);
+}
+.tui-checkbox--white .tui-checkbox__indicator {
+  border-color: var(--tui-color-neutral-200);
+}
+.tui-checkbox--white:hover:not(.tui-checkbox--disabled) .tui-checkbox__indicator {
+  border-color: var(--tui-color-neutral-300);
+}
+
+/* ─── Intent: black state ─────────────────────────────────────────────────── */
+.tui-checkbox--black {
+  --tui-checkbox-active: var(--tui-color-neutral-800);
+  --tui-checkbox-active-hover: var(--tui-color-neutral-900);
+}
+.tui-checkbox--black .tui-checkbox__indicator {
+  border-color: var(--tui-color-neutral-800);
+}
+.tui-checkbox--black:hover:not(.tui-checkbox--disabled) .tui-checkbox__indicator {
+  border-color: var(--tui-color-neutral-900);
+}
+
+/* ─── Disabled state ─────────────────────────────────────────────────────── */
+.tui-checkbox--disabled {
+  cursor: not-allowed;
+}
+
+.tui-checkbox--disabled .tui-checkbox__indicator {
+  background-color: var(--tui-color-neutral-100);
+  border-color: var(--tui-color-neutral-200);
+  color: var(--tui-color-neutral-300);
+}
+
+.tui-checkbox--disabled .tui-checkbox__label {
+  color: var(--tui-color-neutral-500);
+  cursor: not-allowed;
+}
+
+/* ─── Focus ring on indicator when native input is :focus-visible ─────────── */
+.tui-checkbox__native:focus-visible ~ .tui-checkbox__indicator,
+.tui-checkbox:has(.tui-checkbox__native:focus-visible) .tui-checkbox__indicator {
+  box-shadow:
+    0 0 0 0.5px var(--tui-color-focus-ring-gap),
+    0 0 1px 2px var(--tui-ring-color, var(--tui-color-focus-ring));
+}

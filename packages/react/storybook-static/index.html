@@ -67,7 +67,26 @@
     <link href="./sb-addons/a11y-9/manager-bundle.js" rel="modulepreload" />
     
     <link href="./sb-addons/themes-10/manager-bundle.js" rel="modulepreload" />
-       
+    
+    <link href="./sb-addons/storybook-11/manager-bundle.js" rel="modulepreload" />
+      <style>
+  /* Sidebar scroll area content — remove padding */
+  [data-radix-scroll-area-content] {
+    padding: 0 !important;
+  }
+  [data-radix-scroll-area-content] > div {
+    padding: 0 !important;
+  }
+  /* Sidebar nav padding */
+  [class*="css-"] nav {
+    padding: 4px 8px 8px !important;
+  }
+  /* Sidebar container */
+  #storybook-explorer-tree {
+    padding: 0 4px !important;
+  }
+</style>
+ 
 
     <style>
       #storybook-root[hidden] {
@@ -169,6 +188,8 @@
         import './sb-addons/a11y-9/manager-bundle.js';
       
         import './sb-addons/themes-10/manager-bundle.js';
+      
+        import './sb-addons/storybook-11/manager-bundle.js';
       
       
       import './sb-manager/runtime.js';

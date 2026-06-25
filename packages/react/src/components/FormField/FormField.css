@@ -1,0 +1,31 @@
+/* ─── FormField base ─────────────────────────────────────────────────────── */
+.tui-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tui-spacing-1);
+  font-family: inherit;
+}
+
+/* ─── Disabled ───────────────────────────────────────────────────────────── */
+.tui-form-field--disabled {
+  color: var(--tui-color-neutral-300);
+  cursor: not-allowed;
+}
+
+.tui-form-field--disabled .tui-form-field__helper {
+  color: var(--tui-color-neutral-300);
+}
+
+/* ─── Helper text ────────────────────────────────────────────────────────── */
+.tui-form-field__helper {
+  font-size: var(--tui-font-size-xs);
+  color: var(--tui-color-neutral-500);
+  line-height: var(--tui-leading-normal);
+}
+
+/* ─── Error text ─────────────────────────────────────────────────────────── */
+.tui-form-field__error {
+  font-size: var(--tui-font-size-xs);
+  color: var(--tui-color-danger-500);
+  line-height: var(--tui-leading-normal);
+}

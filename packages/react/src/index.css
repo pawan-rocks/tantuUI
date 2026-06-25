@@ -11,3 +11,11 @@
 @import "./components/Text/Text.css";
 @import "./components/Box/Box.css";
 @import "./components/LinkText/LinkText.css";
+@import "./components/Label/Label.css";
+@import "./components/Input/Input.css";
+@import "./components/Textarea/Textarea.css";
+@import "./components/Checkbox/Checkbox.css";
+@import "./components/Radio/Radio.css";
+@import "./components/Select/Select.css";
+@import "./components/Switch/Switch.css";
+@import "./components/FormField/FormField.css";
