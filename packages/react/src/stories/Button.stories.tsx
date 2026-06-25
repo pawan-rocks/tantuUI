@@ -24,13 +24,13 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["solid", "outline", "ghost", "soft"],
+      options: ["solid", "outline", "soft", "plain"],
       description: "Visual style variant",
       table: { category: "Appearance", defaultValue: { summary: "solid" } },
     },
     intent: {
       control: "select",
-      options: ["default", "primary", "success", "warning", "danger", "info"],
+      options: ["default", "primary", "secondary", "success", "warning", "danger", "info", "white", "black"],
       description: "Color intent / semantic meaning",
       table: { category: "Appearance", defaultValue: { summary: "primary" } },
     },
@@ -50,9 +50,19 @@ const meta: Meta<typeof Button> = {
       description: "Disabled state",
       table: { category: "State" },
     },
+    isGhost: {
+      control: "boolean",
+      description: "Ghost/skeleton mode — renders Shimmer matching button dimensions",
+      table: { category: "State" },
+    },
     fullWidth: {
       control: "boolean",
       description: "Stretch to fill container width",
+      table: { category: "Layout" },
+    },
+    iconOnly: {
+      control: "boolean",
+      description: "Icon-only mode — renders a square button with no label",
       table: { category: "Layout" },
     },
     children: {
@@ -71,6 +81,8 @@ const meta: Meta<typeof Button> = {
     loading: false,
     disabled: false,
     fullWidth: false,
+    isGhost: false,
+    iconOnly: false,
   },
 };
 
@@ -91,8 +103,8 @@ export const Variants: Story = {
     <div style={{ display: "flex", gap: "var(--tui-spacing-3)", flexWrap: "wrap", alignItems: "center" }}>
       <Button variant="solid">Solid</Button>
       <Button variant="outline">Outline</Button>
-      <Button variant="ghost">Ghost</Button>
       <Button variant="soft">Soft</Button>
+      <Button variant="plain">Plain</Button>
     </div>
   ),
 };
@@ -103,7 +115,7 @@ export const Intents: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ display: "flex", gap: "var(--tui-spacing-3)", flexWrap: "wrap", alignItems: "center" }}>
-      {(["default", "primary", "success", "warning", "danger"] as const).map((intent) => (
+      {(["default", "primary", "secondary", "success", "warning", "danger", "info", "white", "black"] as const).map((intent) => (
         <Button key={intent} intent={intent}>{intent.charAt(0).toUpperCase() + intent.slice(1)}</Button>
       ))}
     </div>
@@ -128,8 +140,8 @@ export const Matrix: Story = {
   name: "Variant × Intent Matrix",
   parameters: { controls: { disable: true } },
   render: () => {
-    const variants = ["solid", "outline", "ghost", "soft"] as const;
-    const intents  = ["primary", "default", "success", "warning", "danger"] as const;
+    const variants = ["solid", "outline", "soft", "plain"] as const;
+    const intents  = ["primary", "secondary", "default", "success", "warning", "danger", "info", "white", "black"] as const;
     return (
       <div style={{ overflowX: "auto" }}>
         <table style={{ borderCollapse: "collapse", width: "100%", fontFamily: "var(--tui-font-family-sans)" }}>
@@ -200,6 +212,55 @@ export const FullWidth: Story = {
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 400 }}>
       <Button fullWidth>Full width solid</Button>
       <Button fullWidth variant="outline">Full width outline</Button>
+    </div>
+  ),
+};
+
+// ── Ghost / Skeleton ──────────────────────────────────────────────────────
+export const GhostSkeleton: Story = {
+  name: "Ghost / Skeleton",
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: "flex", gap: "var(--tui-spacing-3)", flexWrap: "wrap", alignItems: "center" }}>
+      {(["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
+        <Button key={size} size={size} isGhost>{size.toUpperCase()}</Button>
+      ))}
+    </div>
+  ),
+};
+
+// ── Icon Only ─────────────────────────────────────────────────────────────
+export const IconOnly: Story = {
+  name: "Icon Only",
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: "flex", gap: "var(--tui-spacing-3)", flexWrap: "wrap", alignItems: "center" }}>
+      {(["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
+        <Button key={size} size={size} iconOnly aria-label="Add item">
+          <PlusIcon />
+        </Button>
+      ))}
+    </div>
+  ),
+};
+
+// ── Custom Class Only ─────────────────────────────────────────────────────
+export const CustomClassOnly: Story = {
+  name: "Custom Class Only",
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-4)", maxWidth: 400 }}>
+      <style>{`
+        .my-gradient-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 24px; border-radius: 8px; border: none; font-weight: 600; }
+        .my-gradient-btn:hover { opacity: 0.9; }
+        .my-pill-btn { background: #1a1a1a; color: #fafafa; padding: 10px 32px; border-radius: 9999px; border: none; font-size: 13px; letter-spacing: 0.5px; }
+      `}</style>
+      <p style={{ fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)" }}>
+        Zero design props — only className + children. TantuUI button as a plain wrapper.
+      </p>
+      <Button className="my-gradient-btn">Gradient Button</Button>
+      <Button className="my-pill-btn">Pill Button</Button>
+      <Button>No props at all (defaults apply)</Button>
     </div>
   ),
 };

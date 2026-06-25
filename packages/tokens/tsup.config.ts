@@ -1,12 +1,12 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry:       ["src/index.ts"],
+  entry:       ["src/index.ts", "src/runtime.ts"],
   format:      ["cjs", "esm"],
-  dts:         true,          // generate .d.ts
+  dts:         true,
   sourcemap:   true,
-  clean:       true,          // empty dist before build
-  splitting:   false,         // single output file per format
+  clean:       true,
+  splitting:   false,
   treeshake:   true,
   outDir:      "dist",
 

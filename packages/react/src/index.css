@@ -6,6 +6,8 @@
  *   import "@tantu/react/css";         ← component classes
  */
 @import "./styles/utilities.css";
+@import "./components/Shimmer/Shimmer.css";
 @import "./components/Button/Button.css";
 @import "./components/Text/Text.css";
 @import "./components/Box/Box.css";
+@import "./components/LinkText/LinkText.css";

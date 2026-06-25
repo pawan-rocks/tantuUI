@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--tui-btn-gap, var(--tui-spacing-2));
-  font-family: var(--tui-font-family-sans);
+  font-family: inherit;
   font-weight: var(--tui-font-weight-medium);
   line-height: var(--tui-leading-none);
   white-space: nowrap;
@@ -26,7 +26,6 @@
 
 .tui-btn:focus-visible {
   outline: none;
-  /* Uses same values as .tui-focus-ring utility — see styles/utilities.css */
   box-shadow:
     0 0 0 0.5px var(--tui-color-focus-ring-gap),
     0 0 1px 2px var(--tui-color-focus-ring);
@@ -40,7 +39,6 @@
   --tui-btn-radius:    var(--tui-radius-sm);
   --tui-btn-gap:       var(--tui-spacing-1);
 }
-
 .tui-btn--sm {
   --tui-btn-py:        var(--tui-spacing-1_5);
   --tui-btn-px:        var(--tui-spacing-3);
@@ -48,7 +46,6 @@
   --tui-btn-radius:    var(--tui-radius-md);
   --tui-btn-gap:       var(--tui-spacing-1_5);
 }
-
 .tui-btn--md {
   --tui-btn-py:        var(--tui-spacing-2);
   --tui-btn-px:        var(--tui-spacing-4);
@@ -56,7 +53,6 @@
   --tui-btn-radius:    var(--tui-radius-md);
   --tui-btn-gap:       var(--tui-spacing-2);
 }
-
 .tui-btn--lg {
   --tui-btn-py:        var(--tui-spacing-2_5);
   --tui-btn-px:        var(--tui-spacing-5);
@@ -64,7 +60,6 @@
   --tui-btn-radius:    var(--tui-radius-lg);
   --tui-btn-gap:       var(--tui-spacing-2);
 }
-
 .tui-btn--xl {
   --tui-btn-py:        var(--tui-spacing-3);
   --tui-btn-px:        var(--tui-spacing-6);
@@ -74,23 +69,20 @@
 }
 
 /* ─── Full width ─────────────────────────────────────────────────────────── */
-.tui-btn--full {
-  width: 100%;
-}
+.tui-btn--full { width: 100%; }
 
-/* ─── States ─────────────────────────────────────────────────────────────── */
-.tui-btn--loading,
-.tui-btn:disabled {
-  opacity: var(--tui-opacity-50);
+/* ─── Disabled — neutral-100 bg, neutral-300 text, allows tooltip hover ──── */
+.tui-btn:disabled,
+.tui-btn--loading {
+  background-color: var(--tui-color-neutral-100) !important;
+  color: var(--tui-color-neutral-300) !important;
+  border-color: var(--tui-color-neutral-100) !important;
   cursor: not-allowed;
-  pointer-events: none;
+  /* No pointer-events:none — allows tooltips to show on hover */
 }
 
 /* ─── Icon slots ─────────────────────────────────────────────────────────── */
-.tui-btn__icon {
-  display: inline-flex;
-  flex-shrink: 0;
-}
+.tui-btn__icon { display: inline-flex; flex-shrink: 0; }
 
 /* ─── Spinner ────────────────────────────────────────────────────────────── */
 .tui-btn__spinner {
@@ -104,81 +96,97 @@
   flex-shrink: 0;
 }
 
-/* ─── primary ────────────────────────────────────────────────────────────── */
+/* ─── Icon-only (square button) ──────────────────────────────────────────── */
+.tui-btn--icon-only {
+  padding-inline: var(--tui-btn-py, var(--tui-spacing-2));
+  aspect-ratio: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   INTENTS × VARIANTS
+   
+   Solid: dark bg, white text
+   Outline: transparent bg, colored border + text
+   Soft: light/subtle bg, colored text
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── primary (magenta purple) ───────────────────────────────────────────── */
 .tui-btn--primary.tui-btn--solid {
-  background-color: var(--tui-color-brand-default);
-  color: var(--tui-color-brand-text);
-  border-color: var(--tui-color-brand-default);
+  background-color: var(--tui-color-primary-600);
+  color: var(--tui-color-white);
+  border-color: var(--tui-color-primary-600);
 }
 .tui-btn--primary.tui-btn--solid:hover:not(:disabled) {
-  background-color: var(--tui-color-brand-hover);
-  border-color: var(--tui-color-brand-hover);
+  background-color: var(--tui-color-primary-700);
+  border-color: var(--tui-color-primary-700);
 }
-.tui-btn--primary.tui-btn--solid:active:not(:disabled) {
-  background-color: var(--tui-color-brand-active);
-  border-color: var(--tui-color-brand-active);
-}
-
 .tui-btn--primary.tui-btn--outline {
   background-color: transparent;
-  color: var(--tui-color-brand-default);
-  border-color: var(--tui-color-brand-default);
+  color: var(--tui-color-primary-600);
+  border-color: var(--tui-color-primary-600);
 }
 .tui-btn--primary.tui-btn--outline:hover:not(:disabled) {
-  background-color: var(--tui-color-brand-subtle);
+  background-color: var(--tui-color-primary-50);
 }
-
-.tui-btn--primary.tui-btn--ghost {
-  background-color: transparent;
-  color: var(--tui-color-brand-default);
-  border-color: transparent;
-}
-.tui-btn--primary.tui-btn--ghost:hover:not(:disabled) {
-  background-color: var(--tui-color-brand-subtle);
-}
-
 .tui-btn--primary.tui-btn--soft {
-  background-color: var(--tui-color-brand-subtle);
-  color: var(--tui-color-brand-default);
+  background-color: var(--tui-color-primary-50);
+  color: var(--tui-color-primary-700);
   border-color: transparent;
 }
 .tui-btn--primary.tui-btn--soft:hover:not(:disabled) {
   background-color: var(--tui-color-primary-100);
 }
 
-/* ─── default ────────────────────────────────────────────────────────────── */
+/* ─── secondary (coal/slate) ─────────────────────────────────────────────── */
+.tui-btn--secondary.tui-btn--solid {
+  background-color: var(--tui-color-secondary-600);
+  color: var(--tui-color-white);
+  border-color: var(--tui-color-secondary-600);
+}
+.tui-btn--secondary.tui-btn--solid:hover:not(:disabled) {
+  background-color: var(--tui-color-secondary-700);
+  border-color: var(--tui-color-secondary-700);
+}
+.tui-btn--secondary.tui-btn--outline {
+  background-color: transparent;
+  color: var(--tui-color-secondary-600);
+  border-color: var(--tui-color-secondary-300);
+}
+.tui-btn--secondary.tui-btn--outline:hover:not(:disabled) {
+  background-color: var(--tui-color-secondary-50);
+  border-color: var(--tui-color-secondary-400);
+}
+.tui-btn--secondary.tui-btn--soft {
+  background-color: var(--tui-color-secondary-100);
+  color: var(--tui-color-secondary-700);
+  border-color: transparent;
+}
+.tui-btn--secondary.tui-btn--soft:hover:not(:disabled) {
+  background-color: var(--tui-color-secondary-200);
+}
+
+/* ─── default (neutral) ──────────────────────────────────────────────────── */
 .tui-btn--default.tui-btn--solid {
   background-color: var(--tui-color-neutral-200);
-  color: var(--tui-color-text-primary);
+  color: var(--tui-color-neutral-900);
   border-color: var(--tui-color-neutral-200);
 }
 .tui-btn--default.tui-btn--solid:hover:not(:disabled) {
   background-color: var(--tui-color-neutral-300);
   border-color: var(--tui-color-neutral-300);
 }
-
 .tui-btn--default.tui-btn--outline {
   background-color: transparent;
-  color: var(--tui-color-text-primary);
-  border-color: var(--tui-color-border-default);
+  color: var(--tui-color-neutral-900);
+  border-color: var(--tui-color-neutral-300);
 }
 .tui-btn--default.tui-btn--outline:hover:not(:disabled) {
-  background-color: var(--tui-color-bg-subtle);
-  border-color: var(--tui-color-border-strong);
+  background-color: var(--tui-color-neutral-50);
+  border-color: var(--tui-color-neutral-400);
 }
-
-.tui-btn--default.tui-btn--ghost {
-  background-color: transparent;
-  color: var(--tui-color-text-primary);
-  border-color: transparent;
-}
-.tui-btn--default.tui-btn--ghost:hover:not(:disabled) {
-  background-color: var(--tui-color-bg-muted);
-}
-
 .tui-btn--default.tui-btn--soft {
   background-color: var(--tui-color-neutral-100);
-  color: var(--tui-color-text-primary);
+  color: var(--tui-color-neutral-800);
   border-color: transparent;
 }
 .tui-btn--default.tui-btn--soft:hover:not(:disabled) {
@@ -187,130 +195,211 @@
 
 /* ─── danger ─────────────────────────────────────────────────────────────── */
 .tui-btn--danger.tui-btn--solid {
-  background-color: var(--tui-color-danger-default);
-  color: var(--tui-color-neutral-0);
-  border-color: var(--tui-color-danger-default);
+  background-color: var(--tui-color-danger-600);
+  color: var(--tui-color-white);
+  border-color: var(--tui-color-danger-600);
 }
 .tui-btn--danger.tui-btn--solid:hover:not(:disabled) {
   background-color: var(--tui-color-danger-700);
   border-color: var(--tui-color-danger-700);
 }
-
 .tui-btn--danger.tui-btn--outline {
   background-color: transparent;
-  color: var(--tui-color-danger-default);
-  border-color: var(--tui-color-danger-default);
+  color: var(--tui-color-danger-600);
+  border-color: var(--tui-color-danger-600);
 }
 .tui-btn--danger.tui-btn--outline:hover:not(:disabled) {
-  background-color: var(--tui-color-danger-subtle);
+  background-color: var(--tui-color-danger-50);
 }
-
-.tui-btn--danger.tui-btn--ghost {
-  background-color: transparent;
-  color: var(--tui-color-danger-default);
-  border-color: transparent;
-}
-.tui-btn--danger.tui-btn--ghost:hover:not(:disabled) {
-  background-color: var(--tui-color-danger-subtle);
-}
-
 .tui-btn--danger.tui-btn--soft {
-  background-color: var(--tui-color-danger-subtle);
-  color: var(--tui-color-danger-default);
+  background-color: var(--tui-color-danger-50);
+  color: var(--tui-color-danger-700);
   border-color: transparent;
 }
 .tui-btn--danger.tui-btn--soft:hover:not(:disabled) {
-  background-color: var(--tui-color-danger-100, var(--tui-color-danger-subtle));
+  background-color: var(--tui-color-danger-100);
 }
 
 /* ─── success ────────────────────────────────────────────────────────────── */
 .tui-btn--success.tui-btn--solid {
-  background-color: var(--tui-color-success-default);
-  color: var(--tui-color-neutral-0);
-  border-color: var(--tui-color-success-default);
+  background-color: var(--tui-color-success-600);
+  color: var(--tui-color-white);
+  border-color: var(--tui-color-success-600);
 }
 .tui-btn--success.tui-btn--solid:hover:not(:disabled) {
   background-color: var(--tui-color-success-700);
   border-color: var(--tui-color-success-700);
 }
-
 .tui-btn--success.tui-btn--outline {
   background-color: transparent;
-  color: var(--tui-color-success-default);
-  border-color: var(--tui-color-success-default);
+  color: var(--tui-color-success-600);
+  border-color: var(--tui-color-success-600);
 }
 .tui-btn--success.tui-btn--outline:hover:not(:disabled) {
-  background-color: var(--tui-color-success-subtle);
+  background-color: var(--tui-color-success-50);
 }
-
-.tui-btn--success.tui-btn--ghost {
-  background-color: transparent;
-  color: var(--tui-color-success-default);
-  border-color: transparent;
-}
-.tui-btn--success.tui-btn--ghost:hover:not(:disabled) {
-  background-color: var(--tui-color-success-subtle);
-}
-
 .tui-btn--success.tui-btn--soft {
-  background-color: var(--tui-color-success-subtle);
-  color: var(--tui-color-success-default);
+  background-color: var(--tui-color-success-50);
+  color: var(--tui-color-success-700);
   border-color: transparent;
+}
+.tui-btn--success.tui-btn--soft:hover:not(:disabled) {
+  background-color: var(--tui-color-success-100);
 }
 
 /* ─── warning ────────────────────────────────────────────────────────────── */
 .tui-btn--warning.tui-btn--solid {
-  background-color: var(--tui-color-warning-default);
-  color: var(--tui-color-neutral-0);
-  border-color: var(--tui-color-warning-default);
+  background-color: var(--tui-color-warning-600);
+  color: var(--tui-color-white);
+  border-color: var(--tui-color-warning-600);
 }
 .tui-btn--warning.tui-btn--solid:hover:not(:disabled) {
   background-color: var(--tui-color-warning-700);
   border-color: var(--tui-color-warning-700);
 }
-
 .tui-btn--warning.tui-btn--outline {
   background-color: transparent;
-  color: var(--tui-color-warning-default);
-  border-color: var(--tui-color-warning-default);
+  color: var(--tui-color-warning-600);
+  border-color: var(--tui-color-warning-600);
 }
 .tui-btn--warning.tui-btn--outline:hover:not(:disabled) {
-  background-color: var(--tui-color-warning-subtle);
+  background-color: var(--tui-color-warning-50);
 }
-
-.tui-btn--warning.tui-btn--ghost {
-  background-color: transparent;
-  color: var(--tui-color-warning-default);
-  border-color: transparent;
-}
-.tui-btn--warning.tui-btn--ghost:hover:not(:disabled) {
-  background-color: var(--tui-color-warning-subtle);
-}
-
 .tui-btn--warning.tui-btn--soft {
-  background-color: var(--tui-color-warning-subtle);
-  color: var(--tui-color-warning-default);
+  background-color: var(--tui-color-warning-50);
+  color: var(--tui-color-warning-700);
   border-color: transparent;
+}
+.tui-btn--warning.tui-btn--soft:hover:not(:disabled) {
+  background-color: var(--tui-color-warning-100);
 }
 
 /* ─── info ───────────────────────────────────────────────────────────────── */
 .tui-btn--info.tui-btn--solid {
-  background-color: var(--tui-color-info-default);
-  color: var(--tui-color-neutral-0);
-  border-color: var(--tui-color-info-default);
+  background-color: var(--tui-color-info-600);
+  color: var(--tui-color-white);
+  border-color: var(--tui-color-info-600);
+}
+.tui-btn--info.tui-btn--solid:hover:not(:disabled) {
+  background-color: var(--tui-color-info-700);
+  border-color: var(--tui-color-info-700);
 }
 .tui-btn--info.tui-btn--outline {
   background-color: transparent;
-  color: var(--tui-color-info-default);
-  border-color: var(--tui-color-info-default);
+  color: var(--tui-color-info-600);
+  border-color: var(--tui-color-info-600);
 }
-.tui-btn--info.tui-btn--ghost {
-  background-color: transparent;
-  color: var(--tui-color-info-default);
-  border-color: transparent;
+.tui-btn--info.tui-btn--outline:hover:not(:disabled) {
+  background-color: var(--tui-color-info-50);
 }
 .tui-btn--info.tui-btn--soft {
-  background-color: var(--tui-color-info-subtle);
-  color: var(--tui-color-info-default);
+  background-color: var(--tui-color-info-50);
+  color: var(--tui-color-info-700);
   border-color: transparent;
 }
+.tui-btn--info.tui-btn--soft:hover:not(:disabled) {
+  background-color: var(--tui-color-info-100);
+}
+
+/* ─── white (white bg, black text) ───────────────────────────────────────── */
+.tui-btn--white.tui-btn--solid {
+  background-color: var(--tui-color-white);
+  color: var(--tui-color-black);
+  border-color: var(--tui-color-neutral-200);
+}
+.tui-btn--white.tui-btn--solid:hover:not(:disabled) {
+  background-color: var(--tui-color-neutral-50);
+  border-color: var(--tui-color-neutral-300);
+}
+.tui-btn--white.tui-btn--outline {
+  background-color: transparent;
+  color: var(--tui-color-neutral-900);
+  border-color: var(--tui-color-neutral-200);
+}
+.tui-btn--white.tui-btn--outline:hover:not(:disabled) {
+  background-color: var(--tui-color-neutral-50);
+}
+.tui-btn--white.tui-btn--soft {
+  background-color: var(--tui-color-neutral-50);
+  color: var(--tui-color-neutral-800);
+  border-color: transparent;
+}
+.tui-btn--white.tui-btn--soft:hover:not(:disabled) {
+  background-color: var(--tui-color-neutral-100);
+}
+
+/* ─── black (black bg, white text) ───────────────────────────────────────── */
+.tui-btn--black.tui-btn--solid {
+  background-color: var(--tui-color-black);
+  color: var(--tui-color-white);
+  border-color: var(--tui-color-black);
+}
+.tui-btn--black.tui-btn--solid:hover:not(:disabled) {
+  background-color: var(--tui-color-neutral-800);
+  border-color: var(--tui-color-neutral-800);
+}
+.tui-btn--black.tui-btn--outline {
+  background-color: transparent;
+  color: var(--tui-color-black);
+  border-color: var(--tui-color-black);
+}
+.tui-btn--black.tui-btn--outline:hover:not(:disabled) {
+  background-color: var(--tui-color-neutral-100);
+}
+.tui-btn--black.tui-btn--soft {
+  background-color: var(--tui-color-neutral-900);
+  color: var(--tui-color-white);
+  border-color: transparent;
+}
+.tui-btn--black.tui-btn--soft:hover:not(:disabled) {
+  background-color: var(--tui-color-neutral-800);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PLAIN variant — no bg, no border, just text + icon with hover color shift
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.tui-btn--solid.tui-btn--plain,
+.tui-btn--outline.tui-btn--plain,
+.tui-btn--soft.tui-btn--plain,
+.tui-btn.tui-btn--plain {
+  background-color: transparent;
+  border-color: transparent;
+  padding-inline: var(--tui-spacing-1);
+}
+
+/* primary plain */
+.tui-btn--primary.tui-btn--plain { color: var(--tui-color-primary-700); }
+.tui-btn--primary.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-primary-600); }
+
+/* secondary plain */
+.tui-btn--secondary.tui-btn--plain { color: var(--tui-color-secondary-700); }
+.tui-btn--secondary.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-secondary-600); }
+
+/* default plain */
+.tui-btn--default.tui-btn--plain { color: var(--tui-color-neutral-700); }
+.tui-btn--default.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-neutral-600); }
+
+/* danger plain */
+.tui-btn--danger.tui-btn--plain { color: var(--tui-color-danger-700); }
+.tui-btn--danger.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-danger-600); }
+
+/* success plain */
+.tui-btn--success.tui-btn--plain { color: var(--tui-color-success-700); }
+.tui-btn--success.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-success-600); }
+
+/* warning plain */
+.tui-btn--warning.tui-btn--plain { color: var(--tui-color-warning-700); }
+.tui-btn--warning.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-warning-600); }
+
+/* info plain */
+.tui-btn--info.tui-btn--plain { color: var(--tui-color-info-700); }
+.tui-btn--info.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-info-600); }
+
+/* white plain */
+.tui-btn--white.tui-btn--plain { color: var(--tui-color-neutral-700); }
+.tui-btn--white.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-neutral-600); }
+
+/* black plain */
+.tui-btn--black.tui-btn--plain { color: var(--tui-color-neutral-900); }
+.tui-btn--black.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-neutral-700); }

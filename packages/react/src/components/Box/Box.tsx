@@ -1,7 +1,8 @@
-import React, { ElementType, forwardRef, CSSProperties } from "react";
+import { ElementType, forwardRef, CSSProperties } from "react";
 import type { HTMLAttributes } from "react";
 import type { BaseProps } from "../../types";
 import { cn } from "../../utils/cn";
+import { Shimmer } from "../Shimmer/Shimmer";
 import "./Box.css";
 
 type SpacingKey =
@@ -48,11 +49,17 @@ export interface BoxProps extends BaseProps, HTMLAttributes<HTMLElement> {
   justify?:   "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
   wrap?:      "nowrap" | "wrap" | "wrap-reverse";
   gap?:       SpacingKey;
+
+  /** Ghost/skeleton mode — renders Shimmer matching box dimensions */
+  isGhost?: boolean;
+  /** Width of ghost shimmer (e.g. "200px", "100%"). Defaults to content width */
+  ghostWidth?: string;
+  /** Height of ghost shimmer (e.g. "120px", "50%"). Defaults to content height */
+  ghostHeight?: string;
 }
 
 /** Resolve a spacing key to its CSS variable reference */
 function sp(key: SpacingKey): string {
-  // Dots become underscores to match the generated token names: "0.5" → "--tui-spacing-0_5"
   return `var(--tui-spacing-${key.replace(".", "_")})`;
 }
 
@@ -89,6 +96,9 @@ export const Box = forwardRef<any, BoxProps>(
       m, mx, my, mt, mr, mb, ml,
       rounded, shadow, bg, color,
       display, direction, align, justify, wrap, gap,
+      isGhost = false,
+      ghostWidth,
+      ghostHeight,
       className,
       style,
       children,
@@ -97,8 +107,7 @@ export const Box = forwardRef<any, BoxProps>(
     },
     ref,
   ) => {
-    // Build a style object that only carries CSS *variable* declarations,
-    // never actual property values. The CSS file reads these vars.
+    // CSS custom property declarations for spacing/visual
     const cssVars: Record<string, string> = {};
 
     if (p)  cssVars["--tui-box-p"]  = sp(p);
@@ -128,6 +137,35 @@ export const Box = forwardRef<any, BoxProps>(
         ? { ...(cssVars as CSSProperties), ...style }
         : style ?? {};
 
+    const finalStyle = Object.keys(mergedStyle).length > 0 ? mergedStyle : undefined;
+
+    // Ghost mode → render Shimmer with same layout classes and spacing
+    if (isGhost) {
+      const hasContent = children != null;
+      return (
+        <Shimmer
+          as="div"
+          className={cn(
+            "tui-box",
+            display   && `tui-box--${display}`,
+            direction && `tui-box--${direction}`,
+            className,
+          )}
+          style={{
+            minWidth: "20px",
+            minHeight: "20px",
+            width: ghostWidth || undefined,
+            height: ghostHeight || undefined,
+            ...finalStyle,
+          }}
+          radius={rounded ? `var(--tui-radius-${rounded})` : undefined}
+          data-testid={testId}
+        >
+          {children}
+        </Shimmer>
+      );
+    }
+
     return (
       <Tag
         ref={ref}
@@ -140,7 +178,7 @@ export const Box = forwardRef<any, BoxProps>(
           wrap      && `tui-box--${wrap}`,
           className,
         )}
-        style={Object.keys(mergedStyle).length > 0 ? mergedStyle : undefined}
+        style={finalStyle}
         data-testid={testId}
         {...rest}
       >

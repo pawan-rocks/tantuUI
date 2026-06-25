@@ -10,16 +10,19 @@ export type Size = "xs" | "sm" | "md" | "lg" | "xl";
 export type Variant =
   | "solid"
   | "outline"
-  | "ghost"
-  | "soft";
+  | "soft"
+  | "plain";
 
 export type Intent =
   | "default"
   | "primary"
+  | "secondary"
   | "success"
   | "warning"
   | "danger"
-  | "info";
+  | "info"
+  | "white"
+  | "black";
 
 // ── Base props shared by all components ───────────────────────────────
 export interface BaseProps {

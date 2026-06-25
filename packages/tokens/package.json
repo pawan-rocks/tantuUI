@@ -13,7 +13,12 @@
     },
     "./css":              "./dist/tokens.css",
     "./css/base":         "./dist/base.css",
-    "./tailwind-preset":  "./dist/tailwind-preset.js"
+    "./css/utilities":    "./dist/utilities.css",
+    "./tailwind-preset":  "./dist/tailwind-preset.js",
+    "./runtime": {
+      "import": "./dist/runtime.mjs",
+      "require": "./dist/runtime.js"
+    }
   },
   "files": [
     "dist"

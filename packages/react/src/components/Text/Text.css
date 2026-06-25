@@ -1,6 +1,6 @@
 /* ─── Text base ──────────────────────────────────────────────────────────── */
 .tui-text {
-  /* inherits font-family, color, etc. from body / parent */
+  font-size: var(--tui-font-size-sm);
 }
 
 /* ─── Sizes ──────────────────────────────────────────────────────────────── */

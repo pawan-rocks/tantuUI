@@ -20,38 +20,39 @@ const VarSwatch = ({ varName, label }: { varName: string; label: string }) => (
 
 // ── Colors page ────────────────────────────────────────────────────────────
 const ColorsPage = () => {
-  const neutrals = [0,50,100,200,300,400,500,600,700,800,900,950];
-  const primaries = [50,100,200,300,400,500,600,700,800,900,950];
+  const scale = [50,100,200,300,400,500,600,700,800,900,950];
+
+  const colorGroups = [
+    { title: "White / Black", prefix: null, steps: null, custom: [
+      { varName: "--tui-color-white", label: "white" },
+      { varName: "--tui-color-black", label: "black" },
+    ]},
+    { title: "Neutral (Zinc)", prefix: "neutral", steps: scale },
+    { title: "Gray (Cool)", prefix: "gray", steps: scale },
+    { title: "Primary (Magenta Purple)", prefix: "primary", steps: scale },
+    { title: "Brand Blue", prefix: "brand-blue", steps: scale },
+    { title: "Indigo", prefix: "indigo", steps: scale },
+    { title: "Purple", prefix: "purple", steps: scale },
+    { title: "Secondary (Coal)", prefix: "secondary", steps: scale },
+    { title: "Success", prefix: "success", steps: scale },
+    { title: "Warning", prefix: "warning", steps: scale },
+    { title: "Danger", prefix: "danger", steps: scale },
+    { title: "Info", prefix: "info", steps: scale },
+  ];
 
   return (
     <div style={{ fontFamily: "var(--tui-font-family-sans)", padding: "var(--tui-spacing-6)", display: "flex", flexDirection: "column", gap: "var(--tui-spacing-8)" }}>
-      <section>
-        <h2 style={{ fontSize: "var(--tui-font-size-lg)", fontWeight: "var(--tui-font-weight-semibold)", marginBottom: "var(--tui-spacing-4)", color: "var(--tui-color-text-primary)" }}>Neutral Scale</h2>
-        <div style={{ display: "flex", gap: "var(--tui-spacing-3)", flexWrap: "wrap" }}>
-          {neutrals.map((n) => <VarSwatch key={n} varName={`--tui-color-neutral-${n}`} label={`neutral-${n}`} />)}
-        </div>
-      </section>
-
-      <section>
-        <h2 style={{ fontSize: "var(--tui-font-size-lg)", fontWeight: "var(--tui-font-weight-semibold)", marginBottom: "var(--tui-spacing-4)", color: "var(--tui-color-text-primary)" }}>Primary Scale</h2>
-        <div style={{ display: "flex", gap: "var(--tui-spacing-3)", flexWrap: "wrap" }}>
-          {primaries.map((n) => <VarSwatch key={n} varName={`--tui-color-primary-${n}`} label={`primary-${n}`} />)}
-        </div>
-      </section>
-
-      <section>
-        <h2 style={{ fontSize: "var(--tui-font-size-lg)", fontWeight: "var(--tui-font-weight-semibold)", marginBottom: "var(--tui-spacing-4)", color: "var(--tui-color-text-primary)" }}>Status Colors</h2>
-        <div style={{ display: "flex", gap: "var(--tui-spacing-6)", flexWrap: "wrap" }}>
-          {["success","warning","danger","info"].map((status) => (
-            <div key={status}>
-              <div style={{ fontSize: "var(--tui-font-size-xs)", fontWeight: "var(--tui-font-weight-semibold)", color: "var(--tui-color-text-secondary)", marginBottom: "var(--tui-spacing-2)", textTransform: "capitalize" }}>{status}</div>
-              <div style={{ display: "flex", gap: "var(--tui-spacing-2)" }}>
-                {[50,500,700].map((n) => <VarSwatch key={n} varName={`--tui-color-${status}-${n}`} label={`${n}`} />)}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      {colorGroups.map(({ title, prefix, steps, custom }) => (
+        <section key={title}>
+          <h2 style={{ fontSize: "var(--tui-font-size-lg)", fontWeight: "var(--tui-font-weight-semibold)", marginBottom: "var(--tui-spacing-4)", color: "var(--tui-color-text-primary)" }}>{title}</h2>
+          <div style={{ display: "flex", gap: "var(--tui-spacing-3)", flexWrap: "wrap" }}>
+            {custom
+              ? custom.map(({ varName, label }) => <VarSwatch key={varName} varName={varName} label={label} />)
+              : steps!.map((n) => <VarSwatch key={n} varName={`--tui-color-${prefix}-${n}`} label={`${prefix}-${n}`} />)
+            }
+          </div>
+        </section>
+      ))}
 
       <section>
         <h2 style={{ fontSize: "var(--tui-font-size-lg)", fontWeight: "var(--tui-font-weight-semibold)", marginBottom: "var(--tui-spacing-4)", color: "var(--tui-color-text-primary)" }}>Semantic Colors</h2>

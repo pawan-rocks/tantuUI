@@ -7,6 +7,8 @@ const basePath = process.env.STORYBOOK_BASE_PATH ?? "/";
 const config: StorybookConfig = {
   stories: ["../src/stories/**/*.stories.@(ts|tsx)"],
 
+  staticDirs: ["./public"],  // serves .storybook/public/ at root /
+
   addons: [
     "@storybook/addon-essentials",
     "@storybook/addon-a11y",

@@ -23,6 +23,7 @@ const meta: Meta<typeof Box> = {
     gap:     { control: "select", options: ["0","1","2","3","4","5","6","8","10","12","16"], table: { category: "Layout" } },
     bg:    { control: "text", description: "Background: CSS value, #hex, or token key", table: { category: "Appearance" } },
     color: { control: "text", description: "Text color: CSS value, #hex, or token key",  table: { category: "Appearance" } },
+    isGhost: { control: "boolean", description: "Ghost/skeleton mode — renders Shimmer matching box dimensions", table: { category: "State" } },
   },
 
   args: {
@@ -120,9 +121,43 @@ export const CardPattern: Story = {
         This card is composed entirely using Box + Text with token-based spacing, shadow, and radius.
       </Text>
       <Box display="flex" gap="3" justify="flex-end">
-        <Button variant="ghost" size="sm">Cancel</Button>
+        <Button variant="outline" size="sm">Cancel</Button>
         <Button size="sm">Confirm</Button>
       </Box>
     </Box>
+  ),
+};
+
+// ── Ghost / Skeleton ──────────────────────────────────────────────────────
+export const GhostSkeleton: Story = {
+  name: "Ghost / Skeleton",
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: "flex", gap: "var(--tui-spacing-6)", flexWrap: "wrap" }}>
+      <Box isGhost p="6" rounded="lg" style={{ width: 200, height: 120 }} />
+      <Box isGhost p="4" rounded="md" style={{ width: 160, height: 80 }} />
+      <Box isGhost p="8" rounded="xl" style={{ width: 240, height: 160 }} />
+      <Box isGhost p="3" rounded="sm" style={{ width: 100, height: 100 }} />
+    </div>
+  ),
+};
+
+// ── Custom Class Only ─────────────────────────────────────────────────────
+export const CustomClassOnly: Story = {
+  name: "Custom Class Only",
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-4)" }}>
+      <style>{`
+        .my-card { background: linear-gradient(145deg, #1e293b, #334155); color: white; padding: 24px; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .my-banner { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 16px; border-radius: 4px; }
+      `}</style>
+      <p style={{ fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)" }}>
+        Zero design props — only className + children. Box as a plain wrapper.
+      </p>
+      <Box className="my-card">Dark gradient card via custom class</Box>
+      <Box className="my-banner">Warning banner via custom class</Box>
+      <Box>No props at all (bare div)</Box>
+    </div>
   ),
 };

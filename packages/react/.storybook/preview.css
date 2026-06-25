@@ -54,5 +54,15 @@
 
 /* Story padding */
 .sb-show-main.sb-main-padded {
-  padding: 2rem;
+  padding: 12px;
+}
+
+/* Override Storybook Docs page wrapper — full width, consistent padding */
+.sbdocs-wrapper {
+  padding: 12px !important;
+  justify-content: flex-start !important;
+}
+.sbdocs-content {
+  max-width: 100% !important;
+  width: 100% !important;
 }

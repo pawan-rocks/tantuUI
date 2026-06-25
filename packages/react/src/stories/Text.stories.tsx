@@ -43,6 +43,16 @@ const meta: Meta<typeof Text> = {
       description: "Clamp to N lines (1 = single-line ellipsis)",
       table: { category: "Layout" },
     },
+    isGhost: {
+      control: "boolean",
+      description: "Ghost/skeleton mode — renders Shimmer matching text dimensions",
+      table: { category: "State" },
+    },
+    ghostWidth: {
+      control: "text",
+      description: "Width of the ghost shimmer (e.g. \"80%\", \"200px\")",
+      table: { category: "State" },
+    },
     children: {
       control: "text",
       table: { category: "Content" },
@@ -156,6 +166,59 @@ export const Truncation: Story = {
         <Text size="xs" color="tertiary" style={{ marginBottom: 4 }}>Three lines (truncate=3)</Text>
         <Text truncate={3}>The quick brown fox jumps over the lazy dog. This text is long and will be truncated after three lines. Keep adding words to see the effect in action — it should clamp here.</Text>
       </div>
+    </div>
+  ),
+};
+
+// ── Ghost / Skeleton ──────────────────────────────────────────────────────
+export const GhostSkeleton: Story = {
+  name: "Ghost / Skeleton",
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-6)", maxWidth: 500 }}>
+      <div>
+        <Text size="xs" color="tertiary" style={{ marginBottom: 8 }}>Different sizes</Text>
+        <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)" }}>
+          {(["xs", "sm", "md", "lg", "xl", "2xl"] as const).map((size) => (
+            <Text key={size} size={size} isGhost ghostWidth="60%">{size}</Text>
+          ))}
+        </div>
+      </div>
+      <div>
+        <Text size="xs" color="tertiary" style={{ marginBottom: 8 }}>Different widths</Text>
+        <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)" }}>
+          <Text isGhost ghostWidth="100%">Full width</Text>
+          <Text isGhost ghostWidth="75%">75% width</Text>
+          <Text isGhost ghostWidth="50%">50% width</Text>
+          <Text isGhost ghostWidth="200px">200px width</Text>
+        </div>
+      </div>
+      <div>
+        <Text size="xs" color="tertiary" style={{ marginBottom: 8 }}>Multi-line ghost</Text>
+        <Text isGhost ghostWidth="100%" style={{ height: "4.5em" }}>
+          Multi-line ghost placeholder that preserves multiple lines of height for paragraph skeleton loading.
+        </Text>
+      </div>
+    </div>
+  ),
+};
+
+// ── Custom Class Only ─────────────────────────────────────────────────────
+export const CustomClassOnly: Story = {
+  name: "Custom Class Only",
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-4)" }}>
+      <style>{`
+        .my-highlight { color: #e11d48; font-style: italic; text-decoration: underline; }
+        .my-gradient-text { background: linear-gradient(90deg, #6366f1, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2rem; font-weight: 800; }
+      `}</style>
+      <p style={{ fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)" }}>
+        Zero design props — only className + children. Text as a plain wrapper.
+      </p>
+      <Text className="my-highlight">Highlighted with custom class</Text>
+      <Text className="my-gradient-text">Gradient text via className</Text>
+      <Text>No props at all (bare paragraph)</Text>
     </div>
   ),
 };
