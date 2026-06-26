@@ -5,8 +5,7 @@
   gap: var(--tui-spacing-0_5);
   font-family: inherit;
   font-weight: var(--tui-font-weight-medium);
-  line-height: var(--tui-leading-normal);
-  color: var(--tui-color-neutral-900);
+  color: var(--tui-color-brand-black-900);
   cursor: inherit;
 }
 
@@ -15,26 +14,46 @@
   cursor: pointer;
 }
 
-/* ─── Sizes ──────────────────────────────────────────────────────────────── */
+/* ─── Sizes (font-size + line-height) ────────────────────────────────────── */
 .tui-label--xs {
   font-size: var(--tui-font-size-xs);
+  line-height: var(--tui-leading-4);
 }
 .tui-label--sm {
   font-size: var(--tui-font-size-sm);
+  line-height: var(--tui-leading-5);
 }
 .tui-label--md {
   font-size: var(--tui-font-size-sm);
+  line-height: var(--tui-leading-5);
 }
 .tui-label--lg {
   font-size: var(--tui-font-size-md);
+  line-height: var(--tui-leading-6);
 }
 .tui-label--xl {
   font-size: var(--tui-font-size-lg);
+  line-height: var(--tui-leading-7);
 }
+
+/* ─── Intent colors ──────────────────────────────────────────────────────── */
+.tui-label--primary  { color: var(--tui-color-brand-pink-700); }
+.tui-label--success  { color: var(--tui-color-success-700); }
+.tui-label--warning  { color: var(--tui-color-warning-700); }
+.tui-label--danger   { color: var(--tui-color-danger-700); }
+.tui-label--info     { color: var(--tui-color-info-700); }
+.tui-label--teal     { color: var(--tui-color-teal-700); }
+.tui-label--orange   { color: var(--tui-color-orange-700); }
+.tui-label--rose     { color: var(--tui-color-rose-700); }
+.tui-label--indigo   { color: var(--tui-color-indigo-700); }
+.tui-label--mint     { color: var(--tui-color-mint-700); }
+.tui-label--coal     { color: var(--tui-color-coal-700); }
+.tui-label--white    { color: var(--tui-color-brand-black-400); }
+.tui-label--black    { color: var(--tui-color-brand-black-900); }
 
 /* ─── Disabled ───────────────────────────────────────────────────────────── */
 .tui-label--disabled {
-  color: var(--tui-color-neutral-500);
+  color: var(--tui-color-brand-black-500);
   cursor: not-allowed;
 }
 
@@ -42,7 +61,7 @@
 .tui-checkbox--disabled .tui-label,
 .tui-radio--disabled .tui-label,
 .tui-switch--disabled ~ .tui-label {
-  color: var(--tui-color-neutral-500);
+  color: var(--tui-color-brand-black-500);
   cursor: not-allowed;
 }
 

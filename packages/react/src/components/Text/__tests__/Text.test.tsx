@@ -36,9 +36,9 @@ describe("Text", () => {
   });
 
   it("applies custom color as inline style variable", () => {
-    render(<Text color="neutral-700" data-testid="text" />);
+    render(<Text color="brand-black-700" data-testid="text" />);
     const el = screen.getByTestId("text");
-    expect(el.style.color).toBe("var(--tui-color-neutral-700)");
+    expect(el.style.color).toBe("var(--tui-color-brand-black-700)");
   });
 
   it("passes through raw CSS color values", () => {

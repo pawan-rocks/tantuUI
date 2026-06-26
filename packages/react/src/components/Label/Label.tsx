@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import type { LabelHTMLAttributes } from "react";
-import type { Size, BaseProps } from "../../types";
+import type { Size, Intent, BaseProps } from "../../types";
 import { cn } from "../../utils/cn";
 import { Shimmer } from "../Shimmer/Shimmer";
 import "./Label.css";
@@ -10,6 +10,8 @@ export interface LabelProps
     Omit<LabelHTMLAttributes<HTMLLabelElement>, "className" | "style"> {
   /** Size controlling font size via design tokens */
   size?: Size;
+  /** Color intent */
+  intent?: Intent | (string & {});
   /** Renders a required asterisk after the label text */
   required?: boolean;
   /** Associates the label with a form control */
@@ -24,6 +26,7 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(
   (
     {
       size = "md",
+      intent = "default",
       required = false,
       disabled = false,
       isGhost = false,
@@ -66,6 +69,7 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(
         className={cn(
           "tui-label",
           `tui-label--${size}`,
+          intent !== "default" && `tui-label--${intent}`,
           disabled && "tui-label--disabled",
           className,
         )}

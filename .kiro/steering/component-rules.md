@@ -41,6 +41,19 @@ export interface ComponentNameProps extends BaseProps, HTMLAttributes<HTMLElemen
 }
 ```
 
+Use intent props for any component when need like form related component should be all intent 
+```tsx
+ intent?: "| "default"
+  | "primary"
+  | "success"
+  | "warning"
+  | "danger"
+  | "info"
+  | "white"
+  | "black"
+  | (string & {});
+```
+
 Use `(string & {})` trick for props that accept both known values AND custom strings:
 ```tsx
 color?: "primary" | "secondary" | "danger" | (string & {});

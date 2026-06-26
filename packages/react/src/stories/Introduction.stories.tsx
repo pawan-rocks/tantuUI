@@ -89,7 +89,7 @@ import { Button, Text, Box, LinkText, Shimmer } from "@tantu/react";`}
     </h2>
     <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--tui-spacing-2)", marginBottom: "var(--tui-spacing-8)" }}>
       {["Button", "Text", "Box", "LinkText", "Shimmer"].map((name) => (
-        <span key={name} style={{ padding: "var(--tui-spacing-1) var(--tui-spacing-3)", background: "var(--tui-color-primary-50)", color: "var(--tui-color-primary-700)", borderRadius: "var(--tui-radius-full)", fontSize: "var(--tui-font-size-xs)", fontWeight: "var(--tui-font-weight-medium)" }}>
+        <span key={name} style={{ padding: "var(--tui-spacing-1) var(--tui-spacing-3)", background: "var(--tui-color-brand-pink-50)", color: "var(--tui-color-brand-pink-700)", borderRadius: "var(--tui-radius-full)", fontSize: "var(--tui-font-size-xs)", fontWeight: "var(--tui-font-weight-medium)" }}>
           {name}
         </span>
       ))}

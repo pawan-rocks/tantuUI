@@ -38,7 +38,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       variant   = "solid",
-      intent    = "primary",
+      intent    = "default",
       size      = "md",
       fullWidth = false,
       loading   = false,
@@ -90,7 +90,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(
           "tui-btn",
           "tui-focus-ring",
-          intent !== "default" && `tui-ring--${intent}`,
+          `tui-ring--${intent}`,
           `tui-btn--${size}`,
           `tui-btn--${variant}`,
           `tui-btn--${intent}`,

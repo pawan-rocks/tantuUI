@@ -12,6 +12,16 @@ export const radius = {
   "2xl": "1rem",      // 16px
   "3xl": "1.5rem",    // 24px
   full:  "9999px",    // pill / circle
+
+  // ── Semantic defaults ────────────────────────────────────────────────
+  default:   "var(--tui-radius-md)",     // default component radius
+  button:    "var(--tui-radius-md)",     // buttons
+  input:     "var(--tui-radius-md)",     // inputs, selects, textareas
+  card:      "var(--tui-radius-lg)",     // cards, panels
+  badge:     "var(--tui-radius-full)",   // badges, tags, pills
+  avatar:    "var(--tui-radius-full)",   // avatar circles
+  modal:     "var(--tui-radius-xl)",     // modals, dialogs
+  tooltip:   "var(--tui-radius-sm)",     // tooltips, popovers
 } as const;
 
 export type RadiusTokens = typeof radius;

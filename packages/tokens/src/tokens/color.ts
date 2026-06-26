@@ -2,115 +2,131 @@
  * Color tokens
  * CSS custom property prefix: --tui-color-*
  *
- * DEFAULT for each color = 900 shade
+ * Brand colors use naming: brand-<colorname>-<scale|default>
+ * Scale: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950
+ * Default = the base color from the brand palette
  */
 export const color = {
   // ── Primitives (raw scale) ──────────────────────────────────────────
 
   primitive: {
-    // ── White / Black ──────────────────────────────────────────────────
+    // ── White / Black (brand colors) ───────────────────────────────────
     white: "#ffffff",
     black: "#000000",
 
-    // ── Neutral (zinc-based) ───────────────────────────────────────────
-    neutral50:  "#fafafa",
-    neutral100: "#f4f4f5",
-    neutral200: "#e4e4e7",
-    neutral300: "#d4d4d8",
-    neutral400: "#a1a1aa",
-    neutral500: "#71717a",
-    neutral600: "#52525b",
-    neutral700: "#3f3f46",
-    neutral800: "#27272a",
-    neutral900: "#18181b",
-    neutral950: "#09090b",
-    neutralDefault: "#18181b",  // → neutral-900
+    // ── Brand White (scale from pure white) ────────────────────────────
+    brandWhite50:  "#ffffff",
+    brandWhite100: "#fefefe",
+    brandWhite200: "#fafafa",
+    brandWhite300: "#f5f5f5",
+    brandWhite400: "#ededed",
+    brandWhite500: "#e0e0e0",
+    brandWhite600: "#c2c2c2",
+    brandWhite700: "#9e9e9e",
+    brandWhite800: "#757575",
+    brandWhite900: "#4a4a4a",
+    brandWhite950: "#2b2b2b",
+    brandWhiteDefault: "#ffffff",  // base from brand palette
 
-    // ── Gray (cool gray) ──────────────────────────────────────────────
-    gray50:  "#f9fafb",
-    gray100: "#f3f4f6",
-    gray200: "#e5e7eb",
-    gray300: "#d1d5db",
-    gray400: "#9ca3af",
-    gray500: "#6b7280",
-    gray600: "#4b5563",
-    gray700: "#374151",
-    gray800: "#1f2937",
-    gray900: "#111827",
-    gray950: "#030712",
-    grayDefault: "#111827",  // → gray-900
+    // ── Brand Black (scale from pure black) ────────────────────────────
+    brandBlack50:  "#f5f5f5",
+    brandBlack100: "#e8e8e8",
+    brandBlack200: "#d4d4d4",
+    brandBlack300: "#b0b0b0",
+    brandBlack400: "#8a8a8a",
+    brandBlack500: "#616161",
+    brandBlack600: "#4a4a4a",
+    brandBlack700: "#363636",
+    brandBlack800: "#242424",
+    brandBlack900: "#141414",
+    brandBlack950: "#000000",
+    brandBlackDefault: "#000000",  // base from brand palette
 
-    // ── Primary — Magenta Purple (#B927F1 base) ────────────────────────
-    primary50:  "#fdf4ff",
-    primary100: "#fae8ff",
-    primary200: "#f5d0fe",
-    primary300: "#f0abfc",
-    primary400: "#e879f9",
-    primary500: "#d946ef",
-    primary600: "#b927f1",
-    primary700: "#a21caf",
-    primary800: "#86198f",
-    primary900: "#701a75",
-    primary950: "#4a044e",
-    primaryDefault: "#701a75",  // → primary-900
+    // ── Brand Navy (#0D132B base) ──────────────────────────────────────
+    brandNavy50:  "#f3f4f7",
+    brandNavy100: "#e7e8ef",
+    brandNavy200: "#cacfe2",
+    brandNavy300: "#9da8d2",
+    brandNavy400: "#6377c5",
+    brandNavy500: "#354eb0",
+    brandNavy600: "#2c4091",
+    brandNavy700: "#223272",
+    brandNavy800: "#1a2656",
+    brandNavy900: "#121a3b",
+    brandNavy950: "#0a0e1f",
+    brandNavyDefault: "#2c4091",  // base from brand palette
 
-    // ── Brand Blue (#2360FF base) ──────────────────────────────────────
+    // ── Brand Blue (#2563EB base) ──────────────────────────────────────
     brandBlue50:  "#eff4ff",
-    brandBlue100: "#dbeaff",
-    brandBlue200: "#bfd7fe",
-    brandBlue300: "#93bbfd",
-    brandBlue400: "#6096fa",
-    brandBlue500: "#3a72f6",
-    brandBlue600: "#2360ff",
-    brandBlue700: "#1e68ff",
-    brandBlue800: "#1a4fd4",
-    brandBlue900: "#1c43a7",
-    brandBlue950: "#162a66",
-    brandBlueDefault: "#1c43a7",  // → brand-blue-900
+    brandBlue100: "#dbe6fe",
+    brandBlue200: "#bfd3fe",
+    brandBlue300: "#93b4fd",
+    brandBlue400: "#6090fa",
+    brandBlue500: "#3b6ef6",
+    brandBlue600: "#2563eb",
+    brandBlue700: "#1d50d8",
+    brandBlue800: "#1e41af",
+    brandBlue900: "#1e398a",
+    brandBlue950: "#172554",
+    brandBlueDefault: "#2563EB",  // base from brand palette
 
-    // ── Indigo (#4f46e5 base) ──────────────────────────────────────────
-    indigo50:  "#eef2ff",
-    indigo100: "#e0e7ff",
-    indigo200: "#c7d2fe",
-    indigo300: "#a5b4fc",
-    indigo400: "#818cf8",
-    indigo500: "#6366f1",
-    indigo600: "#4f46e5",
-    indigo700: "#4338ca",
-    indigo800: "#3730a3",
-    indigo900: "#312e81",
-    indigo950: "#1e1b4b",
-    indigoDefault: "#312e81",  // → indigo-900
+    // ── Brand Purple (#7C3AED base) ────────────────────────────────────
+    brandPurple50:  "#f5f3ff",
+    brandPurple100: "#ede8ff",
+    brandPurple200: "#ddd6fe",
+    brandPurple300: "#c4b5fc",
+    brandPurple400: "#a78bfa",
+    brandPurple500: "#8b5cf6",
+    brandPurple600: "#7c3aed",
+    brandPurple700: "#6d28d9",
+    brandPurple800: "#5b21b6",
+    brandPurple900: "#4c1d95",
+    brandPurple950: "#2e1065",
+    brandPurpleDefault: "#7C3AED",  // base from brand palette
 
-    // ── Purple (#AF27F0 base) ──────────────────────────────────────────
-    purple50:  "#faf5ff",
-    purple100: "#f3e8ff",
-    purple200: "#e9d5ff",
-    purple300: "#d8b4fe",
-    purple400: "#c084fc",
-    purple500: "#af27f0",
-    purple600: "#9333ea",
-    purple700: "#7e22ce",
-    purple800: "#6b21a8",
-    purple900: "#581c87",
-    purple950: "#3b0764",
-    purpleDefault: "#581c87",  // → purple-900
+    // ── Brand Pink (#D946EF base) ──────────────────────────────────────
+    brandPink50:  "#fdf4ff",
+    brandPink100: "#fae8ff",
+    brandPink200: "#f5d0fe",
+    brandPink300: "#f0abfc",
+    brandPink400: "#e879f9",
+    brandPink500: "#d946ef",
+    brandPink600: "#c026d3",
+    brandPink700: "#a21caf",
+    brandPink800: "#86198f",
+    brandPink900: "#701a75",
+    brandPink950: "#4a044e",
+    brandPinkDefault: "#c026d3",  // base from brand palette
 
-    // ── Secondary — Coal (slate-based) ─────────────────────────────────
-    secondary50:  "#f8fafc",
-    secondary100: "#f1f5f9",
-    secondary200: "#e2e8f0",
-    secondary300: "#cbd5e1",
-    secondary400: "#94a3b8",
-    secondary500: "#64748b",
-    secondary600: "#475569",
-    secondary700: "#334155",
-    secondary800: "#1e293b",
-    secondary900: "#0f172a",
-    secondary950: "#020617",
-    secondaryDefault: "#0f172a",  // → secondary-900
+    // ── Brand Gray (#4B5563 base) ──────────────────────────────────────
+    brandGray50:  "#f9fafb",
+    brandGray100: "#f3f4f6",
+    brandGray200: "#e5e7eb",
+    brandGray300: "#d1d5db",
+    brandGray400: "#9ca3af",
+    brandGray500: "#6b7280",
+    brandGray600: "#4b5563",
+    brandGray700: "#374151",
+    brandGray800: "#1f2937",
+    brandGray900: "#111827",
+    brandGray950: "#030712",
+    brandGrayDefault: "#4B5563",  // base from brand palette
 
-    // ── Success ────────────────────────────────────────────────────────
+    // ── Brand Light (#F3F4F6 base) ─────────────────────────────────────
+    brandLight50:  "#fdfefe",
+    brandLight100: "#f9fafb",
+    brandLight200: "#f3f4f6",
+    brandLight300: "#e5e7eb",
+    brandLight400: "#d1d5db",
+    brandLight500: "#9ca3af",
+    brandLight600: "#6b7280",
+    brandLight700: "#4b5563",
+    brandLight800: "#374151",
+    brandLight900: "#1f2937",
+    brandLight950: "#111827",
+    brandLightDefault: "#F3F4F6",  // base from brand palette
+
+    // ── Success (green) ───────────────────────────────────────────────
     success50:  "#f0fdf4",
     success100: "#dcfce7",
     success200: "#bbf7d0",
@@ -122,9 +138,9 @@ export const color = {
     success800: "#166534",
     success900: "#14532d",
     success950: "#052e16",
-    successDefault: "#14532d",  // → success-900
+    successDefault: "#16a34a",
 
-    // ── Warning ────────────────────────────────────────────────────────
+    // ── Warning (amber) ────────────────────────────────────────────────
     warning50:  "#fffbeb",
     warning100: "#fef3c7",
     warning200: "#fde68a",
@@ -136,9 +152,9 @@ export const color = {
     warning800: "#92400e",
     warning900: "#78350f",
     warning950: "#451a03",
-    warningDefault: "#78350f",  // → warning-900
+    warningDefault: "#d97706",
 
-    // ── Danger ─────────────────────────────────────────────────────────
+    // ── Danger (red) ───────────────────────────────────────────────────
     danger50:  "#fef2f2",
     danger100: "#fee2e2",
     danger200: "#fecaca",
@@ -150,9 +166,9 @@ export const color = {
     danger800: "#991b1b",
     danger900: "#7f1d1d",
     danger950: "#450a0a",
-    dangerDefault: "#7f1d1d",  // → danger-900
+    dangerDefault: "#dc2626",
 
-    // ── Info ───────────────────────────────────────────────────────────
+    // ── Info (blue) ────────────────────────────────────────────────────
     info50:  "#eff6ff",
     info100: "#dbeafe",
     info200: "#bfdbfe",
@@ -164,45 +180,129 @@ export const color = {
     info800: "#1e40af",
     info900: "#1e3a8a",
     info950: "#172554",
-    infoDefault: "#1e3a8a",  // → info-900
+    infoDefault: "#2563eb",
+
+    // ── Teal (cyan/teal) ───────────────────────────────────────────────
+    teal50:  "#f0fdfa",
+    teal100: "#ccfbf1",
+    teal200: "#99f6e4",
+    teal300: "#5eead4",
+    teal400: "#2dd4bf",
+    teal500: "#14b8a6",
+    teal600: "#0d9488",
+    teal700: "#0f766e",
+    teal800: "#115e59",
+    teal900: "#134e4a",
+    teal950: "#042f2e",
+    tealDefault: "#0d9488",
+
+    // ── Orange (deep orange) ───────────────────────────────────────────
+    orange50:  "#fff7ed",
+    orange100: "#ffedd5",
+    orange200: "#fed7aa",
+    orange300: "#fdba74",
+    orange400: "#fb923c",
+    orange500: "#f97316",
+    orange600: "#ea580c",
+    orange700: "#c2410c",
+    orange800: "#9a3412",
+    orange900: "#7c2d12",
+    orange950: "#431407",
+    orangeDefault: "#ea580c",
+
+    // ── Rose (soft red/pink) ───────────────────────────────────────────
+    rose50:  "#fff1f2",
+    rose100: "#ffe4e6",
+    rose200: "#fecdd3",
+    rose300: "#fda4af",
+    rose400: "#fb7185",
+    rose500: "#f43f5e",
+    rose600: "#e11d48",
+    rose700: "#be123c",
+    rose800: "#9f1239",
+    rose900: "#881337",
+    rose950: "#4c0519",
+    roseDefault: "#e11d48",
+
+    // ── Indigo (deep blue-purple) ──────────────────────────────────────
+    indigo50:  "#eef2ff",
+    indigo100: "#e0e7ff",
+    indigo200: "#c7d2fe",
+    indigo300: "#a5b4fc",
+    indigo400: "#818cf8",
+    indigo500: "#6366f1",
+    indigo600: "#4f46e5",
+    indigo700: "#4338ca",
+    indigo800: "#3730a3",
+    indigo900: "#312e81",
+    indigo950: "#1e1b4b",
+    indigoDefault: "#4f46e5",
+
+    // ── Mint (fresh green) ─────────────────────────────────────────────
+    mint50:  "#ecfdf5",
+    mint100: "#d1fae5",
+    mint200: "#a7f3d0",
+    mint300: "#6ee7b7",
+    mint400: "#34d399",
+    mint500: "#10b981",
+    mint600: "#059669",
+    mint700: "#047857",
+    mint800: "#065f46",
+    mint900: "#064e3b",
+    mint950: "#022c22",
+    mintDefault: "#059669",
+
+    // ── Coal (dark neutral state) ──────────────────────────────────────
+    coal50:  "#f8fafc",
+    coal100: "#f1f5f9",
+    coal200: "#e2e8f0",
+    coal300: "#cbd5e1",
+    coal400: "#94a3b8",
+    coal500: "#64748b",
+    coal600: "#475569",
+    coal700: "#334155",
+    coal800: "#1e293b",
+    coal900: "#0f172a",
+    coal950: "#020617",
+    coalDefault: "#475569",
   },
 
   // ── Semantic aliases ────────────────────────────────────────────────
   semantic: {
     // Background
     bgBase:       "var(--tui-color-white)",
-    bgSubtle:     "var(--tui-color-neutral-50)",
-    bgMuted:      "var(--tui-color-neutral-100)",
-    bgInverse:    "var(--tui-color-neutral-900)",
+    bgSubtle:     "var(--tui-color-brand-black-50)",
+    bgMuted:      "var(--tui-color-brand-black-100)",
+    bgInverse:    "var(--tui-color-brand-black-900)",
 
     // Surface (cards, panels)
     surfaceDefault:  "var(--tui-color-white)",
-    surfaceRaised:   "var(--tui-color-neutral-50)",
-    surfaceOverlay:  "var(--tui-color-neutral-100)",
+    surfaceRaised:   "var(--tui-color-brand-black-50)",
+    surfaceOverlay:  "var(--tui-color-brand-black-100)",
 
     // Text
-    textPrimary:     "var(--tui-color-neutral-900)",
-    textSecondary:   "var(--tui-color-secondary-600)",
-    textTertiary:    "var(--tui-color-secondary-400)",
-    textDisabled:    "var(--tui-color-neutral-300)",
+    textPrimary:     "var(--tui-color-brand-black-900)",
+    textSecondary:   "var(--tui-color-brand-gray-600)",
+    textTertiary:    "var(--tui-color-brand-gray-400)",
+    textDisabled:    "var(--tui-color-brand-black-300)",
     textInverse:     "var(--tui-color-white)",
-    textLink:        "var(--tui-color-primary-600)",
-    textLinkHover:   "var(--tui-color-primary-700)",
+    textLink:        "var(--tui-color-brand-blue-600)",
+    textLinkHover:   "var(--tui-color-brand-blue-700)",
 
     // Border
-    borderDefault:   "var(--tui-color-neutral-200)",
-    borderStrong:    "var(--tui-color-neutral-400)",
-    borderFocus:     "var(--tui-color-primary-500)",
+    borderDefault:   "var(--tui-color-brand-black-200)",
+    borderStrong:    "var(--tui-color-brand-black-400)",
+    borderFocus:     "var(--tui-color-brand-pink-500)",
 
     // Focus ring
-    focusRing:       "var(--tui-color-neutral-500)",
+    focusRing:       "var(--tui-color-brand-black-500)",
     focusRingGap:    "var(--tui-color-white)",
 
-    // Brand interactive (uses primary = magenta-purple)
-    brandDefault:    "var(--tui-color-primary-600)",
-    brandHover:      "var(--tui-color-primary-700)",
-    brandActive:     "var(--tui-color-primary-800)",
-    brandSubtle:     "var(--tui-color-primary-50)",
+    // Brand interactive (uses brand-pink as primary)
+    brandDefault:    "var(--tui-color-brand-pink-600)",
+    brandHover:      "var(--tui-color-brand-pink-700)",
+    brandActive:     "var(--tui-color-brand-pink-800)",
+    brandSubtle:     "var(--tui-color-brand-pink-50)",
     brandText:       "var(--tui-color-white)",
 
     // Status
@@ -221,6 +321,30 @@ export const color = {
     infoDefault:     "var(--tui-color-info-600)",
     infoSubtle:      "var(--tui-color-info-50)",
     infoText:        "var(--tui-color-info-700)",
+
+    tealDefault:     "var(--tui-color-teal-600)",
+    tealSubtle:      "var(--tui-color-teal-50)",
+    tealText:        "var(--tui-color-teal-700)",
+
+    orangeDefault:   "var(--tui-color-orange-600)",
+    orangeSubtle:    "var(--tui-color-orange-50)",
+    orangeText:      "var(--tui-color-orange-700)",
+
+    roseDefault:     "var(--tui-color-rose-600)",
+    roseSubtle:      "var(--tui-color-rose-50)",
+    roseText:        "var(--tui-color-rose-700)",
+
+    indigoDefault:   "var(--tui-color-indigo-600)",
+    indigoSubtle:    "var(--tui-color-indigo-50)",
+    indigoText:      "var(--tui-color-indigo-700)",
+
+    mintDefault:     "var(--tui-color-mint-600)",
+    mintSubtle:      "var(--tui-color-mint-50)",
+    mintText:        "var(--tui-color-mint-700)",
+
+    coalDefault:     "var(--tui-color-coal-600)",
+    coalSubtle:      "var(--tui-color-coal-50)",
+    coalText:        "var(--tui-color-coal-700)",
   },
 } as const;
 

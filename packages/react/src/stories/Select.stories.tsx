@@ -34,7 +34,7 @@ const meta: Meta<typeof Select> = {
     },
     intent: {
       control: "select",
-      options: ["default", "primary", "secondary", "success", "warning", "danger", "info", "white", "black"],
+      options: ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
       description: "Color intent / semantic meaning",
       table: { category: "Appearance", defaultValue: { summary: "default" } },
     },
@@ -121,7 +121,7 @@ export const Intents: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 320 }}>
-      {(["default", "primary", "secondary", "success", "warning", "danger", "info", "white", "black"] as const).map((intent) => (
+      {(["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const).map((intent) => (
         <Select key={intent} intent={intent} placeholder={intent.charAt(0).toUpperCase() + intent.slice(1)}>
           <ExampleOptions />
         </Select>
@@ -151,32 +151,30 @@ export const AllStates: Story = {
   name: "All States",
   parameters: { controls: { disable: true } },
   render: () => {
-    const intents = ["default", "primary", "secondary", "success", "warning", "danger", "info", "white", "black"] as const;
+    const intents = ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
     const variants = ["outline", "soft", "plain"] as const;
     const states = ["base", "hover", "focused", "disabled", "ghost"] as const;
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-6)" }}>
         <style>{`
-          .tui-force-hover .tui-select--outline { border-color: var(--tui-color-neutral-400); }
-          .tui-force-hover .tui-select--soft { border-color: var(--tui-color-neutral-200); }
-          .tui-force-hover .tui-select--plain { border-color: var(--tui-color-neutral-100); }
-          .tui-force-hover .tui-select--primary.tui-select--outline { border-color: var(--tui-color-primary-600); }
-          .tui-force-hover .tui-select--secondary.tui-select--outline { border-color: var(--tui-color-secondary-400); }
+          .tui-force-hover .tui-select--outline { border-color: var(--tui-color-brand-black-400); }
+          .tui-force-hover .tui-select--soft { border-color: var(--tui-color-brand-black-200); }
+          .tui-force-hover .tui-select--plain { border-color: var(--tui-color-brand-black-100); }
+          .tui-force-hover .tui-select--primary.tui-select--outline { border-color: var(--tui-color-brand-pink-600); }
           .tui-force-hover .tui-select--success.tui-select--outline { border-color: var(--tui-color-success-600); }
           .tui-force-hover .tui-select--warning.tui-select--outline { border-color: var(--tui-color-warning-600); }
           .tui-force-hover .tui-select--danger.tui-select--outline { border-color: var(--tui-color-danger-600); }
           .tui-force-hover .tui-select--info.tui-select--outline { border-color: var(--tui-color-info-600); }
-          .tui-force-hover .tui-select--white.tui-select--outline { border-color: var(--tui-color-neutral-300); }
-          .tui-force-hover .tui-select--black.tui-select--outline { border-color: var(--tui-color-neutral-900); }
+          .tui-force-hover .tui-select--white.tui-select--outline { border-color: var(--tui-color-brand-black-300); }
+          .tui-force-hover .tui-select--black.tui-select--outline { border-color: var(--tui-color-brand-black-900); }
           .tui-force-focus .tui-select { box-shadow: 0 0 0 0.5px var(--tui-color-focus-ring-gap), 0 0 1px 2px var(--tui-ring-color, var(--tui-color-focus-ring)); }
-          .tui-force-focus .tui-select--primary { --tui-ring-color: var(--tui-color-primary-400); }
-          .tui-force-focus .tui-select--secondary { --tui-ring-color: var(--tui-color-secondary-400); }
+          .tui-force-focus .tui-select--primary { --tui-ring-color: var(--tui-color-brand-pink-400); }
           .tui-force-focus .tui-select--success { --tui-ring-color: var(--tui-color-success-400); }
           .tui-force-focus .tui-select--warning { --tui-ring-color: var(--tui-color-warning-400); }
           .tui-force-focus .tui-select--danger { --tui-ring-color: var(--tui-color-danger-400); }
           .tui-force-focus .tui-select--info { --tui-ring-color: var(--tui-color-info-400); }
-          .tui-force-focus .tui-select--white { --tui-ring-color: var(--tui-color-neutral-300); }
-          .tui-force-focus .tui-select--black { --tui-ring-color: var(--tui-color-neutral-600); }
+          .tui-force-focus .tui-select--white { --tui-ring-color: var(--tui-color-brand-black-300); }
+          .tui-force-focus .tui-select--black { --tui-ring-color: var(--tui-color-brand-black-600); }
         `}</style>
         {variants.map((variant) => (
           <div key={variant}>

@@ -79,8 +79,25 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     };
 
     // Determine tabIndex for roving tabindex
-    const computedTabIndex =
-      tabIndexProp !== undefined ? tabIndexProp : disabled ? -1 : undefined;
+    // In a group: checked radio gets tabIndex=0, others get -1
+    // If nothing is checked, first non-disabled radio should be tabbable (handled by not setting -1 when no context value exists)
+    let computedTabIndex: number | undefined;
+    if (tabIndexProp !== undefined) {
+      computedTabIndex = tabIndexProp;
+    } else if (disabled) {
+      computedTabIndex = -1;
+    } else if (context) {
+      // Inside a RadioGroup: only the checked radio (or first if none checked) is tabbable
+      if (context.value) {
+        computedTabIndex = isChecked ? 0 : -1;
+      } else {
+        // No value selected — leave undefined so browser picks the first
+        computedTabIndex = undefined;
+      }
+    } else {
+      // Standalone radio — always tabbable
+      computedTabIndex = 0;
+    }
 
     // Ghost mode → render Shimmer with explicit indicator dimensions
     if (isGhost) {

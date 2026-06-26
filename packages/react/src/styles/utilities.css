@@ -46,11 +46,17 @@
    Works on any component: Button, Input, Switch, Checkbox, etc.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-.tui-ring--primary  { --tui-ring-color: var(--tui-color-primary-400); }
-.tui-ring--secondary { --tui-ring-color: var(--tui-color-secondary-400); }
+.tui-ring--primary  { --tui-ring-color: var(--tui-color-brand-pink-400); }
 .tui-ring--success  { --tui-ring-color: var(--tui-color-success-400); }
 .tui-ring--warning  { --tui-ring-color: var(--tui-color-warning-400); }
 .tui-ring--danger   { --tui-ring-color: var(--tui-color-danger-400); }
 .tui-ring--info     { --tui-ring-color: var(--tui-color-info-400); }
-.tui-ring--white    { --tui-ring-color: var(--tui-color-neutral-300); }
-.tui-ring--black    { --tui-ring-color: var(--tui-color-neutral-600); }
+.tui-ring--teal     { --tui-ring-color: var(--tui-color-teal-400); }
+.tui-ring--orange   { --tui-ring-color: var(--tui-color-orange-400); }
+.tui-ring--rose     { --tui-ring-color: var(--tui-color-rose-400); }
+.tui-ring--indigo   { --tui-ring-color: var(--tui-color-indigo-400); }
+.tui-ring--mint     { --tui-ring-color: var(--tui-color-mint-400); }
+.tui-ring--coal     { --tui-ring-color: var(--tui-color-coal-400); }
+.tui-ring--white    { --tui-ring-color: var(--tui-color-brand-black-300); }
+.tui-ring--black    { --tui-ring-color: var(--tui-color-brand-black-600); }
+.tui-ring--default  { --tui-ring-color: var(--tui-color-brand-black-600); }

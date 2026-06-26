@@ -826,6 +826,291 @@ function generateUtilitiesCSS() {
   lines.push(`.tui-list-decimal { list-style-type: decimal; }`);
   lines.push("");
 
+  // ── Box sizing
+  lines.push(`.tui-box-border { box-sizing: border-box; }`);
+  lines.push(`.tui-box-content { box-sizing: content-box; }`);
+  lines.push("");
+
+  // ── Word break / overflow wrap
+  lines.push(`.tui-break-normal { overflow-wrap: normal; word-break: normal; }`);
+  lines.push(`.tui-break-words { overflow-wrap: break-word; }`);
+  lines.push(`.tui-break-all { word-break: break-all; }`);
+  lines.push(`.tui-break-keep { word-break: keep-all; }`);
+  lines.push("");
+
+  // ── Hyphens
+  lines.push(`.tui-hyphens-none { hyphens: none; }`);
+  lines.push(`.tui-hyphens-manual { hyphens: manual; }`);
+  lines.push(`.tui-hyphens-auto { hyphens: auto; }`);
+  lines.push("");
+
+  // ── Float / Clear
+  lines.push(`.tui-float-left { float: left; }`);
+  lines.push(`.tui-float-right { float: right; }`);
+  lines.push(`.tui-float-none { float: none; }`);
+  lines.push(`.tui-clear-left { clear: left; }`);
+  lines.push(`.tui-clear-right { clear: right; }`);
+  lines.push(`.tui-clear-both { clear: both; }`);
+  lines.push(`.tui-clear-none { clear: none; }`);
+  lines.push("");
+
+  // ── Table layout
+  lines.push(`.tui-table-auto { table-layout: auto; }`);
+  lines.push(`.tui-table-fixed { table-layout: fixed; }`);
+  lines.push(`.tui-border-collapse { border-collapse: collapse; }`);
+  lines.push(`.tui-border-separate { border-collapse: separate; }`);
+  lines.push("");
+
+  // ── Resize
+  lines.push(`.tui-resize-none { resize: none; }`);
+  lines.push(`.tui-resize { resize: both; }`);
+  lines.push(`.tui-resize-x { resize: horizontal; }`);
+  lines.push(`.tui-resize-y { resize: vertical; }`);
+  lines.push("");
+
+  // ── Appearance
+  lines.push(`.tui-appearance-none { appearance: none; -webkit-appearance: none; }`);
+  lines.push(`.tui-appearance-auto { appearance: auto; }`);
+  lines.push("");
+
+  // ── Outline
+  lines.push(`.tui-outline-none { outline: 2px solid transparent; outline-offset: 2px; }`);
+  lines.push(`.tui-outline { outline-style: solid; }`);
+  lines.push(`.tui-outline-dashed { outline-style: dashed; }`);
+  lines.push(`.tui-outline-dotted { outline-style: dotted; }`);
+  lines.push(`.tui-outline-offset-0 { outline-offset: 0px; }`);
+  lines.push(`.tui-outline-offset-1 { outline-offset: 1px; }`);
+  lines.push(`.tui-outline-offset-2 { outline-offset: 2px; }`);
+  lines.push(`.tui-outline-offset-4 { outline-offset: 4px; }`);
+  lines.push(`.tui-outline-offset-8 { outline-offset: 8px; }`);
+  lines.push("");
+
+  // ── Ring (box-shadow based focus rings)
+  lines.push(`.tui-ring-0 { box-shadow: 0 0 0 0px var(--tui-color-focus-ring); }`);
+  lines.push(`.tui-ring-1 { box-shadow: 0 0 0 1px var(--tui-color-focus-ring); }`);
+  lines.push(`.tui-ring-2 { box-shadow: 0 0 0 2px var(--tui-color-focus-ring); }`);
+  lines.push(`.tui-ring-4 { box-shadow: 0 0 0 4px var(--tui-color-focus-ring); }`);
+  lines.push(`.tui-ring-8 { box-shadow: 0 0 0 8px var(--tui-color-focus-ring); }`);
+  lines.push(`.tui-ring-inset { --tui-ring-inset: inset; }`);
+  lines.push("");
+
+  // ── Isolation
+  lines.push(`.tui-isolate { isolation: isolate; }`);
+  lines.push(`.tui-isolation-auto { isolation: auto; }`);
+  lines.push("");
+
+  // ── Object position
+  lines.push(`.tui-object-bottom { object-position: bottom; }`);
+  lines.push(`.tui-object-center { object-position: center; }`);
+  lines.push(`.tui-object-left { object-position: left; }`);
+  lines.push(`.tui-object-right { object-position: right; }`);
+  lines.push(`.tui-object-top { object-position: top; }`);
+  lines.push("");
+
+  // ── Vertical align
+  lines.push(`.tui-align-baseline { vertical-align: baseline; }`);
+  lines.push(`.tui-align-top { vertical-align: top; }`);
+  lines.push(`.tui-align-middle { vertical-align: middle; }`);
+  lines.push(`.tui-align-bottom { vertical-align: bottom; }`);
+  lines.push(`.tui-align-text-top { vertical-align: text-top; }`);
+  lines.push(`.tui-align-text-bottom { vertical-align: text-bottom; }`);
+  lines.push(`.tui-align-sub { vertical-align: sub; }`);
+  lines.push(`.tui-align-super { vertical-align: super; }`);
+  lines.push("");
+
+  // ── Content (grid/flex alignment)
+  lines.push(`.tui-content-start { align-content: flex-start; }`);
+  lines.push(`.tui-content-end { align-content: flex-end; }`);
+  lines.push(`.tui-content-center { align-content: center; }`);
+  lines.push(`.tui-content-between { align-content: space-between; }`);
+  lines.push(`.tui-content-around { align-content: space-around; }`);
+  lines.push(`.tui-content-evenly { align-content: space-evenly; }`);
+  lines.push(`.tui-content-stretch { align-content: stretch; }`);
+  lines.push("");
+
+  // ── Place items / content / self
+  lines.push(`.tui-place-items-start { place-items: start; }`);
+  lines.push(`.tui-place-items-end { place-items: end; }`);
+  lines.push(`.tui-place-items-center { place-items: center; }`);
+  lines.push(`.tui-place-items-stretch { place-items: stretch; }`);
+  lines.push(`.tui-place-content-start { place-content: start; }`);
+  lines.push(`.tui-place-content-end { place-content: end; }`);
+  lines.push(`.tui-place-content-center { place-content: center; }`);
+  lines.push(`.tui-place-content-between { place-content: space-between; }`);
+  lines.push(`.tui-place-content-around { place-content: space-around; }`);
+  lines.push(`.tui-place-content-evenly { place-content: space-evenly; }`);
+  lines.push(`.tui-place-content-stretch { place-content: stretch; }`);
+  lines.push(`.tui-place-self-auto { place-self: auto; }`);
+  lines.push(`.tui-place-self-start { place-self: start; }`);
+  lines.push(`.tui-place-self-end { place-self: end; }`);
+  lines.push(`.tui-place-self-center { place-self: center; }`);
+  lines.push(`.tui-place-self-stretch { place-self: stretch; }`);
+  lines.push("");
+
+  // ── Order
+  lines.push(`.tui-order-first { order: -9999; }`);
+  lines.push(`.tui-order-last { order: 9999; }`);
+  lines.push(`.tui-order-none { order: 0; }`);
+  for (let i = 1; i <= 12; i++) {
+    lines.push(`.tui-order-${i} { order: ${i}; }`);
+  }
+  lines.push("");
+
+  // ── Grid template columns
+  for (let i = 1; i <= 12; i++) {
+    lines.push(`.tui-grid-cols-${i} { grid-template-columns: repeat(${i}, minmax(0, 1fr)); }`);
+  }
+  lines.push(`.tui-grid-cols-none { grid-template-columns: none; }`);
+  lines.push(`.tui-grid-cols-subgrid { grid-template-columns: subgrid; }`);
+  lines.push("");
+
+  // ── Grid template rows
+  for (let i = 1; i <= 6; i++) {
+    lines.push(`.tui-grid-rows-${i} { grid-template-rows: repeat(${i}, minmax(0, 1fr)); }`);
+  }
+  lines.push(`.tui-grid-rows-none { grid-template-rows: none; }`);
+  lines.push(`.tui-grid-rows-subgrid { grid-template-rows: subgrid; }`);
+  lines.push("");
+
+  // ── Grid column span
+  lines.push(`.tui-col-auto { grid-column: auto; }`);
+  for (let i = 1; i <= 12; i++) {
+    lines.push(`.tui-col-span-${i} { grid-column: span ${i} / span ${i}; }`);
+  }
+  lines.push(`.tui-col-span-full { grid-column: 1 / -1; }`);
+  lines.push(`.tui-col-start-auto { grid-column-start: auto; }`);
+  for (let i = 1; i <= 13; i++) {
+    lines.push(`.tui-col-start-${i} { grid-column-start: ${i}; }`);
+  }
+  lines.push(`.tui-col-end-auto { grid-column-end: auto; }`);
+  for (let i = 1; i <= 13; i++) {
+    lines.push(`.tui-col-end-${i} { grid-column-end: ${i}; }`);
+  }
+  lines.push("");
+
+  // ── Grid row span
+  lines.push(`.tui-row-auto { grid-row: auto; }`);
+  for (let i = 1; i <= 6; i++) {
+    lines.push(`.tui-row-span-${i} { grid-row: span ${i} / span ${i}; }`);
+  }
+  lines.push(`.tui-row-span-full { grid-row: 1 / -1; }`);
+  lines.push(`.tui-row-start-auto { grid-row-start: auto; }`);
+  for (let i = 1; i <= 7; i++) {
+    lines.push(`.tui-row-start-${i} { grid-row-start: ${i}; }`);
+  }
+  lines.push(`.tui-row-end-auto { grid-row-end: auto; }`);
+  for (let i = 1; i <= 7; i++) {
+    lines.push(`.tui-row-end-${i} { grid-row-end: ${i}; }`);
+  }
+  lines.push("");
+
+  // ── Grid auto flow
+  lines.push(`.tui-grid-flow-row { grid-auto-flow: row; }`);
+  lines.push(`.tui-grid-flow-col { grid-auto-flow: column; }`);
+  lines.push(`.tui-grid-flow-dense { grid-auto-flow: dense; }`);
+  lines.push(`.tui-grid-flow-row-dense { grid-auto-flow: row dense; }`);
+  lines.push(`.tui-grid-flow-col-dense { grid-auto-flow: column dense; }`);
+  lines.push("");
+
+  // ── Gap (row-gap / column-gap)
+  for (const [varName] of Object.entries(spacingFlat)) {
+    const key = varName.replace("--tui-spacing-", "");
+    lines.push(`.tui-gap-x-${key} { column-gap: var(${varName}); }`);
+    lines.push(`.tui-gap-y-${key} { row-gap: var(${varName}); }`);
+  }
+  lines.push("");
+
+  // ── Columns (multi-column layout)
+  for (let i = 1; i <= 12; i++) {
+    lines.push(`.tui-columns-${i} { columns: ${i}; }`);
+  }
+  lines.push(`.tui-columns-auto { columns: auto; }`);
+  lines.push("");
+
+  // ── Break inside / before / after (column/page breaks)
+  lines.push(`.tui-break-before-auto { break-before: auto; }`);
+  lines.push(`.tui-break-before-avoid { break-before: avoid; }`);
+  lines.push(`.tui-break-before-page { break-before: page; }`);
+  lines.push(`.tui-break-before-column { break-before: column; }`);
+  lines.push(`.tui-break-after-auto { break-after: auto; }`);
+  lines.push(`.tui-break-after-avoid { break-after: avoid; }`);
+  lines.push(`.tui-break-after-page { break-after: page; }`);
+  lines.push(`.tui-break-after-column { break-after: column; }`);
+  lines.push(`.tui-break-inside-auto { break-inside: auto; }`);
+  lines.push(`.tui-break-inside-avoid { break-inside: avoid; }`);
+  lines.push(`.tui-break-inside-avoid-page { break-inside: avoid-page; }`);
+  lines.push(`.tui-break-inside-avoid-column { break-inside: avoid-column; }`);
+  lines.push("");
+
+  // ── Box decoration break
+  lines.push(`.tui-decoration-slice { box-decoration-break: slice; -webkit-box-decoration-break: slice; }`);
+  lines.push(`.tui-decoration-clone { box-decoration-break: clone; -webkit-box-decoration-break: clone; }`);
+  lines.push("");
+
+  // ── Accent color
+  lines.push(`.tui-accent-auto { accent-color: auto; }`);
+  lines.push(`.tui-accent-current { accent-color: currentColor; }`);
+  lines.push("");
+
+  // ── Caret color
+  lines.push(`.tui-caret-current { caret-color: currentColor; }`);
+  lines.push(`.tui-caret-transparent { caret-color: transparent; }`);
+  lines.push("");
+
+  // ── Scroll behavior
+  lines.push(`.tui-scroll-auto { scroll-behavior: auto; }`);
+  lines.push(`.tui-scroll-smooth { scroll-behavior: smooth; }`);
+  lines.push("");
+
+  // ── Scroll snap
+  lines.push(`.tui-snap-start { scroll-snap-align: start; }`);
+  lines.push(`.tui-snap-end { scroll-snap-align: end; }`);
+  lines.push(`.tui-snap-center { scroll-snap-align: center; }`);
+  lines.push(`.tui-snap-none { scroll-snap-type: none; }`);
+  lines.push(`.tui-snap-x { scroll-snap-type: x var(--tui-snap-strictness, proximity); }`);
+  lines.push(`.tui-snap-y { scroll-snap-type: y var(--tui-snap-strictness, proximity); }`);
+  lines.push(`.tui-snap-both { scroll-snap-type: both var(--tui-snap-strictness, proximity); }`);
+  lines.push(`.tui-snap-mandatory { --tui-snap-strictness: mandatory; }`);
+  lines.push(`.tui-snap-proximity { --tui-snap-strictness: proximity; }`);
+  lines.push("");
+
+  // ── Touch action
+  lines.push(`.tui-touch-auto { touch-action: auto; }`);
+  lines.push(`.tui-touch-none { touch-action: none; }`);
+  lines.push(`.tui-touch-pan-x { touch-action: pan-x; }`);
+  lines.push(`.tui-touch-pan-y { touch-action: pan-y; }`);
+  lines.push(`.tui-touch-manipulation { touch-action: manipulation; }`);
+  lines.push(`.tui-touch-pinch-zoom { touch-action: pinch-zoom; }`);
+  lines.push("");
+
+  // ── Will change
+  lines.push(`.tui-will-change-auto { will-change: auto; }`);
+  lines.push(`.tui-will-change-scroll { will-change: scroll-position; }`);
+  lines.push(`.tui-will-change-contents { will-change: contents; }`);
+  lines.push(`.tui-will-change-transform { will-change: transform; }`);
+  lines.push("");
+
+  // ── Contain
+  lines.push(`.tui-contain-none { contain: none; }`);
+  lines.push(`.tui-contain-content { contain: content; }`);
+  lines.push(`.tui-contain-strict { contain: strict; }`);
+  lines.push(`.tui-contain-size { contain: size; }`);
+  lines.push(`.tui-contain-layout { contain: layout; }`);
+  lines.push(`.tui-contain-paint { contain: paint; }`);
+  lines.push("");
+
+  // ── Line clamp
+  for (let i = 1; i <= 6; i++) {
+    lines.push(`.tui-line-clamp-${i} { display: -webkit-box; -webkit-line-clamp: ${i}; -webkit-box-orient: vertical; overflow: hidden; }`);
+  }
+  lines.push(`.tui-line-clamp-none { display: block; -webkit-line-clamp: unset; -webkit-box-orient: horizontal; overflow: visible; }`);
+  lines.push("");
+
+  // ── Screen reader only
+  lines.push(`.tui-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }`);
+  lines.push(`.tui-not-sr-only { position: static; width: auto; height: auto; padding: 0; margin: 0; overflow: visible; clip: auto; white-space: normal; }`);
+  lines.push("");
+
   return lines.join("\n");
 }
 

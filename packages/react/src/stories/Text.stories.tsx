@@ -132,6 +132,58 @@ export const Colors: Story = {
   },
 };
 
+// ── Color Usage (all supported formats) ───────────────────────────────────
+export const ColorUsage: Story = {
+  name: "Color Usage",
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-4)", maxWidth: 600 }}>
+      <Text size="xs" color="tertiary">The color prop accepts multiple formats:</Text>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", padding: "var(--tui-spacing-4)", border: "1px solid var(--tui-color-border-default)", borderRadius: "var(--tui-radius-lg)" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "var(--tui-spacing-3)" }}>
+          <span style={{ width: 140, flexShrink: 0, fontSize: "var(--tui-font-size-xs)", fontFamily: "var(--tui-font-family-mono)", color: "var(--tui-color-text-tertiary)" }}>Semantic name</span>
+          <Text color="primary">color="primary"</Text>
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", gap: "var(--tui-spacing-3)" }}>
+          <span style={{ width: 140, flexShrink: 0, fontSize: "var(--tui-font-size-xs)", fontFamily: "var(--tui-font-family-mono)", color: "var(--tui-color-text-tertiary)" }}>Token shorthand</span>
+          <Text color="brand-pink-600">color="brand-pink-600"</Text>
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", gap: "var(--tui-spacing-3)" }}>
+          <span style={{ width: 140, flexShrink: 0, fontSize: "var(--tui-font-size-xs)", fontFamily: "var(--tui-font-family-mono)", color: "var(--tui-color-text-tertiary)" }}>Token shorthand</span>
+          <Text color="success-600">color="success-600"</Text>
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", gap: "var(--tui-spacing-3)" }}>
+          <span style={{ width: 140, flexShrink: 0, fontSize: "var(--tui-font-size-xs)", fontFamily: "var(--tui-font-family-mono)", color: "var(--tui-color-text-tertiary)" }}>Hex value</span>
+          <Text color="#ff6600">color="#ff6600"</Text>
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", gap: "var(--tui-spacing-3)" }}>
+          <span style={{ width: 140, flexShrink: 0, fontSize: "var(--tui-font-size-xs)", fontFamily: "var(--tui-font-family-mono)", color: "var(--tui-color-text-tertiary)" }}>RGB value</span>
+          <Text color="rgb(255, 100, 0)">color="rgb(255, 100, 0)"</Text>
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", gap: "var(--tui-spacing-3)" }}>
+          <span style={{ width: 140, flexShrink: 0, fontSize: "var(--tui-font-size-xs)", fontFamily: "var(--tui-font-family-mono)", color: "var(--tui-color-text-tertiary)" }}>CSS variable</span>
+          <Text color="var(--tui-color-indigo-500)">color="var(--tui-color-indigo-500)"</Text>
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", gap: "var(--tui-spacing-3)", opacity: 0.6 }}>
+          <span style={{ width: 140, flexShrink: 0, fontSize: "var(--tui-font-size-xs)", fontFamily: "var(--tui-font-family-mono)", color: "var(--tui-color-text-tertiary)" }}>⚠️ CSS name</span>
+          <Text color="red">color="red" — won't work (becomes var(--tui-color-red))</Text>
+        </div>
+      </div>
+
+      <Text size="xs" color="tertiary">
+        Use semantic names for theme-aware text, token shorthand for brand colors, or raw hex/rgb/var() for one-off overrides.
+      </Text>
+    </div>
+  ),
+};
+
 // ── Heading hierarchy ─────────────────────────────────────────────────────
 export const Headings: Story = {
   name: "Heading Hierarchy",

@@ -41,6 +41,25 @@ export const spacing = {
   72:   "18rem",     // 288px
   80:   "20rem",     // 320px
   96:   "24rem",     // 384px
+
+  // ── Semantic defaults ────────────────────────────────────────────────
+  componentXs:    "var(--tui-spacing-1)",    // tight inner padding (badges)
+  componentSm:    "var(--tui-spacing-2)",    // small component padding
+  componentMd:    "var(--tui-spacing-3)",    // default component padding
+  componentLg:    "var(--tui-spacing-4)",    // large component padding
+  componentXl:    "var(--tui-spacing-6)",    // extra-large component padding
+  sectionSm:     "var(--tui-spacing-6)",    // small section spacing
+  sectionMd:     "var(--tui-spacing-8)",    // default section spacing
+  sectionLg:     "var(--tui-spacing-12)",   // large section spacing
+  pagePadding:   "var(--tui-spacing-4)",    // page-level side padding
+  cardPadding:   "var(--tui-spacing-4)",    // card/panel inner padding
+  modalPadding:  "var(--tui-spacing-6)",    // modal/dialog inner padding
+  stackSm:      "var(--tui-spacing-2)",    // small vertical stack gap
+  stackMd:      "var(--tui-spacing-4)",    // default vertical stack gap
+  stackLg:      "var(--tui-spacing-6)",    // large vertical stack gap
+  inlineSm:     "var(--tui-spacing-2)",    // small horizontal gap
+  inlineMd:     "var(--tui-spacing-3)",    // default horizontal gap
+  inlineLg:     "var(--tui-spacing-4)",    // large horizontal gap
 } as const;
 
 export type SpacingTokens = typeof spacing;

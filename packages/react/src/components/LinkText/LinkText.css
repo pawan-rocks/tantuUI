@@ -30,18 +30,18 @@
 }
 
 /* ─── Sizes ──────────────────────────────────────────────────────────────── */
-.tui-link-text--2xs { font-size: var(--tui-font-size-2xs); }
-.tui-link-text--xs  { font-size: var(--tui-font-size-xs); }
-.tui-link-text--sm  { font-size: var(--tui-font-size-sm); }
-.tui-link-text--md  { font-size: var(--tui-font-size-md); }
-.tui-link-text--lg  { font-size: var(--tui-font-size-lg); }
-.tui-link-text--xl  { font-size: var(--tui-font-size-xl); }
-.tui-link-text--2xl { font-size: var(--tui-font-size-2xl); }
-.tui-link-text--3xl { font-size: var(--tui-font-size-3xl); }
-.tui-link-text--4xl { font-size: var(--tui-font-size-4xl); }
-.tui-link-text--5xl { font-size: var(--tui-font-size-5xl); }
-.tui-link-text--6xl { font-size: var(--tui-font-size-6xl); }
-.tui-link-text--7xl { font-size: var(--tui-font-size-7xl); }
+.tui-link-text--2xs { font-size: var(--tui-font-size-2xs); line-height: var(--tui-leading-4); }
+.tui-link-text--xs  { font-size: var(--tui-font-size-xs);  line-height: var(--tui-leading-4); }
+.tui-link-text--sm  { font-size: var(--tui-font-size-sm);  line-height: var(--tui-leading-5); }
+.tui-link-text--md  { font-size: var(--tui-font-size-md);  line-height: var(--tui-leading-6); }
+.tui-link-text--lg  { font-size: var(--tui-font-size-lg);  line-height: var(--tui-leading-7); }
+.tui-link-text--xl  { font-size: var(--tui-font-size-xl);  line-height: var(--tui-leading-7); }
+.tui-link-text--2xl { font-size: var(--tui-font-size-2xl); line-height: var(--tui-leading-8); }
+.tui-link-text--3xl { font-size: var(--tui-font-size-3xl); line-height: var(--tui-leading-9); }
+.tui-link-text--4xl { font-size: var(--tui-font-size-4xl); line-height: var(--tui-leading-10); }
+.tui-link-text--5xl { font-size: var(--tui-font-size-5xl); line-height: var(--tui-leading-none); }
+.tui-link-text--6xl { font-size: var(--tui-font-size-6xl); line-height: var(--tui-leading-none); }
+.tui-link-text--7xl { font-size: var(--tui-font-size-7xl); line-height: var(--tui-leading-none); }
 
 /* ─── Weights ────────────────────────────────────────────────────────────── */
 .tui-link-text--w-thin       { font-weight: var(--tui-font-weight-thin); }
@@ -56,26 +56,26 @@
 
 /* ─── Variant: blue (default) ────────────────────────────────────────────── */
 .tui-link-text--blue {
-  color: var(--tui-color-indigo-600);
+  color: var(--tui-color-brand-blue-600);
 }
 .tui-link-text--blue:hover {
-  color: var(--tui-color-indigo-700);
+  color: var(--tui-color-brand-blue-700);
 }
 .tui-link-text--blue:active,
 .tui-link-text--blue:focus-visible {
-  color: var(--tui-color-indigo-800);
+  color: var(--tui-color-brand-blue-800);
 }
 
 /* ─── Variant: black ─────────────────────────────────────────────────────── */
 .tui-link-text--black {
-  color: var(--tui-color-neutral-900);
+  color: var(--tui-color-brand-black-900);
 }
 .tui-link-text--black:hover {
   color: var(--tui-color-black);
 }
 .tui-link-text--black:active,
 .tui-link-text--black:focus-visible {
-  color: var(--tui-color-indigo-600);
+  color: var(--tui-color-brand-blue-600);
 }
 
 /* ─── Variant: white ─────────────────────────────────────────────────────── */
@@ -83,32 +83,32 @@
   color: var(--tui-color-white);
 }
 .tui-link-text--white:hover {
-  color: var(--tui-color-neutral-200);
+  color: var(--tui-color-brand-black-200);
 }
 .tui-link-text--white:active,
 .tui-link-text--white:focus-visible {
-  color: var(--tui-color-neutral-300);
+  color: var(--tui-color-brand-black-300);
 }
 
-/* ─── Variant: coal ──────────────────────────────────────────────────────── */
-.tui-link-text--coal {
-  color: var(--tui-color-secondary-700);
+/* ─── Variant: navy ──────────────────────────────────────────────────────── */
+.tui-link-text--navy {
+  color: var(--tui-color-brand-navy-700);
 }
-.tui-link-text--coal:hover {
-  color: var(--tui-color-secondary-900);
+.tui-link-text--navy:hover {
+  color: var(--tui-color-brand-navy-900);
 }
-.tui-link-text--coal:active,
-.tui-link-text--coal:focus-visible {
-  color: var(--tui-color-indigo-600);
+.tui-link-text--navy:active,
+.tui-link-text--navy:focus-visible {
+  color: var(--tui-color-brand-blue-600);
 }
 
 /* ─── Disabled ───────────────────────────────────────────────────────────── */
 .tui-link-text--disabled {
-  color: var(--tui-color-neutral-300);
+  color: var(--tui-color-brand-black-300);
   cursor: not-allowed;
   text-decoration: none;
 }
 .tui-link-text--disabled:hover {
-  color: var(--tui-color-neutral-300);
+  color: var(--tui-color-brand-black-300);
   text-decoration: none;
 }

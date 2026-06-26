@@ -33,7 +33,7 @@ const meta: Meta<typeof Radio> = {
     },
     intent: {
       control: "select",
-      options: ["default", "primary", "secondary", "success", "warning", "danger", "info", "white", "black"],
+      options: ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
       description: "Color intent / semantic meaning",
       table: { category: "Appearance", defaultValue: { summary: "default" } },
     },
@@ -101,7 +101,7 @@ export const Intents: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-4)" }}>
-      {(["default", "primary", "secondary", "success", "warning", "danger", "info", "white", "black"] as const).map((intent) => (
+      {(["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const).map((intent) => (
         <RadioGroup key={intent} name={`intent-${intent}`} value="a">
           <Radio value="a" intent={intent} label={`${intent.charAt(0).toUpperCase() + intent.slice(1)} (selected)`} />
           <Radio value="b" intent={intent} label={`${intent.charAt(0).toUpperCase() + intent.slice(1)} (unselected)`} />
@@ -155,20 +155,19 @@ export const AllStates: Story = {
   name: "All States",
   parameters: { controls: { disable: true } },
   render: () => {
-    const intents = ["default", "primary", "secondary", "success", "warning", "danger", "info", "white", "black"] as const;
+    const intents = ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
     const states = ["base", "selected", "hover", "disabled", "ghost"] as const;
     return (
       <div style={{ overflowX: "auto" }}>
         <style>{`
-          .tui-force-hover .tui-radio__indicator { border-color: var(--tui-color-neutral-500); }
-          .tui-force-hover .tui-radio--primary .tui-radio__indicator { border-color: var(--tui-color-primary-600); }
-          .tui-force-hover .tui-radio--secondary .tui-radio__indicator { border-color: var(--tui-color-secondary-400); }
+          .tui-force-hover .tui-radio__indicator { border-color: var(--tui-color-brand-black-500); }
+          .tui-force-hover .tui-radio--primary .tui-radio__indicator { border-color: var(--tui-color-brand-pink-600); }
           .tui-force-hover .tui-radio--success .tui-radio__indicator { border-color: var(--tui-color-success-600); }
           .tui-force-hover .tui-radio--warning .tui-radio__indicator { border-color: var(--tui-color-warning-600); }
           .tui-force-hover .tui-radio--danger .tui-radio__indicator { border-color: var(--tui-color-danger-600); }
           .tui-force-hover .tui-radio--info .tui-radio__indicator { border-color: var(--tui-color-info-600); }
-          .tui-force-hover .tui-radio--white .tui-radio__indicator { border-color: var(--tui-color-neutral-300); }
-          .tui-force-hover .tui-radio--black .tui-radio__indicator { border-color: var(--tui-color-neutral-900); }
+          .tui-force-hover .tui-radio--white .tui-radio__indicator { border-color: var(--tui-color-brand-black-300); }
+          .tui-force-hover .tui-radio--black .tui-radio__indicator { border-color: var(--tui-color-brand-black-900); }
           .tui-force-focus .tui-radio__indicator { box-shadow: 0 0 0 0.5px var(--tui-color-focus-ring-gap), 0 0 1px 2px var(--tui-ring-color, var(--tui-color-focus-ring)); }
         `}</style>
         <table style={{ borderCollapse: "collapse", width: "100%", tableLayout: "fixed", minWidth: "900px", fontFamily: "var(--tui-font-family-sans)" }}>

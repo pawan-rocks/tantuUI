@@ -3,19 +3,19 @@
   font-size: var(--tui-font-size-sm);
 }
 
-/* ─── Sizes ──────────────────────────────────────────────────────────────── */
-.tui-text--2xs  { font-size: var(--tui-font-size-2xs); }
-.tui-text--xs   { font-size: var(--tui-font-size-xs);  }
-.tui-text--sm   { font-size: var(--tui-font-size-sm);  }
-.tui-text--md   { font-size: var(--tui-font-size-md);  }
-.tui-text--lg   { font-size: var(--tui-font-size-lg);  }
-.tui-text--xl   { font-size: var(--tui-font-size-xl);  }
-.tui-text--2xl  { font-size: var(--tui-font-size-2xl); }
-.tui-text--3xl  { font-size: var(--tui-font-size-3xl); }
-.tui-text--4xl  { font-size: var(--tui-font-size-4xl); }
-.tui-text--5xl  { font-size: var(--tui-font-size-5xl); }
-.tui-text--6xl  { font-size: var(--tui-font-size-6xl); }
-.tui-text--7xl  { font-size: var(--tui-font-size-7xl); }
+/* ─── Sizes (font-size + line-height) ────────────────────────────────────── */
+.tui-text--2xs  { font-size: var(--tui-font-size-2xs); line-height: var(--tui-leading-4); }
+.tui-text--xs   { font-size: var(--tui-font-size-xs);  line-height: var(--tui-leading-4); }
+.tui-text--sm   { font-size: var(--tui-font-size-sm);  line-height: var(--tui-leading-5); }
+.tui-text--md   { font-size: var(--tui-font-size-md);  line-height: var(--tui-leading-6); }
+.tui-text--lg   { font-size: var(--tui-font-size-lg);  line-height: var(--tui-leading-7); }
+.tui-text--xl   { font-size: var(--tui-font-size-xl);  line-height: var(--tui-leading-7); }
+.tui-text--2xl  { font-size: var(--tui-font-size-2xl); line-height: var(--tui-leading-8); }
+.tui-text--3xl  { font-size: var(--tui-font-size-3xl); line-height: var(--tui-leading-9); }
+.tui-text--4xl  { font-size: var(--tui-font-size-4xl); line-height: var(--tui-leading-10); }
+.tui-text--5xl  { font-size: var(--tui-font-size-5xl); line-height: var(--tui-leading-none); }
+.tui-text--6xl  { font-size: var(--tui-font-size-6xl); line-height: var(--tui-leading-none); }
+.tui-text--7xl  { font-size: var(--tui-font-size-7xl); line-height: var(--tui-leading-none); }
 
 /* ─── Weights ────────────────────────────────────────────────────────────── */
 .tui-text--thin        { font-weight: var(--tui-font-weight-thin);       }

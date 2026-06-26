@@ -9,7 +9,7 @@ export interface LinkTextProps
   extends BaseProps,
     Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "className" | "style"> {
   /** Color variant */
-  variant?: "blue" | "black" | "white" | "coal";
+  variant?: "blue" | "black" | "white" | "navy";
   /** Font size */
   size?: "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl";
   /** Font weight */

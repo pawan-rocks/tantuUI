@@ -14,12 +14,12 @@ describe("Button", () => {
     expect(screen.getByText("Click me")).toBeInTheDocument();
   });
 
-  it("applies default classes (solid, primary, md)", () => {
+  it("applies default classes (solid, default, md)", () => {
     render(<Button data-testid="btn" />);
     const btn = screen.getByTestId("btn");
     expect(btn).toHaveClass("tui-btn");
     expect(btn).toHaveClass("tui-btn--solid");
-    expect(btn).toHaveClass("tui-btn--primary");
+    expect(btn).toHaveClass("tui-btn--default");
     expect(btn).toHaveClass("tui-btn--md");
   });
 

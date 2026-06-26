@@ -15,6 +15,12 @@ const meta: Meta<typeof Label> = {
       description: "Font size controlled via design tokens",
       table: { category: "Appearance", defaultValue: { summary: "md" } },
     },
+    intent: {
+      control: "select",
+      options: ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
+      description: "Color intent / semantic meaning",
+      table: { category: "Appearance", defaultValue: { summary: "default" } },
+    },
     required: {
       control: "boolean",
       description: "Renders a required asterisk after the label text",
@@ -45,6 +51,7 @@ const meta: Meta<typeof Label> = {
   args: {
     children: "Label",
     size: "md",
+    intent: "default",
     required: false,
     disabled: false,
     isGhost: false,
@@ -68,6 +75,21 @@ export const Sizes: Story = {
     <div style={{ display: "flex", gap: "var(--tui-spacing-4)", flexWrap: "wrap", alignItems: "baseline" }}>
       {(["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
         <Label key={size} size={size}>{size.toUpperCase()}</Label>
+      ))}
+    </div>
+  ),
+};
+
+// ── Intents ───────────────────────────────────────────────────────────────
+export const Intents: Story = {
+  name: "Intents",
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)" }}>
+      {(["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const).map((intent) => (
+        <Label key={intent} intent={intent} size="md">
+          {intent.charAt(0).toUpperCase() + intent.slice(1)} label
+        </Label>
       ))}
     </div>
   ),

@@ -5,37 +5,43 @@
   gap: var(--tui-spacing-2);
   font-family: inherit;
   font-size: var(--tui-radio-font-size, var(--tui-font-size-sm));
-  line-height: var(--tui-leading-normal);
+  line-height: var(--tui-radio-line-height, var(--tui-leading-5));
   cursor: pointer;
   user-select: none;
   position: relative;
+  max-width: max-content;
 }
 
 /* ─── Sizes ──────────────────────────────────────────────────────────────── */
 .tui-radio--xs {
   --tui-radio-font-size: var(--tui-font-size-xs);
+  --tui-radio-line-height: var(--tui-leading-4);
   --tui-radio-indicator-size: 14px;
-  --tui-radio-dot-size: 6px;
+  --tui-radio-dot-size: 8px;
 }
 .tui-radio--sm {
   --tui-radio-font-size: var(--tui-font-size-sm);
+  --tui-radio-line-height: var(--tui-leading-5);
   --tui-radio-indicator-size: 16px;
-  --tui-radio-dot-size: 7px;
+  --tui-radio-dot-size: 10px;
 }
 .tui-radio--md {
   --tui-radio-font-size: var(--tui-font-size-sm);
+  --tui-radio-line-height: var(--tui-leading-5);
   --tui-radio-indicator-size: 18px;
-  --tui-radio-dot-size: 8px;
+  --tui-radio-dot-size: 10px;
 }
 .tui-radio--lg {
   --tui-radio-font-size: var(--tui-font-size-md);
+  --tui-radio-line-height: var(--tui-leading-6);
   --tui-radio-indicator-size: 20px;
-  --tui-radio-dot-size: 9px;
+  --tui-radio-dot-size: 12px;
 }
 .tui-radio--xl {
   --tui-radio-font-size: var(--tui-font-size-lg);
+  --tui-radio-line-height: var(--tui-leading-7);
   --tui-radio-indicator-size: 22px;
-  --tui-radio-dot-size: 10px;
+  --tui-radio-dot-size: 14px;
 }
 
 /* ─── Native input (visually hidden but accessible) ──────────────────────── */
@@ -59,7 +65,7 @@
   flex-shrink: 0;
   width: var(--tui-radio-indicator-size, 18px);
   height: var(--tui-radio-indicator-size, 18px);
-  border: var(--tui-border-width-1, 1px) solid var(--tui-color-neutral-400);
+  border: var(--tui-border-width-1, 1px) solid var(--tui-color-brand-black-400);
   border-radius: 50%;
   background-color: transparent;
   transition:
@@ -70,7 +76,7 @@
 
 /* Hover state on indicator */
 .tui-radio:hover:not(.tui-radio--disabled) .tui-radio__indicator {
-  border-color: var(--tui-color-neutral-500);
+  border-color: var(--tui-color-brand-black-500);
 }
 
 /* ─── Dot (inner circle, visible when checked) ───────────────────────────── */
@@ -85,25 +91,25 @@
 
 /* ─── Checked state ──────────────────────────────────────────────────────── */
 .tui-radio__indicator--checked {
-  border-color: var(--tui-radio-active, var(--tui-color-neutral-600));
+  border-color: var(--tui-radio-active, var(--tui-color-brand-black-600));
 }
 
 .tui-radio__indicator--checked .tui-radio__dot {
-  background-color: var(--tui-radio-active, var(--tui-color-neutral-600));
+  background-color: var(--tui-radio-active, var(--tui-color-brand-black-600));
 }
 
 .tui-radio:hover:not(.tui-radio--disabled) .tui-radio__indicator--checked {
-  border-color: var(--tui-radio-active-hover, var(--tui-color-neutral-700));
+  border-color: var(--tui-radio-active-hover, var(--tui-color-brand-black-700));
 }
 
 .tui-radio:hover:not(.tui-radio--disabled) .tui-radio__indicator--checked .tui-radio__dot {
-  background-color: var(--tui-radio-active-hover, var(--tui-color-neutral-700));
+  background-color: var(--tui-radio-active-hover, var(--tui-color-brand-black-700));
 }
 
 /* ─── Label ──────────────────────────────────────────────────────────────── */
 .tui-radio__label {
   cursor: pointer;
-  color: var(--tui-color-neutral-900);
+  color: var(--tui-color-brand-black-900);
   font-size: inherit;
   line-height: inherit;
 }
@@ -122,26 +128,14 @@
 
 /* ─── Intent: primary state ───────────────────────────────────────────────── */
 .tui-radio--primary {
-  --tui-radio-active: var(--tui-color-primary-600);
-  --tui-radio-active-hover: var(--tui-color-primary-700);
+  --tui-radio-active: var(--tui-color-brand-pink-600);
+  --tui-radio-active-hover: var(--tui-color-brand-pink-700);
 }
 .tui-radio--primary .tui-radio__indicator {
-  border-color: var(--tui-color-primary-500);
+  border-color: var(--tui-color-brand-pink-500);
 }
 .tui-radio--primary:hover:not(.tui-radio--disabled) .tui-radio__indicator {
-  border-color: var(--tui-color-primary-600);
-}
-
-/* ─── Intent: secondary state ─────────────────────────────────────────────── */
-.tui-radio--secondary {
-  --tui-radio-active: var(--tui-color-secondary-600);
-  --tui-radio-active-hover: var(--tui-color-secondary-700);
-}
-.tui-radio--secondary .tui-radio__indicator {
-  border-color: var(--tui-color-secondary-300);
-}
-.tui-radio--secondary:hover:not(.tui-radio--disabled) .tui-radio__indicator {
-  border-color: var(--tui-color-secondary-400);
+  border-color: var(--tui-color-brand-pink-600);
 }
 
 /* ─── Intent: success state ───────────────────────────────────────────────── */
@@ -180,28 +174,100 @@
   border-color: var(--tui-color-info-600);
 }
 
+/* ─── Intent: teal state ──────────────────────────────────────────────────── */
+.tui-radio--teal {
+  --tui-radio-active: var(--tui-color-teal-600);
+  --tui-radio-active-hover: var(--tui-color-teal-700);
+}
+.tui-radio--teal .tui-radio__indicator {
+  border-color: var(--tui-color-teal-500);
+}
+.tui-radio--teal:hover:not(.tui-radio--disabled) .tui-radio__indicator {
+  border-color: var(--tui-color-teal-600);
+}
+
+/* ─── Intent: orange state ────────────────────────────────────────────────── */
+.tui-radio--orange {
+  --tui-radio-active: var(--tui-color-orange-600);
+  --tui-radio-active-hover: var(--tui-color-orange-700);
+}
+.tui-radio--orange .tui-radio__indicator {
+  border-color: var(--tui-color-orange-500);
+}
+.tui-radio--orange:hover:not(.tui-radio--disabled) .tui-radio__indicator {
+  border-color: var(--tui-color-orange-600);
+}
+
+/* ─── Intent: rose state ──────────────────────────────────────────────────── */
+.tui-radio--rose {
+  --tui-radio-active: var(--tui-color-rose-600);
+  --tui-radio-active-hover: var(--tui-color-rose-700);
+}
+.tui-radio--rose .tui-radio__indicator {
+  border-color: var(--tui-color-rose-500);
+}
+.tui-radio--rose:hover:not(.tui-radio--disabled) .tui-radio__indicator {
+  border-color: var(--tui-color-rose-600);
+}
+
+/* ─── Intent: indigo state ────────────────────────────────────────────────── */
+.tui-radio--indigo {
+  --tui-radio-active: var(--tui-color-indigo-600);
+  --tui-radio-active-hover: var(--tui-color-indigo-700);
+}
+.tui-radio--indigo .tui-radio__indicator {
+  border-color: var(--tui-color-indigo-500);
+}
+.tui-radio--indigo:hover:not(.tui-radio--disabled) .tui-radio__indicator {
+  border-color: var(--tui-color-indigo-600);
+}
+
+/* ─── Intent: mint state ──────────────────────────────────────────────────── */
+.tui-radio--mint {
+  --tui-radio-active: var(--tui-color-mint-600);
+  --tui-radio-active-hover: var(--tui-color-mint-700);
+}
+.tui-radio--mint .tui-radio__indicator {
+  border-color: var(--tui-color-mint-500);
+}
+.tui-radio--mint:hover:not(.tui-radio--disabled) .tui-radio__indicator {
+  border-color: var(--tui-color-mint-600);
+}
+
+/* ─── Intent: coal state ──────────────────────────────────────────────────── */
+.tui-radio--coal {
+  --tui-radio-active: var(--tui-color-coal-600);
+  --tui-radio-active-hover: var(--tui-color-coal-700);
+}
+.tui-radio--coal .tui-radio__indicator {
+  border-color: var(--tui-color-coal-500);
+}
+.tui-radio--coal:hover:not(.tui-radio--disabled) .tui-radio__indicator {
+  border-color: var(--tui-color-coal-600);
+}
+
 /* ─── Intent: white state ─────────────────────────────────────────────────── */
 .tui-radio--white {
-  --tui-radio-active: var(--tui-color-neutral-400);
-  --tui-radio-active-hover: var(--tui-color-neutral-500);
+  --tui-radio-active: var(--tui-color-brand-black-400);
+  --tui-radio-active-hover: var(--tui-color-brand-black-500);
 }
 .tui-radio--white .tui-radio__indicator {
-  border-color: var(--tui-color-neutral-200);
+  border-color: var(--tui-color-brand-black-200);
 }
 .tui-radio--white:hover:not(.tui-radio--disabled) .tui-radio__indicator {
-  border-color: var(--tui-color-neutral-300);
+  border-color: var(--tui-color-brand-black-300);
 }
 
 /* ─── Intent: black state ─────────────────────────────────────────────────── */
 .tui-radio--black {
-  --tui-radio-active: var(--tui-color-neutral-800);
-  --tui-radio-active-hover: var(--tui-color-neutral-900);
+  --tui-radio-active: var(--tui-color-brand-black-800);
+  --tui-radio-active-hover: var(--tui-color-brand-black-900);
 }
 .tui-radio--black .tui-radio__indicator {
-  border-color: var(--tui-color-neutral-800);
+  border-color: var(--tui-color-brand-black-800);
 }
 .tui-radio--black:hover:not(.tui-radio--disabled) .tui-radio__indicator {
-  border-color: var(--tui-color-neutral-900);
+  border-color: var(--tui-color-brand-black-900);
 }
 
 /* ─── Disabled state ─────────────────────────────────────────────────────── */
@@ -210,25 +276,40 @@
 }
 
 .tui-radio--disabled .tui-radio__indicator {
-  background-color: var(--tui-color-neutral-100);
-  border-color: var(--tui-color-neutral-200);
+  background-color: var(--tui-color-brand-black-100);
+  border-color: var(--tui-color-brand-black-200);
 }
 
 .tui-radio--disabled .tui-radio__indicator--checked .tui-radio__dot {
-  background-color: var(--tui-color-neutral-300);
+  background-color: var(--tui-color-brand-black-300);
 }
 
 .tui-radio--disabled .tui-radio__label {
-  color: var(--tui-color-neutral-500);
+  color: var(--tui-color-brand-black-500);
   cursor: not-allowed;
 }
+
+/* ─── Intent-based focus ring color ──────────────────────────────────────── */
+.tui-radio--primary:has(.tui-radio__native:focus-visible) .tui-radio__indicator  { --tui-ring-color: var(--tui-color-brand-pink-400); }
+.tui-radio--success:has(.tui-radio__native:focus-visible) .tui-radio__indicator  { --tui-ring-color: var(--tui-color-success-400); }
+.tui-radio--warning:has(.tui-radio__native:focus-visible) .tui-radio__indicator  { --tui-ring-color: var(--tui-color-warning-400); }
+.tui-radio--danger:has(.tui-radio__native:focus-visible) .tui-radio__indicator   { --tui-ring-color: var(--tui-color-danger-400); }
+.tui-radio--info:has(.tui-radio__native:focus-visible) .tui-radio__indicator     { --tui-ring-color: var(--tui-color-info-400); }
+.tui-radio--teal:has(.tui-radio__native:focus-visible) .tui-radio__indicator     { --tui-ring-color: var(--tui-color-teal-400); }
+.tui-radio--orange:has(.tui-radio__native:focus-visible) .tui-radio__indicator   { --tui-ring-color: var(--tui-color-orange-400); }
+.tui-radio--rose:has(.tui-radio__native:focus-visible) .tui-radio__indicator     { --tui-ring-color: var(--tui-color-rose-400); }
+.tui-radio--indigo:has(.tui-radio__native:focus-visible) .tui-radio__indicator   { --tui-ring-color: var(--tui-color-indigo-400); }
+.tui-radio--mint:has(.tui-radio__native:focus-visible) .tui-radio__indicator     { --tui-ring-color: var(--tui-color-mint-400); }
+.tui-radio--coal:has(.tui-radio__native:focus-visible) .tui-radio__indicator     { --tui-ring-color: var(--tui-color-coal-400); }
+.tui-radio--white:has(.tui-radio__native:focus-visible) .tui-radio__indicator    { --tui-ring-color: var(--tui-color-brand-black-300); }
+.tui-radio--black:has(.tui-radio__native:focus-visible) .tui-radio__indicator    { --tui-ring-color: var(--tui-color-brand-black-600); }
 
 /* ─── Focus ring on indicator when native input is :focus-visible ─────────── */
 .tui-radio__native:focus-visible ~ .tui-radio__indicator,
 .tui-radio:has(.tui-radio__native:focus-visible) .tui-radio__indicator {
   box-shadow:
     0 0 0 0.5px var(--tui-color-focus-ring-gap),
-    0 0 1px 2px var(--tui-ring-color, var(--tui-color-focus-ring));
+    0 0 1px 2px var(--tui-ring-color, var(--tui-color-brand-black-600));
 }
 
 /* ─── RadioGroup ─────────────────────────────────────────────────────────── */

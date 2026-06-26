@@ -28,7 +28,7 @@
   outline: none;
   box-shadow:
     0 0 0 0.5px var(--tui-color-focus-ring-gap),
-    0 0 1px 2px var(--tui-ring-color, var(--tui-color-focus-ring));
+    0 0 1px 2px var(--tui-ring-color, var(--tui-color-brand-black-600));
 }
 
 /* ─── Sizes ──────────────────────────────────────────────────────────────── */
@@ -74,9 +74,9 @@
 /* ─── Disabled — neutral-100 bg, neutral-300 text, allows tooltip hover ──── */
 .tui-btn:disabled,
 .tui-btn--loading {
-  background-color: var(--tui-color-neutral-100) !important;
-  color: var(--tui-color-neutral-300) !important;
-  border-color: var(--tui-color-neutral-100) !important;
+  background-color: var(--tui-color-brand-black-100) !important;
+  color: var(--tui-color-brand-black-300) !important;
+  border-color: var(--tui-color-brand-black-100) !important;
   cursor: not-allowed;
   /* No pointer-events:none — allows tooltips to show on hover */
 }
@@ -112,85 +112,57 @@
 
 /* ─── primary (magenta purple) ───────────────────────────────────────────── */
 .tui-btn--primary.tui-btn--solid {
-  background-color: var(--tui-color-primary-600);
+  background-color: var(--tui-color-brand-pink-600);
   color: var(--tui-color-white);
-  border-color: var(--tui-color-primary-600);
+  border-color: var(--tui-color-brand-pink-600);
 }
 .tui-btn--primary.tui-btn--solid:hover:not(:disabled) {
-  background-color: var(--tui-color-primary-700);
-  border-color: var(--tui-color-primary-700);
+  background-color: var(--tui-color-brand-pink-700);
+  border-color: var(--tui-color-brand-pink-700);
 }
 .tui-btn--primary.tui-btn--outline {
   background-color: transparent;
-  color: var(--tui-color-primary-600);
-  border-color: var(--tui-color-primary-600);
+  color: var(--tui-color-brand-pink-600);
+  border-color: var(--tui-color-brand-pink-600);
 }
 .tui-btn--primary.tui-btn--outline:hover:not(:disabled) {
-  background-color: var(--tui-color-primary-50);
+  background-color: var(--tui-color-brand-pink-50);
 }
 .tui-btn--primary.tui-btn--soft {
-  background-color: var(--tui-color-primary-50);
-  color: var(--tui-color-primary-700);
+  background-color: var(--tui-color-brand-pink-50);
+  color: var(--tui-color-brand-pink-700);
   border-color: transparent;
 }
 .tui-btn--primary.tui-btn--soft:hover:not(:disabled) {
-  background-color: var(--tui-color-primary-100);
+  background-color: var(--tui-color-brand-pink-100);
 }
 
-/* ─── secondary (coal/slate) ─────────────────────────────────────────────── */
-.tui-btn--secondary.tui-btn--solid {
-  background-color: var(--tui-color-secondary-600);
-  color: var(--tui-color-white);
-  border-color: var(--tui-color-secondary-600);
-}
-.tui-btn--secondary.tui-btn--solid:hover:not(:disabled) {
-  background-color: var(--tui-color-secondary-700);
-  border-color: var(--tui-color-secondary-700);
-}
-.tui-btn--secondary.tui-btn--outline {
-  background-color: transparent;
-  color: var(--tui-color-secondary-600);
-  border-color: var(--tui-color-secondary-300);
-}
-.tui-btn--secondary.tui-btn--outline:hover:not(:disabled) {
-  background-color: var(--tui-color-secondary-50);
-  border-color: var(--tui-color-secondary-400);
-}
-.tui-btn--secondary.tui-btn--soft {
-  background-color: var(--tui-color-secondary-100);
-  color: var(--tui-color-secondary-700);
-  border-color: transparent;
-}
-.tui-btn--secondary.tui-btn--soft:hover:not(:disabled) {
-  background-color: var(--tui-color-secondary-200);
-}
-
-/* ─── default (neutral) ──────────────────────────────────────────────────── */
+/* ─── default (black/dark) ────────────────────────────────────────────────── */
 .tui-btn--default.tui-btn--solid {
-  background-color: var(--tui-color-neutral-200);
-  color: var(--tui-color-neutral-900);
-  border-color: var(--tui-color-neutral-200);
+  background-color: var(--tui-color-brand-black-900);
+  color: var(--tui-color-white);
+  border-color: var(--tui-color-brand-black-900);
 }
 .tui-btn--default.tui-btn--solid:hover:not(:disabled) {
-  background-color: var(--tui-color-neutral-300);
-  border-color: var(--tui-color-neutral-300);
+  background-color: var(--tui-color-brand-black-800);
+  border-color: var(--tui-color-brand-black-800);
 }
 .tui-btn--default.tui-btn--outline {
   background-color: transparent;
-  color: var(--tui-color-neutral-900);
-  border-color: var(--tui-color-neutral-300);
+  color: var(--tui-color-brand-black-900);
+  border-color: var(--tui-color-brand-black-800);
 }
 .tui-btn--default.tui-btn--outline:hover:not(:disabled) {
-  background-color: var(--tui-color-neutral-50);
-  border-color: var(--tui-color-neutral-400);
+  background-color: var(--tui-color-brand-black-50);
+  border-color: var(--tui-color-brand-black-900);
 }
 .tui-btn--default.tui-btn--soft {
-  background-color: var(--tui-color-neutral-100);
-  color: var(--tui-color-neutral-800);
+  background-color: var(--tui-color-brand-black-100);
+  color: var(--tui-color-brand-black-900);
   border-color: transparent;
 }
 .tui-btn--default.tui-btn--soft:hover:not(:disabled) {
-  background-color: var(--tui-color-neutral-200);
+  background-color: var(--tui-color-brand-black-200);
 }
 
 /* ─── danger ─────────────────────────────────────────────────────────────── */
@@ -301,31 +273,193 @@
   background-color: var(--tui-color-info-100);
 }
 
+/* ─── teal ───────────────────────────────────────────────────────────────── */
+.tui-btn--teal.tui-btn--solid {
+  background-color: var(--tui-color-teal-600);
+  color: var(--tui-color-white);
+  border-color: var(--tui-color-teal-600);
+}
+.tui-btn--teal.tui-btn--solid:hover:not(:disabled) {
+  background-color: var(--tui-color-teal-700);
+  border-color: var(--tui-color-teal-700);
+}
+.tui-btn--teal.tui-btn--outline {
+  background-color: transparent;
+  color: var(--tui-color-teal-600);
+  border-color: var(--tui-color-teal-600);
+}
+.tui-btn--teal.tui-btn--outline:hover:not(:disabled) {
+  background-color: var(--tui-color-teal-50);
+}
+.tui-btn--teal.tui-btn--soft {
+  background-color: var(--tui-color-teal-50);
+  color: var(--tui-color-teal-700);
+  border-color: transparent;
+}
+.tui-btn--teal.tui-btn--soft:hover:not(:disabled) {
+  background-color: var(--tui-color-teal-100);
+}
+
+/* ─── orange ─────────────────────────────────────────────────────────────── */
+.tui-btn--orange.tui-btn--solid {
+  background-color: var(--tui-color-orange-600);
+  color: var(--tui-color-white);
+  border-color: var(--tui-color-orange-600);
+}
+.tui-btn--orange.tui-btn--solid:hover:not(:disabled) {
+  background-color: var(--tui-color-orange-700);
+  border-color: var(--tui-color-orange-700);
+}
+.tui-btn--orange.tui-btn--outline {
+  background-color: transparent;
+  color: var(--tui-color-orange-600);
+  border-color: var(--tui-color-orange-600);
+}
+.tui-btn--orange.tui-btn--outline:hover:not(:disabled) {
+  background-color: var(--tui-color-orange-50);
+}
+.tui-btn--orange.tui-btn--soft {
+  background-color: var(--tui-color-orange-50);
+  color: var(--tui-color-orange-700);
+  border-color: transparent;
+}
+.tui-btn--orange.tui-btn--soft:hover:not(:disabled) {
+  background-color: var(--tui-color-orange-100);
+}
+
+/* ─── rose ───────────────────────────────────────────────────────────────── */
+.tui-btn--rose.tui-btn--solid {
+  background-color: var(--tui-color-rose-600);
+  color: var(--tui-color-white);
+  border-color: var(--tui-color-rose-600);
+}
+.tui-btn--rose.tui-btn--solid:hover:not(:disabled) {
+  background-color: var(--tui-color-rose-700);
+  border-color: var(--tui-color-rose-700);
+}
+.tui-btn--rose.tui-btn--outline {
+  background-color: transparent;
+  color: var(--tui-color-rose-600);
+  border-color: var(--tui-color-rose-600);
+}
+.tui-btn--rose.tui-btn--outline:hover:not(:disabled) {
+  background-color: var(--tui-color-rose-50);
+}
+.tui-btn--rose.tui-btn--soft {
+  background-color: var(--tui-color-rose-50);
+  color: var(--tui-color-rose-700);
+  border-color: transparent;
+}
+.tui-btn--rose.tui-btn--soft:hover:not(:disabled) {
+  background-color: var(--tui-color-rose-100);
+}
+
+/* ─── indigo ─────────────────────────────────────────────────────────────── */
+.tui-btn--indigo.tui-btn--solid {
+  background-color: var(--tui-color-indigo-600);
+  color: var(--tui-color-white);
+  border-color: var(--tui-color-indigo-600);
+}
+.tui-btn--indigo.tui-btn--solid:hover:not(:disabled) {
+  background-color: var(--tui-color-indigo-700);
+  border-color: var(--tui-color-indigo-700);
+}
+.tui-btn--indigo.tui-btn--outline {
+  background-color: transparent;
+  color: var(--tui-color-indigo-600);
+  border-color: var(--tui-color-indigo-600);
+}
+.tui-btn--indigo.tui-btn--outline:hover:not(:disabled) {
+  background-color: var(--tui-color-indigo-50);
+}
+.tui-btn--indigo.tui-btn--soft {
+  background-color: var(--tui-color-indigo-50);
+  color: var(--tui-color-indigo-700);
+  border-color: transparent;
+}
+.tui-btn--indigo.tui-btn--soft:hover:not(:disabled) {
+  background-color: var(--tui-color-indigo-100);
+}
+
+/* ─── mint ───────────────────────────────────────────────────────────────── */
+.tui-btn--mint.tui-btn--solid {
+  background-color: var(--tui-color-mint-600);
+  color: var(--tui-color-white);
+  border-color: var(--tui-color-mint-600);
+}
+.tui-btn--mint.tui-btn--solid:hover:not(:disabled) {
+  background-color: var(--tui-color-mint-700);
+  border-color: var(--tui-color-mint-700);
+}
+.tui-btn--mint.tui-btn--outline {
+  background-color: transparent;
+  color: var(--tui-color-mint-600);
+  border-color: var(--tui-color-mint-600);
+}
+.tui-btn--mint.tui-btn--outline:hover:not(:disabled) {
+  background-color: var(--tui-color-mint-50);
+}
+.tui-btn--mint.tui-btn--soft {
+  background-color: var(--tui-color-mint-50);
+  color: var(--tui-color-mint-700);
+  border-color: transparent;
+}
+.tui-btn--mint.tui-btn--soft:hover:not(:disabled) {
+  background-color: var(--tui-color-mint-100);
+}
+
+/* ─── coal ───────────────────────────────────────────────────────────────── */
+.tui-btn--coal.tui-btn--solid {
+  background-color: var(--tui-color-coal-600);
+  color: var(--tui-color-white);
+  border-color: var(--tui-color-coal-600);
+}
+.tui-btn--coal.tui-btn--solid:hover:not(:disabled) {
+  background-color: var(--tui-color-coal-700);
+  border-color: var(--tui-color-coal-700);
+}
+.tui-btn--coal.tui-btn--outline {
+  background-color: transparent;
+  color: var(--tui-color-coal-600);
+  border-color: var(--tui-color-coal-600);
+}
+.tui-btn--coal.tui-btn--outline:hover:not(:disabled) {
+  background-color: var(--tui-color-coal-50);
+}
+.tui-btn--coal.tui-btn--soft {
+  background-color: var(--tui-color-coal-50);
+  color: var(--tui-color-coal-700);
+  border-color: transparent;
+}
+.tui-btn--coal.tui-btn--soft:hover:not(:disabled) {
+  background-color: var(--tui-color-coal-100);
+}
+
 /* ─── white (white bg, black text) ───────────────────────────────────────── */
 .tui-btn--white.tui-btn--solid {
   background-color: var(--tui-color-white);
   color: var(--tui-color-black);
-  border-color: var(--tui-color-neutral-200);
+  border-color: var(--tui-color-brand-black-200);
 }
 .tui-btn--white.tui-btn--solid:hover:not(:disabled) {
-  background-color: var(--tui-color-neutral-50);
-  border-color: var(--tui-color-neutral-300);
+  background-color: var(--tui-color-brand-black-50);
+  border-color: var(--tui-color-brand-black-300);
 }
 .tui-btn--white.tui-btn--outline {
   background-color: transparent;
-  color: var(--tui-color-neutral-900);
-  border-color: var(--tui-color-neutral-200);
+  color: var(--tui-color-brand-black-900);
+  border-color: var(--tui-color-brand-black-200);
 }
 .tui-btn--white.tui-btn--outline:hover:not(:disabled) {
-  background-color: var(--tui-color-neutral-50);
+  background-color: var(--tui-color-brand-black-50);
 }
 .tui-btn--white.tui-btn--soft {
-  background-color: var(--tui-color-neutral-50);
-  color: var(--tui-color-neutral-800);
+  background-color: var(--tui-color-brand-black-50);
+  color: var(--tui-color-brand-black-800);
   border-color: transparent;
 }
 .tui-btn--white.tui-btn--soft:hover:not(:disabled) {
-  background-color: var(--tui-color-neutral-100);
+  background-color: var(--tui-color-brand-black-100);
 }
 
 /* ─── black (black bg, white text) ───────────────────────────────────────── */
@@ -335,8 +469,8 @@
   border-color: var(--tui-color-black);
 }
 .tui-btn--black.tui-btn--solid:hover:not(:disabled) {
-  background-color: var(--tui-color-neutral-800);
-  border-color: var(--tui-color-neutral-800);
+  background-color: var(--tui-color-brand-black-800);
+  border-color: var(--tui-color-brand-black-800);
 }
 .tui-btn--black.tui-btn--outline {
   background-color: transparent;
@@ -344,15 +478,15 @@
   border-color: var(--tui-color-black);
 }
 .tui-btn--black.tui-btn--outline:hover:not(:disabled) {
-  background-color: var(--tui-color-neutral-100);
+  background-color: var(--tui-color-brand-black-100);
 }
 .tui-btn--black.tui-btn--soft {
-  background-color: var(--tui-color-neutral-900);
+  background-color: var(--tui-color-brand-black-900);
   color: var(--tui-color-white);
   border-color: transparent;
 }
 .tui-btn--black.tui-btn--soft:hover:not(:disabled) {
-  background-color: var(--tui-color-neutral-800);
+  background-color: var(--tui-color-brand-black-800);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -369,16 +503,12 @@
 }
 
 /* primary plain */
-.tui-btn--primary.tui-btn--plain { color: var(--tui-color-primary-700); }
-.tui-btn--primary.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-primary-600); }
-
-/* secondary plain */
-.tui-btn--secondary.tui-btn--plain { color: var(--tui-color-secondary-700); }
-.tui-btn--secondary.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-secondary-600); }
+.tui-btn--primary.tui-btn--plain { color: var(--tui-color-brand-pink-700); }
+.tui-btn--primary.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-brand-pink-600); }
 
 /* default plain */
-.tui-btn--default.tui-btn--plain { color: var(--tui-color-neutral-700); }
-.tui-btn--default.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-neutral-600); }
+.tui-btn--default.tui-btn--plain { color: var(--tui-color-brand-black-700); }
+.tui-btn--default.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-brand-black-600); }
 
 /* danger plain */
 .tui-btn--danger.tui-btn--plain { color: var(--tui-color-danger-700); }
@@ -396,10 +526,34 @@
 .tui-btn--info.tui-btn--plain { color: var(--tui-color-info-700); }
 .tui-btn--info.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-info-600); }
 
+/* teal plain */
+.tui-btn--teal.tui-btn--plain { color: var(--tui-color-teal-700); }
+.tui-btn--teal.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-teal-600); }
+
+/* orange plain */
+.tui-btn--orange.tui-btn--plain { color: var(--tui-color-orange-700); }
+.tui-btn--orange.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-orange-600); }
+
+/* rose plain */
+.tui-btn--rose.tui-btn--plain { color: var(--tui-color-rose-700); }
+.tui-btn--rose.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-rose-600); }
+
+/* indigo plain */
+.tui-btn--indigo.tui-btn--plain { color: var(--tui-color-indigo-700); }
+.tui-btn--indigo.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-indigo-600); }
+
+/* mint plain */
+.tui-btn--mint.tui-btn--plain { color: var(--tui-color-mint-700); }
+.tui-btn--mint.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-mint-600); }
+
+/* coal plain */
+.tui-btn--coal.tui-btn--plain { color: var(--tui-color-coal-700); }
+.tui-btn--coal.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-coal-600); }
+
 /* white plain */
-.tui-btn--white.tui-btn--plain { color: var(--tui-color-neutral-700); }
-.tui-btn--white.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-neutral-600); }
+.tui-btn--white.tui-btn--plain { color: var(--tui-color-brand-black-700); }
+.tui-btn--white.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-brand-black-600); }
 
 /* black plain */
-.tui-btn--black.tui-btn--plain { color: var(--tui-color-neutral-900); }
-.tui-btn--black.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-neutral-700); }
+.tui-btn--black.tui-btn--plain { color: var(--tui-color-brand-black-900); }
+.tui-btn--black.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-brand-black-700); }

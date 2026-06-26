@@ -12,7 +12,7 @@
   border-radius: var(--tui-input-radius, var(--tui-radius-md));
   border: 1px solid transparent;
   background-color: transparent;
-  color: var(--tui-color-neutral-900);
+  color: var(--tui-color-brand-black-900);
   transition:
     background-color var(--tui-duration-normal) var(--tui-ease-in-out),
     border-color     var(--tui-duration-normal) var(--tui-ease-in-out),
@@ -56,28 +56,28 @@
 /* Outline */
 .tui-input--outline {
   background-color: transparent;
-  border-color: var(--tui-color-neutral-300);
+  border-color: var(--tui-color-brand-black-300);
 }
 .tui-input--outline:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-neutral-400);
+  border-color: var(--tui-color-brand-black-400);
 }
 
 /* Soft */
 .tui-input--soft {
   background-color: transparent;
-  border-color: var(--tui-color-neutral-100);
+  border-color: var(--tui-color-brand-black-100);
 }
 .tui-input--soft:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-neutral-200);
+  border-color: var(--tui-color-brand-black-200);
 }
 
 /* Plain */
 .tui-input--plain {
   background-color: transparent;
-  border-color: var(--tui-color-neutral-50);
+  border-color: var(--tui-color-brand-black-50);
 }
 .tui-input--plain:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-neutral-100);
+  border-color: var(--tui-color-brand-black-100);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -86,42 +86,22 @@
 
 /* ─── primary ────────────────────────────────────────────────────────────── */
 .tui-input--primary.tui-input--outline {
-  border-color: var(--tui-color-primary-500);
+  border-color: var(--tui-color-brand-pink-500);
 }
 .tui-input--primary.tui-input--outline:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-primary-600);
+  border-color: var(--tui-color-brand-pink-600);
 }
 .tui-input--primary.tui-input--soft {
-  border-color: var(--tui-color-primary-200);
+  border-color: var(--tui-color-brand-pink-200);
 }
 .tui-input--primary.tui-input--soft:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-primary-300);
+  border-color: var(--tui-color-brand-pink-300);
 }
 .tui-input--primary.tui-input--plain {
-  border-color: var(--tui-color-primary-50);
+  border-color: var(--tui-color-brand-pink-50);
 }
 .tui-input--primary.tui-input--plain:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-primary-100);
-}
-
-/* ─── secondary ──────────────────────────────────────────────────────────── */
-.tui-input--secondary.tui-input--outline {
-  border-color: var(--tui-color-secondary-300);
-}
-.tui-input--secondary.tui-input--outline:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-secondary-400);
-}
-.tui-input--secondary.tui-input--soft {
-  border-color: var(--tui-color-secondary-200);
-}
-.tui-input--secondary.tui-input--soft:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-secondary-300);
-}
-.tui-input--secondary.tui-input--plain {
-  border-color: var(--tui-color-secondary-50);
-}
-.tui-input--secondary.tui-input--plain:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-secondary-100);
+  border-color: var(--tui-color-brand-pink-100);
 }
 
 /* ─── success ────────────────────────────────────────────────────────────── */
@@ -204,56 +184,176 @@
   border-color: var(--tui-color-info-100);
 }
 
+/* ─── teal ───────────────────────────────────────────────────────────────── */
+.tui-input--teal.tui-input--outline {
+  border-color: var(--tui-color-teal-500);
+}
+.tui-input--teal.tui-input--outline:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-teal-600);
+}
+.tui-input--teal.tui-input--soft {
+  border-color: var(--tui-color-teal-200);
+}
+.tui-input--teal.tui-input--soft:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-teal-300);
+}
+.tui-input--teal.tui-input--plain {
+  border-color: var(--tui-color-teal-50);
+}
+.tui-input--teal.tui-input--plain:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-teal-100);
+}
+
+/* ─── orange ─────────────────────────────────────────────────────────────── */
+.tui-input--orange.tui-input--outline {
+  border-color: var(--tui-color-orange-500);
+}
+.tui-input--orange.tui-input--outline:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-orange-600);
+}
+.tui-input--orange.tui-input--soft {
+  border-color: var(--tui-color-orange-200);
+}
+.tui-input--orange.tui-input--soft:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-orange-300);
+}
+.tui-input--orange.tui-input--plain {
+  border-color: var(--tui-color-orange-50);
+}
+.tui-input--orange.tui-input--plain:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-orange-100);
+}
+
+/* ─── rose ───────────────────────────────────────────────────────────────── */
+.tui-input--rose.tui-input--outline {
+  border-color: var(--tui-color-rose-500);
+}
+.tui-input--rose.tui-input--outline:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-rose-600);
+}
+.tui-input--rose.tui-input--soft {
+  border-color: var(--tui-color-rose-200);
+}
+.tui-input--rose.tui-input--soft:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-rose-300);
+}
+.tui-input--rose.tui-input--plain {
+  border-color: var(--tui-color-rose-50);
+}
+.tui-input--rose.tui-input--plain:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-rose-100);
+}
+
+/* ─── indigo ─────────────────────────────────────────────────────────────── */
+.tui-input--indigo.tui-input--outline {
+  border-color: var(--tui-color-indigo-500);
+}
+.tui-input--indigo.tui-input--outline:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-indigo-600);
+}
+.tui-input--indigo.tui-input--soft {
+  border-color: var(--tui-color-indigo-200);
+}
+.tui-input--indigo.tui-input--soft:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-indigo-300);
+}
+.tui-input--indigo.tui-input--plain {
+  border-color: var(--tui-color-indigo-50);
+}
+.tui-input--indigo.tui-input--plain:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-indigo-100);
+}
+
+/* ─── mint ───────────────────────────────────────────────────────────────── */
+.tui-input--mint.tui-input--outline {
+  border-color: var(--tui-color-mint-500);
+}
+.tui-input--mint.tui-input--outline:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-mint-600);
+}
+.tui-input--mint.tui-input--soft {
+  border-color: var(--tui-color-mint-200);
+}
+.tui-input--mint.tui-input--soft:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-mint-300);
+}
+.tui-input--mint.tui-input--plain {
+  border-color: var(--tui-color-mint-50);
+}
+.tui-input--mint.tui-input--plain:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-mint-100);
+}
+
+/* ─── coal ───────────────────────────────────────────────────────────────── */
+.tui-input--coal.tui-input--outline {
+  border-color: var(--tui-color-coal-500);
+}
+.tui-input--coal.tui-input--outline:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-coal-600);
+}
+.tui-input--coal.tui-input--soft {
+  border-color: var(--tui-color-coal-200);
+}
+.tui-input--coal.tui-input--soft:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-coal-300);
+}
+.tui-input--coal.tui-input--plain {
+  border-color: var(--tui-color-coal-50);
+}
+.tui-input--coal.tui-input--plain:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-coal-100);
+}
+
 /* ─── white ──────────────────────────────────────────────────────────────── */
 .tui-input--white.tui-input--outline {
-  border-color: var(--tui-color-neutral-200);
+  border-color: var(--tui-color-brand-black-200);
 }
 .tui-input--white.tui-input--outline:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-neutral-300);
+  border-color: var(--tui-color-brand-black-300);
 }
 .tui-input--white.tui-input--soft {
-  border-color: var(--tui-color-neutral-100);
+  border-color: var(--tui-color-brand-black-100);
 }
 .tui-input--white.tui-input--soft:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-neutral-200);
+  border-color: var(--tui-color-brand-black-200);
 }
 .tui-input--white.tui-input--plain {
-  border-color: var(--tui-color-neutral-50);
+  border-color: var(--tui-color-brand-black-50);
 }
 .tui-input--white.tui-input--plain:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-neutral-100);
+  border-color: var(--tui-color-brand-black-100);
 }
 
 /* ─── black ──────────────────────────────────────────────────────────────── */
 .tui-input--black.tui-input--outline {
-  border-color: var(--tui-color-neutral-800);
+  border-color: var(--tui-color-brand-black-800);
 }
 .tui-input--black.tui-input--outline:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-neutral-900);
+  border-color: var(--tui-color-brand-black-900);
 }
 .tui-input--black.tui-input--soft {
-  border-color: var(--tui-color-neutral-600);
+  border-color: var(--tui-color-brand-black-600);
 }
 .tui-input--black.tui-input--soft:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-neutral-700);
+  border-color: var(--tui-color-brand-black-700);
 }
 .tui-input--black.tui-input--plain {
-  border-color: var(--tui-color-neutral-400);
+  border-color: var(--tui-color-brand-black-400);
 }
 .tui-input--black.tui-input--plain:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-neutral-500);
+  border-color: var(--tui-color-brand-black-500);
 }
 
 /* ─── Disabled state (overrides all intents/variants) ────────────────────── */
 .tui-input.tui-input--disabled {
-  background-color: var(--tui-color-neutral-100);
-  color: var(--tui-color-neutral-500);
-  border-color: var(--tui-color-neutral-200);
+  background-color: var(--tui-color-brand-black-100);
+  color: var(--tui-color-brand-black-500);
+  border-color: var(--tui-color-brand-black-200);
   cursor: not-allowed;
 }
 
 .tui-input--disabled .tui-input__native {
-  color: var(--tui-color-neutral-500);
+  color: var(--tui-color-brand-black-500);
   cursor: not-allowed;
 }
 
@@ -277,7 +377,7 @@
 }
 
 .tui-input__native::placeholder {
-  color: var(--tui-color-neutral-400);
+  color: var(--tui-color-brand-black-400);
 }
 
 /* Focus ring on wrapper when native input is focused */
@@ -288,14 +388,19 @@
 }
 
 /* Intent-based ring color on Input wrapper */
-.tui-input--primary:has(.tui-input__native:focus-visible)   { --tui-ring-color: var(--tui-color-primary-400); }
-.tui-input--secondary:has(.tui-input__native:focus-visible) { --tui-ring-color: var(--tui-color-secondary-400); }
+.tui-input--primary:has(.tui-input__native:focus-visible)   { --tui-ring-color: var(--tui-color-brand-pink-400); }
 .tui-input--success:has(.tui-input__native:focus-visible)   { --tui-ring-color: var(--tui-color-success-400); }
 .tui-input--warning:has(.tui-input__native:focus-visible)   { --tui-ring-color: var(--tui-color-warning-400); }
 .tui-input--danger:has(.tui-input__native:focus-visible)    { --tui-ring-color: var(--tui-color-danger-400); }
 .tui-input--info:has(.tui-input__native:focus-visible)      { --tui-ring-color: var(--tui-color-info-400); }
-.tui-input--white:has(.tui-input__native:focus-visible)     { --tui-ring-color: var(--tui-color-neutral-300); }
-.tui-input--black:has(.tui-input__native:focus-visible)     { --tui-ring-color: var(--tui-color-neutral-600); }
+.tui-input--teal:has(.tui-input__native:focus-visible)      { --tui-ring-color: var(--tui-color-teal-400); }
+.tui-input--orange:has(.tui-input__native:focus-visible)    { --tui-ring-color: var(--tui-color-orange-400); }
+.tui-input--rose:has(.tui-input__native:focus-visible)      { --tui-ring-color: var(--tui-color-rose-400); }
+.tui-input--indigo:has(.tui-input__native:focus-visible)    { --tui-ring-color: var(--tui-color-indigo-400); }
+.tui-input--mint:has(.tui-input__native:focus-visible)      { --tui-ring-color: var(--tui-color-mint-400); }
+.tui-input--coal:has(.tui-input__native:focus-visible)      { --tui-ring-color: var(--tui-color-coal-400); }
+.tui-input--white:has(.tui-input__native:focus-visible)     { --tui-ring-color: var(--tui-color-brand-black-300); }
+.tui-input--black:has(.tui-input__native:focus-visible)     { --tui-ring-color: var(--tui-color-brand-black-600); }
 
 /* ─── Leading / Trailing icons ───────────────────────────────────────────── */
 .tui-input__leading,
@@ -303,7 +408,7 @@
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
-  color: var(--tui-color-neutral-500);
+  color: var(--tui-color-brand-black-500);
 }
 
 /* ─── Prefix / Suffix ────────────────────────────────────────────────────── */
@@ -312,7 +417,7 @@
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
-  color: var(--tui-color-neutral-500);
+  color: var(--tui-color-brand-black-500);
   white-space: nowrap;
   user-select: none;
 }
@@ -325,7 +430,7 @@
   flex-shrink: 0;
   border: none;
   background: transparent;
-  color: var(--tui-color-neutral-400);
+  color: var(--tui-color-brand-black-400);
   cursor: pointer;
   padding: var(--tui-spacing-0_5);
   border-radius: var(--tui-radius-sm);
@@ -335,6 +440,6 @@
 }
 
 .tui-input__clear:hover {
-  color: var(--tui-color-neutral-700);
-  background-color: var(--tui-color-neutral-100);
+  color: var(--tui-color-brand-black-700);
+  background-color: var(--tui-color-brand-black-100);
 }

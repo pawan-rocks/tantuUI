@@ -29,7 +29,7 @@
   width: var(--tui-switch-track-w, 36px);
   height: var(--tui-switch-track-h, 20px);
   border-radius: var(--tui-radius-full);
-  background-color: var(--tui-color-neutral-300);
+  background-color: var(--tui-switch-track-off, var(--tui-color-brand-black-300));
   transition:
     background-color var(--tui-duration-normal) var(--tui-ease-in-out);
 }
@@ -45,28 +45,121 @@
   background-color: var(--tui-color-white);
   transform: translateY(-50%) translateX(0);
   transition:
-    transform var(--tui-duration-normal) var(--tui-ease-in-out);
+    transform var(--tui-duration-normal) var(--tui-ease-in-out),
+    width var(--tui-duration-fast) var(--tui-ease-in-out);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* ─── Checked state ──────────────────────────────────────────────────────── */
 .tui-switch--checked .tui-switch__track {
-  background-color: var(--tui-color-primary-600);
+  background-color: var(--tui-switch-active, var(--tui-color-brand-black-900));
 }
 
 .tui-switch--checked .tui-switch__thumb {
   transform: translateY(-50%) translateX(var(--tui-switch-thumb-travel));
 }
 
-/* ─── Sizes ──────────────────────────────────────────────────────────────── */
-.tui-switch--xs {
-  --tui-switch-track-w:     28px;
-  --tui-switch-track-h:     16px;
-  --tui-switch-thumb-size:  12px;
-  --tui-switch-thumb-offset: 2px;
-  --tui-switch-thumb-travel: 12px;
+/* ─── Hover state ────────────────────────────────────────────────────────── */
+.tui-switch:hover:not(.tui-switch--disabled) .tui-switch__track {
+  background-color: var(--tui-switch-track-off-hover, var(--tui-color-brand-black-300));
 }
 
+.tui-switch--checked:hover:not(.tui-switch--disabled) .tui-switch__track {
+  background-color: var(--tui-switch-active-hover, var(--tui-color-brand-black-800));
+}
+
+/* ─── Pressed / Active state ─────────────────────────────────────────────── */
+.tui-switch:active:not(.tui-switch--disabled) .tui-switch__thumb {
+  width: calc(var(--tui-switch-thumb-size, 16px) + 2px);
+}
+
+/* ─── Intent colors ──────────────────────────────────────────────────────── */
+.tui-switch--primary {
+  --tui-switch-active: var(--tui-color-brand-pink-600);
+  --tui-switch-active-hover: var(--tui-color-brand-pink-700);
+  --tui-switch-track-off: var(--tui-color-brand-pink-400);
+  --tui-switch-track-off-hover: var(--tui-color-brand-pink-500);
+}
+.tui-switch--success {
+  --tui-switch-active: var(--tui-color-success-600);
+  --tui-switch-active-hover: var(--tui-color-success-700);
+  --tui-switch-track-off: var(--tui-color-success-400);
+  --tui-switch-track-off-hover: var(--tui-color-success-500);
+}
+.tui-switch--warning {
+  --tui-switch-active: var(--tui-color-warning-500);
+  --tui-switch-active-hover: var(--tui-color-warning-600);
+  --tui-switch-track-off: var(--tui-color-warning-400);
+  --tui-switch-track-off-hover: var(--tui-color-warning-500);
+}
+.tui-switch--danger {
+  --tui-switch-active: var(--tui-color-danger-600);
+  --tui-switch-active-hover: var(--tui-color-danger-700);
+  --tui-switch-track-off: var(--tui-color-danger-400);
+  --tui-switch-track-off-hover: var(--tui-color-danger-500);
+}
+.tui-switch--info {
+  --tui-switch-active: var(--tui-color-info-600);
+  --tui-switch-active-hover: var(--tui-color-info-700);
+  --tui-switch-track-off: var(--tui-color-info-400);
+  --tui-switch-track-off-hover: var(--tui-color-info-500);
+}
+.tui-switch--teal {
+  --tui-switch-active: var(--tui-color-teal-600);
+  --tui-switch-active-hover: var(--tui-color-teal-700);
+  --tui-switch-track-off: var(--tui-color-teal-400);
+  --tui-switch-track-off-hover: var(--tui-color-teal-500);
+}
+.tui-switch--orange {
+  --tui-switch-active: var(--tui-color-orange-600);
+  --tui-switch-active-hover: var(--tui-color-orange-700);
+  --tui-switch-track-off: var(--tui-color-orange-400);
+  --tui-switch-track-off-hover: var(--tui-color-orange-500);
+}
+.tui-switch--rose {
+  --tui-switch-active: var(--tui-color-rose-600);
+  --tui-switch-active-hover: var(--tui-color-rose-700);
+  --tui-switch-track-off: var(--tui-color-rose-400);
+  --tui-switch-track-off-hover: var(--tui-color-rose-500);
+}
+.tui-switch--indigo {
+  --tui-switch-active: var(--tui-color-indigo-600);
+  --tui-switch-active-hover: var(--tui-color-indigo-700);
+  --tui-switch-track-off: var(--tui-color-indigo-100);
+  --tui-switch-track-off-hover: var(--tui-color-indigo-200);
+}
+.tui-switch--mint {
+  --tui-switch-active: var(--tui-color-mint-600);
+  --tui-switch-active-hover: var(--tui-color-mint-700);
+  --tui-switch-track-off: var(--tui-color-mint-400);
+  --tui-switch-track-off-hover: var(--tui-color-mint-500);
+}
+.tui-switch--coal {
+  --tui-switch-active: var(--tui-color-coal-600);
+  --tui-switch-active-hover: var(--tui-color-coal-700);
+  --tui-switch-track-off: var(--tui-color-coal-400);
+  --tui-switch-track-off-hover: var(--tui-color-coal-500);
+}
+.tui-switch--white {
+  --tui-switch-active: var(--tui-color-brand-black-300);
+  --tui-switch-active-hover: var(--tui-color-brand-black-500);
+  --tui-switch-track-off: var(--tui-color-brand-black-400);
+  --tui-switch-track-off-hover: var(--tui-color-brand-black-500);
+}
+.tui-switch--black {
+  --tui-switch-active: var(--tui-color-brand-black-900);
+  --tui-switch-active-hover: var(--tui-color-brand-black-800);
+  --tui-switch-track-off: var(--tui-color-brand-black-400);
+  --tui-switch-track-off-hover: var(--tui-color-brand-black-500);
+}
+
+/* ─── Track color: gray (overrides intent-based off track) ───────────────── */
+.tui-switch.tui-switch--track-gray {
+  --tui-switch-track-off: var(--tui-color-brand-black-300);
+  --tui-switch-track-off-hover: var(--tui-color-brand-black-400);
+}
+
+/* ─── Sizes ──────────────────────────────────────────────────────────────── */
 .tui-switch--xs {
   --tui-switch-track-w:     28px;
   --tui-switch-track-h:     16px;
@@ -113,10 +206,11 @@
 }
 
 .tui-switch--disabled .tui-switch__track {
-  background-color: var(--tui-color-neutral-100);
+  background-color: var(--tui-color-brand-black-100);
 }
 
 .tui-switch--disabled .tui-switch__thumb {
+  background-color: var(--tui-color-brand-black-300);
   box-shadow: none;
 }
 
@@ -125,13 +219,13 @@
   font-family: inherit;
   font-size: var(--tui-font-size-sm);
   line-height: var(--tui-leading-normal);
-  color: var(--tui-color-neutral-900);
+  color: var(--tui-color-brand-black-900);
   cursor: pointer;
   user-select: none;
 }
 
 .tui-switch__label--disabled {
-  color: var(--tui-color-neutral-500);
+  color: var(--tui-color-brand-black-500);
   cursor: not-allowed;
 }
 

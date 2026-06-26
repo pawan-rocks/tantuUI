@@ -86,9 +86,9 @@ describe("Box", () => {
   });
 
   it("resolves bg as token variable", () => {
-    render(<Box bg="primary-500" data-testid="box" />);
+    render(<Box bg="brand-pink-500" data-testid="box" />);
     const el = screen.getByTestId("box");
-    expect(el.style.getPropertyValue("--tui-box-bg")).toBe("var(--tui-color-primary-500)");
+    expect(el.style.getPropertyValue("--tui-box-bg")).toBe("var(--tui-color-brand-pink-500)");
   });
 
   it("passes through raw CSS color values for bg", () => {
@@ -98,9 +98,9 @@ describe("Box", () => {
   });
 
   it("resolves color prop as token variable", () => {
-    render(<Box color="neutral-900" data-testid="box" />);
+    render(<Box color="brand-black-900" data-testid="box" />);
     const el = screen.getByTestId("box");
-    expect(el.style.getPropertyValue("--tui-box-color")).toBe("var(--tui-color-neutral-900)");
+    expect(el.style.getPropertyValue("--tui-box-color")).toBe("var(--tui-color-brand-black-900)");
   });
 
   it("converts decimal spacing keys to underscore format", () => {

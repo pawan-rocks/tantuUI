@@ -20,10 +20,18 @@ export const shadow = {
   inner: "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
 
   // Focus ring (used for keyboard focus)
-  focus: "0 0 0 3px var(--tui-color-primary-300, #93c5fd)",
+  focus: "0 0 0 3px var(--tui-color-brand-pink-300, #f0abfc)",
 
   // Brand focus ring
-  focusBrand: "0 0 0 3px var(--tui-color-primary-400, #60a5fa)",
+  focusBrand: "0 0 0 3px var(--tui-color-brand-pink-400, #e879f9)",
+
+  // ── Semantic defaults ────────────────────────────────────────────────
+  default:   "var(--tui-shadow-sm)",     // default component shadow
+  card:      "var(--tui-shadow-md)",     // cards, panels
+  dropdown:  "var(--tui-shadow-lg)",     // dropdowns, menus
+  modal:     "var(--tui-shadow-xl)",     // modals, dialogs
+  tooltip:   "var(--tui-shadow-md)",     // tooltips, popovers
+  button:    "var(--tui-shadow-xs)",     // subtle button lift
 } as const;
 
 export type ShadowTokens = typeof shadow;

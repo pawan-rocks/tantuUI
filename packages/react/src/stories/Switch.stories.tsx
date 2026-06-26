@@ -15,6 +15,18 @@ const meta: Meta<typeof Switch> = {
       description: "Switch size",
       table: { category: "Appearance", defaultValue: { summary: "md" } },
     },
+    intent: {
+      control: "select",
+      options: ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
+      description: "Color intent / semantic meaning",
+      table: { category: "Appearance", defaultValue: { summary: "default" } },
+    },
+    trackColor: {
+      control: "select",
+      options: ["intentBased", "gray"],
+      description: "Unchecked track color: intentBased uses light tint of the intent, gray uses neutral",
+      table: { category: "Appearance", defaultValue: { summary: "intentBased" } },
+    },
     checked: {
       control: "boolean",
       description: "Checked (on) state",
@@ -46,6 +58,8 @@ const meta: Meta<typeof Switch> = {
 
   args: {
     size: "md",
+    intent: "default",
+    trackColor: "intentBased",
     checked: false,
     label: "",
     labelPlacement: "end",
@@ -98,6 +112,34 @@ export const Sizes: Story = {
   },
 };
 
+// ── Intents ───────────────────────────────────────────────────────────────
+export const Intents: Story = {
+  name: "Intents",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const intents = ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)" }}>
+        {intents.map((intent) => {
+          const IntentItem = () => {
+            const [checked, setChecked] = useState(true);
+            return (
+              <Switch
+                key={intent}
+                intent={intent}
+                checked={checked}
+                onChange={setChecked}
+                label={intent.charAt(0).toUpperCase() + intent.slice(1)}
+              />
+            );
+          };
+          return <IntentItem key={intent} />;
+        })}
+      </div>
+    );
+  },
+};
+
 // ── With Label ────────────────────────────────────────────────────────────
 export const WithLabel: Story = {
   name: "WithLabel",
@@ -142,27 +184,72 @@ export const AllStates: Story = {
   name: "All States",
   parameters: { controls: { disable: true } },
   render: () => {
-    const states = ["base (off)", "base (on)", "hover", "disabled", "ghost"] as const;
+    const intents = ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
+    const states = ["off", "on", "disabled (off)", "disabled (on)", "ghost"] as const;
+
     return (
-      <div style={{ overflowX: "auto" }}>
-        <table style={{ borderCollapse: "collapse", width: "100%", tableLayout: "fixed", minWidth: "800px", fontFamily: "var(--tui-font-family-sans)" }}>
-          <thead>
-            <tr>
-              {states.map((s) => (
-                <th key={s} style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)", textAlign: "center", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)", textTransform: "capitalize" }}>{s}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={{ padding: "var(--tui-spacing-3)", textAlign: "center" }}><Switch checked={false} onChange={() => {}} /></td>
-              <td style={{ padding: "var(--tui-spacing-3)", textAlign: "center" }}><Switch checked={true} onChange={() => {}} /></td>
-              <td style={{ padding: "var(--tui-spacing-3)", textAlign: "center" }}><Switch checked={false} onChange={() => {}} label="Hover me" /></td>
-              <td style={{ padding: "var(--tui-spacing-3)", textAlign: "center" }}><Switch disabled checked={true} /></td>
-              <td style={{ padding: "var(--tui-spacing-3)", textAlign: "center" }}><Switch isGhost /></td>
-            </tr>
-          </tbody>
-        </table>
+      <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-8)" }}>
+        {/* Intent-based track */}
+        <div>
+          <h3 style={{ fontSize: "var(--tui-font-size-sm)", fontWeight: "var(--tui-font-weight-semibold)", marginBottom: "var(--tui-spacing-3)", color: "var(--tui-color-text-primary)" }}>
+            trackColor = "intentBased" (default)
+          </h3>
+          <div style={{ overflowX: "auto" }}>
+            <table style={{ borderCollapse: "collapse", width: "100%", minWidth: "700px", fontFamily: "var(--tui-font-family-sans)" }}>
+              <thead>
+                <tr>
+                  <th style={{ width: "80px", padding: "var(--tui-spacing-2)", textAlign: "left", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)" }}>intent</th>
+                  {states.map((s) => (
+                    <th key={s} style={{ padding: "var(--tui-spacing-2)", textAlign: "center", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)", textTransform: "capitalize" }}>{s}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {intents.map((intent) => (
+                  <tr key={intent}>
+                    <td style={{ padding: "var(--tui-spacing-2)", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)", fontWeight: 500 }}>{intent}</td>
+                    <td style={{ padding: "var(--tui-spacing-2)", textAlign: "center" }}><Switch intent={intent} checked={false} onChange={() => {}} /></td>
+                    <td style={{ padding: "var(--tui-spacing-2)", textAlign: "center" }}><Switch intent={intent} checked={true} onChange={() => {}} /></td>
+                    <td style={{ padding: "var(--tui-spacing-2)", textAlign: "center" }}><Switch intent={intent} disabled checked={false} /></td>
+                    <td style={{ padding: "var(--tui-spacing-2)", textAlign: "center" }}><Switch intent={intent} disabled checked={true} /></td>
+                    <td style={{ padding: "var(--tui-spacing-2)", textAlign: "center" }}><Switch intent={intent} isGhost /></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Gray track */}
+        <div>
+          <h3 style={{ fontSize: "var(--tui-font-size-sm)", fontWeight: "var(--tui-font-weight-semibold)", marginBottom: "var(--tui-spacing-3)", color: "var(--tui-color-text-primary)" }}>
+            trackColor = "gray"
+          </h3>
+          <div style={{ overflowX: "auto" }}>
+            <table style={{ borderCollapse: "collapse", width: "100%", minWidth: "700px", fontFamily: "var(--tui-font-family-sans)" }}>
+              <thead>
+                <tr>
+                  <th style={{ width: "80px", padding: "var(--tui-spacing-2)", textAlign: "left", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)" }}>intent</th>
+                  {states.map((s) => (
+                    <th key={s} style={{ padding: "var(--tui-spacing-2)", textAlign: "center", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)", textTransform: "capitalize" }}>{s}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {intents.map((intent) => (
+                  <tr key={intent}>
+                    <td style={{ padding: "var(--tui-spacing-2)", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)", fontWeight: 500 }}>{intent}</td>
+                    <td style={{ padding: "var(--tui-spacing-2)", textAlign: "center" }}><Switch intent={intent} trackColor="gray" checked={false} onChange={() => {}} /></td>
+                    <td style={{ padding: "var(--tui-spacing-2)", textAlign: "center" }}><Switch intent={intent} trackColor="gray" checked={true} onChange={() => {}} /></td>
+                    <td style={{ padding: "var(--tui-spacing-2)", textAlign: "center" }}><Switch intent={intent} trackColor="gray" disabled checked={false} /></td>
+                    <td style={{ padding: "var(--tui-spacing-2)", textAlign: "center" }}><Switch intent={intent} trackColor="gray" disabled checked={true} /></td>
+                    <td style={{ padding: "var(--tui-spacing-2)", textAlign: "center" }}><Switch intent={intent} trackColor="gray" isGhost /></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     );
   },

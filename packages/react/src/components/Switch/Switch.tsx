@@ -1,6 +1,6 @@
 import React, { forwardRef, useId } from "react";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
-import type { Size, BaseProps } from "../../types";
+import type { Size, Intent, BaseProps } from "../../types";
 import { cn } from "../../utils/cn";
 import { Shimmer } from "../Shimmer/Shimmer";
 import { Label } from "../Label/Label";
@@ -11,6 +11,10 @@ export interface SwitchProps
     Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className" | "style" | "onChange"> {
   /** Size scale */
   size?: Size;
+  /** Color intent / semantic meaning */
+  intent?: Intent | (string & {});
+  /** Unchecked track color mode: "intentBased" uses a light tint of the intent, "gray" uses neutral gray */
+  trackColor?: "intentBased" | "gray";
   /** Checked state */
   checked?: boolean;
   /** Change handler */
@@ -27,6 +31,8 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
   (
     {
       size = "md",
+      intent = "default",
+      trackColor = "intentBased",
       checked = false,
       onChange,
       label,
@@ -84,6 +90,8 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
           "tui-switch",
           "tui-focus-ring",
           `tui-switch--${size}`,
+          intent !== "default" && `tui-switch--${intent}`,
+          trackColor === "gray" && "tui-switch--track-gray",
           checked && "tui-switch--checked",
           disabled && "tui-switch--disabled",
           className,

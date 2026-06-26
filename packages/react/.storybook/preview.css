@@ -22,6 +22,7 @@
   --tui-color-text-inverse:      #ffffff;
   --tui-color-border-default:    #e5e7eb;
   --tui-color-border-strong:     #9ca3af;
+  --tui-color-focus-ring-gap:    #ffffff;
 }
 
 /* ─── Dark theme ─────────────────────────────────────────────────────────── */
@@ -38,10 +39,24 @@
   --tui-color-border-default:    #374151;
   --tui-color-border-strong:     #6b7280;
 
-  /* In dark mode the gap should match the dark background */
+  /* Focus ring gap matches dark background */
   --tui-color-focus-ring-gap:    #111827;
 
-  /* Brand colors stay the same in dark mode — adjust if desired */  --tui-color-brand-subtle:      #1e3a8a;
+  /* Brand colors stay the same in dark mode — adjust if desired */
+  --tui-color-brand-subtle:      #1e3a8a;
+
+  /* Override brand-black scale for dark mode so component borders adapt */
+  --tui-color-brand-black-50:    #1f2937;
+  --tui-color-brand-black-100:   #374151;
+  --tui-color-brand-black-200:   #4b5563;
+  --tui-color-brand-black-300:   #6b7280;
+  --tui-color-brand-black-400:   #9ca3af;
+  --tui-color-brand-black-500:   #d1d5db;
+  --tui-color-brand-black-600:   #e5e7eb;
+  --tui-color-brand-black-700:   #f3f4f6;
+  --tui-color-brand-black-800:   #f9fafb;
+  --tui-color-brand-black-900:   #ffffff;
+  --tui-color-brand-black-950:   #ffffff;
 }
 
 /* ─── Story canvas base styles ───────────────────────────────────────────── */

@@ -10,7 +10,7 @@ const meta: Meta<typeof LinkText> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["blue", "black", "white", "coal"],
+      options: ["blue", "black", "white", "navy"],
       description: "Color variant",
       table: { category: "Appearance", defaultValue: { summary: "blue" } },
     },
@@ -79,9 +79,9 @@ export const Variants: Story = {
       <div style={{ display: "flex", gap: "var(--tui-spacing-6)", alignItems: "center" }}>
         <LinkText href="#" variant="blue">Blue (default)</LinkText>
         <LinkText href="#" variant="black">Black</LinkText>
-        <LinkText href="#" variant="coal">Coal</LinkText>
+        <LinkText href="#" variant="navy">Navy</LinkText>
       </div>
-      <div style={{ background: "var(--tui-color-neutral-900)", padding: "var(--tui-spacing-4)", borderRadius: "var(--tui-radius-md)", display: "inline-flex" }}>
+      <div style={{ background: "var(--tui-color-brand-black-900)", padding: "var(--tui-spacing-4)", borderRadius: "var(--tui-radius-md)", display: "inline-flex" }}>
         <LinkText href="#" variant="white">White (on dark bg)</LinkText>
       </div>
     </div>
@@ -117,7 +117,7 @@ export const FocusAndPressed: Story = {
       </p>
       <LinkText href="#" variant="blue" size="lg" weight="semibold">Blue — tab or click me</LinkText>
       <LinkText href="#" variant="black" size="lg" weight="semibold">Black — tab or click me</LinkText>
-      <LinkText href="#" variant="coal" size="lg" weight="semibold">Coal — tab or click me</LinkText>
+      <LinkText href="#" variant="navy" size="lg" weight="semibold">Navy — tab or click me</LinkText>
     </div>
   ),
 };
@@ -143,7 +143,7 @@ export const Disabled: Story = {
     <div style={{ display: "flex", gap: "var(--tui-spacing-6)", alignItems: "center" }}>
       <LinkText href="#" disabled variant="blue">Disabled blue</LinkText>
       <LinkText href="#" disabled variant="black">Disabled black</LinkText>
-      <LinkText href="#" disabled variant="coal">Disabled coal</LinkText>
+      <LinkText href="#" disabled variant="navy">Disabled coal</LinkText>
     </div>
   ),
 };

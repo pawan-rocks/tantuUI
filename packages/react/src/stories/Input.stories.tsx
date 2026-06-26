@@ -45,7 +45,7 @@ const meta: Meta<typeof Input> = {
     },
     intent: {
       control: "select",
-      options: ["default", "primary", "secondary", "success", "warning", "danger", "info", "white", "black"],
+      options: ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
       description: "Color intent / semantic meaning",
       table: { category: "Appearance", defaultValue: { summary: "default" } },
     },
@@ -78,8 +78,6 @@ const meta: Meta<typeof Input> = {
 
   args: {
     size: "md",
-    variant: "outline",
-    intent: "default",
     placeholder: "Enter text…",
     clearable: false,
     isInvalid: false,
@@ -129,7 +127,7 @@ export const Intents: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 320 }}>
-      {(["default", "primary", "secondary", "success", "warning", "danger", "info", "white", "black"] as const).map((intent) => (
+      {(["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const).map((intent) => (
         <Input key={intent} intent={intent} placeholder={intent.charAt(0).toUpperCase() + intent.slice(1)} />
       ))}
     </div>
@@ -192,21 +190,18 @@ export const AllStates: Story = {
   name: "All States",
   parameters: { controls: { disable: true } },
   render: () => {
-    const intents = ["default", "primary", "secondary", "success", "warning", "danger", "info", "white", "black"] as const;
+    const intents = ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
     const variants = ["outline", "soft", "plain"] as const;
     const states = ["base", "hover", "focused", "disabled", "ghost"] as const;
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-6)" }}>
         <style>{`
-          .tui-force-hover .tui-input--outline { border-color: var(--tui-color-neutral-400); }
-          .tui-force-hover .tui-input--soft { border-color: var(--tui-color-neutral-200); }
-          .tui-force-hover .tui-input--plain { border-color: var(--tui-color-neutral-100); }
-          .tui-force-hover .tui-input--primary.tui-input--outline { border-color: var(--tui-color-primary-600); }
-          .tui-force-hover .tui-input--primary.tui-input--soft { border-color: var(--tui-color-primary-300); }
-          .tui-force-hover .tui-input--primary.tui-input--plain { border-color: var(--tui-color-primary-100); }
-          .tui-force-hover .tui-input--secondary.tui-input--outline { border-color: var(--tui-color-secondary-400); }
-          .tui-force-hover .tui-input--secondary.tui-input--soft { border-color: var(--tui-color-secondary-300); }
-          .tui-force-hover .tui-input--secondary.tui-input--plain { border-color: var(--tui-color-secondary-100); }
+          .tui-force-hover .tui-input--outline { border-color: var(--tui-color-brand-black-400); }
+          .tui-force-hover .tui-input--soft { border-color: var(--tui-color-brand-black-200); }
+          .tui-force-hover .tui-input--plain { border-color: var(--tui-color-brand-black-100); }
+          .tui-force-hover .tui-input--primary.tui-input--outline { border-color: var(--tui-color-brand-pink-600); }
+          .tui-force-hover .tui-input--primary.tui-input--soft { border-color: var(--tui-color-brand-pink-300); }
+          .tui-force-hover .tui-input--primary.tui-input--plain { border-color: var(--tui-color-brand-pink-100); }
           .tui-force-hover .tui-input--success.tui-input--outline { border-color: var(--tui-color-success-600); }
           .tui-force-hover .tui-input--success.tui-input--soft { border-color: var(--tui-color-success-300); }
           .tui-force-hover .tui-input--success.tui-input--plain { border-color: var(--tui-color-success-100); }
@@ -219,21 +214,20 @@ export const AllStates: Story = {
           .tui-force-hover .tui-input--info.tui-input--outline { border-color: var(--tui-color-info-600); }
           .tui-force-hover .tui-input--info.tui-input--soft { border-color: var(--tui-color-info-300); }
           .tui-force-hover .tui-input--info.tui-input--plain { border-color: var(--tui-color-info-100); }
-          .tui-force-hover .tui-input--white.tui-input--outline { border-color: var(--tui-color-neutral-300); }
-          .tui-force-hover .tui-input--white.tui-input--soft { border-color: var(--tui-color-neutral-200); }
-          .tui-force-hover .tui-input--white.tui-input--plain { border-color: var(--tui-color-neutral-100); }
-          .tui-force-hover .tui-input--black.tui-input--outline { border-color: var(--tui-color-neutral-900); }
-          .tui-force-hover .tui-input--black.tui-input--soft { border-color: var(--tui-color-neutral-700); }
-          .tui-force-hover .tui-input--black.tui-input--plain { border-color: var(--tui-color-neutral-500); }
+          .tui-force-hover .tui-input--white.tui-input--outline { border-color: var(--tui-color-brand-black-300); }
+          .tui-force-hover .tui-input--white.tui-input--soft { border-color: var(--tui-color-brand-black-200); }
+          .tui-force-hover .tui-input--white.tui-input--plain { border-color: var(--tui-color-brand-black-100); }
+          .tui-force-hover .tui-input--black.tui-input--outline { border-color: var(--tui-color-brand-black-900); }
+          .tui-force-hover .tui-input--black.tui-input--soft { border-color: var(--tui-color-brand-black-700); }
+          .tui-force-hover .tui-input--black.tui-input--plain { border-color: var(--tui-color-brand-black-500); }
           .tui-force-focus .tui-input { box-shadow: 0 0 0 0.5px var(--tui-color-focus-ring-gap), 0 0 1px 2px var(--tui-ring-color, var(--tui-color-focus-ring)); }
-          .tui-force-focus .tui-input--primary { --tui-ring-color: var(--tui-color-primary-400); }
-          .tui-force-focus .tui-input--secondary { --tui-ring-color: var(--tui-color-secondary-400); }
+          .tui-force-focus .tui-input--primary { --tui-ring-color: var(--tui-color-brand-pink-400); }
           .tui-force-focus .tui-input--success { --tui-ring-color: var(--tui-color-success-400); }
           .tui-force-focus .tui-input--warning { --tui-ring-color: var(--tui-color-warning-400); }
           .tui-force-focus .tui-input--danger { --tui-ring-color: var(--tui-color-danger-400); }
           .tui-force-focus .tui-input--info { --tui-ring-color: var(--tui-color-info-400); }
-          .tui-force-focus .tui-input--white { --tui-ring-color: var(--tui-color-neutral-300); }
-          .tui-force-focus .tui-input--black { --tui-ring-color: var(--tui-color-neutral-600); }
+          .tui-force-focus .tui-input--white { --tui-ring-color: var(--tui-color-brand-black-300); }
+          .tui-force-focus .tui-input--black { --tui-ring-color: var(--tui-color-brand-black-600); }
         `}</style>
         {variants.map((variant) => (
           <div key={variant}>

@@ -16,11 +16,16 @@ export type Variant =
 export type Intent =
   | "default"
   | "primary"
-  | "secondary"
   | "success"
   | "warning"
   | "danger"
   | "info"
+  | "teal"
+  | "orange"
+  | "rose"
+  | "indigo"
+  | "mint"
+  | "coal"
   | "white"
   | "black";
 
