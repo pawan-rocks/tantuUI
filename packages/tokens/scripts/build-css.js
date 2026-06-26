@@ -21,6 +21,7 @@ const {
   animation,
   breakpoint,
   opacity,
+  sizing,
   flattenTokens,
   toCSSRoot,
 } = require("../dist/index.js");
@@ -110,6 +111,7 @@ const sections = [
   buildCategory("ease",      animation.easing),
   buildCategory("screen",    breakpoint),
   buildCategory("opacity",   opacity),
+  buildCategory("size",      sizing),
 ];
 
 const tokensCss = header + sections.join("\n");

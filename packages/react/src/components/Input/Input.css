@@ -4,10 +4,12 @@
   align-items: center;
   gap: var(--tui-spacing-2);
   width: 100%;
+  box-sizing: border-box;
   font-family: inherit;
   font-size: var(--tui-input-font-size, var(--tui-font-size-sm));
   line-height: var(--tui-leading-normal);
-  padding-block: var(--tui-input-py, var(--tui-spacing-2));
+  height: var(--tui-input-height, var(--tui-size-md));
+  padding-block: 0;
   padding-inline: var(--tui-input-px, var(--tui-spacing-3));
   border-radius: var(--tui-input-radius, var(--tui-radius-md));
   border: 1px solid transparent;
@@ -21,31 +23,31 @@
 
 /* ─── Sizes ──────────────────────────────────────────────────────────────── */
 .tui-input--xs {
-  --tui-input-py:        var(--tui-spacing-1);
+  --tui-input-height:    var(--tui-size-xs);
   --tui-input-px:        var(--tui-spacing-2);
   --tui-input-font-size: var(--tui-font-size-xs);
   --tui-input-radius:    var(--tui-radius-sm);
 }
 .tui-input--sm {
-  --tui-input-py:        var(--tui-spacing-1_5);
+  --tui-input-height:    var(--tui-size-sm);
   --tui-input-px:        var(--tui-spacing-3);
   --tui-input-font-size: var(--tui-font-size-sm);
   --tui-input-radius:    var(--tui-radius-md);
 }
 .tui-input--md {
-  --tui-input-py:        var(--tui-spacing-2);
+  --tui-input-height:    var(--tui-size-md);
   --tui-input-px:        var(--tui-spacing-3);
   --tui-input-font-size: var(--tui-font-size-sm);
   --tui-input-radius:    var(--tui-radius-md);
 }
 .tui-input--lg {
-  --tui-input-py:        var(--tui-spacing-2_5);
+  --tui-input-height:    var(--tui-size-lg);
   --tui-input-px:        var(--tui-spacing-4);
   --tui-input-font-size: var(--tui-font-size-md);
   --tui-input-radius:    var(--tui-radius-lg);
 }
 .tui-input--xl {
-  --tui-input-py:        var(--tui-spacing-3);
+  --tui-input-height:    var(--tui-size-xl);
   --tui-input-px:        var(--tui-spacing-5);
   --tui-input-font-size: var(--tui-font-size-lg);
   --tui-input-radius:    var(--tui-radius-lg);
@@ -361,6 +363,7 @@
 .tui-input__native {
   flex: 1;
   min-width: 0;
+  height: 100%;
   border: none;
   background: transparent;
   color: inherit;

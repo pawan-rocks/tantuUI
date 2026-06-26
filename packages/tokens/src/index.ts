@@ -67,6 +67,11 @@ export {
   type OpacityTokens,
 } from "./tokens/opacity";
 
+export {
+  sizing,
+  type SizingTokens,
+} from "./tokens/sizing";
+
 // ── Aggregated token object ───────────────────────────────────────────
 import { color }      from "./tokens/color";
 import { spacing }    from "./tokens/spacing";
@@ -78,6 +83,7 @@ import { zIndex }     from "./tokens/zindex";
 import { animation }  from "./tokens/animation";
 import { breakpoint } from "./tokens/breakpoint";
 import { opacity }    from "./tokens/opacity";
+import { sizing }     from "./tokens/sizing";
 
 export const tokens = {
   color,
@@ -90,6 +96,7 @@ export const tokens = {
   animation,
   breakpoint,
   opacity,
+  sizing,
 } as const;
 
 export type Tokens = typeof tokens;

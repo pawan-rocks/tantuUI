@@ -79,9 +79,11 @@ export const Playground: Story = {
   name: "⚡ Playground",
   args: { placeholder: "Choose a fruit…" },
   render: (args) => (
+    <div style={{ display: "grid", gridTemplateColumns: "200px"}}>
     <Select {...args}>
       <ExampleOptions />
     </Select>
+    </div>
   ),
 };
 
@@ -90,7 +92,7 @@ export const Sizes: Story = {
   name: "Sizes",
   parameters: { controls: { disable: true } },
   render: () => (
-    <div style={{ display: "flex", gap: "var(--tui-spacing-3)", flexWrap: "wrap", alignItems: "center" }}>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 200px)", gap: "var(--tui-spacing-3)", flexWrap: "wrap", alignItems: "center" }}>
       {(["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
         <Select key={size} size={size} placeholder={size.toUpperCase()}>
           <ExampleOptions />
@@ -105,7 +107,7 @@ export const Variants: Story = {
   name: "Variants",
   parameters: { controls: { disable: true } },
   render: () => (
-    <div style={{ display: "flex", gap: "var(--tui-spacing-3)", flexWrap: "wrap", alignItems: "center" }}>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 200px)", gap: "var(--tui-spacing-3)", flexWrap: "wrap", alignItems: "center" }}>
       {(["outline", "soft", "plain"] as const).map((variant) => (
         <Select key={variant} variant={variant} placeholder={variant}>
           <ExampleOptions />
@@ -120,7 +122,7 @@ export const Intents: Story = {
   name: "Intents",
   parameters: { controls: { disable: true } },
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 320 }}>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 200px)", gap: "var(--tui-spacing-3)", }}>
       {(["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const).map((intent) => (
         <Select key={intent} intent={intent} placeholder={intent.charAt(0).toUpperCase() + intent.slice(1)}>
           <ExampleOptions />
@@ -135,7 +137,7 @@ export const WithPlaceholder: Story = {
   name: "WithPlaceholder",
   parameters: { controls: { disable: true } },
   render: () => (
-    <div style={{ display: "flex", gap: "var(--tui-spacing-3)", flexWrap: "wrap", alignItems: "center" }}>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 200px)", gap: "var(--tui-spacing-3)", flexWrap: "wrap", alignItems: "center" }}>
       <Select placeholder="Select a fruit…">
         <ExampleOptions />
       </Select>

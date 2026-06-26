@@ -8,3 +8,4 @@ export * from "./zindex";
 export * from "./animation";
 export * from "./breakpoint";
 export * from "./opacity";
+export * from "./sizing";

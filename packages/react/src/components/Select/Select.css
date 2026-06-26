@@ -3,9 +3,12 @@
   position: relative;
   display: inline-flex;
   align-items: center;
+  width: 100%;
+  box-sizing: border-box;
   font-family: inherit;
   font-size: var(--tui-select-font-size, var(--tui-font-size-sm));
   line-height: var(--tui-leading-normal);
+  height: var(--tui-select-height, var(--tui-size-md));
   border-radius: var(--tui-select-radius, var(--tui-radius-md));
   border: 1px solid transparent;
   background-color: transparent;
@@ -18,31 +21,31 @@
 
 /* ─── Sizes ──────────────────────────────────────────────────────────────── */
 .tui-select--xs {
-  --tui-select-py:        var(--tui-spacing-1);
+  --tui-select-height:    var(--tui-size-xs);
   --tui-select-px:        var(--tui-spacing-2);
   --tui-select-font-size: var(--tui-font-size-xs);
   --tui-select-radius:    var(--tui-radius-sm);
 }
 .tui-select--sm {
-  --tui-select-py:        var(--tui-spacing-1_5);
+  --tui-select-height:    var(--tui-size-sm);
   --tui-select-px:        var(--tui-spacing-3);
   --tui-select-font-size: var(--tui-font-size-sm);
   --tui-select-radius:    var(--tui-radius-md);
 }
 .tui-select--md {
-  --tui-select-py:        var(--tui-spacing-2);
+  --tui-select-height:    var(--tui-size-md);
   --tui-select-px:        var(--tui-spacing-3);
   --tui-select-font-size: var(--tui-font-size-sm);
   --tui-select-radius:    var(--tui-radius-md);
 }
 .tui-select--lg {
-  --tui-select-py:        var(--tui-spacing-2_5);
+  --tui-select-height:    var(--tui-size-lg);
   --tui-select-px:        var(--tui-spacing-4);
   --tui-select-font-size: var(--tui-font-size-md);
   --tui-select-radius:    var(--tui-radius-lg);
 }
 .tui-select--xl {
-  --tui-select-py:        var(--tui-spacing-3);
+  --tui-select-height:    var(--tui-size-xl);
   --tui-select-px:        var(--tui-spacing-5);
   --tui-select-font-size: var(--tui-font-size-lg);
   --tui-select-radius:    var(--tui-radius-lg);
@@ -219,12 +222,13 @@
   -webkit-appearance: none;
   flex: 1;
   min-width: 0;
+  height: 100%;
   border: none;
   background: transparent;
   color: inherit;
   font: inherit;
   line-height: inherit;
-  padding-block: var(--tui-select-py, var(--tui-spacing-2));
+  padding-block: 0;
   padding-inline-start: var(--tui-select-px, var(--tui-spacing-3));
   padding-inline-end: calc(var(--tui-select-px, var(--tui-spacing-3)) + 20px);
   margin: 0;

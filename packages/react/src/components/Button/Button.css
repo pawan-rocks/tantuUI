@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--tui-btn-gap, var(--tui-spacing-2));
+  box-sizing: border-box;
   font-family: inherit;
   font-weight: var(--tui-font-weight-medium);
   line-height: var(--tui-leading-none);
@@ -12,7 +13,7 @@
   text-decoration: none;
   cursor: pointer;
   border: 1px solid transparent;
-  padding-block: var(--tui-btn-py, var(--tui-spacing-2));
+  padding-block: 0;
   padding-inline: var(--tui-btn-px, var(--tui-spacing-4));
   font-size: var(--tui-btn-font-size, var(--tui-font-size-sm));
   border-radius: var(--tui-btn-radius, var(--tui-radius-md));
@@ -38,6 +39,7 @@
   --tui-btn-font-size: var(--tui-font-size-xs);
   --tui-btn-radius:    var(--tui-radius-sm);
   --tui-btn-gap:       var(--tui-spacing-1);
+  height: var(--tui-size-xs);
 }
 .tui-btn--sm {
   --tui-btn-py:        var(--tui-spacing-1_5);
@@ -45,6 +47,7 @@
   --tui-btn-font-size: var(--tui-font-size-sm);
   --tui-btn-radius:    var(--tui-radius-md);
   --tui-btn-gap:       var(--tui-spacing-1_5);
+  height: var(--tui-size-sm);
 }
 .tui-btn--md {
   --tui-btn-py:        var(--tui-spacing-2);
@@ -52,6 +55,7 @@
   --tui-btn-font-size: var(--tui-font-size-sm);
   --tui-btn-radius:    var(--tui-radius-md);
   --tui-btn-gap:       var(--tui-spacing-2);
+  height: var(--tui-size-md);
 }
 .tui-btn--lg {
   --tui-btn-py:        var(--tui-spacing-2_5);
@@ -59,6 +63,7 @@
   --tui-btn-font-size: var(--tui-font-size-md);
   --tui-btn-radius:    var(--tui-radius-lg);
   --tui-btn-gap:       var(--tui-spacing-2);
+  height: var(--tui-size-lg);
 }
 .tui-btn--xl {
   --tui-btn-py:        var(--tui-spacing-3);
@@ -66,6 +71,7 @@
   --tui-btn-font-size: var(--tui-font-size-lg);
   --tui-btn-radius:    var(--tui-radius-lg);
   --tui-btn-gap:       var(--tui-spacing-2_5);
+  height: var(--tui-size-xl);
 }
 
 /* ─── Full width ─────────────────────────────────────────────────────────── */

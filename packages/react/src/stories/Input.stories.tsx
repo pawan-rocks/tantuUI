@@ -93,6 +93,11 @@ type Story = StoryObj<typeof Input>;
 export const Playground: Story = {
   name: "⚡ Playground",
   args: { placeholder: "Type something…" },
+  render: (args) => (
+    <div style={{ display: "grid", gridTemplateColumns: "250px" }}>
+      <Input {...args} />
+    </div>
+  ),
 };
 
 // ── Sizes ─────────────────────────────────────────────────────────────────
@@ -100,7 +105,7 @@ export const Sizes: Story = {
   name: "Sizes",
   parameters: { controls: { disable: true } },
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 320 }}>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 200px)", gap: "var(--tui-spacing-3)", alignItems: "start" }}>
       {(["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
         <Input key={size} size={size} placeholder={`Size: ${size}`} />
       ))}
@@ -113,7 +118,7 @@ export const Variants: Story = {
   name: "Variants",
   parameters: { controls: { disable: true } },
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 320 }}>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 200px)", gap: "var(--tui-spacing-3)", alignItems: "start" }}>
       <Input variant="outline" placeholder="Outline (default)" />
       <Input variant="soft" placeholder="Soft" />
       <Input variant="plain" placeholder="Plain" />
@@ -126,7 +131,7 @@ export const Intents: Story = {
   name: "Intents",
   parameters: { controls: { disable: true } },
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 320 }}>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 200px)", gap: "var(--tui-spacing-3)", alignItems: "start" }}>
       {(["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const).map((intent) => (
         <Input key={intent} intent={intent} placeholder={intent.charAt(0).toUpperCase() + intent.slice(1)} />
       ))}
@@ -139,7 +144,7 @@ export const WithIcons: Story = {
   name: "With Icons",
   parameters: { controls: { disable: true } },
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 320 }}>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 200px)", gap: "var(--tui-spacing-3)", alignItems: "start" }}>
       <Input leadingIcon={<SearchIcon />} placeholder="Search…" />
       <Input trailingIcon={<EyeIcon />} placeholder="Password" type="password" />
       <Input leadingIcon={<MailIcon />} trailingIcon={<EyeIcon />} placeholder="Both icons" />
@@ -152,7 +157,7 @@ export const PrefixSuffix: Story = {
   name: "Prefix & Suffix",
   parameters: { controls: { disable: true } },
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 320 }}>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 200px)", gap: "var(--tui-spacing-3)", alignItems: "start" }}>
       <Input prefix="$" placeholder="Amount" />
       <Input suffix="USD" placeholder="Price" />
       <Input prefix="https://" suffix=".com" placeholder="domain" />
@@ -164,7 +169,7 @@ export const PrefixSuffix: Story = {
 const ClearableDemo = () => {
   const [value, setValue] = useState("Hello, world!");
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 320 }}>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(1, 200px)", gap: "var(--tui-spacing-3)", alignItems: "start" }}>
       <Input
         clearable
         value={value}
@@ -238,7 +243,7 @@ export const AllStates: Story = {
               <table style={{ borderCollapse: "collapse", width: "100%", fontFamily: "var(--tui-font-family-sans)" }}>
                 <thead>
                   <tr>
-                    <th style={{width: "100px", padding: "var(--tui-spacing-2) var(--tui-spacing-3)", textAlign: "left", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)" }}>intent</th>
+                    <th style={{ width: "100px", padding: "var(--tui-spacing-2) var(--tui-spacing-3)", textAlign: "left", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)" }}>intent</th>
                     {states.map((s) => (
                       <th key={s} style={{ width: "200px", padding: "var(--tui-spacing-2) var(--tui-spacing-3)", textAlign: "center", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)", textTransform: "capitalize" }}>{s}</th>
                     ))}

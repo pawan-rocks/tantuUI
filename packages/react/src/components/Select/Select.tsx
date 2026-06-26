@@ -51,11 +51,16 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             `tui-select--${size}`,
             className,
           )}
-          style={{ display: "flex", width: "100%", ...style }}
+          style={style}
           shape="rounded"
           data-testid={testId}
         >
-          {"\u00A0"}
+          <span
+            className="tui-select__native"
+            style={{ visibility: "hidden" }}
+          >
+            {"\u00A0"}
+          </span>
         </Shimmer>
       );
     }
