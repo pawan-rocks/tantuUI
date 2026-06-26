@@ -12,7 +12,9 @@
     "lint": "npm run lint --workspaces --if-present",
     "clean": "npm run clean --workspaces --if-present",
     "storybook": "npm run storybook --workspace=packages/react",
-    "deploy:storybook": "bash packages/react/scripts/deploy-storybook.sh"
+    "deploy:storybook": "bash packages/react/scripts/deploy-storybook.sh",
+    "publish-tokens": "npm run clean --workspace=packages/tokens && npm run build --workspace=packages/tokens && npm publish --workspace=packages/tokens --access public",
+    "publish-react": "npm run clean && npm run build && npm publish --workspace=packages/react --access public"
   },
   "devDependencies": {
     "typescript": "^5.4.5"
