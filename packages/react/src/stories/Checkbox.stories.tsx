@@ -15,9 +15,25 @@ const meta: Meta<typeof Checkbox> = {
       description: "Checkbox size",
       table: { category: "Appearance", defaultValue: { summary: "md" } },
     },
+    type: {
+      control: "select",
+      options: [undefined, "box"],
+      description: "Display type: default inline or box card style",
+      table: { category: "Appearance" },
+    },
     label: {
       control: "text",
       description: "Label text",
+      table: { category: "Content" },
+    },
+    title: {
+      control: "text",
+      description: "Title text (primary label, shown above subtitle)",
+      table: { category: "Content" },
+    },
+    subtitle: {
+      control: "text",
+      description: "Subtitle / description text (secondary text below title)",
       table: { category: "Content" },
     },
     labelPlacement: {
@@ -243,6 +259,220 @@ export const AllStates: Story = {
                 <td style={{ padding: "var(--tui-spacing-2)", textAlign: "center" }}><div className="tui-force-hover"><Checkbox intent={intent} checked={false} onChange={() => {}} /></div></td>
                 <td style={{ padding: "var(--tui-spacing-2)", textAlign: "center" }}><Checkbox intent={intent} disabled checked={true} onChange={() => {}} /></td>
                 <td style={{ padding: "var(--tui-spacing-2)", textAlign: "center" }}><Checkbox intent={intent} isGhost /></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  },
+};
+
+// ── Title & Subtitle ──────────────────────────────────────────────────────
+export const TitleAndSubtitle: Story = {
+  name: "Title & Subtitle",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const TitleSubtitleDemo = () => {
+      const [checked, setChecked] = useState<Record<string, boolean>>({});
+      return (
+        <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-4)", maxWidth: 400 }}>
+          <Checkbox
+            title="Email notifications"
+            subtitle="Receive email updates about your account activity"
+            checked={checked["email"] ?? false}
+            onChange={(e) => setChecked((prev) => ({ ...prev, email: e.target.checked }))}
+          />
+          <Checkbox
+            title="SMS alerts"
+            subtitle="Get text messages for important security events"
+            checked={checked["sms"] ?? false}
+            onChange={(e) => setChecked((prev) => ({ ...prev, sms: e.target.checked }))}
+          />
+          <Checkbox
+            title="Marketing updates"
+            subtitle="Occasional news about new features and promotions"
+            checked={checked["marketing"] ?? false}
+            onChange={(e) => setChecked((prev) => ({ ...prev, marketing: e.target.checked }))}
+          />
+          <Checkbox
+            title="Disabled option"
+            subtitle="This option is not available for your plan"
+            disabled
+            checked={false}
+            onChange={() => {}}
+          />
+        </div>
+      );
+    };
+    return <TitleSubtitleDemo />;
+  },
+};
+
+// ── Title Only ────────────────────────────────────────────────────────────
+export const TitleOnly: Story = {
+  name: "Title Only",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const TitleOnlyDemo = () => {
+      const [checked, setChecked] = useState<Record<string, boolean>>({});
+      return (
+        <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 400 }}>
+          <Checkbox
+            title="Dark mode"
+            checked={checked["dark"] ?? false}
+            onChange={(e) => setChecked((prev) => ({ ...prev, dark: e.target.checked }))}
+          />
+          <Checkbox
+            title="Auto-save"
+            checked={checked["autosave"] ?? true}
+            onChange={(e) => setChecked((prev) => ({ ...prev, autosave: e.target.checked }))}
+          />
+          <Checkbox
+            title="Show notifications"
+            checked={checked["notif"] ?? false}
+            onChange={(e) => setChecked((prev) => ({ ...prev, notif: e.target.checked }))}
+          />
+        </div>
+      );
+    };
+    return <TitleOnlyDemo />;
+  },
+};
+
+// ── Title with ReactNode ──────────────────────────────────────────────────
+export const TitleWithReactNode: Story = {
+  name: "Title with ReactNode",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const Demo = () => {
+      const [checked, setChecked] = useState(false);
+      return (
+        <div style={{ maxWidth: 400 }}>
+          <Checkbox
+            title={<span>Accept <strong>Terms of Service</strong></span>}
+            subtitle={<span>By checking this, you agree to our <a href="#" style={{ color: "var(--tui-color-brand-pink-600)" }}>terms</a> and <a href="#" style={{ color: "var(--tui-color-brand-pink-600)" }}>privacy policy</a></span>}
+            checked={checked}
+            onChange={(e) => setChecked(e.target.checked)}
+          />
+        </div>
+      );
+    };
+    return <Demo />;
+  },
+};
+
+// ── Box Type ──────────────────────────────────────────────────────────────
+export const BoxType: Story = {
+  name: "Box Card Type",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const BoxDemo = () => {
+      const [checked, setChecked] = useState<Record<string, boolean>>({});
+      return (
+        <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 400 }}>
+          <Checkbox
+            type="box"
+            title="Email notifications"
+            subtitle="Receive email updates about your account activity"
+            checked={checked["email"] ?? false}
+            onChange={(e) => setChecked((prev) => ({ ...prev, email: e.target.checked }))}
+          />
+          <Checkbox
+            type="box"
+            title="SMS alerts"
+            subtitle="Get text messages for important security events"
+            checked={checked["sms"] ?? true}
+            onChange={(e) => setChecked((prev) => ({ ...prev, sms: e.target.checked }))}
+          />
+          <Checkbox
+            type="box"
+            title="Push notifications"
+            subtitle="Real-time alerts on your device"
+            checked={checked["push"] ?? false}
+            onChange={(e) => setChecked((prev) => ({ ...prev, push: e.target.checked }))}
+          />
+          <Checkbox
+            type="box"
+            title="Disabled option"
+            subtitle="This option is not available"
+            disabled
+            checked={false}
+            onChange={() => {}}
+          />
+        </div>
+      );
+    };
+    return <BoxDemo />;
+  },
+};
+
+// ── Box Type with Intents ─────────────────────────────────────────────────
+export const BoxTypeIntents: Story = {
+  name: "Box Card Intents",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const IntentsDemo = () => {
+      const [checked, setChecked] = useState<Record<string, boolean>>({});
+      const intents = ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal"] as const;
+      return (
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: "var(--tui-spacing-3)" }}>
+          {intents.map((intent) => (
+            <Checkbox
+              key={intent}
+              type="box"
+              intent={intent}
+              title={intent.charAt(0).toUpperCase() + intent.slice(1)}
+              subtitle={`Box card with ${intent} intent`}
+              checked={checked[intent] ?? false}
+              onChange={(e) => setChecked((prev) => ({ ...prev, [intent]: e.target.checked }))}
+            />
+          ))}
+        </div>
+      );
+    };
+    return <IntentsDemo />;
+  },
+};
+
+// ── Box States ────────────────────────────────────────────────────────────
+export const BoxStates: Story = {
+  name: "Box Card States",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const intents = ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal"] as const;
+    return (
+      <div style={{ overflowX: "auto" }}>
+        <table style={{ borderCollapse: "collapse", width: "100%", minWidth: "800px", fontFamily: "var(--tui-font-family-sans)" }}>
+          <thead>
+            <tr>
+              <th style={{ width:"100px", padding: "var(--tui-spacing-2) var(--tui-spacing-3)", textAlign: "left", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)" }}>Intent</th>
+              <th style={{ width:"200px", padding: "var(--tui-spacing-2) var(--tui-spacing-3)", textAlign: "center", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)" }}>Unchecked</th>
+              <th style={{ width:"200px", padding: "var(--tui-spacing-2) var(--tui-spacing-3)", textAlign: "center", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)" }}>Checked</th>
+              <th style={{ width:"200px",  padding: "var(--tui-spacing-2) var(--tui-spacing-3)", textAlign: "center", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)" }}>Disabled</th>
+              <th style={{ width:"200px",  padding: "var(--tui-spacing-2) var(--tui-spacing-3)", textAlign: "center", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)" }}>Disabled Checked</th>
+              <th style={{ width:"200px",  padding: "var(--tui-spacing-2) var(--tui-spacing-3)", textAlign: "center", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)" }}>Ghost</th>
+            </tr>
+          </thead>
+          <tbody>
+            {intents.map((intent) => (
+              <tr key={intent}>
+                <td style={{ padding: "var(--tui-spacing-2)", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)", fontWeight: 500 }}>{intent}</td>
+                <td style={{ padding: "var(--tui-spacing-2)" }}>
+                  <Checkbox type="box" intent={intent} title={intent} subtitle="Unselected" checked={false} onChange={() => {}} />
+                </td>
+                <td style={{ padding: "var(--tui-spacing-2)" }}>
+                  <Checkbox type="box" intent={intent} title={intent} subtitle="Selected" checked={true} onChange={() => {}} />
+                </td>
+                <td style={{ padding: "var(--tui-spacing-2)" }}>
+                  <Checkbox type="box" intent={intent} title={intent} subtitle="Disabled" disabled checked={false} onChange={() => {}} />
+                </td>
+                <td style={{ padding: "var(--tui-spacing-2)" }}>
+                  <Checkbox type="box" intent={intent} title={intent} subtitle="Disabled checked" disabled checked={true} onChange={() => {}} />
+                </td>
+                <td style={{ padding: "var(--tui-spacing-2)" }}>
+                  <Checkbox type="box" intent={intent} title={intent} subtitle="Ghost" isGhost />
+                </td>
               </tr>
             ))}
           </tbody>

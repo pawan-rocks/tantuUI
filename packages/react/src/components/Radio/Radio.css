@@ -285,8 +285,249 @@
 }
 
 .tui-radio--disabled .tui-radio__label {
-  color: var(--tui-color-brand-black-500);
+  color: var(--tui-color-brand-black-400);
   cursor: not-allowed;
+}
+
+/* ─── Title + Subtitle (description block) ───────────────────────────────── */
+.tui-radio--has-description {
+  align-items: flex-start;
+}
+
+.tui-radio--has-description .tui-radio__indicator {
+  margin-top: 2px;
+}
+
+.tui-radio__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tui-spacing-0_5);
+}
+
+.tui-radio__title {
+  color: var(--tui-color-brand-black-900);
+  font-size: var(--tui-radio-font-size);
+  font-weight: var(--tui-font-weight-medium);
+  line-height: var(--tui-leading-normal);
+}
+
+.tui-radio__subtitle {
+  color: var(--tui-color-brand-black-500);
+  font-size: var(--tui-radio-subtitle-size, var(--tui-font-size-xs));
+  font-weight: var(--tui-font-weight-normal);
+  line-height: var(--tui-leading-relaxed);
+}
+
+/* Size-specific subtitle font sizes and line heights */
+.tui-radio--xs .tui-radio__subtitle {
+  --tui-radio-subtitle-size: var(--tui-font-size-2xs);
+  line-height: var(--tui-leading-3_5);
+}
+.tui-radio--sm .tui-radio__subtitle {
+  --tui-radio-subtitle-size: var(--tui-font-size-xs);
+  line-height: var(--tui-leading-3_5);
+}
+.tui-radio--md .tui-radio__subtitle {
+  --tui-radio-subtitle-size: var(--tui-font-size-xs);
+  line-height: var(--tui-leading-4);
+}
+.tui-radio--lg .tui-radio__subtitle {
+  --tui-radio-subtitle-size: var(--tui-font-size-sm);
+  line-height: var(--tui-leading-4_5);
+}
+.tui-radio--xl .tui-radio__subtitle {
+  --tui-radio-subtitle-size: var(--tui-font-size-sm);
+  line-height: var(--tui-leading-5);
+}
+
+.tui-radio__text--disabled .tui-radio__title {
+  color: var(--tui-color-brand-black-400);
+}
+
+.tui-radio__text--disabled .tui-radio__subtitle {
+  color: var(--tui-color-brand-black-400);
+}
+
+/* ─── Box / Card type ─────────────────────────────────────────────────────── */
+.tui-radio--box {
+  display: flex;
+  width: 100%;
+  padding: var(--tui-spacing-2) var(--tui-spacing-3);
+  background-color: var(--tui-radio-box-bg, var(--tui-color-brand-black-50));
+  border: var(--tui-border-width-1) solid var(--tui-radio-box-border, var(--tui-color-brand-black-200));
+  border-radius: var(--tui-radius-md);
+  max-width: none;
+  transition:
+    background-color var(--tui-duration-normal) var(--tui-ease-in-out),
+    border-color var(--tui-duration-normal) var(--tui-ease-in-out),
+    box-shadow var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+.tui-radio--box:hover:not(.tui-radio--disabled) {
+  background-color: var(--tui-radio-box-bg-hover, var(--tui-color-brand-black-100));
+  border-color: var(--tui-radio-box-border-hover, var(--tui-color-brand-black-300));
+}
+
+.tui-radio--box:active:not(.tui-radio--disabled) {
+  background-color: var(--tui-radio-box-bg-active, var(--tui-color-brand-black-100));
+  border-color: var(--tui-radio-box-border-active, var(--tui-color-brand-black-400));
+}
+
+/* Box checked state */
+.tui-radio--box-checked {
+  background-color: var(--tui-radio-box-bg-checked, var(--tui-color-brand-black-50));
+  border-color: var(--tui-radio-box-border-checked, var(--tui-color-brand-black-600));
+}
+
+.tui-radio--box-checked:hover:not(.tui-radio--disabled) {
+  border-color: var(--tui-radio-box-border-checked-hover, var(--tui-color-brand-black-700));
+}
+
+/* Box focus state */
+.tui-radio--box:has(.tui-radio__native:focus-visible) {
+  box-shadow:
+    0 0 0 0.5px var(--tui-color-focus-ring-gap),
+    0 0 1px 2px var(--tui-radio-box-ring, var(--tui-color-brand-black-400));
+}
+
+/* Box disabled */
+.tui-radio--box.tui-radio--disabled {
+  background-color: var(--tui-color-brand-black-50);
+  border-color: var(--tui-color-brand-black-100);
+  opacity: 0.6;
+}
+
+/* ─── Box intent colors ──────────────────────────────────────────────────── */
+.tui-radio--box.tui-radio--primary {
+  --tui-radio-box-bg: var(--tui-color-brand-pink-50);
+  --tui-radio-box-border: var(--tui-color-brand-pink-200);
+  --tui-radio-box-bg-hover: var(--tui-color-brand-pink-100);
+  --tui-radio-box-border-hover: var(--tui-color-brand-pink-300);
+  --tui-radio-box-border-active: var(--tui-color-brand-pink-400);
+  --tui-radio-box-bg-checked: var(--tui-color-brand-pink-50);
+  --tui-radio-box-border-checked: var(--tui-color-brand-pink-600);
+  --tui-radio-box-border-checked-hover: var(--tui-color-brand-pink-700);
+  --tui-radio-box-ring: var(--tui-color-brand-pink-400);
+}
+
+.tui-radio--box.tui-radio--success {
+  --tui-radio-box-bg: var(--tui-color-success-50);
+  --tui-radio-box-border: var(--tui-color-success-200);
+  --tui-radio-box-bg-hover: var(--tui-color-success-100);
+  --tui-radio-box-border-hover: var(--tui-color-success-300);
+  --tui-radio-box-border-active: var(--tui-color-success-400);
+  --tui-radio-box-bg-checked: var(--tui-color-success-50);
+  --tui-radio-box-border-checked: var(--tui-color-success-600);
+  --tui-radio-box-border-checked-hover: var(--tui-color-success-700);
+  --tui-radio-box-ring: var(--tui-color-success-400);
+}
+
+.tui-radio--box.tui-radio--warning {
+  --tui-radio-box-bg: var(--tui-color-warning-50);
+  --tui-radio-box-border: var(--tui-color-warning-200);
+  --tui-radio-box-bg-hover: var(--tui-color-warning-100);
+  --tui-radio-box-border-hover: var(--tui-color-warning-300);
+  --tui-radio-box-border-active: var(--tui-color-warning-400);
+  --tui-radio-box-bg-checked: var(--tui-color-warning-50);
+  --tui-radio-box-border-checked: var(--tui-color-warning-600);
+  --tui-radio-box-border-checked-hover: var(--tui-color-warning-700);
+  --tui-radio-box-ring: var(--tui-color-warning-400);
+}
+
+.tui-radio--box.tui-radio--danger {
+  --tui-radio-box-bg: var(--tui-color-danger-50);
+  --tui-radio-box-border: var(--tui-color-danger-200);
+  --tui-radio-box-bg-hover: var(--tui-color-danger-100);
+  --tui-radio-box-border-hover: var(--tui-color-danger-300);
+  --tui-radio-box-border-active: var(--tui-color-danger-400);
+  --tui-radio-box-bg-checked: var(--tui-color-danger-50);
+  --tui-radio-box-border-checked: var(--tui-color-danger-600);
+  --tui-radio-box-border-checked-hover: var(--tui-color-danger-700);
+  --tui-radio-box-ring: var(--tui-color-danger-400);
+}
+
+.tui-radio--box.tui-radio--info {
+  --tui-radio-box-bg: var(--tui-color-info-50);
+  --tui-radio-box-border: var(--tui-color-info-200);
+  --tui-radio-box-bg-hover: var(--tui-color-info-100);
+  --tui-radio-box-border-hover: var(--tui-color-info-300);
+  --tui-radio-box-border-active: var(--tui-color-info-400);
+  --tui-radio-box-bg-checked: var(--tui-color-info-50);
+  --tui-radio-box-border-checked: var(--tui-color-info-600);
+  --tui-radio-box-border-checked-hover: var(--tui-color-info-700);
+  --tui-radio-box-ring: var(--tui-color-info-400);
+}
+
+.tui-radio--box.tui-radio--teal {
+  --tui-radio-box-bg: var(--tui-color-teal-50);
+  --tui-radio-box-border: var(--tui-color-teal-200);
+  --tui-radio-box-bg-hover: var(--tui-color-teal-100);
+  --tui-radio-box-border-hover: var(--tui-color-teal-300);
+  --tui-radio-box-border-active: var(--tui-color-teal-400);
+  --tui-radio-box-bg-checked: var(--tui-color-teal-50);
+  --tui-radio-box-border-checked: var(--tui-color-teal-600);
+  --tui-radio-box-border-checked-hover: var(--tui-color-teal-700);
+  --tui-radio-box-ring: var(--tui-color-teal-400);
+}
+
+.tui-radio--box.tui-radio--orange {
+  --tui-radio-box-bg: var(--tui-color-orange-50);
+  --tui-radio-box-border: var(--tui-color-orange-200);
+  --tui-radio-box-bg-hover: var(--tui-color-orange-100);
+  --tui-radio-box-border-hover: var(--tui-color-orange-300);
+  --tui-radio-box-border-active: var(--tui-color-orange-400);
+  --tui-radio-box-bg-checked: var(--tui-color-orange-50);
+  --tui-radio-box-border-checked: var(--tui-color-orange-600);
+  --tui-radio-box-border-checked-hover: var(--tui-color-orange-700);
+  --tui-radio-box-ring: var(--tui-color-orange-400);
+}
+
+.tui-radio--box.tui-radio--rose {
+  --tui-radio-box-bg: var(--tui-color-rose-50);
+  --tui-radio-box-border: var(--tui-color-rose-200);
+  --tui-radio-box-bg-hover: var(--tui-color-rose-100);
+  --tui-radio-box-border-hover: var(--tui-color-rose-300);
+  --tui-radio-box-border-active: var(--tui-color-rose-400);
+  --tui-radio-box-bg-checked: var(--tui-color-rose-50);
+  --tui-radio-box-border-checked: var(--tui-color-rose-600);
+  --tui-radio-box-border-checked-hover: var(--tui-color-rose-700);
+  --tui-radio-box-ring: var(--tui-color-rose-400);
+}
+
+.tui-radio--box.tui-radio--indigo {
+  --tui-radio-box-bg: var(--tui-color-indigo-50);
+  --tui-radio-box-border: var(--tui-color-indigo-200);
+  --tui-radio-box-bg-hover: var(--tui-color-indigo-100);
+  --tui-radio-box-border-hover: var(--tui-color-indigo-300);
+  --tui-radio-box-border-active: var(--tui-color-indigo-400);
+  --tui-radio-box-bg-checked: var(--tui-color-indigo-50);
+  --tui-radio-box-border-checked: var(--tui-color-indigo-600);
+  --tui-radio-box-border-checked-hover: var(--tui-color-indigo-700);
+  --tui-radio-box-ring: var(--tui-color-indigo-400);
+}
+
+.tui-radio--box.tui-radio--mint {
+  --tui-radio-box-bg: var(--tui-color-mint-50);
+  --tui-radio-box-border: var(--tui-color-mint-200);
+  --tui-radio-box-bg-hover: var(--tui-color-mint-100);
+  --tui-radio-box-border-hover: var(--tui-color-mint-300);
+  --tui-radio-box-border-active: var(--tui-color-mint-400);
+  --tui-radio-box-bg-checked: var(--tui-color-mint-50);
+  --tui-radio-box-border-checked: var(--tui-color-mint-600);
+  --tui-radio-box-border-checked-hover: var(--tui-color-mint-700);
+  --tui-radio-box-ring: var(--tui-color-mint-400);
+}
+
+.tui-radio--box.tui-radio--coal {
+  --tui-radio-box-bg: var(--tui-color-coal-50);
+  --tui-radio-box-border: var(--tui-color-coal-200);
+  --tui-radio-box-bg-hover: var(--tui-color-coal-100);
+  --tui-radio-box-border-hover: var(--tui-color-coal-300);
+  --tui-radio-box-border-active: var(--tui-color-coal-400);
+  --tui-radio-box-bg-checked: var(--tui-color-coal-50);
+  --tui-radio-box-border-checked: var(--tui-color-coal-600);
+  --tui-radio-box-border-checked-hover: var(--tui-color-coal-700);
+  --tui-radio-box-ring: var(--tui-color-coal-400);
 }
 
 /* ─── Intent-based focus ring color ──────────────────────────────────────── */

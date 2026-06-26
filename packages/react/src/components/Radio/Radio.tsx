@@ -3,19 +3,24 @@ import type { InputHTMLAttributes, ReactNode } from "react";
 import type { Size, Intent, BaseProps } from "../../types";
 import { cn } from "../../utils/cn";
 import { Shimmer } from "../Shimmer/Shimmer";
-import { Label } from "../Label/Label";
 import { useRadioGroupContext } from "./RadioGroupContext";
 import "./Radio.css";
 
 export interface RadioProps
   extends BaseProps,
-    Omit<InputHTMLAttributes<HTMLInputElement>, "className" | "style" | "size" | "type"> {
+    Omit<InputHTMLAttributes<HTMLInputElement>, "className" | "style" | "size" | "type" | "title"> {
   /** Size scale */
   size?: Size;
   /** Color intent */
   intent?: Intent;
-  /** Label text */
+  /** Display type: default inline or "box" card style */
+  type?: "box";
+  /** Label text (simple inline label) */
   label?: ReactNode;
+  /** Title text (primary label, displayed above subtitle) */
+  title?: ReactNode;
+  /** Subtitle / description text (secondary text below title) */
+  subtitle?: ReactNode;
   /** Radio value */
   value: string;
   /** Invalid/error state (shortcut for intent="danger") */
@@ -29,7 +34,10 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     {
       size: sizeProp,
       intent: intentProp,
+      type,
       label,
+      title,
+      subtitle,
       value,
       isInvalid: isInvalidProp,
       isGhost = false,
@@ -103,15 +111,32 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     if (isGhost) {
       const indicatorSizes = { xs: 14, sm: 16, md: 18, lg: 20, xl: 22 };
       const px = indicatorSizes[size];
+      const isBox = type === "box";
       return (
         <Shimmer
-          className={cn("tui-radio", `tui-radio--${size}`, className)}
-          style={{ display: "inline-flex", alignItems: "center", gap: "8px", maxWidth:"max-content", ...style }}
+          className={cn(
+            "tui-radio",
+            `tui-radio--${size}`,
+            isBox && "tui-radio--box",
+            className,
+          )}
+          style={{
+            display: isBox ? "flex" : "inline-flex",
+            alignItems: "center",
+            gap: "8px",
+            ...(!isBox ? { maxWidth: "max-content" } : {}),
+            ...style,
+          }}
           data-testid={testId}
           shape="rounded"
         >
           <span style={{ visibility: "hidden", display: "inline-block", minWidth: `${px}px`, minHeight: `${px}px`, flexShrink: 0 }} />
-          {label && <span style={{ visibility: "hidden" }}>{label}</span>}
+          {(label || title) && (
+            <span style={{ visibility: "hidden", display: "flex", flexDirection: "column", gap: "2px" }}>
+              <span>{label || title}</span>
+              {subtitle && <span style={{ fontSize: "var(--tui-font-size-xs)" }}>{subtitle}</span>}
+            </span>
+          )}
         </Shimmer>
       );
     }
@@ -133,6 +158,14 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       </span>
     ) : null;
 
+    // Title + subtitle block (takes precedence over simple label if both provided)
+    const labelContent = (title || subtitle) ? (
+      <span className={cn("tui-radio__text", disabled && "tui-radio__text--disabled")}>
+        {title && <span className="tui-radio__title">{title}</span>}
+        {subtitle && <span className="tui-radio__subtitle">{subtitle}</span>}
+      </span>
+    ) : labelText;
+
     return (
       <label
         className={cn(
@@ -140,6 +173,9 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           `tui-radio--${size}`,
           effectiveIntent !== "default" && `tui-radio--${effectiveIntent}`,
           disabled && "tui-radio--disabled",
+          (title || subtitle) ? "tui-radio--has-description" : undefined,
+          type === "box" && "tui-radio--box",
+          type === "box" && isChecked && "tui-radio--box-checked",
           className,
         )}
         style={style}
@@ -163,7 +199,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           {...rest}
         />
         {indicator}
-        {labelText}
+        {labelContent}
       </label>
     );
   },

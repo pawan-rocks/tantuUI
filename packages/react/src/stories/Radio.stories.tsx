@@ -16,9 +16,25 @@ const meta: Meta<typeof Radio> = {
       description: "Radio size scale",
       table: { category: "Appearance", defaultValue: { summary: "md" } },
     },
+    type: {
+      control: "select",
+      options: [undefined, "box"],
+      description: "Display type: default inline or box card style",
+      table: { category: "Appearance" },
+    },
     label: {
       control: "text",
       description: "Label text displayed next to the radio",
+      table: { category: "Content" },
+    },
+    title: {
+      control: "text",
+      description: "Title text (primary label, shown above subtitle)",
+      table: { category: "Content" },
+    },
+    subtitle: {
+      control: "text",
+      description: "Subtitle / description text below title",
       table: { category: "Content" },
     },
     value: {
@@ -188,6 +204,161 @@ export const AllStates: Story = {
                 <td style={{ padding: "var(--tui-spacing-2)", textAlign: "center" }}><div className="tui-force-hover"><Radio value="hov" intent={intent} checked={false} onChange={() => {}} /></div></td>
                 <td style={{ padding: "var(--tui-spacing-2)", textAlign: "center" }}><Radio value="dis" intent={intent} disabled checked={true} onChange={() => {}} /></td>
                 <td style={{ padding: "var(--tui-spacing-2)", textAlign: "center" }}><Radio value="ghost" intent={intent} isGhost /></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  },
+};
+
+// ── Title & Subtitle ──────────────────────────────────────────────────────
+export const TitleAndSubtitle: Story = {
+  name: "Title & Subtitle",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const Demo = () => {
+      const [selected, setSelected] = useState("standard");
+      return (
+        <RadioGroup name="title-sub" value={selected} onChange={setSelected}>
+          <Radio
+            value="standard"
+            title="Standard shipping"
+            subtitle="Delivered in 5-7 business days"
+          />
+          <Radio
+            value="express"
+            title="Express shipping"
+            subtitle="Delivered in 2-3 business days"
+          />
+          <Radio
+            value="overnight"
+            title="Overnight shipping"
+            subtitle="Delivered next business day"
+          />
+          <Radio
+            value="disabled"
+            title="Same-day delivery"
+            subtitle="Not available in your area"
+            disabled
+          />
+        </RadioGroup>
+      );
+    };
+    return <Demo />;
+  },
+};
+
+// ── Box Type ──────────────────────────────────────────────────────────────
+export const BoxType: Story = {
+  name: "Box Card Type",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const Demo = () => {
+      const [selected, setSelected] = useState("starter");
+      return (
+        <RadioGroup name="box-type" value={selected} onChange={setSelected}>
+          <Radio
+            type="box"
+            value="starter"
+            title="Starter plan"
+            subtitle="For individuals and small projects"
+          />
+          <Radio
+            type="box"
+            value="pro"
+            title="Pro plan"
+            subtitle="For teams with advanced features"
+          />
+          <Radio
+            type="box"
+            value="enterprise"
+            title="Enterprise plan"
+            subtitle="Custom solutions for large organizations"
+          />
+          <Radio
+            type="box"
+            value="disabled"
+            title="Legacy plan"
+            subtitle="No longer available for new users"
+            disabled
+          />
+        </RadioGroup>
+      );
+    };
+    return <Demo />;
+  },
+};
+
+// ── Box Type with Intents ─────────────────────────────────────────────────
+export const BoxTypeIntents: Story = {
+  name: "Box Card Intents",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const Demo = () => {
+      const [selected, setSelected] = useState("primary");
+      const intents = ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal"] as const;
+      return (
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: "var(--tui-spacing-3)" }}>
+          {intents.map((intent) => (
+            <Radio
+              key={intent}
+              type="box"
+              intent={intent}
+              name="box-intents"
+              value={intent}
+              title={intent.charAt(0).toUpperCase() + intent.slice(1)}
+              subtitle={`Box card with ${intent} intent`}
+              checked={selected === intent}
+              onChange={() => setSelected(intent)}
+            />
+          ))}
+        </div>
+      );
+    };
+    return <Demo />;
+  },
+};
+
+// ── Box States ────────────────────────────────────────────────────────────
+export const BoxStates: Story = {
+  name: "Box Card States",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const intents = ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal"] as const;
+    return (
+      <div style={{ overflowX: "auto" }}>
+        <table style={{ borderCollapse: "collapse", width: "100%", minWidth: "800px", fontFamily: "var(--tui-font-family-sans)" }}>
+          <thead>
+            <tr>
+              <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)", textAlign: "left", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)" }}>Intent</th>
+              <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)", textAlign: "center", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)" }}>Unchecked</th>
+              <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)", textAlign: "center", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)" }}>Checked</th>
+              <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)", textAlign: "center", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)" }}>Disabled</th>
+              <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)", textAlign: "center", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)" }}>Disabled Checked</th>
+              <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)", textAlign: "center", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)" }}>Ghost</th>
+            </tr>
+          </thead>
+          <tbody>
+            {intents.map((intent) => (
+              <tr key={intent}>
+                <td style={{ padding: "var(--tui-spacing-2)", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)", fontWeight: 500 }}>{intent}</td>
+                <td style={{ padding: "var(--tui-spacing-2)" }}>
+                  <Radio type="box" intent={intent} name={`box-${intent}-off`} value="off" title={intent} subtitle="Unselected" checked={false} onChange={() => {}} />
+                </td>
+                <td style={{ padding: "var(--tui-spacing-2)" }}>
+                  <Radio type="box" intent={intent} name={`box-${intent}-on`} value="on" title={intent} subtitle="Selected" checked={true} onChange={() => {}} />
+                </td>
+                <td style={{ padding: "var(--tui-spacing-2)" }}>
+                  <Radio type="box" intent={intent} name={`box-${intent}-dis`} value="dis" title={intent} subtitle="Disabled" disabled checked={false} onChange={() => {}} />
+                </td>
+                <td style={{ padding: "var(--tui-spacing-2)" }}>
+                  <Radio type="box" intent={intent} name={`box-${intent}-dis-on`} value="dis-on" title={intent} subtitle="Disabled checked" disabled checked={true} onChange={() => {}} />
+                </td>
+                <td style={{ padding: "var(--tui-spacing-2)" }}>
+                  <Radio type="box" intent={intent} name={`box-${intent}-ghost`} value="ghost" title={intent} subtitle="Ghost" isGhost />
+                </td>
               </tr>
             ))}
           </tbody>
