@@ -2,6 +2,8 @@
   "name": "@tantuui/react",
   "version": "0.1.0",
   "description": "React component library for TantuUI",
+  "license": "MIT",
+  "keywords": ["react", "components", "ui-library", "design-system", "tantuui", "accessible"],
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
