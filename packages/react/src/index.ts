@@ -1,5 +1,5 @@
 /**
- * @tantu/react — public API
+ * @tantuui/react — public API
  */
 
 // Component styles (bundled by Vite → dist/index.css)

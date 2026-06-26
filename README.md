@@ -1,5 +1,8 @@
 # TantuUI
 
+[![npm @tantuui/tokens](https://img.shields.io/npm/v/@tantuui/tokens?label=%40tantuui%2Ftokens&color=blue)](https://www.npmjs.com/package/@tantuui/tokens)
+[![npm @tantuui/react](https://img.shields.io/npm/v/@tantuui/react?label=%40tantuui%2Freact&color=blue)](https://www.npmjs.com/package/@tantuui/react)
+
 Token-based design system — framework agnostic tokens, React components, and a Tailwind preset.
 
 ## Structure
@@ -7,14 +10,14 @@ Token-based design system — framework agnostic tokens, React components, and a
 ```
 tantuui/
 ├── packages/
-│   ├── tokens/     @tantu/tokens   — CSS variables, JS token objects, Tailwind preset
-│   └── react/      @tantu/react    — React component library
+│   ├── tokens/     @tantuui/tokens   — CSS variables, JS token objects, Tailwind preset
+│   └── react/      @tantuui/react    — React component library
 └── tsconfig.base.json
 ```
 
 ---
 
-## @tantu/tokens
+## @tantuui/tokens
 
 All design decisions live here. Every token is exported as:
 1. **JS/TS** — typed objects you can import in any framework
@@ -59,7 +62,7 @@ All variables use the `--tui-` prefix:
 #### Any HTML / Vanilla CSS
 
 ```html
-<link rel="stylesheet" href="node_modules/@tantu/tokens/css" />
+<link rel="stylesheet" href="node_modules/@tantuui/tokens/css" />
 
 <button style="
   background: var(--tui-color-brand-default);
@@ -75,7 +78,7 @@ All variables use the `--tui-` prefix:
 
 ```typescript
 // angular.json → "styles"
-"styles": ["node_modules/@tantu/tokens/css"]
+"styles": ["node_modules/@tantuui/tokens/css"]
 
 // any component template
 <button [style.background]="'var(--tui-color-brand-default)'"
@@ -92,7 +95,7 @@ All variables use the `--tui-` prefix:
 </template>
 
 <style>
-@import "@tantu/tokens/css";
+@import "@tantuui/tokens/css";
 
 .btn {
   background: var(--tui-color-brand-default);
@@ -106,7 +109,7 @@ All variables use the `--tui-` prefix:
 
 ```js
 // tailwind.config.js
-const tuiPreset = require("@tantu/tokens/tailwind-preset");
+const tuiPreset = require("@tantuui/tokens/tailwind-preset");
 
 module.exports = {
   presets: [tuiPreset],
@@ -116,7 +119,7 @@ module.exports = {
 
 Then in your CSS:
 ```css
-@import "@tantu/tokens/css";  /* still need the CSS vars */
+@import "@tantuui/tokens/css";  /* still need the CSS vars */
 ```
 
 Now you can use Tailwind classes that resolve to `--tui-*` variables:
@@ -129,7 +132,7 @@ Now you can use Tailwind classes that resolve to `--tui-*` variables:
 #### JS/TS — read tokens directly
 
 ```ts
-import { color, spacing, radius, tokens } from "@tantu/tokens";
+import { color, spacing, radius, tokens } from "@tantuui/tokens";
 
 console.log(color.primitive.primary500); // "#3b82f6"
 console.log(spacing[4]);                 // "1rem"
@@ -138,12 +141,12 @@ console.log(tokens.radius.lg);           // "0.5rem"
 
 ---
 
-## @tantu/react
+## @tantuui/react
 
 ```tsx
-import { Button, Text, Box } from "@tantu/react";
+import { Button, Text, Box } from "@tantuui/react";
 // Don't forget to import tokens CSS somewhere in your app root:
-import "@tantu/tokens/css/base"; // includes reset + all token variables
+import "@tantuui/tokens/css/base"; // includes reset + all token variables
 
 function App() {
   return (

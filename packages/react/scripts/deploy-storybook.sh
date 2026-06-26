@@ -26,7 +26,7 @@ for var in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY; do
 done
 
 # ── Build tokens first (Storybook imports tokens/dist/base.css) ───────────────
-echo "📦  Building @tantu/tokens..."
+echo "📦  Building @tantuui/tokens..."
 npm run build --workspace=packages/tokens
 
 # ── Build Storybook ───────────────────────────────────────────────────────────

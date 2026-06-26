@@ -1,9 +1,9 @@
 /*
- * @tantu/react — all component styles
+ * @tantuui/react — all component styles
  *
  * Usage:
- *   import "@tantu/tokens/css/base";   ← token variables + reset
- *   import "@tantu/react/css";         ← component classes
+ *   import "@tantuui/tokens/css/base";   ← token variables + reset
+ *   import "@tantuui/react/css";         ← component classes
  */
 @import "./styles/utilities.css";
 @import "./components/Shimmer/Shimmer.css";

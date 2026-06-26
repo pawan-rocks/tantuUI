@@ -1,10 +1,10 @@
 /**
- * @tantu/tokens — public API
+ * @tantuui/tokens — public API
  *
  * Usage:
- *   import { color, spacing, typography, tokens } from "@tantu/tokens";
- *   import { generateAllCSS } from "@tantu/tokens";
- *   import tuiPreset from "@tantu/tokens/tailwind-preset";
+ *   import { color, spacing, typography, tokens } from "@tantuui/tokens";
+ *   import { generateAllCSS } from "@tantuui/tokens";
+ *   import tuiPreset from "@tantuui/tokens/tailwind-preset";
  */
 
 // ── Token objects ─────────────────────────────────────────────────────

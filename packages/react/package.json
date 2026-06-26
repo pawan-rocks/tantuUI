@@ -14,8 +14,14 @@
     "./css": "./dist/index.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pawan-rocks/tantuUI",
+    "directory": "packages/react"
+  },
   "scripts": {
     "build": "vite build",
     "dev": "vite build --watch",

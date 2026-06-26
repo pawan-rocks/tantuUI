@@ -21,8 +21,14 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pawan-rocks/tantuUI",
+    "directory": "packages/tokens"
+  },
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",

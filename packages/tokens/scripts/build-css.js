@@ -89,7 +89,7 @@ const header = `/**
  * Prefix: --tui-*
  *
  * Usage (any framework):
- *   @import "@tantu/tokens/css";
+ *   @import "@tantuui/tokens/css";
  */\n\n`;
 
 const sections = [
@@ -121,7 +121,7 @@ console.log("✅  dist/tokens.css written");
 const baseCss = `/**
  * TantuUI Base Styles
  * Minimal CSS reset that uses --tui-* variables.
- * @import "@tantu/tokens/css/base"
+ * @import "@tantuui/tokens/css/base"
  */
 
 @import "./tokens.css";
@@ -392,11 +392,11 @@ const presetContent = `/**
  * Generated — do not edit manually.
  *
  * Usage in tailwind.config.js:
- *   const tuiPreset = require("@tantu/tokens/tailwind-preset");
+ *   const tuiPreset = require("@tantuui/tokens/tailwind-preset");
  *   module.exports = { presets: [tuiPreset], ... };
  *
  * Or ESM:
- *   import tuiPreset from "@tantu/tokens/tailwind-preset";
+ *   import tuiPreset from "@tantuui/tokens/tailwind-preset";
  */
 module.exports = ${JSON.stringify(tailwindPreset, null, 2)};\n`;
 
@@ -414,7 +414,7 @@ function generateUtilitiesCSS() {
  * Prefix: tui-*
  *
  * Use these classes directly without Tailwind:
- *   @import "@tantu/tokens/css/utilities";
+ *   @import "@tantuui/tokens/css/utilities";
  *
  *   <div class="tui-bg-primary-600 tui-text-white tui-p-4 tui-rounded-lg">
  */\n`);

@@ -5,8 +5,8 @@
  * and dynamically injects matching CSS rules.
  *
  * Usage:
- *   import "@tantu/tokens/runtime";          // ESM
- *   <script src="@tantu/tokens/runtime"></script>  // HTML
+ *   import "@tantuui/tokens/runtime";          // ESM
+ *   <script src="@tantuui/tokens/runtime"></script>  // HTML
  *
  * Supports:
  *   tui-p-[10px]        → padding: 10px
