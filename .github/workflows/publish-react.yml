@@ -1,4 +1,4 @@
-name: Publish @tantu/react to npm
+name: Publish @tantuui/react to npm
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   publish:
-    name: Build & Publish @tantu/react
+    name: Build & Publish @tantuui/react
     runs-on: ubuntu-latest
 
     steps:
@@ -48,7 +48,7 @@ jobs:
             echo "TAG=latest" >> $GITHUB_OUTPUT
           fi
 
-      - name: Publish @tantu/react
+      - name: Publish @tantuui/react
         run: npm publish --workspace=packages/react --access public --tag ${{ steps.dist_tag.outputs.TAG }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

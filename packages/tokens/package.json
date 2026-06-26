@@ -1,5 +1,5 @@
 {
-  "name": "@tantu/tokens",
+  "name": "@tantuui/tokens",
   "version": "0.1.0",
   "description": "Framework-agnostic design tokens for TantuUI (--tui-* CSS variables)",
   "main": "dist/index.js",

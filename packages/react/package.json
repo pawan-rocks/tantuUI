@@ -1,5 +1,5 @@
 {
-  "name": "@tantu/react",
+  "name": "@tantuui/react",
   "version": "0.1.0",
   "description": "React component library for TantuUI",
   "main": "dist/index.cjs",
@@ -30,7 +30,7 @@
     "react-dom": ">=17"
   },
   "dependencies": {
-    "@tantu/tokens": "*"
+    "@tantuui/tokens": "*"
   },
   "devDependencies": {
     "@fast-check/vitest": "^0.4.1",

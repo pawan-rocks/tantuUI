@@ -39,17 +39,17 @@ const IntroPage = () => (
       Quick Start
     </h2>
     <pre style={{ background: "var(--tui-color-bg-muted)", padding: "var(--tui-spacing-4)", borderRadius: "var(--tui-radius-md)", fontSize: "var(--tui-font-size-xs)", overflowX: "auto", color: "var(--tui-color-text-primary)", marginBottom: "var(--tui-spacing-8)", lineHeight: "var(--tui-leading-relaxed)" }}>
-{`npm install @tantu/tokens @tantu/react
+{`npm install @tantuui/tokens @tantuui/react
 
 // 1. Import token CSS + component styles
-import "@tantu/tokens/css/base";
-import "@tantu/react/css";
+import "@tantuui/tokens/css/base";
+import "@tantuui/react/css";
 
 // 2. (Optional) Enable bracket syntax: tui-p-[10px]
-import "@tantu/tokens/runtime";
+import "@tantuui/tokens/runtime";
 
 // 3. Use components
-import { Button, Text, Box, LinkText, Shimmer } from "@tantu/react";`}
+import { Button, Text, Box, LinkText, Shimmer } from "@tantuui/react";`}
     </pre>
 
     {/* Usage modes */}
