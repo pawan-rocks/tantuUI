@@ -14,6 +14,7 @@ export const fontFamily = {
  * Base: 16px = 1rem
  */
 export const fontSize = {
+  "3xs":  "0.5rem",   // 8px
   "2xs":  "0.625rem",   // 10px
   xs:     "0.75rem",    // 12px
   sm:     "0.875rem",   // 14px

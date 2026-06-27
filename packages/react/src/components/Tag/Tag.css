@@ -1,0 +1,607 @@
+/* ─── Tag base ───────────────────────────────────────────────────────────── */
+.tui-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tui-tag-gap, var(--tui-spacing-1_5));
+  box-sizing: border-box;
+  font-family: inherit;
+  font-weight: var(--tui-font-weight-medium);
+  line-height: var(--tui-tag-line-height, var(--tui-leading-4));
+  white-space: nowrap;
+  user-select: none;
+  cursor: default;
+  border: 1px solid transparent;
+  padding-inline: var(--tui-tag-px, var(--tui-spacing-2_5));
+  font-size: var(--tui-tag-font-size, var(--tui-font-size-xs));
+  border-radius: var(--tui-tag-radius, var(--tui-radius-md));
+  height: var(--tui-tag-height, 28px);
+  max-width: 100%;
+  transition:
+    background-color var(--tui-duration-normal) var(--tui-ease-in-out),
+    border-color var(--tui-duration-normal) var(--tui-ease-in-out),
+    color var(--tui-duration-normal) var(--tui-ease-in-out),
+    box-shadow var(--tui-duration-normal) var(--tui-ease-in-out),
+    opacity var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+/* ─── Interactive state ──────────────────────────────────────────────────── */
+.tui-tag--interactive {
+  cursor: pointer;
+}
+
+/* ─── Disabled ───────────────────────────────────────────────────────────── */
+.tui-tag--disabled {
+  opacity: var(--tui-opacity-40, 0.4);
+  pointer-events: none;
+}
+
+/* ─── Sizes ──────────────────────────────────────────────────────────────── */
+.tui-tag--xs {
+  --tui-tag-height: var(--tui-size-xxs);
+  --tui-tag-font-size: var(--tui-font-size-3xs);
+  --tui-tag-px: var(--tui-spacing-1);
+  --tui-tag-gap: var(--tui-spacing-0_5);
+  --tui-tag-icon-size: 10px;
+  --tui-tag-line-height: var(--tui-leading-3);
+}
+
+.tui-tag--sm {
+  --tui-tag-height: var(--tui-size-xs-1);
+  --tui-tag-font-size: var(--tui-font-size-2xs, 10px);
+  --tui-tag-px: var(--tui-spacing-1_5);
+  --tui-tag-gap: var(--tui-spacing-1);
+  --tui-tag-icon-size: 12px;
+  --tui-tag-line-height: var(--tui-leading-3_5);
+}
+
+.tui-tag--md {
+  --tui-tag-height: var(--tui-size-xs-2);
+  --tui-tag-font-size: var(--tui-font-size-xs);
+  --tui-tag-px: var(--tui-spacing-2);
+  --tui-tag-gap: var(--tui-spacing-1);
+  --tui-tag-icon-size: 14px;
+  --tui-tag-line-height: var(--tui-leading-4);
+}
+
+.tui-tag--lg {
+  --tui-tag-height: var(--tui-size-xs);
+  --tui-tag-font-size: var(--tui-font-size-xs);
+  --tui-tag-px: var(--tui-spacing-2_5);
+  --tui-tag-gap: var(--tui-spacing-1_5);
+  --tui-tag-icon-size: 16px;
+  --tui-tag-line-height: var(--tui-leading-4);
+}
+
+.tui-tag--xl {
+  --tui-tag-height: var(--tui-size-sm);
+  --tui-tag-font-size: var(--tui-font-size-sm);
+  --tui-tag-px: var(--tui-spacing-3);
+  --tui-tag-gap: var(--tui-spacing-2);
+  --tui-tag-icon-size: 18px;
+  --tui-tag-line-height: var(--tui-leading-5);
+}
+
+/* ─── Border Radius ──────────────────────────────────────────────────────── */
+.tui-tag--radius-none {
+  --tui-tag-radius: 0;
+}
+
+.tui-tag--radius-xs {
+  --tui-tag-radius: var(--tui-radius-xs);
+}
+
+.tui-tag--radius-sm {
+  --tui-tag-radius: var(--tui-radius-sm);
+}
+
+.tui-tag--radius-md {
+  --tui-tag-radius: var(--tui-radius-md);
+}
+
+.tui-tag--radius-lg {
+  --tui-tag-radius: var(--tui-radius-lg);
+}
+
+.tui-tag--radius-xl {
+  --tui-tag-radius: var(--tui-radius-xl);
+}
+
+.tui-tag--radius-2xl {
+  --tui-tag-radius: var(--tui-radius-2xl);
+}
+
+.tui-tag--radius-full {
+  --tui-tag-radius: 9999px;
+}
+
+/* ─── Label truncation ───────────────────────────────────────────────────── */
+.tui-tag__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+/* ─── Icon slots ─────────────────────────────────────────────────────────── */
+.tui-tag__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: var(--tui-tag-icon-size, 14px);
+  height: var(--tui-tag-icon-size, 14px);
+}
+
+.tui-tag__icon > svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── Remove button ──────────────────────────────────────────────────────── */
+.tui-tag__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--tui-tag-icon-size, 14px);
+  height: var(--tui-tag-icon-size, 14px);
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  border-radius: var(--tui-radius-sm);
+  opacity: 0.7;
+  transition: opacity var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+.tui-tag__remove > svg {
+  width: 100%;
+  height: 100%;
+}
+
+.tui-tag__remove:hover {
+  opacity: 1;
+}
+
+.tui-tag__remove:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   COLORS — Filled variant
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* default filled */
+.tui-tag--default.tui-tag--filled {
+  background-color: var(--tui-color-brand-black-100);
+  color: var(--tui-color-brand-black-800);
+}
+
+/* primary filled */
+.tui-tag--primary.tui-tag--filled {
+  background-color: var(--tui-color-brand-pink-100);
+  color: var(--tui-color-brand-pink-800);
+}
+
+/* secondary filled */
+.tui-tag--secondary.tui-tag--filled {
+  background-color: var(--tui-color-brand-gray-200);
+  color: var(--tui-color-brand-black-800);
+}
+
+/* success filled */
+.tui-tag--success.tui-tag--filled {
+  background-color: var(--tui-color-success-100);
+  color: var(--tui-color-success-800);
+}
+
+/* warning filled */
+.tui-tag--warning.tui-tag--filled {
+  background-color: var(--tui-color-warning-100);
+  color: var(--tui-color-warning-800);
+}
+
+/* danger filled */
+.tui-tag--danger.tui-tag--filled {
+  background-color: var(--tui-color-danger-100);
+  color: var(--tui-color-danger-800);
+}
+
+/* info filled */
+.tui-tag--info.tui-tag--filled {
+  background-color: var(--tui-color-info-100);
+  color: var(--tui-color-info-800);
+}
+
+/* teal filled */
+.tui-tag--teal.tui-tag--filled {
+  background-color: var(--tui-color-teal-100);
+  color: var(--tui-color-teal-800);
+}
+
+/* orange filled */
+.tui-tag--orange.tui-tag--filled {
+  background-color: var(--tui-color-orange-100);
+  color: var(--tui-color-orange-800);
+}
+
+/* rose filled */
+.tui-tag--rose.tui-tag--filled {
+  background-color: var(--tui-color-rose-100);
+  color: var(--tui-color-rose-800);
+}
+
+/* indigo filled */
+.tui-tag--indigo.tui-tag--filled {
+  background-color: var(--tui-color-indigo-100);
+  color: var(--tui-color-indigo-800);
+}
+
+/* mint filled */
+.tui-tag--mint.tui-tag--filled {
+  background-color: var(--tui-color-mint-100);
+  color: var(--tui-color-mint-800);
+}
+
+/* coal filled */
+.tui-tag--coal.tui-tag--filled {
+  background-color: var(--tui-color-coal-100);
+  color: var(--tui-color-coal-800);
+}
+
+/* white filled */
+.tui-tag--white.tui-tag--filled {
+  background-color: var(--tui-color-brand-black-50);
+  color: var(--tui-color-brand-black-800);
+}
+
+/* black filled */
+.tui-tag--black.tui-tag--filled {
+  background-color: var(--tui-color-brand-black-800);
+  color: var(--tui-color-white);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   COLORS — Outlined variant
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* default outlined */
+.tui-tag--default.tui-tag--outlined {
+  background-color: transparent;
+  border-color: var(--tui-color-brand-black-200);
+  color: var(--tui-color-brand-black-800);
+}
+
+/* primary outlined */
+.tui-tag--primary.tui-tag--outlined {
+  background-color: transparent;
+  border-color: var(--tui-color-brand-pink-200);
+  color: var(--tui-color-brand-pink-700);
+}
+
+/* secondary outlined */
+.tui-tag--secondary.tui-tag--outlined {
+  background-color: transparent;
+  border-color: var(--tui-color-brand-gray-200);
+  color: var(--tui-color-brand-black-700);
+}
+
+/* success outlined */
+.tui-tag--success.tui-tag--outlined {
+  background-color: transparent;
+  border-color: var(--tui-color-success-200);
+  color: var(--tui-color-success-700);
+}
+
+/* warning outlined */
+.tui-tag--warning.tui-tag--outlined {
+  background-color: transparent;
+  border-color: var(--tui-color-warning-200);
+  color: var(--tui-color-warning-700);
+}
+
+/* danger outlined */
+.tui-tag--danger.tui-tag--outlined {
+  background-color: transparent;
+  border-color: var(--tui-color-danger-200);
+  color: var(--tui-color-danger-700);
+}
+
+/* info outlined */
+.tui-tag--info.tui-tag--outlined {
+  background-color: transparent;
+  border-color: var(--tui-color-info-200);
+  color: var(--tui-color-info-700);
+}
+
+/* teal outlined */
+.tui-tag--teal.tui-tag--outlined {
+  background-color: transparent;
+  border-color: var(--tui-color-teal-200);
+  color: var(--tui-color-teal-700);
+}
+
+/* orange outlined */
+.tui-tag--orange.tui-tag--outlined {
+  background-color: transparent;
+  border-color: var(--tui-color-orange-200);
+  color: var(--tui-color-orange-700);
+}
+
+/* rose outlined */
+.tui-tag--rose.tui-tag--outlined {
+  background-color: transparent;
+  border-color: var(--tui-color-rose-200);
+  color: var(--tui-color-rose-700);
+}
+
+/* indigo outlined */
+.tui-tag--indigo.tui-tag--outlined {
+  background-color: transparent;
+  border-color: var(--tui-color-indigo-200);
+  color: var(--tui-color-indigo-700);
+}
+
+/* mint outlined */
+.tui-tag--mint.tui-tag--outlined {
+  background-color: transparent;
+  border-color: var(--tui-color-mint-200);
+  color: var(--tui-color-mint-700);
+}
+
+/* coal outlined */
+.tui-tag--coal.tui-tag--outlined {
+  background-color: transparent;
+  border-color: var(--tui-color-coal-200);
+  color: var(--tui-color-coal-700);
+}
+
+/* white outlined */
+.tui-tag--white.tui-tag--outlined {
+  background-color: transparent;
+  border-color: var(--tui-color-brand-black-100);
+  color: var(--tui-color-brand-black-700);
+}
+
+/* black outlined */
+.tui-tag--black.tui-tag--outlined {
+  background-color: transparent;
+  border-color: var(--tui-color-brand-black-800);
+  color: var(--tui-color-brand-black-800);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HOVER STATES — Interactive only
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* filled hover */
+.tui-tag--interactive.tui-tag--default.tui-tag--filled:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-brand-black-200);
+}
+.tui-tag--interactive.tui-tag--primary.tui-tag--filled:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-brand-pink-200);
+}
+.tui-tag--interactive.tui-tag--secondary.tui-tag--filled:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-brand-gray-300);
+}
+.tui-tag--interactive.tui-tag--success.tui-tag--filled:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-success-200);
+}
+.tui-tag--interactive.tui-tag--warning.tui-tag--filled:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-warning-200);
+}
+.tui-tag--interactive.tui-tag--danger.tui-tag--filled:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-danger-200);
+}
+.tui-tag--interactive.tui-tag--info.tui-tag--filled:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-info-200);
+}
+.tui-tag--interactive.tui-tag--teal.tui-tag--filled:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-teal-200);
+}
+.tui-tag--interactive.tui-tag--orange.tui-tag--filled:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-orange-200);
+}
+.tui-tag--interactive.tui-tag--rose.tui-tag--filled:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-rose-200);
+}
+.tui-tag--interactive.tui-tag--indigo.tui-tag--filled:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-indigo-200);
+}
+.tui-tag--interactive.tui-tag--mint.tui-tag--filled:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-mint-200);
+}
+.tui-tag--interactive.tui-tag--coal.tui-tag--filled:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-coal-200);
+}
+.tui-tag--interactive.tui-tag--white.tui-tag--filled:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-brand-black-100);
+}
+.tui-tag--interactive.tui-tag--black.tui-tag--filled:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-brand-black-900);
+}
+
+/* outlined hover */
+.tui-tag--interactive.tui-tag--default.tui-tag--outlined:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-brand-black-50);
+}
+.tui-tag--interactive.tui-tag--primary.tui-tag--outlined:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-brand-pink-50);
+}
+.tui-tag--interactive.tui-tag--secondary.tui-tag--outlined:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-brand-gray-50);
+}
+.tui-tag--interactive.tui-tag--success.tui-tag--outlined:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-success-50);
+}
+.tui-tag--interactive.tui-tag--warning.tui-tag--outlined:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-warning-50);
+}
+.tui-tag--interactive.tui-tag--danger.tui-tag--outlined:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-danger-50);
+}
+.tui-tag--interactive.tui-tag--info.tui-tag--outlined:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-info-50);
+}
+.tui-tag--interactive.tui-tag--teal.tui-tag--outlined:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-teal-50);
+}
+.tui-tag--interactive.tui-tag--orange.tui-tag--outlined:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-orange-50);
+}
+.tui-tag--interactive.tui-tag--rose.tui-tag--outlined:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-rose-50);
+}
+.tui-tag--interactive.tui-tag--indigo.tui-tag--outlined:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-indigo-50);
+}
+.tui-tag--interactive.tui-tag--mint.tui-tag--outlined:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-mint-50);
+}
+.tui-tag--interactive.tui-tag--coal.tui-tag--outlined:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-coal-50);
+}
+.tui-tag--interactive.tui-tag--white.tui-tag--outlined:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-brand-black-50);
+}
+.tui-tag--interactive.tui-tag--black.tui-tag--outlined:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-brand-black-50);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SELECTED STATE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* filled selected — darken bg one step + add border */
+.tui-tag--default.tui-tag--filled.tui-tag--selected {
+  background-color: var(--tui-color-brand-black-200);
+  border-color: var(--tui-color-brand-black-300);
+}
+.tui-tag--primary.tui-tag--filled.tui-tag--selected {
+  background-color: var(--tui-color-brand-pink-200);
+  border-color: var(--tui-color-brand-pink-300);
+}
+.tui-tag--secondary.tui-tag--filled.tui-tag--selected {
+  background-color: var(--tui-color-brand-gray-300);
+  border-color: var(--tui-color-brand-gray-400);
+}
+.tui-tag--success.tui-tag--filled.tui-tag--selected {
+  background-color: var(--tui-color-success-200);
+  border-color: var(--tui-color-success-300);
+}
+.tui-tag--warning.tui-tag--filled.tui-tag--selected {
+  background-color: var(--tui-color-warning-200);
+  border-color: var(--tui-color-warning-300);
+}
+.tui-tag--danger.tui-tag--filled.tui-tag--selected {
+  background-color: var(--tui-color-danger-200);
+  border-color: var(--tui-color-danger-300);
+}
+.tui-tag--info.tui-tag--filled.tui-tag--selected {
+  background-color: var(--tui-color-info-200);
+  border-color: var(--tui-color-info-300);
+}
+.tui-tag--teal.tui-tag--filled.tui-tag--selected {
+  background-color: var(--tui-color-teal-200);
+  border-color: var(--tui-color-teal-300);
+}
+.tui-tag--orange.tui-tag--filled.tui-tag--selected {
+  background-color: var(--tui-color-orange-200);
+  border-color: var(--tui-color-orange-300);
+}
+.tui-tag--rose.tui-tag--filled.tui-tag--selected {
+  background-color: var(--tui-color-rose-200);
+  border-color: var(--tui-color-rose-300);
+}
+.tui-tag--indigo.tui-tag--filled.tui-tag--selected {
+  background-color: var(--tui-color-indigo-200);
+  border-color: var(--tui-color-indigo-300);
+}
+.tui-tag--mint.tui-tag--filled.tui-tag--selected {
+  background-color: var(--tui-color-mint-200);
+  border-color: var(--tui-color-mint-300);
+}
+.tui-tag--coal.tui-tag--filled.tui-tag--selected {
+  background-color: var(--tui-color-coal-200);
+  border-color: var(--tui-color-coal-300);
+}
+.tui-tag--white.tui-tag--filled.tui-tag--selected {
+  background-color: var(--tui-color-brand-black-100);
+  border-color: var(--tui-color-brand-black-200);
+}
+.tui-tag--black.tui-tag--filled.tui-tag--selected {
+  background-color: var(--tui-color-brand-black-900);
+  border-color: var(--tui-color-brand-black-700);
+}
+
+/* outlined selected — fill bg + darken border */
+.tui-tag--default.tui-tag--outlined.tui-tag--selected {
+  background-color: var(--tui-color-brand-black-50);
+  border-color: var(--tui-color-brand-black-400);
+}
+.tui-tag--primary.tui-tag--outlined.tui-tag--selected {
+  background-color: var(--tui-color-brand-pink-50);
+  border-color: var(--tui-color-brand-pink-400);
+}
+.tui-tag--secondary.tui-tag--outlined.tui-tag--selected {
+  background-color: var(--tui-color-brand-gray-50);
+  border-color: var(--tui-color-brand-gray-400);
+}
+.tui-tag--success.tui-tag--outlined.tui-tag--selected {
+  background-color: var(--tui-color-success-50);
+  border-color: var(--tui-color-success-400);
+}
+.tui-tag--warning.tui-tag--outlined.tui-tag--selected {
+  background-color: var(--tui-color-warning-50);
+  border-color: var(--tui-color-warning-400);
+}
+.tui-tag--danger.tui-tag--outlined.tui-tag--selected {
+  background-color: var(--tui-color-danger-50);
+  border-color: var(--tui-color-danger-400);
+}
+.tui-tag--info.tui-tag--outlined.tui-tag--selected {
+  background-color: var(--tui-color-info-50);
+  border-color: var(--tui-color-info-400);
+}
+.tui-tag--teal.tui-tag--outlined.tui-tag--selected {
+  background-color: var(--tui-color-teal-50);
+  border-color: var(--tui-color-teal-400);
+}
+.tui-tag--orange.tui-tag--outlined.tui-tag--selected {
+  background-color: var(--tui-color-orange-50);
+  border-color: var(--tui-color-orange-400);
+}
+.tui-tag--rose.tui-tag--outlined.tui-tag--selected {
+  background-color: var(--tui-color-rose-50);
+  border-color: var(--tui-color-rose-400);
+}
+.tui-tag--indigo.tui-tag--outlined.tui-tag--selected {
+  background-color: var(--tui-color-indigo-50);
+  border-color: var(--tui-color-indigo-400);
+}
+.tui-tag--mint.tui-tag--outlined.tui-tag--selected {
+  background-color: var(--tui-color-mint-50);
+  border-color: var(--tui-color-mint-400);
+}
+.tui-tag--coal.tui-tag--outlined.tui-tag--selected {
+  background-color: var(--tui-color-coal-50);
+  border-color: var(--tui-color-coal-400);
+}
+.tui-tag--white.tui-tag--outlined.tui-tag--selected {
+  background-color: var(--tui-color-brand-black-50);
+  border-color: var(--tui-color-brand-black-300);
+}
+.tui-tag--black.tui-tag--outlined.tui-tag--selected {
+  background-color: var(--tui-color-brand-black-50);
+  border-color: var(--tui-color-brand-black-900);
+}
+
+/* ─── Focus ring ─────────────────────────────────────────────────────────── */
+.tui-tag--interactive:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 0.5px var(--tui-color-focus-ring-gap),
+    0 0 1px 2px var(--tui-color-brand-black-400);
+}

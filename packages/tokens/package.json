@@ -34,7 +34,8 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "export:figma": "node scripts/export-figma.js"
   },
   "devDependencies": {
     "tsup": "^8.0.0",

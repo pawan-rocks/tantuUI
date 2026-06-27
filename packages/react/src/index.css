@@ -19,3 +19,6 @@
 @import "./components/Select/Select.css";
 @import "./components/Switch/Switch.css";
 @import "./components/FormField/FormField.css";
+@import "./components/Tag/Tag.css";
+@import "./components/Chip/Chip.css";
+@import "./components/Pill/Pill.css";

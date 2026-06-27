@@ -1,0 +1,449 @@
+/* ─── Pill base ──────────────────────────────────────────────────────────── */
+.tui-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tui-pill-gap, var(--tui-spacing-1));
+  box-sizing: border-box;
+  font-family: inherit;
+  font-weight: var(--tui-font-weight-medium);
+  line-height: var(--tui-pill-line-height, var(--tui-leading-4));
+  white-space: nowrap;
+  user-select: none;
+  cursor: default;
+  border: none;
+  padding-inline: var(--tui-pill-px, var(--tui-spacing-2_5));
+  font-size: var(--tui-pill-font-size, var(--tui-font-size-xs));
+  border-radius: 9999px;
+  height: var(--tui-pill-height, 24px);
+  max-width: 100%;
+  transition:
+    background-color var(--tui-duration-normal) var(--tui-ease-in-out),
+    color var(--tui-duration-normal) var(--tui-ease-in-out),
+    box-shadow var(--tui-duration-normal) var(--tui-ease-in-out),
+    opacity var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+/* ─── Interactive state ──────────────────────────────────────────────────── */
+.tui-pill--interactive {
+  cursor: pointer;
+}
+
+.tui-pill--interactive:hover:not(.tui-pill--disabled) {
+  opacity: 0.85;
+}
+
+.tui-pill--interactive:active:not(.tui-pill--disabled) {
+  opacity: 0.75;
+}
+
+/* ─── Disabled ───────────────────────────────────────────────────────────── */
+.tui-pill--disabled {
+  opacity: var(--tui-opacity-40, 0.4);
+  pointer-events: none;
+}
+
+/* ─── Sizes ──────────────────────────────────────────────────────────────── */
+.tui-pill--xs {
+  --tui-pill-height: var(--tui-size-xxs);
+  --tui-pill-font-size: var(--tui-font-size-3xs);
+  --tui-pill-px: var(--tui-spacing-1);
+  --tui-pill-gap: var(--tui-spacing-0_5);
+  --tui-pill-icon-size: 8px;
+  --tui-pill-line-height: var(--tui-leading-3);
+}
+
+.tui-pill--sm {
+  --tui-pill-height: var(--tui-size-xs-1);
+  --tui-pill-font-size: var(--tui-font-size-2xs, 10px);
+  --tui-pill-px: var(--tui-spacing-1_5);
+  --tui-pill-gap: var(--tui-spacing-0_5);
+  --tui-pill-icon-size: 10px;
+  --tui-pill-line-height: var(--tui-leading-3_5);
+}
+
+.tui-pill--md {
+  --tui-pill-height: var(--tui-size-xs-2);
+  --tui-pill-font-size: var(--tui-font-size-xs);
+  --tui-pill-px: var(--tui-spacing-2);
+  --tui-pill-gap: var(--tui-spacing-1);
+  --tui-pill-icon-size: 12px;
+  --tui-pill-line-height: var(--tui-leading-4);
+}
+
+.tui-pill--lg {
+  --tui-pill-height: var(--tui-size-xs);
+  --tui-pill-font-size: var(--tui-font-size-xs);
+  --tui-pill-px: var(--tui-spacing-2_5);
+  --tui-pill-gap: var(--tui-spacing-1);
+  --tui-pill-icon-size: 14px;
+  --tui-pill-line-height: var(--tui-leading-4);
+}
+
+.tui-pill--xl {
+  --tui-pill-height: var(--tui-size-sm);
+  --tui-pill-font-size: var(--tui-font-size-sm);
+  --tui-pill-px: var(--tui-spacing-3);
+  --tui-pill-gap: var(--tui-spacing-1_5);
+  --tui-pill-icon-size: 16px;
+  --tui-pill-line-height: var(--tui-leading-5);
+}
+
+/* ─── Label truncation ───────────────────────────────────────────────────── */
+.tui-pill__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+/* ─── Icon slots ─────────────────────────────────────────────────────────── */
+.tui-pill__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: var(--tui-pill-icon-size, 12px);
+  height: var(--tui-pill-icon-size, 12px);
+}
+
+.tui-pill__icon > svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── Remove button ──────────────────────────────────────────────────────── */
+.tui-pill__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--tui-pill-icon-size, 12px);
+  height: var(--tui-pill-icon-size, 12px);
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  border-radius: var(--tui-radius-full);
+  opacity: 0.7;
+  transition: opacity var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+.tui-pill__remove > svg {
+  width: 100%;
+  height: 100%;
+}
+
+.tui-pill__remove:hover {
+  opacity: 1;
+}
+
+.tui-pill__remove:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   COLORS — Subtle variant (bg 100, text 800)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* default subtle */
+.tui-pill--default.tui-pill--subtle {
+  background-color: var(--tui-color-brand-black-100);
+  color: var(--tui-color-brand-black-800);
+}
+
+/* primary subtle */
+.tui-pill--primary.tui-pill--subtle {
+  background-color: var(--tui-color-brand-pink-100);
+  color: var(--tui-color-brand-pink-800);
+}
+
+/* secondary subtle */
+.tui-pill--secondary.tui-pill--subtle {
+  background-color: var(--tui-color-brand-gray-200);
+  color: var(--tui-color-brand-black-800);
+}
+
+/* success subtle */
+.tui-pill--success.tui-pill--subtle {
+  background-color: var(--tui-color-success-100);
+  color: var(--tui-color-success-800);
+}
+
+/* warning subtle */
+.tui-pill--warning.tui-pill--subtle {
+  background-color: var(--tui-color-warning-100);
+  color: var(--tui-color-warning-800);
+}
+
+/* danger subtle */
+.tui-pill--danger.tui-pill--subtle {
+  background-color: var(--tui-color-danger-100);
+  color: var(--tui-color-danger-800);
+}
+
+/* info subtle */
+.tui-pill--info.tui-pill--subtle {
+  background-color: var(--tui-color-info-100);
+  color: var(--tui-color-info-800);
+}
+
+/* teal subtle */
+.tui-pill--teal.tui-pill--subtle {
+  background-color: var(--tui-color-teal-100);
+  color: var(--tui-color-teal-800);
+}
+
+/* orange subtle */
+.tui-pill--orange.tui-pill--subtle {
+  background-color: var(--tui-color-orange-100);
+  color: var(--tui-color-orange-800);
+}
+
+/* rose subtle */
+.tui-pill--rose.tui-pill--subtle {
+  background-color: var(--tui-color-rose-100);
+  color: var(--tui-color-rose-800);
+}
+
+/* indigo subtle */
+.tui-pill--indigo.tui-pill--subtle {
+  background-color: var(--tui-color-indigo-100);
+  color: var(--tui-color-indigo-800);
+}
+
+/* mint subtle */
+.tui-pill--mint.tui-pill--subtle {
+  background-color: var(--tui-color-mint-100);
+  color: var(--tui-color-mint-800);
+}
+
+/* coal subtle */
+.tui-pill--coal.tui-pill--subtle {
+  background-color: var(--tui-color-coal-100);
+  color: var(--tui-color-coal-800);
+}
+
+/* white subtle */
+.tui-pill--white.tui-pill--subtle {
+  background-color: var(--tui-color-brand-black-50);
+  color: var(--tui-color-brand-black-800);
+}
+
+/* black subtle */
+.tui-pill--black.tui-pill--subtle {
+  background-color: var(--tui-color-brand-black-800);
+  color: var(--tui-color-white);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   COLORS — Solid variant (bg 600, text white)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* default solid */
+.tui-pill--default.tui-pill--solid {
+  background-color: var(--tui-color-brand-black-600);
+  color: var(--tui-color-white);
+}
+
+/* primary solid */
+.tui-pill--primary.tui-pill--solid {
+  background-color: var(--tui-color-brand-pink-600);
+  color: var(--tui-color-white);
+}
+
+/* secondary solid */
+.tui-pill--secondary.tui-pill--solid {
+  background-color: var(--tui-color-brand-gray-600);
+  color: var(--tui-color-white);
+}
+
+/* success solid */
+.tui-pill--success.tui-pill--solid {
+  background-color: var(--tui-color-success-600);
+  color: var(--tui-color-white);
+}
+
+/* warning solid */
+.tui-pill--warning.tui-pill--solid {
+  background-color: var(--tui-color-warning-600);
+  color: var(--tui-color-white);
+}
+
+/* danger solid */
+.tui-pill--danger.tui-pill--solid {
+  background-color: var(--tui-color-danger-600);
+  color: var(--tui-color-white);
+}
+
+/* info solid */
+.tui-pill--info.tui-pill--solid {
+  background-color: var(--tui-color-info-600);
+  color: var(--tui-color-white);
+}
+
+/* teal solid */
+.tui-pill--teal.tui-pill--solid {
+  background-color: var(--tui-color-teal-600);
+  color: var(--tui-color-white);
+}
+
+/* orange solid */
+.tui-pill--orange.tui-pill--solid {
+  background-color: var(--tui-color-orange-600);
+  color: var(--tui-color-white);
+}
+
+/* rose solid */
+.tui-pill--rose.tui-pill--solid {
+  background-color: var(--tui-color-rose-600);
+  color: var(--tui-color-white);
+}
+
+/* indigo solid */
+.tui-pill--indigo.tui-pill--solid {
+  background-color: var(--tui-color-indigo-600);
+  color: var(--tui-color-white);
+}
+
+/* mint solid */
+.tui-pill--mint.tui-pill--solid {
+  background-color: var(--tui-color-mint-600);
+  color: var(--tui-color-white);
+}
+
+/* coal solid */
+.tui-pill--coal.tui-pill--solid {
+  background-color: var(--tui-color-coal-600);
+  color: var(--tui-color-white);
+}
+
+/* white solid */
+.tui-pill--white.tui-pill--solid {
+  background-color: var(--tui-color-brand-black-100);
+  color: var(--tui-color-brand-black-800);
+}
+
+/* black solid */
+.tui-pill--black.tui-pill--solid {
+  background-color: var(--tui-color-brand-black-900);
+  color: var(--tui-color-white);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   COLORS — Outlined variant (transparent bg, colored border + text)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* default outlined */
+.tui-pill--default.tui-pill--outlined {
+  background-color: transparent;
+  border: 1px solid var(--tui-color-brand-black-200);
+  color: var(--tui-color-brand-black-800);
+}
+
+/* primary outlined */
+.tui-pill--primary.tui-pill--outlined {
+  background-color: transparent;
+  border: 1px solid var(--tui-color-brand-pink-200);
+  color: var(--tui-color-brand-pink-700);
+}
+
+/* secondary outlined */
+.tui-pill--secondary.tui-pill--outlined {
+  background-color: transparent;
+  border: 1px solid var(--tui-color-brand-gray-200);
+  color: var(--tui-color-brand-black-700);
+}
+
+/* success outlined */
+.tui-pill--success.tui-pill--outlined {
+  background-color: transparent;
+  border: 1px solid var(--tui-color-success-200);
+  color: var(--tui-color-success-700);
+}
+
+/* warning outlined */
+.tui-pill--warning.tui-pill--outlined {
+  background-color: transparent;
+  border: 1px solid var(--tui-color-warning-200);
+  color: var(--tui-color-warning-700);
+}
+
+/* danger outlined */
+.tui-pill--danger.tui-pill--outlined {
+  background-color: transparent;
+  border: 1px solid var(--tui-color-danger-200);
+  color: var(--tui-color-danger-700);
+}
+
+/* info outlined */
+.tui-pill--info.tui-pill--outlined {
+  background-color: transparent;
+  border: 1px solid var(--tui-color-info-200);
+  color: var(--tui-color-info-700);
+}
+
+/* teal outlined */
+.tui-pill--teal.tui-pill--outlined {
+  background-color: transparent;
+  border: 1px solid var(--tui-color-teal-200);
+  color: var(--tui-color-teal-700);
+}
+
+/* orange outlined */
+.tui-pill--orange.tui-pill--outlined {
+  background-color: transparent;
+  border: 1px solid var(--tui-color-orange-200);
+  color: var(--tui-color-orange-700);
+}
+
+/* rose outlined */
+.tui-pill--rose.tui-pill--outlined {
+  background-color: transparent;
+  border: 1px solid var(--tui-color-rose-200);
+  color: var(--tui-color-rose-700);
+}
+
+/* indigo outlined */
+.tui-pill--indigo.tui-pill--outlined {
+  background-color: transparent;
+  border: 1px solid var(--tui-color-indigo-200);
+  color: var(--tui-color-indigo-700);
+}
+
+/* mint outlined */
+.tui-pill--mint.tui-pill--outlined {
+  background-color: transparent;
+  border: 1px solid var(--tui-color-mint-200);
+  color: var(--tui-color-mint-700);
+}
+
+/* coal outlined */
+.tui-pill--coal.tui-pill--outlined {
+  background-color: transparent;
+  border: 1px solid var(--tui-color-coal-200);
+  color: var(--tui-color-coal-700);
+}
+
+/* white outlined */
+.tui-pill--white.tui-pill--outlined {
+  background-color: transparent;
+  border: 1px solid var(--tui-color-brand-black-100);
+  color: var(--tui-color-brand-black-700);
+}
+
+/* black outlined */
+.tui-pill--black.tui-pill--outlined {
+  background-color: transparent;
+  border: 1px solid var(--tui-color-brand-black-800);
+  color: var(--tui-color-brand-black-800);
+}
+
+/* ─── Focus ring ─────────────────────────────────────────────────────────── */
+.tui-pill:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 0.5px var(--tui-color-focus-ring-gap),
+    0 0 1px 2px var(--tui-color-brand-black-400);
+}

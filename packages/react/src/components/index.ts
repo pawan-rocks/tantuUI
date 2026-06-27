@@ -11,3 +11,6 @@ export * from "./Radio";
 export * from "./Select";
 export * from "./Switch";
 export * from "./FormField";
+export * from "./Tag";
+export * from "./Chip";
+export * from "./Pill";
