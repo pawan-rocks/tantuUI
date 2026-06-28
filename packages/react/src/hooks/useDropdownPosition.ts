@@ -206,7 +206,7 @@ export function useDropdownPosition(
 ): DropdownPositionResult {
   const { placement = "auto", offset = 4, isOpen } = options;
 
-  const [styles, setStyles] = useState<CSSProperties>({ position: "absolute", top: -9999, left: -9999 });
+  const [styles, setStyles] = useState<CSSProperties>({ position: "absolute", visibility: "hidden" as const });
   const [resolvedPlacement, setResolvedPlacement] = useState<DropdownPlacement>(
     placement === "auto" ? "bottom-start" : placement,
   );
@@ -222,20 +222,19 @@ export function useDropdownPosition(
 
     const resolved = resolveAutoPlacement(triggerRect, dropdownRect, placement, offset);
     const newStyles = computeStyles(triggerRect, resolved, offset);
+    // Make visible after position is calculated
+    newStyles.visibility = "visible";
 
     setResolvedPlacement(resolved);
     setStyles(newStyles);
   }, [triggerRef, dropdownRef, placement, offset]);
 
+  // Position on open and reposition on scroll/resize
   useEffect(() => {
     if (!isOpen) return;
 
-    // Calculate position on next frame (dropdown needs to be rendered first)
-    rafId.current = requestAnimationFrame(() => {
-      update();
-      // Second frame to ensure dimensions are correct after CSS applies
-      rafId.current = requestAnimationFrame(update);
-    });
+    // Initial position — single rAF to ensure portal DOM is ready
+    rafId.current = requestAnimationFrame(update);
 
     const handleReposition = () => {
       if (rafId.current) cancelAnimationFrame(rafId.current);

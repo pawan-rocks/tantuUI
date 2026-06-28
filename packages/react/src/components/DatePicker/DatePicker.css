@@ -42,20 +42,8 @@
   border: var(--tui-border-width-thin, 1px) solid var(--tui-color-brand-black-100);
   box-shadow: var(--tui-shadow-lg);
   padding: var(--_dp-padding, var(--tui-spacing-3));
-  animation: tui-datepicker-enter 150ms var(--tui-ease-in-out);
   box-sizing: border-box;
   font-family: inherit;
-}
-
-@keyframes tui-datepicker-enter {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* ─── Popup size variants ──────────────────────────────────────────────────── */
@@ -67,6 +55,7 @@
   --_dp-btn-py: var(--tui-spacing-1);
   --_dp-btn-px: var(--tui-spacing-2);
   --_dp-preset-min-w: 100px;
+  --_time-wrapper-height: 250px;
 }
 
 .tui-datepicker__popup--sm {
@@ -76,6 +65,7 @@
   --_dp-btn-py: var(--tui-spacing-1);
   --_dp-btn-px: var(--tui-spacing-2_5);
   --_dp-preset-min-w: 120px;
+  --_time-wrapper-height: 278px;
 }
 
 .tui-datepicker__popup--md {
@@ -85,6 +75,7 @@
   --_dp-btn-py: var(--tui-spacing-1_5);
   --_dp-btn-px: var(--tui-spacing-3);
   --_dp-preset-min-w: 140px;
+  --_time-wrapper-height: 306px;
 }
 
 .tui-datepicker__popup--lg {
@@ -94,6 +85,7 @@
   --_dp-btn-py: var(--tui-spacing-2);
   --_dp-btn-px: var(--tui-spacing-4);
   --_dp-preset-min-w: 160px;
+  --_time-wrapper-height: 348px;
 }
 
 .tui-datepicker__popup--xl {
@@ -103,6 +95,7 @@
   --_dp-btn-py: var(--tui-spacing-2_5);
   --_dp-btn-px: var(--tui-spacing-5);
   --_dp-preset-min-w: 180px;
+  --_time-wrapper-height: 394px;
 }
 
 /* ─── Footer ───────────────────────────────────────────────────────────────── */
@@ -250,6 +243,7 @@
   display: flex;
   flex-direction: column;
   min-width: var(--_dp-preset-min-w, 120px);
+  height: var(--_time-wrapper-height);
 }
 
 .tui-datepicker__time-panel > .tui-timeselector {

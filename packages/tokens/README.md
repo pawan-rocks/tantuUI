@@ -148,6 +148,8 @@ Any browser with CSS custom properties support (all modern browsers).
 - [GitHub](https://github.com/pawan-rocks/tantuUI)
 - [Storybook](https://tantuui.com/storybook/)
 
+- For Support - Email => pawanjee.srkg@gmail.com
+
 ## License
 
 MIT

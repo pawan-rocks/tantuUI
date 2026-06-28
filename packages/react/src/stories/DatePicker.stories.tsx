@@ -40,7 +40,7 @@ const meta: Meta<typeof DatePicker> = {
     },
     showFooter: {
       control: "boolean",
-      description: "Show Cancel/OK footer — apply selection only on OK",
+      description: "Show Cancel/OK footer. Always true when showTime is enabled (time requires OK confirmation).",
       table: { category: "Behavior", defaultValue: { summary: "false" } },
     },
     showTime: {
@@ -92,8 +92,8 @@ const meta: Meta<typeof DatePicker> = {
       description: "Calendar icon position in the input",
       table: { category: "Appearance", defaultValue: { summary: "left" } },
     },
-    onChange: { action: "onChange", table: { category: "Events" } },
-    onRangeChange: { action: "onRangeChange", table: { category: "Events" } },
+    onChange: { action: "onChange", description: "Returns Date | null. When footer shown: fires on OK click. Without footer: fires immediately on date selection.", table: { category: "Events" } },
+    onRangeChange: { action: "onRangeChange", description: "Returns (start: Date | null, end: Date | null). When footer shown: fires on OK click. Without footer: fires on range complete.", table: { category: "Events" } },
   },
 
   args: {
@@ -288,7 +288,7 @@ export const Intents: Story = {
   name: "Intents",
   parameters: { controls: { disable: true } },
   render: () => {
-    const intents = ["default", "primary", "success", "danger", "warning", "info"] as const;
+    const intents = ["default", "primary", "secondary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 320 }}>
         {intents.map((intent) => (
@@ -426,7 +426,7 @@ export const FooterIntents: Story = {
   name: "Footer Intents",
   parameters: { controls: { disable: true } },
   render: () => {
-    const intents = ["default", "primary", "success", "danger", "warning", "info", "teal", "indigo"] as const;
+    const intents = ["default", "primary", "secondary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 320 }}>
         {intents.map((intent) => (

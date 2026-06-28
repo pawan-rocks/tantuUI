@@ -13,3 +13,5 @@ infra/**/.terraform
 infra/**/*.tfstate
 infra/**/*.tfstate.backup
 .kiro
+*.sh
+.husky

@@ -188,7 +188,7 @@ export const DEFAULT_RANGE_PRESETS: DatePickerPreset[] = [
 export interface DatePickerProps extends BaseProps {
   /** Selected date (single mode) */
   value?: Date | null;
-  /** Called when date selected (single mode) */
+  /** Called when date selected (single mode). Returns `Date | null`. With showTime: includes hours/minutes/seconds. When footer is shown, fires on OK click (not on calendar click). */
   onChange?: (date: Date | null) => void;
   /** Range selection mode */
   isRange?: boolean;
@@ -196,7 +196,7 @@ export interface DatePickerProps extends BaseProps {
   rangeStart?: Date | null;
   /** Range end (range mode) */
   rangeEnd?: Date | null;
-  /** Called when range changes (range mode) */
+  /** Called when range changes (range mode). Returns `(start: Date | null, end: Date | null)`. With showTime: dates include hours/minutes/seconds. When footer is shown, fires on OK click. */
   onRangeChange?: (start: Date | null, end: Date | null) => void;
   /** Placeholder text */
   placeholder?: string;
@@ -230,8 +230,10 @@ export interface DatePickerProps extends BaseProps {
   isClearable?: boolean;
   /** Close popup after selection */
   closeOnSelect?: boolean;
-  /** Show footer with Cancel/OK buttons. When true, selection is only applied on OK click. */
+  /** Show footer with Cancel/OK buttons. When true, selection is only applied on OK click. Note: always forced to true when `showTime` is enabled (time requires explicit confirmation). */
   showFooter?: boolean;
+  /** Called when OK button is clicked. Fires after onChange/onRangeChange. Receives the final applied date(s). Only fires when footer is visible. */
+  onOk?: (value: Date | null, rangeStart?: Date | null, rangeEnd?: Date | null) => void;
   /** Show time picker below the calendar */
   showTime?: boolean;
   /** Time format (12h or 24h). Only used when showTime is true. */
@@ -250,6 +252,8 @@ export interface DatePickerProps extends BaseProps {
   iconPosition?: "left" | "right";
   /** Custom icon element to replace the default calendar icon. Pass `false` to hide the icon entirely. */
   icon?: ReactNode | false;
+  /** Ghost/skeleton mode — renders shimmer placeholder instead of input */
+  isGhost?: boolean;
 }
 
 // ── Default formatters ────────────────────────────────────────────────────
@@ -401,6 +405,7 @@ const RangeTimePanel: React.FC<RangeTimePanelProps> = ({
         minTime={minTime}
         isTimeDisabled={isTimeDisabledFn}
         isDisabled={isCurrentDisabled}
+        height={"100%"}
       />
     </div>
   );
@@ -437,6 +442,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       isClearable = false,
       closeOnSelect = true,
       showFooter = false,
+      onOk,
       showTime = false,
       timeFormat = "12h",
       showSeconds = false,
@@ -446,6 +452,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
       rangeSeparator = " – ",
       iconPosition = "left",
       icon,
+      isGhost = false,
     },
     ref,
   ) => {
@@ -688,15 +695,17 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
           end = new Date(end.getFullYear(), end.getMonth(), end.getDate(), rangeEndTime.hours, rangeEndTime.minutes, rangeEndTime.seconds);
         }
         onRangeChange?.(start, end);
+        onOk?.(null, start, end);
       } else {
         let date = pendingValue ?? null;
         if (showTime && date) {
           date = new Date(date.getFullYear(), date.getMonth(), date.getDate(), timeValue.hours, timeValue.minutes, timeValue.seconds);
         }
         onChange?.(date);
+        onOk?.(date);
       }
       setIsOpen(false);
-    }, [isRange, pendingValue, pendingRangeStart, pendingRangeEnd, onChange, onRangeChange, showTime, timeValue, rangeStartTime, rangeEndTime]);
+    }, [isRange, pendingValue, pendingRangeStart, pendingRangeEnd, onChange, onRangeChange, onOk, showTime, timeValue, rangeStartTime, rangeEndTime]);
 
     const handleFooterCancel = useCallback(() => {
       // Discard pending state and close
@@ -789,6 +798,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
             clearable={isClearable && hasValue}
             onClear={handleClear}
             aria-hidden="true"
+            isGhost={isGhost}
             tabIndex={-1}
           />
         </div>
@@ -844,6 +854,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                       size={effectiveCalendarSize}
                       showHeader
                       showFooter={false}
+                      height={"100%"}
                     />
                   ) : (
                     <RangeTimePanel
@@ -859,6 +870,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                       hasStartDate={!!pendingRangeStart}
                       hasEndDate={!!pendingRangeEnd}
                       hasEndTimeBeenSet={endTimeUserSet}
+                      
                       isSameDay={
                         !!(pendingRangeStart && pendingRangeEnd &&
                           pendingRangeStart.getFullYear() === pendingRangeEnd.getFullYear() &&

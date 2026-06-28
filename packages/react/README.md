@@ -114,6 +114,7 @@ module.exports = { presets: [tantuPreset] };
 | `Calendar` | Date calendar with range selection, week numbers |
 | `TimeSelector` | Scrollable time picker (12h/24h, seconds) |
 | `DatePicker` | Full date/time picker with presets, range, footer |
+| `TimePicker` | Standalone time picker input (12h/24h, seconds) |
 | `Popover` | Portal-based floating container |
 | `Shimmer` | Skeleton/ghost loading placeholder |
 
@@ -168,6 +169,8 @@ Modern browsers (Chrome, Firefox, Safari, Edge). Requires CSS custom properties 
 - [Storybook](https://tantuui.com/storybook/)
 - [GitHub](https://github.com/pawan-rocks/tantuUI)
 - [Tokens package](https://www.npmjs.com/package/@tantuui/tokens)
+
+- For Support - Email => pawanjee.srkg@gmail.com
 
 ## License
 

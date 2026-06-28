@@ -25,4 +25,5 @@
 @import "./components/Calendar/Calendar.css";
 @import "./components/TimeSelector/TimeSelector.css";
 @import "./components/DatePicker/DatePicker.css";
+@import "./components/TimePicker/TimePicker.css";
 @import "./components/Popover/Popover.css";
