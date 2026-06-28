@@ -170,6 +170,8 @@ Modern browsers (Chrome, Firefox, Safari, Edge). Requires CSS custom properties 
 - [GitHub](https://github.com/pawan-rocks/tantuUI)
 - [Tokens package](https://www.npmjs.com/package/@tantuui/tokens)
 
+- For Support - Email => pawanjee.srkg@gmail.com
+
 ## License
 
 MIT

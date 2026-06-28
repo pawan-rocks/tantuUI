@@ -1,22 +1,29 @@
 {
   "name": "@tantuui/tokens",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Framework-agnostic design tokens for TantuUI (--tui-* CSS variables)",
   "license": "MIT",
-  "keywords": ["design-tokens", "css-variables", "design-system", "tantuui", "tailwind-preset", "theming"],
+  "keywords": [
+    "design-tokens",
+    "css-variables",
+    "design-system",
+    "tantuui",
+    "tailwind-preset",
+    "theming"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types":   "./dist/index.d.ts",
-      "import":  "./dist/index.mjs",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
-    "./css":              "./dist/tokens.css",
-    "./css/base":         "./dist/base.css",
-    "./css/utilities":    "./dist/utilities.css",
-    "./tailwind-preset":  "./dist/tailwind-preset.js",
+    "./css": "./dist/tokens.css",
+    "./css/base": "./dist/base.css",
+    "./css/utilities": "./dist/utilities.css",
+    "./tailwind-preset": "./dist/tailwind-preset.js",
     "./runtime": {
       "import": "./dist/runtime.mjs",
       "require": "./dist/runtime.js"
