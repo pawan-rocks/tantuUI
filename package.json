@@ -1,7 +1,7 @@
 {
   "name": "tantuui",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "TantuUI — token-based design system",
   "workspaces": [
     "packages/*"
