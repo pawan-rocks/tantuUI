@@ -24,10 +24,6 @@ jobs:
   publish:
     name: Build & Publish @tantuui/react
     runs-on: ubuntu-latest
-    
-    permissions:
-      contents: read
-      packages: write
 
     steps:
       - name: Checkout
@@ -85,16 +81,3 @@ jobs:
         run: npm publish --access public --tag ${{ steps.dist_tag.outputs.TAG }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Setup Node for GitHub Packages
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@tantuui"
-
-      - name: Publish @tantuui/react to GitHub Packages
-        working-directory: packages/react
-        run: npm publish --access public --tag ${{ steps.dist_tag.outputs.TAG }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
