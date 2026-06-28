@@ -4,6 +4,21 @@ on:
   push:
     tags:
       - "react-v*" # e.g. react-v0.0.1-beta
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to publish (e.g. 0.1.0, 0.1.0-beta.1, 0.1.0-dev.1)"
+        required: true
+        type: string
+      dist_tag:
+        description: "npm dist-tag"
+        required: true
+        type: choice
+        options:
+          - latest
+          - dev
+          - beta
+        default: latest
 
 jobs:
   publish:
@@ -32,22 +47,32 @@ jobs:
       - name: Build react
         run: npm run build --workspace=packages/react
 
-      - name: Extract version from tag
+      - name: Extract version
         id: version
-        run: echo "TAG_VERSION=${GITHUB_REF#refs/tags/react-v}" >> $GITHUB_OUTPUT
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "TAG_VERSION=${{ inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "TAG_VERSION=${GITHUB_REF#refs/tags/react-v}" >> $GITHUB_OUTPUT
+          fi
 
       - name: Set package version
-        id: set_version
         run: npm version ${{ steps.version.outputs.TAG_VERSION }} --no-git-tag-version --workspace=packages/react
 
       - name: Determine dist-tag
         id: dist_tag
         run: |
-          VERSION="${{ steps.version.outputs.TAG_VERSION }}"
-          if [[ "$VERSION" == *"-"* ]]; then
-            echo "TAG=beta" >> $GITHUB_OUTPUT
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "TAG=${{ inputs.dist_tag }}" >> $GITHUB_OUTPUT
           else
-            echo "TAG=latest" >> $GITHUB_OUTPUT
+            VERSION="${{ steps.version.outputs.TAG_VERSION }}"
+            if [[ "$VERSION" == *"-dev"* ]]; then
+              echo "TAG=dev" >> $GITHUB_OUTPUT
+            elif [[ "$VERSION" == *"-"* ]]; then
+              echo "TAG=beta" >> $GITHUB_OUTPUT
+            else
+              echo "TAG=latest" >> $GITHUB_OUTPUT
+            fi
           fi
 
       - name: Publish @tantuui/react
