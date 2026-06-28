@@ -17,4 +17,5 @@ export * from "./Pill";
 export * from "./Calendar";
 export * from "./TimeSelector";
 export * from "./DatePicker";
+export * from "./TimePicker";
 export * from "./Popover";
