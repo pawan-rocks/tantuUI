@@ -1,0 +1,347 @@
+/* ─── DatePicker shared styles ─────────────────────────────────────────────── */
+
+.tui-datepicker {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* ─── Trigger (wraps Input, opens popup on click) ──────────────────────────── */
+
+.tui-datepicker__trigger {
+  cursor: pointer;
+  outline: none;
+}
+
+.tui-datepicker__trigger--disabled {
+  cursor: not-allowed;
+}
+
+.tui-datepicker__trigger .tui-input__native {
+  cursor: inherit;
+  pointer-events: none;
+}
+
+.tui-datepicker__trigger .tui-input__clear {
+  pointer-events: auto;
+}
+
+.tui-datepicker__trigger:focus-visible .tui-input {
+  box-shadow:
+    0 0 0 0.5px var(--tui-color-focus-ring-gap),
+    0 0 1px 2px var(--tui-color-brand-black-600);
+}
+
+/* ─── Popup ────────────────────────────────────────────────────────────────── */
+
+.tui-datepicker__popup {
+  position: absolute;
+  z-index: var(--tui-z-dropdown, 1000);
+  border-radius: var(--tui-radius-lg);
+  background: var(--tui-color-white);
+  border: var(--tui-border-width-thin, 1px) solid var(--tui-color-brand-black-100);
+  box-shadow: var(--tui-shadow-lg);
+  padding: var(--_dp-padding, var(--tui-spacing-3));
+  animation: tui-datepicker-enter 150ms var(--tui-ease-in-out);
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+@keyframes tui-datepicker-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Popup size variants ──────────────────────────────────────────────────── */
+
+.tui-datepicker__popup--xs {
+  --_dp-padding: var(--tui-spacing-1_5);
+  --_dp-gap: var(--tui-spacing-1_5);
+  --_dp-font: var(--tui-font-size-xs);
+  --_dp-btn-py: var(--tui-spacing-1);
+  --_dp-btn-px: var(--tui-spacing-2);
+  --_dp-preset-min-w: 100px;
+}
+
+.tui-datepicker__popup--sm {
+  --_dp-padding: var(--tui-spacing-2);
+  --_dp-gap: var(--tui-spacing-2);
+  --_dp-font: var(--tui-font-size-xs);
+  --_dp-btn-py: var(--tui-spacing-1);
+  --_dp-btn-px: var(--tui-spacing-2_5);
+  --_dp-preset-min-w: 120px;
+}
+
+.tui-datepicker__popup--md {
+  --_dp-padding: var(--tui-spacing-3);
+  --_dp-gap: var(--tui-spacing-3);
+  --_dp-font: var(--tui-font-size-sm);
+  --_dp-btn-py: var(--tui-spacing-1_5);
+  --_dp-btn-px: var(--tui-spacing-3);
+  --_dp-preset-min-w: 140px;
+}
+
+.tui-datepicker__popup--lg {
+  --_dp-padding: var(--tui-spacing-4);
+  --_dp-gap: var(--tui-spacing-4);
+  --_dp-font: var(--tui-font-size-sm);
+  --_dp-btn-py: var(--tui-spacing-2);
+  --_dp-btn-px: var(--tui-spacing-4);
+  --_dp-preset-min-w: 160px;
+}
+
+.tui-datepicker__popup--xl {
+  --_dp-padding: var(--tui-spacing-5);
+  --_dp-gap: var(--tui-spacing-5);
+  --_dp-font: var(--tui-font-size-md);
+  --_dp-btn-py: var(--tui-spacing-2_5);
+  --_dp-btn-px: var(--tui-spacing-5);
+  --_dp-preset-min-w: 180px;
+}
+
+/* ─── Footer ───────────────────────────────────────────────────────────────── */
+
+.tui-datepicker__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--tui-spacing-2);
+  padding-top: var(--_dp-gap, var(--tui-spacing-3));
+  margin-top: var(--_dp-gap, var(--tui-spacing-3));
+  border-top: var(--tui-border-width-thin, 1px) solid var(--tui-color-brand-black-100);
+}
+
+.tui-datepicker__cancel-btn {
+  padding: var(--_dp-btn-py, var(--tui-spacing-1_5)) var(--_dp-btn-px, var(--tui-spacing-3));
+  border-radius: var(--tui-radius-md);
+  border: var(--tui-border-width-thin, 1px) solid var(--tui-color-brand-black-200);
+  background: var(--tui-color-white);
+  color: var(--tui-color-brand-black-700);
+  font-size: var(--_dp-font, var(--tui-font-size-sm));
+  font-weight: var(--tui-font-weight-medium);
+  font-family: inherit;
+  cursor: pointer;
+  transition: background var(--tui-duration-normal) var(--tui-ease-in-out),
+    border-color var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+.tui-datepicker__cancel-btn:hover {
+  background: var(--tui-color-brand-black-50);
+  border-color: var(--tui-color-brand-black-300);
+}
+
+.tui-datepicker__cancel-btn:focus-visible {
+  outline: 2px solid var(--tui-color-primary-500);
+  outline-offset: 2px;
+}
+
+.tui-datepicker__ok-btn {
+  padding: var(--_dp-btn-py, var(--tui-spacing-1_5)) var(--_dp-btn-px, var(--tui-spacing-3));
+  border-radius: var(--tui-radius-md);
+  border: none;
+  background: var(--_ok-bg, var(--tui-color-brand-black-800));
+  color: var(--tui-color-white);
+  font-size: var(--_dp-font, var(--tui-font-size-sm));
+  font-weight: var(--tui-font-weight-medium);
+  font-family: inherit;
+  cursor: pointer;
+  transition: background var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+.tui-datepicker__ok-btn:hover {
+  background: var(--_ok-bg-hover, var(--tui-color-brand-black-900));
+}
+
+.tui-datepicker__ok-btn:focus-visible {
+  outline: 2px solid var(--_ok-ring, var(--tui-color-brand-black-500));
+  outline-offset: 2px;
+}
+
+.tui-datepicker__ok-btn:disabled {
+  opacity: var(--tui-opacity-40, 0.4);
+  cursor: not-allowed;
+}
+
+/* ─── OK button intent colors ──────────────────────────────────────────────── */
+
+.tui-datepicker__ok-btn--default { --_ok-bg: var(--tui-color-brand-black-800); --_ok-bg-hover: var(--tui-color-brand-black-900); --_ok-ring: var(--tui-color-brand-black-500); }
+.tui-datepicker__ok-btn--primary { --_ok-bg: var(--tui-color-brand-pink-600); --_ok-bg-hover: var(--tui-color-brand-pink-700); --_ok-ring: var(--tui-color-brand-pink-500); }
+.tui-datepicker__ok-btn--secondary { --_ok-bg: var(--tui-color-brand-black-600); --_ok-bg-hover: var(--tui-color-brand-black-700); --_ok-ring: var(--tui-color-brand-black-400); }
+.tui-datepicker__ok-btn--success { --_ok-bg: var(--tui-color-success-600); --_ok-bg-hover: var(--tui-color-success-700); --_ok-ring: var(--tui-color-success-500); }
+.tui-datepicker__ok-btn--warning { --_ok-bg: var(--tui-color-warning-600); --_ok-bg-hover: var(--tui-color-warning-700); --_ok-ring: var(--tui-color-warning-500); }
+.tui-datepicker__ok-btn--danger { --_ok-bg: var(--tui-color-danger-600); --_ok-bg-hover: var(--tui-color-danger-700); --_ok-ring: var(--tui-color-danger-500); }
+.tui-datepicker__ok-btn--info { --_ok-bg: var(--tui-color-info-600); --_ok-bg-hover: var(--tui-color-info-700); --_ok-ring: var(--tui-color-info-500); }
+.tui-datepicker__ok-btn--teal { --_ok-bg: var(--tui-color-teal-600); --_ok-bg-hover: var(--tui-color-teal-700); --_ok-ring: var(--tui-color-teal-500); }
+.tui-datepicker__ok-btn--orange { --_ok-bg: var(--tui-color-orange-600); --_ok-bg-hover: var(--tui-color-orange-700); --_ok-ring: var(--tui-color-orange-500); }
+.tui-datepicker__ok-btn--rose { --_ok-bg: var(--tui-color-rose-600); --_ok-bg-hover: var(--tui-color-rose-700); --_ok-ring: var(--tui-color-rose-500); }
+.tui-datepicker__ok-btn--indigo { --_ok-bg: var(--tui-color-indigo-600); --_ok-bg-hover: var(--tui-color-indigo-700); --_ok-ring: var(--tui-color-indigo-500); }
+.tui-datepicker__ok-btn--mint { --_ok-bg: var(--tui-color-mint-600); --_ok-bg-hover: var(--tui-color-mint-700); --_ok-ring: var(--tui-color-mint-500); }
+.tui-datepicker__ok-btn--coal { --_ok-bg: var(--tui-color-coal-600); --_ok-bg-hover: var(--tui-color-coal-700); --_ok-ring: var(--tui-color-coal-500); }
+.tui-datepicker__ok-btn--white { --_ok-bg: var(--tui-color-brand-black-100); --_ok-bg-hover: var(--tui-color-brand-black-200); --_ok-ring: var(--tui-color-brand-black-300); color: var(--tui-color-brand-black-900); }
+.tui-datepicker__ok-btn--black { --_ok-bg: var(--tui-color-brand-black-900); --_ok-bg-hover: var(--tui-color-brand-black-950); --_ok-ring: var(--tui-color-brand-black-700); }
+
+/* ─── Range/Sidebar layout ─────────────────────────────────────────────────── */
+
+.tui-datepicker__range-body {
+  display: flex;
+  gap: var(--_dp-gap, var(--tui-spacing-3));
+  align-items: stretch;
+}
+
+.tui-datepicker__presets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tui-spacing-0_5);
+  min-width: var(--_dp-preset-min-w, 140px);
+  border-right: var(--tui-border-width-thin, 1px) solid var(--tui-color-brand-black-100);
+  padding-right: var(--_dp-gap, var(--tui-spacing-3));
+}
+
+.tui-datepicker__preset-btn {
+  padding: var(--_dp-btn-py, var(--tui-spacing-1_5)) var(--_dp-btn-px, var(--tui-spacing-2));
+  border: none;
+  border-radius: var(--tui-radius-md);
+  background: transparent;
+  color: var(--tui-color-brand-black-700);
+  font-size: var(--_dp-font, var(--tui-font-size-sm));
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--tui-duration-normal) var(--tui-ease-in-out),
+    color var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+.tui-datepicker__preset-btn:hover {
+  background: var(--tui-color-brand-black-50);
+  color: var(--tui-color-brand-black-900);
+}
+
+.tui-datepicker__preset-btn:focus-visible {
+  outline: 2px solid var(--tui-color-primary-500);
+  outline-offset: 2px;
+}
+
+.tui-datepicker__preset-btn--active {
+  background: var(--tui-color-primary-50);
+  color: var(--tui-color-primary-700);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-datepicker__preset-btn--active:hover {
+  background: var(--tui-color-primary-100);
+  color: var(--tui-color-primary-800);
+}
+
+.tui-datepicker__range-calendar {
+  flex: 1;
+}
+
+/* ─── Time panel (right side) ──────────────────────────────────────────────── */
+
+.tui-datepicker__time-panel {
+  border-left: var(--tui-border-width-thin, 1px) solid var(--tui-color-brand-black-100);
+  padding-left: var(--_dp-gap, var(--tui-spacing-3));
+  display: flex;
+  flex-direction: column;
+  min-width: var(--_dp-preset-min-w, 120px);
+}
+
+.tui-datepicker__time-panel > .tui-timeselector {
+  flex: 1;
+  min-height: 0;
+}
+
+.tui-datepicker__range-time {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.tui-datepicker__range-time > .tui-timeselector {
+  flex: 1;
+  min-height: 0;
+}
+
+.tui-datepicker__time-tabs {
+  display: flex;
+  gap: var(--tui-spacing-0_5);
+  margin-bottom: var(--tui-spacing-1_5);
+  border-bottom: var(--tui-border-width-thin, 1px) solid var(--tui-color-brand-black-100);
+  padding-bottom: var(--tui-spacing-1_5);
+}
+
+.tui-datepicker__time-tab {
+  flex: 1;
+  padding: var(--_dp-btn-py, var(--tui-spacing-1)) var(--_dp-btn-px, var(--tui-spacing-2));
+  border: none;
+  border-radius: var(--tui-radius-md);
+  background: transparent;
+  color: var(--tui-color-brand-black-500);
+  font-size: var(--_dp-font, var(--tui-font-size-xs));
+  font-weight: var(--tui-font-weight-medium);
+  font-family: inherit;
+  cursor: pointer;
+  transition: background var(--tui-duration-normal) var(--tui-ease-in-out),
+    color var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+.tui-datepicker__time-tab:hover {
+  background: var(--tui-color-brand-black-50);
+  color: var(--tui-color-brand-black-700);
+}
+
+.tui-datepicker__time-tab--active {
+  background: var(--tui-color-brand-black-100);
+  color: var(--tui-color-brand-black-900);
+}
+
+.tui-datepicker__time-tab--active:hover {
+  background: var(--tui-color-brand-black-150, var(--tui-color-brand-black-100));
+  color: var(--tui-color-brand-black-900);
+}
+
+.tui-datepicker__time-row {
+  display: flex;
+  align-items: center;
+  gap: var(--_dp-gap, var(--tui-spacing-3));
+  justify-content: center;
+}
+
+.tui-datepicker__time-label {
+  font-size: var(--_dp-font, var(--tui-font-size-xs));
+  font-weight: var(--tui-font-weight-medium);
+  color: var(--tui-color-brand-black-500);
+}
+
+/* ─── Clear button overlay ─────────────────────────────────────────────────── */
+
+.tui-datepicker__clear {
+  position: absolute;
+  right: var(--tui-spacing-2);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tui-spacing-5);
+  height: var(--tui-spacing-5);
+  border: none;
+  border-radius: var(--tui-radius-full);
+  background: transparent;
+  color: var(--tui-color-brand-black-400);
+  cursor: pointer;
+  transition: color var(--tui-duration-normal) var(--tui-ease-in-out),
+    background var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+.tui-datepicker__clear:hover {
+  color: var(--tui-color-brand-black-700);
+  background: var(--tui-color-brand-black-50);
+}

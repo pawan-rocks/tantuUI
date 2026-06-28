@@ -1,0 +1,7 @@
+/* ─── Popover base (portal container) ──────────────────────────────────────── */
+
+.tui-popover {
+  position: absolute;
+  z-index: var(--tui-z-dropdown, 1000);
+  box-sizing: border-box;
+}

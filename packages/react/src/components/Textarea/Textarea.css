@@ -69,31 +69,31 @@
 
 .tui-textarea--xs .tui-textarea__native {
   font-size: var(--tui-font-size-xs);
-  padding: var(--tui-spacing-1) var(--tui-spacing-2);
+  padding: var(--tui-spacing-1) var(--tui-spacing-1_5);
   border-radius: var(--tui-radius-sm);
 }
 
 .tui-textarea--sm .tui-textarea__native {
   font-size: var(--tui-font-size-sm);
-  padding: var(--tui-spacing-1_5) var(--tui-spacing-3);
+  padding: var(--tui-spacing-1_5) var(--tui-spacing-2);
   border-radius: var(--tui-radius-md);
 }
 
 .tui-textarea--md .tui-textarea__native {
   font-size: var(--tui-font-size-sm);
-  padding: var(--tui-spacing-2) var(--tui-spacing-3);
+  padding: var(--tui-spacing-2) var(--tui-spacing-2_5);
   border-radius: var(--tui-radius-md);
 }
 
 .tui-textarea--lg .tui-textarea__native {
   font-size: var(--tui-font-size-md);
-  padding: var(--tui-spacing-2_5) var(--tui-spacing-4);
+  padding: var(--tui-spacing-2_5) var(--tui-spacing-3);
   border-radius: var(--tui-radius-lg);
 }
 
 .tui-textarea--xl .tui-textarea__native {
   font-size: var(--tui-font-size-lg);
-  padding: var(--tui-spacing-3) var(--tui-spacing-5);
+  padding: var(--tui-spacing-3) var(--tui-spacing-3_5);
   border-radius: var(--tui-radius-lg);
 }
 

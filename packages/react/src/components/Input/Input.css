@@ -2,7 +2,7 @@
 .tui-input {
   display: inline-flex;
   align-items: center;
-  gap: var(--tui-spacing-2);
+  gap: var(--tui-input-gap, var(--tui-spacing-2));
   width: 100%;
   box-sizing: border-box;
   font-family: inherit;
@@ -10,9 +10,9 @@
   line-height: var(--tui-leading-normal);
   height: var(--tui-input-height, var(--tui-size-md));
   padding-block: 0;
-  padding-inline: var(--tui-input-px, var(--tui-spacing-3));
+  padding-inline: var(--tui-input-px, var(--tui-spacing-2));
   border-radius: var(--tui-input-radius, var(--tui-radius-md));
-  border: 1px solid transparent;
+  border: var(--tui-border-width-thin, 1px) solid transparent;
   background-color: transparent;
   color: var(--tui-color-brand-black-900);
   transition:
@@ -24,33 +24,43 @@
 /* ─── Sizes ──────────────────────────────────────────────────────────────── */
 .tui-input--xs {
   --tui-input-height:    var(--tui-size-xs);
-  --tui-input-px:        var(--tui-spacing-2);
+  --tui-input-px:        var(--tui-spacing-1_5);
   --tui-input-font-size: var(--tui-font-size-xs);
   --tui-input-radius:    var(--tui-radius-sm);
+  --tui-input-icon-size: var(--tui-spacing-2_5);
+  --tui-input-gap:       var(--tui-spacing-1);
 }
 .tui-input--sm {
   --tui-input-height:    var(--tui-size-sm);
-  --tui-input-px:        var(--tui-spacing-3);
+  --tui-input-px:        var(--tui-spacing-2);
   --tui-input-font-size: var(--tui-font-size-sm);
   --tui-input-radius:    var(--tui-radius-md);
+  --tui-input-icon-size: var(--tui-spacing-3);
+  --tui-input-gap:       var(--tui-spacing-1_5);
 }
 .tui-input--md {
   --tui-input-height:    var(--tui-size-md);
-  --tui-input-px:        var(--tui-spacing-3);
+  --tui-input-px:        var(--tui-spacing-2_5);
   --tui-input-font-size: var(--tui-font-size-sm);
   --tui-input-radius:    var(--tui-radius-md);
+  --tui-input-icon-size: var(--tui-spacing-3_5);
+  --tui-input-gap:       var(--tui-spacing-2);
 }
 .tui-input--lg {
   --tui-input-height:    var(--tui-size-lg);
-  --tui-input-px:        var(--tui-spacing-4);
+  --tui-input-px:        var(--tui-spacing-3);
   --tui-input-font-size: var(--tui-font-size-md);
   --tui-input-radius:    var(--tui-radius-lg);
+  --tui-input-icon-size: var(--tui-spacing-4);
+  --tui-input-gap:       var(--tui-spacing-2_5);
 }
 .tui-input--xl {
   --tui-input-height:    var(--tui-size-xl);
-  --tui-input-px:        var(--tui-spacing-5);
+  --tui-input-px:        var(--tui-spacing-3_5);
   --tui-input-font-size: var(--tui-font-size-lg);
   --tui-input-radius:    var(--tui-radius-lg);
+  --tui-input-icon-size: var(--tui-spacing-4);
+  --tui-input-gap:       var(--tui-spacing-3);
 }
 
 /* ─── Variants ───────────────────────────────────────────────────────────── */
@@ -410,8 +420,17 @@
 .tui-input__trailing {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   color: var(--tui-color-brand-black-500);
+  width: var(--tui-input-icon-size, var(--tui-spacing-3));
+  height: var(--tui-input-icon-size, var(--tui-spacing-3));
+}
+
+.tui-input__leading svg,
+.tui-input__trailing svg {
+  width: var(--tui-input-icon-size, var(--tui-spacing-3));
+  height: var(--tui-input-icon-size, var(--tui-spacing-3));
 }
 
 /* ─── Prefix / Suffix ────────────────────────────────────────────────────── */
@@ -435,11 +454,18 @@
   background: transparent;
   color: var(--tui-color-brand-black-400);
   cursor: pointer;
-  padding: var(--tui-spacing-0_5);
+  width: var(--tui-input-icon-size, var(--tui-spacing-3));
+  height: var(--tui-input-icon-size, var(--tui-spacing-3));
+  padding: 0;
   border-radius: var(--tui-radius-sm);
   transition:
     color var(--tui-duration-normal) var(--tui-ease-in-out),
     background-color var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+.tui-input__clear svg {
+  width: var(--tui-input-icon-size, var(--tui-spacing-3));
+  height: var(--tui-input-icon-size, var(--tui-spacing-3));
 }
 
 .tui-input__clear:hover {

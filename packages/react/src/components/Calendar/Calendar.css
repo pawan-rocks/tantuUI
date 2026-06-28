@@ -1,0 +1,688 @@
+/* ─── Calendar base ──────────────────────────────────────────────────────── */
+.tui-calendar {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  font-family: inherit;
+  user-select: none;
+  border-radius: var(--tui-radius-lg);
+  background-color: var(--tui-color-white);
+  border: var(--tui-border-width-thin, 1px) solid var(--tui-color-brand-black-100);
+  padding: var(--tui-spacing-3);
+}
+
+/* Borderless: remove border, radius, and shadow */
+.tui-calendar--borderless {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* ─── Sizes ──────────────────────────────────────────────────────────────── */
+.tui-calendar--xs {
+  --tui-cal-cell: 24px;
+  --tui-cal-font: var(--tui-font-size-xs);
+  --tui-cal-header-font: var(--tui-font-size-xs);
+  --tui-cal-cancel-py: 2px;
+  --tui-cal-cancel-px: 8px;
+  width: 204px;
+}
+
+.tui-calendar--sm {
+  --tui-cal-cell: 28px;
+  --tui-cal-font: var(--tui-font-size-xs);
+  --tui-cal-header-font: var(--tui-font-size-sm);
+  --tui-cal-cancel-py: 3px;
+  --tui-cal-cancel-px: 10px;
+  width: 236px;
+}
+
+.tui-calendar--md {
+  --tui-cal-cell: 32px;
+  --tui-cal-font: var(--tui-font-size-sm);
+  --tui-cal-header-font: var(--tui-font-size-sm);
+  --tui-cal-cancel-py: 4px;
+  --tui-cal-cancel-px: 12px;
+  width: 272px;
+}
+
+.tui-calendar--lg {
+  --tui-cal-cell: 38px;
+  --tui-cal-font: var(--tui-font-size-md);
+  --tui-cal-header-font: var(--tui-font-size-md);
+  --tui-cal-cancel-py: 5px;
+  --tui-cal-cancel-px: 14px;
+  width: 322px;
+}
+
+.tui-calendar--xl {
+  --tui-cal-cell: 44px;
+  --tui-cal-font: var(--tui-font-size-md);
+  --tui-cal-header-font: var(--tui-font-size-lg);
+  --tui-cal-cancel-py: 6px;
+  --tui-cal-cancel-px: 16px;
+  width: 372px;
+}
+
+/* Week numbers add an extra column width */
+.tui-calendar--xs.tui-calendar--with-weeks { width: 232px; }
+.tui-calendar--sm.tui-calendar--with-weeks { width: 268px; }
+.tui-calendar--md.tui-calendar--with-weeks { width: 308px; }
+.tui-calendar--lg.tui-calendar--with-weeks { width: 364px; }
+.tui-calendar--xl.tui-calendar--with-weeks { width: 420px; }
+
+/* ─── Header ─────────────────────────────────────────────────────────────── */
+.tui-calendar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--tui-spacing-1);
+  margin-block-end: var(--tui-spacing-2);
+}
+
+.tui-calendar__title {
+  font-size: var(--tui-cal-header-font);
+  font-weight: var(--tui-font-weight-semibold);
+  color: var(--tui-color-brand-black-900);
+}
+
+.tui-calendar__title-btn {
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: var(--tui-radius-sm);
+  transition: background-color var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+.tui-calendar__title-btn:hover {
+  background-color: var(--tui-color-brand-black-100);
+}
+
+.tui-calendar__title-btn:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 0.5px var(--tui-color-focus-ring-gap),
+    0 0 1px 2px var(--tui-color-brand-black-600);
+}
+
+.tui-calendar__nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--tui-radius-md);
+  background: transparent;
+  color: var(--tui-color-brand-black-600);
+  cursor: pointer;
+  transition: background-color var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+.tui-calendar__nav-btn:hover {
+  background-color: var(--tui-color-brand-black-100);
+}
+
+.tui-calendar__nav-btn:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 0.5px var(--tui-color-focus-ring-gap),
+    0 0 1px 2px var(--tui-color-brand-black-600);
+}
+
+/* ─── Weekday headers ────────────────────────────────────────────────────── */
+.tui-calendar__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  justify-items: center;
+  margin-block-end: var(--tui-spacing-1);
+}
+
+.tui-calendar__weekdays--with-weeks {
+  grid-template-columns: var(--tui-cal-cell) repeat(7, 1fr);
+}
+
+.tui-calendar__weekday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tui-cal-cell);
+  height: var(--tui-cal-cell);
+  font-size: var(--tui-cal-font);
+  font-weight: var(--tui-font-weight-medium);
+  color: var(--tui-color-brand-black-400);
+}
+
+.tui-calendar__weeknumber-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tui-cal-cell);
+  height: var(--tui-cal-cell);
+  font-size: var(--tui-font-size-xs);
+  font-weight: var(--tui-font-weight-medium);
+  color: var(--tui-color-brand-black-300);
+}
+
+/* ─── Grid ───────────────────────────────────────────────────────────────── */
+.tui-calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  justify-items: center;
+  gap: 2px 0;
+}
+
+.tui-calendar__grid--with-weeks {
+  grid-template-columns: var(--tui-cal-cell) repeat(7, 1fr);
+}
+
+.tui-calendar__weeknumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tui-cal-cell);
+  height: var(--tui-cal-cell);
+  font-size: var(--tui-font-size-xs);
+  color: var(--tui-color-brand-black-300);
+}
+
+/* ─── Day cell ───────────────────────────────────────────────────────────── */
+.tui-calendar__day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tui-cal-cell);
+  height: var(--tui-cal-cell);
+  font-size: var(--tui-cal-font);
+  font-weight: var(--tui-font-weight-normal);
+  color: var(--tui-color-brand-black-900);
+  border: none;
+  border-radius: var(--tui-radius-md);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background-color var(--tui-duration-normal) var(--tui-ease-in-out),
+    color var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+.tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
+  background-color: var(--tui-color-brand-black-50);
+}
+
+.tui-calendar__day:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 0.5px var(--tui-color-focus-ring-gap),
+    0 0 1px 2px var(--tui-color-brand-black-600);
+  z-index: 1;
+}
+
+/* ─── Today ──────────────────────────────────────────────────────────────── */
+.tui-calendar__day--today:not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
+  font-weight: var(--tui-font-weight-semibold);
+  border: 1px dashed var(--tui-color-brand-black-300);
+}
+
+/* ─── Outside month ──────────────────────────────────────────────────────── */
+.tui-calendar__day--outside {
+  color: var(--tui-color-brand-black-300);
+}
+
+.tui-calendar__day--outside:hover:not(:disabled) {
+  background-color: var(--tui-color-brand-black-50);
+}
+
+/* ─── Disabled ───────────────────────────────────────────────────────────── */
+.tui-calendar__day--disabled,
+.tui-calendar__day:disabled {
+  opacity: var(--tui-opacity-40, 0.4);
+  cursor: not-allowed;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SELECTED & RANGE — Default intent (brand-black)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.tui-calendar--default .tui-calendar__day--selected,
+.tui-calendar--default .tui-calendar__day--range-start,
+.tui-calendar--default .tui-calendar__day--range-end {
+  background-color: var(--tui-color-brand-black-900);
+  color: var(--tui-color-white);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar--default .tui-calendar__day--in-range {
+  background-color: var(--tui-color-brand-black-100);
+  border-radius: 0;
+}
+
+.tui-calendar--default .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
+  background-color: var(--tui-color-brand-black-50);
+}
+
+/* ─── Primary ────────────────────────────────────────────────────────────── */
+.tui-calendar--primary .tui-calendar__day--selected,
+.tui-calendar--primary .tui-calendar__day--range-start,
+.tui-calendar--primary .tui-calendar__day--range-end {
+  background-color: var(--tui-color-brand-pink-600);
+  color: var(--tui-color-white);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar--primary .tui-calendar__day--in-range {
+  background-color: var(--tui-color-brand-pink-100);
+  border-radius: 0;
+}
+
+.tui-calendar--primary .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
+  background-color: var(--tui-color-brand-pink-50);
+}
+
+/* ─── Success ────────────────────────────────────────────────────────────── */
+.tui-calendar--success .tui-calendar__day--selected,
+.tui-calendar--success .tui-calendar__day--range-start,
+.tui-calendar--success .tui-calendar__day--range-end {
+  background-color: var(--tui-color-success-600);
+  color: var(--tui-color-white);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar--success .tui-calendar__day--in-range {
+  background-color: var(--tui-color-success-100);
+  border-radius: 0;
+}
+
+.tui-calendar--success .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
+  background-color: var(--tui-color-success-50);
+}
+
+/* ─── Danger ─────────────────────────────────────────────────────────────── */
+.tui-calendar--danger .tui-calendar__day--selected,
+.tui-calendar--danger .tui-calendar__day--range-start,
+.tui-calendar--danger .tui-calendar__day--range-end {
+  background-color: var(--tui-color-danger-600);
+  color: var(--tui-color-white);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar--danger .tui-calendar__day--in-range {
+  background-color: var(--tui-color-danger-100);
+  border-radius: 0;
+}
+
+.tui-calendar--danger .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
+  background-color: var(--tui-color-danger-50);
+}
+
+/* ─── Warning ────────────────────────────────────────────────────────────── */
+.tui-calendar--warning .tui-calendar__day--selected,
+.tui-calendar--warning .tui-calendar__day--range-start,
+.tui-calendar--warning .tui-calendar__day--range-end {
+  background-color: var(--tui-color-warning-600);
+  color: var(--tui-color-white);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar--warning .tui-calendar__day--in-range {
+  background-color: var(--tui-color-warning-100);
+  border-radius: 0;
+}
+
+.tui-calendar--warning .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
+  background-color: var(--tui-color-warning-50);
+}
+
+/* ─── Info ───────────────────────────────────────────────────────────────── */
+.tui-calendar--info .tui-calendar__day--selected,
+.tui-calendar--info .tui-calendar__day--range-start,
+.tui-calendar--info .tui-calendar__day--range-end {
+  background-color: var(--tui-color-info-600);
+  color: var(--tui-color-white);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar--info .tui-calendar__day--in-range {
+  background-color: var(--tui-color-info-100);
+  border-radius: 0;
+}
+
+.tui-calendar--info .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
+  background-color: var(--tui-color-info-50);
+}
+
+/* ─── Teal ───────────────────────────────────────────────────────────────── */
+.tui-calendar--teal .tui-calendar__day--selected,
+.tui-calendar--teal .tui-calendar__day--range-start,
+.tui-calendar--teal .tui-calendar__day--range-end {
+  background-color: var(--tui-color-teal-600);
+  color: var(--tui-color-white);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar--teal .tui-calendar__day--in-range {
+  background-color: var(--tui-color-teal-100);
+  border-radius: 0;
+}
+
+.tui-calendar--teal .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
+  background-color: var(--tui-color-teal-50);
+}
+
+/* ─── Orange ─────────────────────────────────────────────────────────────── */
+.tui-calendar--orange .tui-calendar__day--selected,
+.tui-calendar--orange .tui-calendar__day--range-start,
+.tui-calendar--orange .tui-calendar__day--range-end {
+  background-color: var(--tui-color-orange-600);
+  color: var(--tui-color-white);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar--orange .tui-calendar__day--in-range {
+  background-color: var(--tui-color-orange-100);
+  border-radius: 0;
+}
+
+.tui-calendar--orange .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
+  background-color: var(--tui-color-orange-50);
+}
+
+/* ─── Rose ───────────────────────────────────────────────────────────────── */
+.tui-calendar--rose .tui-calendar__day--selected,
+.tui-calendar--rose .tui-calendar__day--range-start,
+.tui-calendar--rose .tui-calendar__day--range-end {
+  background-color: var(--tui-color-rose-600);
+  color: var(--tui-color-white);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar--rose .tui-calendar__day--in-range {
+  background-color: var(--tui-color-rose-100);
+  border-radius: 0;
+}
+
+.tui-calendar--rose .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
+  background-color: var(--tui-color-rose-50);
+}
+
+/* ─── Indigo ─────────────────────────────────────────────────────────────── */
+.tui-calendar--indigo .tui-calendar__day--selected,
+.tui-calendar--indigo .tui-calendar__day--range-start,
+.tui-calendar--indigo .tui-calendar__day--range-end {
+  background-color: var(--tui-color-indigo-600);
+  color: var(--tui-color-white);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar--indigo .tui-calendar__day--in-range {
+  background-color: var(--tui-color-indigo-100);
+  border-radius: 0;
+}
+
+.tui-calendar--indigo .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
+  background-color: var(--tui-color-indigo-50);
+}
+
+/* ─── Mint ───────────────────────────────────────────────────────────────── */
+.tui-calendar--mint .tui-calendar__day--selected,
+.tui-calendar--mint .tui-calendar__day--range-start,
+.tui-calendar--mint .tui-calendar__day--range-end {
+  background-color: var(--tui-color-mint-600);
+  color: var(--tui-color-white);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar--mint .tui-calendar__day--in-range {
+  background-color: var(--tui-color-mint-100);
+  border-radius: 0;
+}
+
+.tui-calendar--mint .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
+  background-color: var(--tui-color-mint-50);
+}
+
+/* ─── Coal ───────────────────────────────────────────────────────────────── */
+.tui-calendar--coal .tui-calendar__day--selected,
+.tui-calendar--coal .tui-calendar__day--range-start,
+.tui-calendar--coal .tui-calendar__day--range-end {
+  background-color: var(--tui-color-coal-600);
+  color: var(--tui-color-white);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar--coal .tui-calendar__day--in-range {
+  background-color: var(--tui-color-coal-100);
+  border-radius: 0;
+}
+
+.tui-calendar--coal .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
+  background-color: var(--tui-color-coal-50);
+}
+
+/* ─── Secondary ──────────────────────────────────────────────────────────── */
+.tui-calendar--secondary .tui-calendar__day--selected,
+.tui-calendar--secondary .tui-calendar__day--range-start,
+.tui-calendar--secondary .tui-calendar__day--range-end {
+  background-color: var(--tui-color-brand-gray-600);
+  color: var(--tui-color-white);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar--secondary .tui-calendar__day--in-range {
+  background-color: var(--tui-color-brand-gray-100);
+  border-radius: 0;
+}
+
+.tui-calendar--secondary .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
+  background-color: var(--tui-color-brand-gray-50);
+}
+
+/* ─── White ──────────────────────────────────────────────────────────────── */
+.tui-calendar--white .tui-calendar__day--selected,
+.tui-calendar--white .tui-calendar__day--range-start,
+.tui-calendar--white .tui-calendar__day--range-end {
+  background-color: var(--tui-color-brand-black-200);
+  color: var(--tui-color-brand-black-900);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar--white .tui-calendar__day--in-range {
+  background-color: var(--tui-color-brand-black-50);
+  border-radius: 0;
+}
+
+/* ─── Black ──────────────────────────────────────────────────────────────── */
+.tui-calendar--black .tui-calendar__day--selected,
+.tui-calendar--black .tui-calendar__day--range-start,
+.tui-calendar--black .tui-calendar__day--range-end {
+  background-color: var(--tui-color-black);
+  color: var(--tui-color-white);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar--black .tui-calendar__day--in-range {
+  background-color: var(--tui-color-brand-black-100);
+  border-radius: 0;
+}
+
+/* ─── Range start/end border-radius ─────────────────────────────────────── */
+.tui-calendar__day--in-range,
+.tui-calendar__day--range-start,
+.tui-calendar__day--range-end {
+  width: 100%;
+}
+
+.tui-calendar__day--range-start {
+  border-radius: var(--tui-radius-md) 0 0 var(--tui-radius-md);
+}
+
+.tui-calendar__day--range-end {
+  border-radius: 0 var(--tui-radius-md) var(--tui-radius-md) 0;
+}
+
+.tui-calendar__day--range-start.tui-calendar__day--range-end {
+  border-radius: var(--tui-radius-md);
+}
+
+/* ─── Overlay (month/year selector) ──────────────────────────────────────── */
+.tui-calendar__overlay {
+  position: absolute;
+  inset: 0;
+  top: 44px; /* below header */
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(var(--tui-color-white-rgb) / 0.6);
+  border-radius: 0 0 var(--tui-radius-lg) var(--tui-radius-lg);
+  z-index: 2;
+  padding: var(--tui-spacing-2);
+  backdrop-filter: blur(2px);
+}
+
+.tui-calendar__overlay-footer {
+  display: flex;
+  justify-content: end;
+  padding-top: var(--tui-spacing-2);
+  margin-top: auto;
+}
+
+.tui-calendar__overlay-cancel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--tui-cal-cancel-py, 4px) var(--tui-cal-cancel-px, 12px);
+  font-size: var(--tui-cal-font);
+  font-weight: var(--tui-font-weight-medium);
+  font-family: inherit;
+  color: var(--tui-color-brand-black-600);
+  background-color: var(--tui-color-brand-gray-100);
+  border: 1px solid var(--tui-color-brand-black-200);
+  border-radius: var(--tui-radius-md);
+  cursor: pointer;
+  transition:
+    background-color var(--tui-duration-normal) var(--tui-ease-in-out),
+    border-color var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+.tui-calendar__overlay-cancel:hover {
+  background-color: var(--tui-color-brand-black-50);
+  border-color: var(--tui-color-brand-black-300);
+}
+
+.tui-calendar__overlay-cancel:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 0.5px var(--tui-color-focus-ring-gap),
+    0 0 1px 2px var(--tui-color-brand-black-600);
+}
+
+/* ─── Month Grid ─────────────────────────────────────────────────────────── */
+.tui-calendar__month-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  width: 100%;
+  align-self: start;
+  background-color:  var(--tui-color-white);
+  padding: var(--tui-spacing-2) var(--tui-spacing-3);
+  border-radius: var(--tui-radius-sm);
+  border: var(--tui-border-width-1, 1px) solid var(--tui-color-border-default);
+}
+
+.tui-calendar__month-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--tui-cal-cell);
+  font-size: var(--tui-cal-font);
+  font-weight: var(--tui-font-weight-normal);
+  font-family: inherit;
+  color: var(--tui-color-brand-black-900);
+  border: none;
+  border-radius: var(--tui-radius-md);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background-color var(--tui-duration-normal) var(--tui-ease-in-out),
+    color var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+.tui-calendar__month-cell:hover:not(.tui-calendar__month-cell--selected) {
+  background-color: var(--tui-color-brand-black-50);
+}
+
+.tui-calendar__month-cell--today {
+  font-weight: var(--tui-font-weight-semibold);
+  border: 1px dashed var(--tui-color-brand-black-300);
+}
+
+.tui-calendar__month-cell--selected {
+  background-color: var(--tui-color-brand-black-900);
+  color: var(--tui-color-white);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar__month-cell:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 0.5px var(--tui-color-focus-ring-gap),
+    0 0 1px 2px var(--tui-color-brand-black-600);
+  z-index: 1;
+}
+
+/* ─── Year Grid ──────────────────────────────────────────────────────────── */
+.tui-calendar__year-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+  width: 100%;
+  align-self: start;
+  background-color:  var(--tui-color-white);
+  padding: var(--tui-spacing-2) var(--tui-spacing-3);
+  border-radius: var(--tui-radius-sm);
+  border: var(--tui-border-width-1, 1px) solid var(--tui-color-border-default);
+}
+
+.tui-calendar__year-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--tui-cal-cell);
+  font-size: var(--tui-cal-font);
+  font-weight: var(--tui-font-weight-normal);
+  font-family: inherit;
+  color: var(--tui-color-brand-black-900);
+  border: none;
+  border-radius: var(--tui-radius-md);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background-color var(--tui-duration-normal) var(--tui-ease-in-out),
+    color var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+.tui-calendar__year-cell:hover:not(.tui-calendar__year-cell--selected) {
+  background-color: var(--tui-color-brand-black-50);
+}
+
+.tui-calendar__year-cell--today {
+  font-weight: var(--tui-font-weight-semibold);
+  border: 1px dashed var(--tui-color-brand-black-300);
+}
+
+.tui-calendar__year-cell--selected {
+  background-color: var(--tui-color-brand-black-900);
+  color: var(--tui-color-white);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar__year-cell:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 0.5px var(--tui-color-focus-ring-gap),
+    0 0 1px 2px var(--tui-color-brand-black-600);
+  z-index: 1;
+}

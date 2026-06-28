@@ -22,33 +22,38 @@
 /* ─── Sizes ──────────────────────────────────────────────────────────────── */
 .tui-select--xs {
   --tui-select-height:    var(--tui-size-xs);
-  --tui-select-px:        var(--tui-spacing-2);
+  --tui-select-px:        var(--tui-spacing-1_5);
   --tui-select-font-size: var(--tui-font-size-xs);
   --tui-select-radius:    var(--tui-radius-sm);
+  --tui-select-icon-size: var(--tui-spacing-2_5);
 }
 .tui-select--sm {
   --tui-select-height:    var(--tui-size-sm);
-  --tui-select-px:        var(--tui-spacing-3);
+  --tui-select-px:        var(--tui-spacing-2);
   --tui-select-font-size: var(--tui-font-size-sm);
   --tui-select-radius:    var(--tui-radius-md);
+  --tui-select-icon-size: var(--tui-spacing-3);
 }
 .tui-select--md {
   --tui-select-height:    var(--tui-size-md);
-  --tui-select-px:        var(--tui-spacing-3);
+  --tui-select-px:        var(--tui-spacing-2_5);
   --tui-select-font-size: var(--tui-font-size-sm);
   --tui-select-radius:    var(--tui-radius-md);
+  --tui-select-icon-size: var(--tui-spacing-3_5);
 }
 .tui-select--lg {
   --tui-select-height:    var(--tui-size-lg);
-  --tui-select-px:        var(--tui-spacing-4);
+  --tui-select-px:        var(--tui-spacing-3);
   --tui-select-font-size: var(--tui-font-size-md);
   --tui-select-radius:    var(--tui-radius-lg);
+  --tui-select-icon-size: var(--tui-spacing-4);
 }
 .tui-select--xl {
   --tui-select-height:    var(--tui-size-xl);
-  --tui-select-px:        var(--tui-spacing-5);
+  --tui-select-px:        var(--tui-spacing-3_5);
   --tui-select-font-size: var(--tui-font-size-lg);
   --tui-select-radius:    var(--tui-radius-lg);
+  --tui-select-icon-size: var(--tui-spacing-4);
 }
 
 /* ─── Variants ───────────────────────────────────────────────────────────── */
@@ -229,8 +234,8 @@
   font: inherit;
   line-height: inherit;
   padding-block: 0;
-  padding-inline-start: var(--tui-select-px, var(--tui-spacing-3));
-  padding-inline-end: calc(var(--tui-select-px, var(--tui-spacing-3)) + 20px);
+  padding-inline-start: var(--tui-select-px, var(--tui-spacing-2_5));
+  padding-inline-end: calc(var(--tui-select-px, var(--tui-spacing-2_5)) + var(--tui-select-icon-size, var(--tui-spacing-3_5)) + var(--tui-spacing-1));
   margin: 0;
   outline: none;
   cursor: pointer;
@@ -255,7 +260,7 @@
 /* ─── Chevron icon ───────────────────────────────────────────────────────── */
 .tui-select__icon {
   position: absolute;
-  right: var(--tui-select-px, var(--tui-spacing-3));
+  right: var(--tui-select-px, var(--tui-spacing-2_5));
   top: 50%;
   transform: translateY(-50%);
   display: inline-flex;
@@ -263,6 +268,13 @@
   justify-content: center;
   pointer-events: none;
   color: var(--tui-color-brand-black-500);
+  width: var(--tui-select-icon-size, var(--tui-spacing-3_5));
+  height: var(--tui-select-icon-size, var(--tui-spacing-3_5));
+}
+
+.tui-select__icon svg {
+  width: var(--tui-select-icon-size, var(--tui-spacing-3_5));
+  height: var(--tui-select-icon-size, var(--tui-spacing-3_5));
 }
 
 .tui-select--disabled .tui-select__icon {

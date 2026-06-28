@@ -12,5 +12,9 @@ export * from "./components";
 export { cn }        from "./utils/cn";
 export { getCSSVar, setCSSVar, tokenVar } from "./utils/css-vars";
 
+// Hooks
+export { useDropdownPosition } from "./hooks";
+export type { DropdownPlacement, UseDropdownPositionOptions, DropdownPositionResult } from "./hooks";
+
 // Types
 export type { BaseProps, Size, Variant, Intent } from "./types";
