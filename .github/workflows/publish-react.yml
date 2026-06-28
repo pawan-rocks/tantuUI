@@ -57,7 +57,8 @@ jobs:
           fi
 
       - name: Set package version
-        run: npm version ${{ steps.version.outputs.TAG_VERSION }} --no-git-tag-version --workspace=packages/react
+        working-directory: packages/react
+        run: npm version ${{ steps.version.outputs.TAG_VERSION }} --no-git-tag-version
 
       - name: Determine dist-tag
         id: dist_tag
@@ -76,6 +77,7 @@ jobs:
           fi
 
       - name: Publish @tantuui/react
-        run: npm publish --workspace=packages/react --access public --tag ${{ steps.dist_tag.outputs.TAG }}
+        working-directory: packages/react
+        run: npm publish --access public --tag ${{ steps.dist_tag.outputs.TAG }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

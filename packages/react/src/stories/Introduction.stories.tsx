@@ -87,11 +87,81 @@ import { Button, Text, Box, LinkText, Shimmer } from "@tantuui/react";`}
     <h2 style={{ fontSize: "var(--tui-font-size-xl)", fontWeight: "var(--tui-font-weight-semibold)", marginBottom: "var(--tui-spacing-3)", color: "var(--tui-color-text-primary)" }}>
       Components
     </h2>
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--tui-spacing-2)", marginBottom: "var(--tui-spacing-8)" }}>
-      {["Button", "Text", "Box", "LinkText", "Shimmer"].map((name) => (
-        <span key={name} style={{ padding: "var(--tui-spacing-1) var(--tui-spacing-3)", background: "var(--tui-color-brand-pink-50)", color: "var(--tui-color-brand-pink-700)", borderRadius: "var(--tui-radius-full)", fontSize: "var(--tui-font-size-xs)", fontWeight: "var(--tui-font-weight-medium)" }}>
-          {name}
-        </span>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "var(--tui-spacing-2)", marginBottom: "var(--tui-spacing-8)" }}>
+      {[
+        { name: "Button", path: "?path=/docs/components-button--docs", desc: "Interactive button with variants" },
+        { name: "Input", path: "?path=/docs/components-input--docs", desc: "Text input with icons, clear" },
+        { name: "Textarea", path: "?path=/docs/components-textarea--docs", desc: "Multi-line text input" },
+        { name: "Select", path: "?path=/docs/components-select--docs", desc: "Native select dropdown" },
+        { name: "Checkbox", path: "?path=/docs/components-checkbox--docs", desc: "Checkbox with label" },
+        { name: "Radio", path: "?path=/docs/components-radio--docs", desc: "Radio button" },
+        { name: "Switch", path: "?path=/docs/components-switch--docs", desc: "Toggle switch" },
+        { name: "Label", path: "?path=/docs/components-label--docs", desc: "Form label" },
+        { name: "FormField", path: "?path=/docs/components-formfield--docs", desc: "Label + input + error" },
+        { name: "Text", path: "?path=/docs/components-text--docs", desc: "Typography component" },
+        { name: "Box", path: "?path=/docs/components-box--docs", desc: "Layout container" },
+        { name: "LinkText", path: "?path=/docs/components-linktext--docs", desc: "Styled anchor/link" },
+        { name: "Tag", path: "?path=/docs/components-tag--docs", desc: "Status tag/badge" },
+        { name: "Chip", path: "?path=/docs/components-chip--docs", desc: "Interactive chip" },
+        { name: "Pill", path: "?path=/docs/components-pill--docs", desc: "Rounded pill badge" },
+        { name: "Calendar", path: "?path=/docs/components-calendar--docs", desc: "Date calendar with range" },
+        { name: "TimeSelector", path: "?path=/docs/components-timeselector--docs", desc: "Scrollable time picker" },
+        { name: "DatePicker", path: "?path=/docs/components-datepicker--docs", desc: "Full date/time picker" },
+        { name: "Popover", path: "?path=/docs/components-popover--docs", desc: "Portal floating container" },
+        { name: "Shimmer", path: "?path=/docs/components-shimmer--docs", desc: "Skeleton loading" },
+      ].map((item) => (
+        <a
+          key={item.name}
+          href={item.path}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "var(--tui-spacing-0_5)",
+            padding: "var(--tui-spacing-3)",
+            background: "var(--tui-color-bg-subtle)",
+            borderRadius: "var(--tui-radius-md)",
+            border: "1px solid var(--tui-color-border-default)",
+            textDecoration: "none",
+            transition: "border-color 150ms, background 150ms",
+          }}
+        >
+          <span style={{ fontWeight: "var(--tui-font-weight-semibold)", fontSize: "var(--tui-font-size-sm)", color: "var(--tui-color-brand-pink-700)" }}>
+            {item.name}
+          </span>
+          <span style={{ fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)" }}>
+            {item.desc}
+          </span>
+        </a>
+      ))}
+    </div>
+
+    {/* Hooks & Utilities */}
+    <h2 style={{ fontSize: "var(--tui-font-size-xl)", fontWeight: "var(--tui-font-weight-semibold)", marginBottom: "var(--tui-spacing-3)", color: "var(--tui-color-text-primary)" }}>
+      Hooks & Utilities
+    </h2>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "var(--tui-spacing-2)", marginBottom: "var(--tui-spacing-8)" }}>
+      {[
+        { name: "useDropdownPosition", desc: "Auto-positions portal dropdowns" },
+        { name: "cn()", desc: "Merge CSS class names" },
+        { name: "getCSSVar() / setCSSVar()", desc: "Read/write CSS variables" },
+        { name: "tokenVar()", desc: "Get token variable reference" },
+      ].map((item) => (
+        <div
+          key={item.name}
+          style={{
+            padding: "var(--tui-spacing-3)",
+            background: "var(--tui-color-bg-subtle)",
+            borderRadius: "var(--tui-radius-md)",
+            border: "1px solid var(--tui-color-border-default)",
+          }}
+        >
+          <span style={{ fontWeight: "var(--tui-font-weight-medium)", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-primary)", fontFamily: "monospace" }}>
+            {item.name}
+          </span>
+          <div style={{ fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)", marginTop: "var(--tui-spacing-0_5)" }}>
+            {item.desc}
+          </div>
+        </div>
       ))}
     </div>
 

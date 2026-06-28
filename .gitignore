@@ -12,5 +12,4 @@ infra/**/*.tfvars
 infra/**/.terraform
 infra/**/*.tfstate
 infra/**/*.tfstate.backup
-.md
-*.md
+.kiro
