@@ -1,37 +1,39 @@
 /**
  * TantuUI Runtime JIT
  *
- * Scans the DOM for tui-* arbitrary value classes (e.g. tui-p-[10px], tui-w-[350px])
- * and dynamically injects matching CSS rules.
+ * Scans the DOM for tui-* classes and dynamically injects matching CSS rules.
  *
  * Usage:
  *   import "@tantuui/tokens/runtime";          // ESM
  *   <script src="@tantuui/tokens/runtime"></script>  // HTML
  *
- * Supports:
+ * ─── Arbitrary Values ────────────────────────────────────────────────
  *   tui-p-[10px]        → padding: 10px
- *   tui-px-[1rem]       → padding-left: 1rem; padding-right: 1rem
- *   tui-m-[20px]        → margin: 20px
- *   tui-mt-[8px]        → margin-top: 8px
  *   tui-w-[350px]       → width: 350px
  *   tui-h-[100vh]       → height: 100vh
- *   tui-gap-[12px]      → gap: 12px
- *   tui-text-[15px]     → font-size: 15px
- *   tui-rounded-[8px]   → border-radius: 8px
- *   tui-border-[3px]    → border-width: 3px
- *   tui-top-[10px]      → top: 10px
- *   tui-left-[20%]      → left: 20%
  *   tui-max-w-[600px]   → max-width: 600px
- *   tui-min-h-[100vh]   → min-height: 100vh
- *   tui-leading-[1.8]   → line-height: 1.8
- *   tui-z-[999]         → z-index: 999
- *
- * Works with calc:
  *   tui-w-[calc(100%-260px)]  → width: calc(100% - 260px)
- *   tui-h-[calc(100vh-64px)]  → height: calc(100vh - 64px)
+ *
+ * ─── Pseudo-Class Variants ───────────────────────────────────────────
+ *   hover:tui-bg-brand-black-100   → .hover\:tui-bg-brand-black-100:hover { ... }
+ *   focus:tui-ring-2               → .focus\:tui-ring-2:focus { ... }
+ *   active:tui-bg-brand-black-200  → .active\:tui-bg-brand-black-200:active { ... }
+ *   disabled:tui-opacity-50        → .disabled\:tui-opacity-50:disabled { ... }
+ *   focus-visible:tui-ring-2       → .focus-visible\:tui-ring-2:focus-visible { ... }
+ *   group-hover:tui-text-white     → .group:hover .group-hover\:tui-text-white { ... }
+ *
+ * ─── Responsive Prefixes ─────────────────────────────────────────────
+ *   sm:tui-flex          → @media (min-width: 640px)  { .sm\:tui-flex { ... } }
+ *   md:tui-grid-cols-2   → @media (min-width: 768px)  { .md\:tui-grid-cols-2 { ... } }
+ *   lg:tui-grid-cols-3   → @media (min-width: 1024px) { .lg\:tui-grid-cols-3 { ... } }
+ *   xl:tui-hidden        → @media (min-width: 1280px) { .xl\:tui-hidden { ... } }
+ *
+ * ─── Combination ─────────────────────────────────────────────────────
+ *   hover:tui-bg-[#ff0000]         → arbitrary + pseudo
+ *   md:hover:tui-bg-brand-blue-600 → responsive + pseudo + static
  */
 
-// Map of prefix → CSS property/properties
+// ── Arbitrary value property map ──────────────────────────────────────
 const PROPERTY_MAP: Record<string, string | string[]> = {
   "p":      "padding",
   "px":     ["padding-left", "padding-right"],
@@ -66,14 +68,45 @@ const PROPERTY_MAP: Record<string, string | string[]> = {
   "z":      "z-index",
 };
 
-// Regex to match: tui-<prop>-[<value>]
-// Captures: prop name and value inside brackets
-const CLASS_REGEX = /^tui-([\w-]+)-\[([^\]]+)\]$/;
+// ── Pseudo-class prefix → CSS pseudo-selector mapping ─────────────────
+const PSEUDO_MAP: Record<string, string> = {
+  "hover":         ":hover",
+  "focus":         ":focus",
+  "focus-visible": ":focus-visible",
+  "focus-within":  ":focus-within",
+  "active":        ":active",
+  "disabled":      ":disabled",
+  "visited":       ":visited",
+  "first":         ":first-child",
+  "last":          ":last-child",
+  "odd":           ":nth-child(odd)",
+  "even":          ":nth-child(even)",
+  "placeholder":   "::placeholder",
+};
 
-// Cache of already-generated rules to avoid duplicates
+// ── Group-based pseudo prefixes ───────────────────────────────────────
+const GROUP_PSEUDO_MAP: Record<string, string> = {
+  "group-hover":  ".group:hover",
+  "group-focus":  ".group:focus",
+  "group-active": ".group:active",
+};
+
+// ── Responsive breakpoints ────────────────────────────────────────────
+const BREAKPOINTS: Record<string, string> = {
+  "sm":  "640px",
+  "md":  "768px",
+  "lg":  "1024px",
+  "xl":  "1280px",
+  "2xl": "1536px",
+};
+
+// ── Regex patterns ────────────────────────────────────────────────────
+const ARBITRARY_REGEX = /^tui-([\w-]+)-\[([^\]]+)\]$/;
+
+// Cache of already-generated rules
 const generatedRules = new Set<string>();
 
-// The <style> element where we inject rules
+// The <style> element for injection
 let styleEl: HTMLStyleElement | null = null;
 
 function getStyleElement(): HTMLStyleElement {
@@ -85,56 +118,155 @@ function getStyleElement(): HTMLStyleElement {
   return styleEl;
 }
 
-/**
- * Escape special characters in class name for use in a CSS selector.
- * [ ] % ( ) must be escaped.
- */
 function escapeSelector(cls: string): string {
   return cls.replace(/([[\]()%.,#:>+~\/])/g, "\\$1");
 }
 
-/**
- * Process a single class name — if it matches tui-*-[value], generate CSS.
- */
-function processClass(className: string): void {
-  if (generatedRules.has(className)) return;
-
-  const match = className.match(CLASS_REGEX);
-  if (!match) return;
-
-  const [, prop, value] = match;
-  const cssProperties = PROPERTY_MAP[prop];
-  if (!cssProperties) return;
-
-  // Mark as generated
-  generatedRules.add(className);
-
-  // Build the CSS rule
-  const selector = `.${escapeSelector(className)}`;
-  let declarations: string;
-
-  if (Array.isArray(cssProperties)) {
-    declarations = cssProperties.map((p) => `${p}: ${value}`).join("; ");
-  } else {
-    declarations = `${cssProperties}: ${value}`;
-  }
-
-  const rule = `${selector} { ${declarations}; }`;
-
-  // Inject into <style>
+function injectRule(rule: string): void {
   const sheet = getStyleElement();
   sheet.textContent += rule + "\n";
 }
 
 /**
- * Scan an element and all its descendants for tui-*-[value] classes.
+ * Resolve a tui-* class (without prefix) to its CSS declarations.
+ * Returns the declarations string or null if not an arbitrary value class.
+ */
+function resolveArbitrary(tuiClass: string): string | null {
+  const match = tuiClass.match(ARBITRARY_REGEX);
+  if (!match) return null;
+
+  const [, prop, value] = match;
+  const cssProperties = PROPERTY_MAP[prop];
+  if (!cssProperties) return null;
+
+  if (Array.isArray(cssProperties)) {
+    return cssProperties.map((p) => `${p}: ${value}`).join("; ");
+  }
+  return `${cssProperties}: ${value}`;
+}
+
+/**
+ * Try to resolve a static tui-* utility class by checking if it exists
+ * in the loaded stylesheets. If it exists, we can reference it for pseudo variants.
+ */
+function getComputedDeclarations(tuiClass: string): string | null {
+  // For static classes (tui-bg-white, tui-p-4, etc.), we read from existing stylesheets
+  try {
+    for (const sheet of document.styleSheets) {
+      try {
+        for (const rule of sheet.cssRules) {
+          if (rule instanceof CSSStyleRule) {
+            if (rule.selectorText === `.${tuiClass}` || rule.selectorText === `.${escapeSelector(tuiClass)}`) {
+              return rule.style.cssText;
+            }
+          }
+        }
+      } catch {
+        // Cross-origin stylesheet, skip
+      }
+    }
+  } catch {
+    // Stylesheets not accessible
+  }
+  return null;
+}
+
+/**
+ * Process a single class name — handles arbitrary values, pseudo prefixes, and responsive.
+ */
+function processClass(className: string): void {
+  if (generatedRules.has(className)) return;
+
+  // ── Parse prefixes: responsive:pseudo:tui-class ──
+  let responsivePrefix: string | null = null;
+  let pseudoPrefix: string | null = null;
+  let groupPrefix: string | null = null;
+  let tuiClass = className;
+
+  // Check for responsive prefix first (sm:, md:, lg:, xl:, 2xl:)
+  const responsiveMatch = tuiClass.match(/^(sm|md|lg|xl|2xl):(.*)/);
+  if (responsiveMatch) {
+    responsivePrefix = responsiveMatch[1];
+    tuiClass = responsiveMatch[2];
+  }
+
+  // Check for group pseudo prefix (group-hover:, group-focus:, group-active:)
+  const groupMatch = tuiClass.match(/^(group-hover|group-focus|group-active):(.*)/);
+  if (groupMatch) {
+    groupPrefix = groupMatch[1];
+    tuiClass = groupMatch[2];
+  }
+
+  // Check for pseudo prefix (hover:, focus:, active:, disabled:, etc.)
+  if (!groupPrefix) {
+    const pseudoMatch = tuiClass.match(/^(hover|focus|focus-visible|focus-within|active|disabled|visited|first|last|odd|even|placeholder):(.*)/);
+    if (pseudoMatch) {
+      pseudoPrefix = pseudoMatch[1];
+      tuiClass = pseudoMatch[2];
+    }
+  }
+
+  // If no prefix and no arbitrary value brackets, nothing to do
+  if (!responsivePrefix && !pseudoPrefix && !groupPrefix && !tuiClass.includes("[")) {
+    return;
+  }
+
+  // ── Resolve the CSS declarations ──
+  let declarations: string | null = null;
+
+  // Try arbitrary value first
+  declarations = resolveArbitrary(tuiClass);
+
+  // If not arbitrary, try to find existing static class declarations
+  if (!declarations && (pseudoPrefix || groupPrefix || responsivePrefix)) {
+    declarations = getComputedDeclarations(tuiClass);
+  }
+
+  if (!declarations) return;
+
+  // Mark as generated
+  generatedRules.add(className);
+
+  // ── Build the CSS rule ──
+  const escapedFull = `.${escapeSelector(className)}`;
+  let selector: string;
+  let rule: string;
+
+  if (groupPrefix) {
+    // group-hover:tui-text-white → .group:hover .group-hover\:tui-text-white
+    const parentPseudo = GROUP_PSEUDO_MAP[groupPrefix];
+    selector = `${parentPseudo} ${escapedFull}`;
+  } else if (pseudoPrefix) {
+    // hover:tui-bg-white → .hover\:tui-bg-white:hover
+    const pseudo = PSEUDO_MAP[pseudoPrefix];
+    selector = `${escapedFull}${pseudo}`;
+  } else {
+    // Just arbitrary value, no pseudo
+    selector = escapedFull;
+  }
+
+  rule = `${selector} { ${declarations}; }`;
+
+  // Wrap in media query if responsive
+  if (responsivePrefix) {
+    const bp = BREAKPOINTS[responsivePrefix];
+    rule = `@media (min-width: ${bp}) { ${rule} }`;
+  }
+
+  injectRule(rule);
+}
+
+/**
+ * Scan an element and all its descendants for processable classes.
  */
 function scanElement(el: Element): void {
   const classes = el.className;
   if (typeof classes !== "string") return;
 
   for (const cls of classes.split(/\s+/)) {
-    if (cls.startsWith("tui-") && cls.includes("[")) {
+    if (!cls) continue;
+    // Process if: has arbitrary value brackets, OR has a recognized prefix
+    if (cls.includes("[") || cls.includes(":")) {
       processClass(cls);
     }
   }

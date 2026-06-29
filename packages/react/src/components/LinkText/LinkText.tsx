@@ -5,9 +5,13 @@ import { cn } from "../../utils/cn";
 import { Shimmer } from "../Shimmer/Shimmer";
 import "./LinkText.css";
 
+type LinkTextTag = "a" | "span";
+
 export interface LinkTextProps
   extends BaseProps,
     Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "className" | "style"> {
+  /** HTML element to render. Use "span" when wrapping inside NavLink/Link to avoid nested anchors */
+  as?: LinkTextTag;
   /** Color variant */
   variant?: "blue" | "black" | "white" | "navy";
   /** Font size */
@@ -26,9 +30,11 @@ export interface LinkTextProps
   ghostHeight?: string;
 }
 
-export const LinkText = forwardRef<HTMLAnchorElement, LinkTextProps>(
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const LinkText = forwardRef<any, LinkTextProps>(
   (
     {
+      as: Tag = "span",
       variant = "blue",
       size,
       weight,
@@ -73,8 +79,11 @@ export const LinkText = forwardRef<HTMLAnchorElement, LinkTextProps>(
       );
     }
 
+    // Only pass anchor-specific props when rendering as <a>
+    const anchorProps = Tag === "a" ? { target, rel, ...rest } : rest;
+
     return (
-      <a
+      <Tag
         ref={ref}
         className={cn(
           "tui-link-text",
@@ -86,15 +95,13 @@ export const LinkText = forwardRef<HTMLAnchorElement, LinkTextProps>(
           className,
         )}
         style={style}
-        target={target}
-        rel={rel}
         aria-disabled={disabled || undefined}
         tabIndex={disabled ? -1 : undefined}
         data-testid={testId}
-        {...rest}
+        {...anchorProps}
       >
         {children}
-      </a>
+      </Tag>
     );
   },
 );

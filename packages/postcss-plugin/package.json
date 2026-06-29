@@ -1,0 +1,47 @@
+{
+  "name": "@tantuui/postcss-plugin",
+  "version": "0.0.4",
+  "description": "PostCSS plugin for TantuUI — adds @apply support for tui-* utility classes",
+  "license": "MIT",
+  "keywords": [
+    "postcss",
+    "postcss-plugin",
+    "tantuui",
+    "css",
+    "utility-classes",
+    "apply"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pawan-rocks/tantuUI",
+    "directory": "packages/postcss-plugin"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "postcss": ">=8"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.1",
+    "postcss": "^8.4.38",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.5"
+  }
+}

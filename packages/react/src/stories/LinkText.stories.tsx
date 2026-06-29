@@ -8,6 +8,12 @@ const meta: Meta<typeof LinkText> = {
   tags: ["autodocs"],
 
   argTypes: {
+    as: {
+      control: "select",
+      options: ["span", "a"],
+      description: "HTML element to render. Use \"span\" inside NavLink/Link to avoid nested anchors.",
+      table: { category: "Element", defaultValue: { summary: "span" } },
+    },
     variant: {
       control: "select",
       options: ["blue", "black", "white", "navy"],
@@ -54,6 +60,7 @@ const meta: Meta<typeof LinkText> = {
 
   args: {
     children: "Learn more",
+    as: "span",
     variant: "blue",
     noHoverUnderline: false,
     disabled: false,
@@ -67,7 +74,7 @@ type Story = StoryObj<typeof LinkText>;
 // ── Playground ────────────────────────────────────────────────────────────
 export const Playground: Story = {
   name: "⚡ Playground",
-  args: { children: "Click this link", href: "#" },
+  args: { children: "Click this link", as: "a", href: "#" },
 };
 
 // ── Variants ──────────────────────────────────────────────────────────────
@@ -77,12 +84,12 @@ export const Variants: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-4)" }}>
       <div style={{ display: "flex", gap: "var(--tui-spacing-6)", alignItems: "center" }}>
-        <LinkText href="#" variant="blue">Blue (default)</LinkText>
-        <LinkText href="#" variant="black">Black</LinkText>
-        <LinkText href="#" variant="navy">Navy</LinkText>
+        <LinkText as="a" href="#" variant="blue">Blue (default)</LinkText>
+        <LinkText as="a" href="#" variant="black">Black</LinkText>
+        <LinkText as="a" href="#" variant="navy">Navy</LinkText>
       </div>
       <div style={{ background: "var(--tui-color-brand-black-900)", padding: "var(--tui-spacing-4)", borderRadius: "var(--tui-radius-md)", display: "inline-flex" }}>
-        <LinkText href="#" variant="white">White (on dark bg)</LinkText>
+        <LinkText as="a" href="#" variant="white">White (on dark bg)</LinkText>
       </div>
     </div>
   ),
@@ -96,11 +103,11 @@ export const HoverStates: Story = {
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-4)" }}>
       <div>
         <span style={{ fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)", display: "block", marginBottom: "var(--tui-spacing-1)" }}>With hover underline (default)</span>
-        <LinkText href="#" variant="blue">Hover me to see underline</LinkText>
+        <LinkText as="a" href="#" variant="blue">Hover me to see underline</LinkText>
       </div>
       <div>
         <span style={{ fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)", display: "block", marginBottom: "var(--tui-spacing-1)" }}>No hover underline</span>
-        <LinkText href="#" variant="blue" noHoverUnderline>Hover me — no underline</LinkText>
+        <LinkText as="a" href="#" variant="blue" noHoverUnderline>Hover me — no underline</LinkText>
       </div>
     </div>
   ),
@@ -115,9 +122,9 @@ export const FocusAndPressed: Story = {
       <p style={{ fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)" }}>
         Tab to focus (shows ring + indigo color). Click/hold to see pressed state (indigo-600).
       </p>
-      <LinkText href="#" variant="blue" size="lg" weight="semibold">Blue — tab or click me</LinkText>
-      <LinkText href="#" variant="black" size="lg" weight="semibold">Black — tab or click me</LinkText>
-      <LinkText href="#" variant="navy" size="lg" weight="semibold">Navy — tab or click me</LinkText>
+      <LinkText as="a" href="#" variant="blue" size="lg" weight="semibold">Blue — tab or click me</LinkText>
+      <LinkText as="a" href="#" variant="black" size="lg" weight="semibold">Black — tab or click me</LinkText>
+      <LinkText as="a" href="#" variant="navy" size="lg" weight="semibold">Navy — tab or click me</LinkText>
     </div>
   ),
 };
@@ -129,7 +136,7 @@ export const Sizes: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "var(--tui-spacing-4)", flexWrap: "wrap", alignItems: "baseline" }}>
       {(["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
-        <LinkText key={size} href="#" size={size}>{size.toUpperCase()} link</LinkText>
+        <LinkText key={size} as="a" href="#" size={size}>{size.toUpperCase()} link</LinkText>
       ))}
     </div>
   ),
@@ -141,9 +148,9 @@ export const Disabled: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ display: "flex", gap: "var(--tui-spacing-6)", alignItems: "center" }}>
-      <LinkText href="#" disabled variant="blue">Disabled blue</LinkText>
-      <LinkText href="#" disabled variant="black">Disabled black</LinkText>
-      <LinkText href="#" disabled variant="navy">Disabled coal</LinkText>
+      <LinkText as="a" href="#" disabled variant="blue">Disabled blue</LinkText>
+      <LinkText as="a" href="#" disabled variant="black">Disabled black</LinkText>
+      <LinkText as="a" href="#" disabled variant="navy">Disabled coal</LinkText>
     </div>
   ),
 };
@@ -175,8 +182,30 @@ export const CustomClassOnly: Story = {
       <p style={{ fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)" }}>
         Zero design props — only className + children.
       </p>
-      <LinkText href="#" className="my-link">Custom styled link</LinkText>
-      <LinkText href="#">No props at all (default blue)</LinkText>
+      <LinkText as="a" href="#" className="my-link">Custom styled link</LinkText>
+      <LinkText as="a" href="#">No props at all (default blue)</LinkText>
+    </div>
+  ),
+};
+
+// ── As Prop (span vs a) ───────────────────────────────────────────────────
+export const AsElement: Story = {
+  name: "As Prop (span vs a)",
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-4)" }}>
+      <div>
+        <span style={{ fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)", display: "block", marginBottom: "var(--tui-spacing-1)" }}>
+          as="span" (default) — use inside NavLink/Link
+        </span>
+        <LinkText as="span" variant="navy" size="sm" weight="medium">Dashboard</LinkText>
+      </div>
+      <div>
+        <span style={{ fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)", display: "block", marginBottom: "var(--tui-spacing-1)" }}>
+          as="a" — standalone anchor link
+        </span>
+        <LinkText as="a" href="#" variant="navy" size="sm" weight="medium">External Link</LinkText>
+      </div>
     </div>
   ),
 };

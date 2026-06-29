@@ -1,6 +1,6 @@
 {
   "name": "@tantuui/tokens",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Framework-agnostic design tokens for TantuUI (--tui-* CSS variables)",
   "license": "MIT",
   "keywords": [
@@ -27,11 +27,22 @@
     "./runtime": {
       "import": "./dist/runtime.mjs",
       "require": "./dist/runtime.js"
+    },
+    "./postcss": {
+      "types": "./dist/postcss.d.ts",
+      "import": "./dist/postcss.mjs",
+      "require": "./dist/postcss.js"
+    },
+    "./vite": {
+      "types": "./dist/vite.d.ts",
+      "import": "./dist/vite.mjs",
+      "require": "./dist/vite.js"
     }
   },
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "CHANGELOG.md"
   ],
   "repository": {
     "type": "git",
@@ -45,7 +56,10 @@
     "export:figma": "node scripts/export-figma.js"
   },
   "devDependencies": {
+    "@types/node": "^26.0.1",
+    "postcss": "^8.5.16",
     "tsup": "^8.0.0",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "vite": "^5.4.21"
   }
 }

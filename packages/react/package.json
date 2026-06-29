@@ -1,6 +1,6 @@
 {
   "name": "@tantuui/react",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "React component library for TantuUI",
   "license": "MIT",
   "keywords": [
@@ -24,7 +24,8 @@
   },
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "CHANGELOG.md"
   ],
   "repository": {
     "type": "git",
