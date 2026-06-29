@@ -1,7 +1,7 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry:       ["src/index.ts", "src/runtime.ts"],
+  entry:       ["src/index.ts", "src/runtime.ts", "src/postcss.ts", "src/vite.ts"],
   format:      ["cjs", "esm"],
   dts:         true,
   sourcemap:   true,

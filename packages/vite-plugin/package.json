@@ -1,0 +1,50 @@
+{
+  "name": "@tantuui/vite-plugin",
+  "version": "0.0.4",
+  "description": "Vite plugin for TantuUI — auto-configures PostCSS @apply, imports tokens + utilities, zero config",
+  "license": "MIT",
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "tantuui",
+    "css",
+    "postcss",
+    "design-system"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pawan-rocks/tantuUI",
+    "directory": "packages/vite-plugin"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@tantuui/postcss-plugin": "*"
+  },
+  "peerDependencies": {
+    "vite": ">=5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.5",
+    "vite": "^5.4.0"
+  }
+}
