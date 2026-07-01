@@ -41,6 +41,8 @@
   },
   "files": [
     "dist",
+    "docs",
+    "scripts/postinstall.js",
     "README.md",
     "CHANGELOG.md"
   ],
@@ -53,7 +55,8 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "clean": "rm -rf dist",
-    "export:figma": "node scripts/export-figma.js"
+    "export:figma": "node scripts/export-figma.js",
+    "postinstall": "node scripts/postinstall.js || true"
   },
   "devDependencies": {
     "@types/node": "^26.0.1",
