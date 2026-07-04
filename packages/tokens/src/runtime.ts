@@ -56,8 +56,11 @@ const PROPERTY_MAP: Record<string, string | string[]> = {
   "min-h":  "min-height",
   "max-h":  "max-height",
   "gap":    "gap",
+  "gap-x":  "column-gap",
+  "gap-y":  "row-gap",
   "text":   "font-size",
   "leading":"line-height",
+  "tracking":"letter-spacing",
   "rounded":"border-radius",
   "border": "border-width",
   "top":    "top",
@@ -66,6 +69,35 @@ const PROPERTY_MAP: Record<string, string | string[]> = {
   "left":   "left",
   "inset":  "inset",
   "z":      "z-index",
+  // Transforms
+  "rotate":     "TRANSFORM:rotate",
+  "scale":      "TRANSFORM:scale",
+  "scale-x":    "TRANSFORM:scaleX",
+  "scale-y":    "TRANSFORM:scaleY",
+  "skew-x":     "TRANSFORM:skewX",
+  "skew-y":     "TRANSFORM:skewY",
+  "translate-x":"TRANSFORM:translateX",
+  "translate-y":"TRANSFORM:translateY",
+  // Filters
+  "blur":       "FILTER:blur",
+  "brightness": "FILTER:brightness",
+  "contrast":   "FILTER:contrast",
+  "saturate":   "FILTER:saturate",
+  "hue-rotate": "FILTER:hue-rotate",
+  "drop-shadow":"FILTER:drop-shadow",
+  // Backdrop filters
+  "backdrop-blur":       "BACKDROP:blur",
+  "backdrop-brightness": "BACKDROP:brightness",
+  "backdrop-contrast":   "BACKDROP:contrast",
+  "backdrop-saturate":   "BACKDROP:saturate",
+  // Other
+  "opacity":    "opacity",
+  "basis":      "flex-basis",
+  "order":      "order",
+  "columns":    "columns",
+  "indent":     "text-indent",
+  "duration":   "transition-duration",
+  "delay":      "transition-delay",
 };
 
 // ── Pseudo-class prefix → CSS pseudo-selector mapping ─────────────────
@@ -135,9 +167,36 @@ function resolveArbitrary(tuiClass: string): string | null {
   const match = tuiClass.match(ARBITRARY_REGEX);
   if (!match) return null;
 
-  const [, prop, value] = match;
+  const [, prop, rawValue] = match;
   const cssProperties = PROPERTY_MAP[prop];
   if (!cssProperties) return null;
+
+  // Convert underscores to spaces (like Tailwind) for calc(), etc.
+  // Also auto-add spaces around + and - operators inside calc/clamp/min/max
+  let value = rawValue.replace(/_/g, " ");
+  // Add spaces around arithmetic operators in calc-like functions (Tailwind behavior)
+  // Matches: digit/unit/%)[-+]digit → adds spaces: "100%-50px" → "100% - 50px"
+  value = value.replace(/([a-zA-Z%)])([+-])(\d)/g, "$1 $2 $3");
+
+  // Handle transform functions (rotate, scale, skew, translate)
+  if (typeof cssProperties === "string" && cssProperties.startsWith("TRANSFORM:")) {
+    const fn = cssProperties.slice("TRANSFORM:".length);
+    const unit = fn === "rotate" || fn === "skewX" || fn === "skewY" ? "deg" : "";
+    const finalValue = value.match(/[a-z%]/) ? value : `${value}${unit}`;
+    return `transform: ${fn}(${finalValue})`;
+  }
+
+  // Handle filter functions (blur, brightness, contrast, etc.)
+  if (typeof cssProperties === "string" && cssProperties.startsWith("FILTER:")) {
+    const fn = cssProperties.slice("FILTER:".length);
+    return `filter: ${fn}(${value})`;
+  }
+
+  // Handle backdrop-filter functions
+  if (typeof cssProperties === "string" && cssProperties.startsWith("BACKDROP:")) {
+    const fn = cssProperties.slice("BACKDROP:".length);
+    return `backdrop-filter: ${fn}(${value}); -webkit-backdrop-filter: ${fn}(${value})`;
+  }
 
   if (Array.isArray(cssProperties)) {
     return cssProperties.map((p) => `${p}: ${value}`).join("; ");
@@ -172,16 +231,23 @@ function getComputedDeclarations(tuiClass: string): string | null {
 }
 
 /**
- * Process a single class name — handles arbitrary values, pseudo prefixes, and responsive.
+ * Process a single class name — handles arbitrary values, pseudo prefixes, responsive, and !important.
  */
 function processClass(className: string): void {
   if (generatedRules.has(className)) return;
 
-  // ── Parse prefixes: responsive:pseudo:tui-class ──
+  // ── Parse prefixes: !responsive:pseudo:tui-class ──
   let responsivePrefix: string | null = null;
   let pseudoPrefix: string | null = null;
   let groupPrefix: string | null = null;
+  let isImportant = false;
   let tuiClass = className;
+
+  // Check for !important prefix
+  if (tuiClass.startsWith("!")) {
+    isImportant = true;
+    tuiClass = tuiClass.slice(1);
+  }
 
   // Check for responsive prefix first (sm:, md:, lg:, xl:, 2xl:)
   const responsiveMatch = tuiClass.match(/^(sm|md|lg|xl|2xl):(.*)/);
@@ -206,8 +272,8 @@ function processClass(className: string): void {
     }
   }
 
-  // If no prefix and no arbitrary value brackets, nothing to do
-  if (!responsivePrefix && !pseudoPrefix && !groupPrefix && !tuiClass.includes("[")) {
+  // If no prefix, no important, and no arbitrary value brackets, nothing to do
+  if (!responsivePrefix && !pseudoPrefix && !groupPrefix && !isImportant && !tuiClass.includes("[")) {
     return;
   }
 
@@ -223,6 +289,16 @@ function processClass(className: string): void {
   }
 
   if (!declarations) return;
+
+  // Add !important if flagged
+  if (isImportant) {
+    declarations = declarations
+      .split(";")
+      .map((d) => d.trim())
+      .filter(Boolean)
+      .map((d) => d.endsWith("!important") ? d : `${d} !important`)
+      .join("; ");
+  }
 
   // Mark as generated
   generatedRules.add(className);
@@ -265,8 +341,8 @@ function scanElement(el: Element): void {
 
   for (const cls of classes.split(/\s+/)) {
     if (!cls) continue;
-    // Process if: has arbitrary value brackets, OR has a recognized prefix
-    if (cls.includes("[") || cls.includes(":")) {
+    // Process if: has arbitrary value brackets, OR has a recognized prefix, OR starts with !
+    if (cls.includes("[") || cls.includes(":") || cls.startsWith("!")) {
       processClass(cls);
     }
   }

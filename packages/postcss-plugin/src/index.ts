@@ -21,6 +21,7 @@
  */
 
 import type { PluginCreator } from "postcss";
+import postcss from "postcss";
 import { readFileSync } from "fs";
 import { resolve, dirname } from "path";
 
@@ -216,7 +217,7 @@ const plugin: PluginCreator<PluginOptions> = (opts = {}) => {
 
           // Insert declarations into parent rule
           for (const [prop, value] of Object.entries(declarations)) {
-            atRule.before(`${prop}: ${value};`);
+            atRule.before(postcss.decl({ prop, value }));
           }
         }
 
