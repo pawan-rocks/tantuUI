@@ -24,6 +24,8 @@
   },
   "files": [
     "dist",
+    "docs",
+    "scripts/postinstall.js",
     "README.md",
     "CHANGELOG.md"
   ],
@@ -39,7 +41,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build -o storybook-static"
+    "storybook:build": "storybook build -o storybook-static",
+    "postinstall": "node scripts/postinstall.js || true"
   },
   "peerDependencies": {
     "react": ">=17",

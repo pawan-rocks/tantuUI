@@ -1,0 +1,72 @@
+{
+  "name": "tantuui-css-intellisense",
+  "displayName": "TantuUI CSS IntelliSense",
+  "description": "Intelligent autocomplete, hover preview, and color decorators for TantuUI CSS utility classes (tui-*)",
+  "version": "0.0.1",
+  "publisher": "tantuui",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pawan-rocks/tantuUI",
+    "directory": "packages/vscode-intellisense"
+  },
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Other", "Programming Languages"],
+  "keywords": [
+    "tantuui",
+    "css",
+    "intellisense",
+    "autocomplete",
+    "utility-classes",
+    "design-tokens",
+    "css-variables"
+  ],
+  "activationEvents": [
+    "onLanguage:html",
+    "onLanguage:typescriptreact",
+    "onLanguage:javascriptreact",
+    "onLanguage:vue",
+    "onLanguage:svelte",
+    "onLanguage:astro",
+    "onLanguage:css",
+    "onLanguage:scss",
+    "onLanguage:php"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "TantuUI CSS IntelliSense",
+      "properties": {
+        "tantuui.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable TantuUI CSS IntelliSense"
+        },
+        "tantuui.showColorDecorators": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show inline color decorators for tui color classes"
+        },
+        "tantuui.languages": {
+          "type": "array",
+          "default": ["html", "typescriptreact", "javascriptreact", "vue", "svelte", "astro", "css", "scss", "php"],
+          "description": "Languages to provide IntelliSense for"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs --watch",
+    "package": "vsce package --no-dependencies",
+    "publish": "vsce publish --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "esbuild": "^0.20.0",
+    "@vscode/vsce": "^2.24.0"
+  }
+}

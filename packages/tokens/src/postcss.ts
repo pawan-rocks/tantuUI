@@ -16,6 +16,7 @@
  */
 
 import type { PluginCreator } from "postcss";
+import postcss from "postcss";
 import { readFileSync } from "fs";
 import { resolve, dirname } from "path";
 
@@ -100,19 +101,46 @@ const PROPERTY_MAP: Record<string, string | string[]> = {
   "m": "margin", "mx": ["margin-left", "margin-right"], "my": ["margin-top", "margin-bottom"],
   "mt": "margin-top", "mr": "margin-right", "mb": "margin-bottom", "ml": "margin-left",
   "w": "width", "h": "height", "min-w": "min-width", "max-w": "max-width",
-  "min-h": "min-height", "max-h": "max-height", "gap": "gap", "text": "font-size",
-  "leading": "line-height", "rounded": "border-radius", "border": "border-width",
+  "min-h": "min-height", "max-h": "max-height", "gap": "gap", "gap-x": "column-gap", "gap-y": "row-gap",
+  "text": "font-size", "leading": "line-height", "tracking": "letter-spacing",
+  "rounded": "border-radius", "border": "border-width",
   "top": "top", "right": "right", "bottom": "bottom", "left": "left", "inset": "inset", "z": "z-index",
+  "rotate": "TRANSFORM:rotate", "scale": "TRANSFORM:scale", "scale-x": "TRANSFORM:scaleX", "scale-y": "TRANSFORM:scaleY",
+  "skew-x": "TRANSFORM:skewX", "skew-y": "TRANSFORM:skewY",
+  "translate-x": "TRANSFORM:translateX", "translate-y": "TRANSFORM:translateY",
+  "blur": "FILTER:blur", "brightness": "FILTER:brightness", "contrast": "FILTER:contrast",
+  "saturate": "FILTER:saturate", "hue-rotate": "FILTER:hue-rotate", "drop-shadow": "FILTER:drop-shadow",
+  "backdrop-blur": "BACKDROP:blur", "backdrop-brightness": "BACKDROP:brightness",
+  "backdrop-contrast": "BACKDROP:contrast", "backdrop-saturate": "BACKDROP:saturate",
+  "opacity": "opacity", "basis": "flex-basis", "order": "order", "columns": "columns",
+  "indent": "text-indent", "duration": "transition-duration", "delay": "transition-delay",
 };
 
 function resolveArbitrary(className: string): Record<string, string> | null {
   const match = className.match(/^tui-([\w-]+)-\[([^\]]+)\]$/);
   if (!match) return null;
-  const [, prop, value] = match;
+  const [, prop, rawValue] = match;
   const cssProperties = PROPERTY_MAP[prop];
   if (!cssProperties) return null;
+  // Convert underscores to spaces (like Tailwind) for calc(), etc.
+  // Also auto-add spaces around + and - operators inside calc/clamp/min/max
+  let value = rawValue.replace(/_/g, " ");
+  value = value.replace(/([a-zA-Z%)])([+-])(\d)/g, "$1 $2 $3");
   const result: Record<string, string> = {};
-  if (Array.isArray(cssProperties)) {
+
+  if (typeof cssProperties === "string" && cssProperties.startsWith("TRANSFORM:")) {
+    const fn = cssProperties.slice("TRANSFORM:".length);
+    const unit = (fn === "rotate" || fn === "skewX" || fn === "skewY") ? "deg" : "";
+    const finalValue = value.match(/[a-z%]/) ? value : `${value}${unit}`;
+    result["transform"] = `${fn}(${finalValue})`;
+  } else if (typeof cssProperties === "string" && cssProperties.startsWith("FILTER:")) {
+    const fn = cssProperties.slice("FILTER:".length);
+    result["filter"] = `${fn}(${value})`;
+  } else if (typeof cssProperties === "string" && cssProperties.startsWith("BACKDROP:")) {
+    const fn = cssProperties.slice("BACKDROP:".length);
+    result["backdrop-filter"] = `${fn}(${value})`;
+    result["-webkit-backdrop-filter"] = `${fn}(${value})`;
+  } else if (Array.isArray(cssProperties)) {
     for (const p of cssProperties) result[p] = value;
   } else {
     result[cssProperties] = value;
@@ -135,14 +163,22 @@ const plugin: PluginCreator<PluginOptions> = (opts = {}) => {
         if (!parent) { atRule.remove(); return; }
 
         for (const cls of classes) {
-          let declarations: Record<string, string> | undefined = utilities[cls];
-          if (!declarations) declarations = resolveArbitrary(cls) ?? undefined;
+          // Handle !important prefix: !tui-p-4 → padding with !important
+          let actualCls = cls;
+          let important = false;
+          if (actualCls.startsWith("!")) {
+            important = true;
+            actualCls = actualCls.slice(1);
+          }
+
+          let declarations: Record<string, string> | undefined = utilities[actualCls];
+          if (!declarations) declarations = resolveArbitrary(actualCls) ?? undefined;
           if (!declarations) {
             console.warn(`[@tantuui/tokens/postcss] Unknown class "${cls}" in @apply. Skipping.`);
             continue;
           }
           for (const [prop, value] of Object.entries(declarations)) {
-            atRule.before(`${prop}: ${value};`);
+            atRule.before(postcss.decl({ prop, value: important ? `${value} !important` : value }));
           }
         }
         atRule.remove();
