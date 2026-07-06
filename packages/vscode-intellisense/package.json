@@ -59,7 +59,8 @@
     }
   },
   "scripts": {
-    "build": "node build.mjs",
+    "build": "node build.mjs && vsce package --no-dependencies",
+    "build:js": "node build.mjs",
     "dev": "node build.mjs --watch",
     "package": "vsce package --no-dependencies",
     "publish": "vsce publish --no-dependencies"
