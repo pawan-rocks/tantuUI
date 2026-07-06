@@ -17,6 +17,7 @@
   - **Sizes**: sm, md, lg with distinct padding and font
   - **Variants**: bordered, rounded, striped, hoverable, compact
   - Composable sub-components also available: `ExTable`, `TableHeader`, `TableHeaderCell`, `TableBody`, `TableRow`, `TableRowLabel`, `TableCell`
+  
 
 ### Changed
 - Component exports updated: `Table` is now the data-driven component, `ExTable` is the low-level `<table>` wrapper
