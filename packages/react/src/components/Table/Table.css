@@ -1,0 +1,437 @@
+/* ─── Table Wrapper ───────────────────────────────────────────────────────── */
+.tui-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  position: relative;
+}
+
+.tui-table-wrapper--scroll-x {
+  overflow-x: auto;
+}
+
+.tui-table-wrapper--scroll-y {
+  overflow-y: auto;
+}
+
+.tui-table-wrapper--rounded {
+  border-radius: var(--tui-radius-lg);
+}
+
+.tui-table-wrapper--bordered {
+  border: var(--tui-border-width-1) solid var(--tui-color-border-default);
+}
+
+.tui-table-wrapper--bordered.tui-table-wrapper--rounded {
+  border-radius: var(--tui-radius-lg);
+}
+
+/* ─── Table ───────────────────────────────────────────────────────────────── */
+.tui-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: inherit;
+  font-size: var(--tui-font-size-sm);
+  line-height: var(--tui-leading-normal);
+  color: var(--tui-color-text-primary);
+}
+
+/* ─── Striped ─────────────────────────────────────────────────────────────── */
+.tui-table--striped .tui-table__body .tui-table__row:nth-child(even) .tui-table__cell,
+.tui-table--striped .tui-table__body .tui-table__row:nth-child(even) .tui-table__row-label {
+  background-color: var(--tui-color-surface-secondary);
+}
+
+/* ─── Hoverable ───────────────────────────────────────────────────────────── */
+.tui-table--hoverable .tui-table__body .tui-table__row:hover .tui-table__cell,
+.tui-table--hoverable .tui-table__body .tui-table__row:hover .tui-table__row-label {
+  background-color: var(--tui-color-brand-navy-50);
+}
+
+/* ─── Compact ─────────────────────────────────────────────────────────────── */
+.tui-table--compact .tui-table__header-cell,
+.tui-table--compact .tui-table__cell {
+  padding: var(--tui-spacing-1_5) var(--tui-spacing-3);
+}
+
+/* ─── Sizes ───────────────────────────────────────────────────────────────── */
+.tui-table--sm .tui-table__header-cell,
+.tui-table--sm .tui-table__cell {
+  padding: var(--tui-spacing-2) var(--tui-spacing-3);
+  font-size: var(--tui-font-size-xs);
+}
+
+.tui-table--md .tui-table__header-cell,
+.tui-table--md .tui-table__cell {
+  padding: var(--tui-spacing-3) var(--tui-spacing-4);
+  font-size: var(--tui-font-size-sm);
+}
+
+.tui-table--lg .tui-table__header-cell,
+.tui-table--lg .tui-table__cell {
+  padding: var(--tui-spacing-4) var(--tui-spacing-5);
+  font-size: var(--tui-font-size-base);
+}
+
+/* ─── Table Header ────────────────────────────────────────────────────────── */
+.tui-table__header {
+  background-color: var(--tui-table-header-bg, var(--tui-color-brand-navy-100));
+}
+
+/* ─── Table Header Cell ───────────────────────────────────────────────────── */
+.tui-table__header-cell {
+  padding: var(--tui-spacing-3) var(--tui-spacing-4);
+  text-align: left;
+  font-weight: var(--tui-font-weight-semibold);
+  color: var(--tui-color-text-secondary);
+  white-space: nowrap;
+  vertical-align: top;
+  background-color: var(--tui-table-header-bg, var(--tui-color-brand-navy-100));
+  border-bottom: var(--tui-border-width-1) solid var(--tui-color-border-default);
+}
+
+/* Ensure inline children (checkbox, radio) align to middle of cell */
+.tui-table__header-cell > * {
+  vertical-align: middle;
+}
+
+.tui-table__header-cell--center {
+  text-align: center;
+}
+
+.tui-table__header-cell--right {
+  text-align: right;
+}
+
+/* Header cell content layout */
+.tui-table__header-cell-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tui-spacing-0_5);
+}
+
+.tui-table__header-cell-title {
+  font-size: inherit;
+  font-weight: var(--tui-font-weight-semibold);
+  color: var(--tui-color-text-primary);
+  line-height: var(--tui-leading-tight);
+}
+
+.tui-table__header-cell-subtitle {
+  font-size: var(--tui-font-size-xs);
+  font-weight: var(--tui-font-weight-normal);
+  color: var(--tui-color-text-secondary);
+  line-height: var(--tui-leading-tight);
+}
+
+.tui-table__header-cell-extra {
+  font-size: var(--tui-font-size-xs);
+  font-weight: var(--tui-font-weight-medium);
+  color: var(--tui-color-text-secondary);
+  line-height: var(--tui-leading-tight);
+  opacity: var(--tui-opacity-80);
+}
+
+/* ─── Table Body ──────────────────────────────────────────────────────────── */
+.tui-table__body {
+  background-color: var(--tui-table-body-bg, white);
+}
+
+/* ─── Table Row ───────────────────────────────────────────────────────────── */
+.tui-table__row {
+  transition: background-color var(--tui-duration-fast) var(--tui-ease-in-out);
+}
+
+.tui-table__row--selected .tui-table__cell,
+.tui-table__row--selected .tui-table__row-label {
+  background-color: var(--tui-color-brand-blue-50);
+}
+
+.tui-table__row--disabled {
+  cursor: not-allowed;
+}
+
+.tui-table__row--disabled .tui-table__cell,
+.tui-table__row--disabled .tui-table__row-label {
+  background-color: var(--tui-color-brand-gray-200);
+  color: var(--tui-color-text-tertiary);
+  cursor: not-allowed;
+}
+
+/* Prevent hover override on disabled rows */
+.tui-table--hoverable .tui-table__body .tui-table__row--disabled:hover .tui-table__cell,
+.tui-table--hoverable .tui-table__body .tui-table__row--disabled:hover .tui-table__row-label {
+  background-color: var(--tui-color-brand-gray-200);
+}
+
+/* Row without border */
+.tui-table__row--borderless .tui-table__cell,
+.tui-table__row--borderless .tui-table__row-label {
+  border-bottom: none;
+}
+
+/* ─── Row Label (checkbox / radio cell) ───────────────────────────────────── */
+.tui-table__row-label {
+  width: var(--tui-spacing-10);
+  padding: var(--tui-spacing-3) var(--tui-spacing-3);
+  padding-top: calc(var(--tui-spacing-3) + 1px);
+  vertical-align: top;
+  text-align: center;
+  background-color: var(--tui-table-body-bg, white);
+  border-bottom: var(--tui-border-width-1) solid var(--tui-color-border-default);
+}
+
+/* Center checkbox/radio within the row-label cell */
+.tui-table__row-label > * {
+  vertical-align: middle;
+}
+
+.tui-table__row:last-child .tui-table__row-label {
+  border-bottom: none;
+}
+
+/* ─── Table Cell ──────────────────────────────────────────────────────────── */
+.tui-table__cell {
+  padding: var(--tui-spacing-3) var(--tui-spacing-4);
+  vertical-align: top;
+  color: var(--tui-color-text-primary);
+  background-color: var(--tui-table-body-bg, white);
+  border-bottom: var(--tui-border-width-1) solid var(--tui-color-border-default);
+}
+
+.tui-table__row:last-child .tui-table__cell {
+  border-bottom: none;
+}
+
+.tui-table__cell--center {
+  text-align: center;
+}
+
+.tui-table__cell--right {
+  text-align: right;
+}
+
+/* Cell content layout */
+.tui-table__cell-content {
+  display: flex;
+  align-items: center;
+  gap: var(--tui-spacing-2);
+}
+
+.tui-table__cell-icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--tui-color-text-secondary);
+}
+
+.tui-table__cell-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tui-spacing-0_5);
+  min-width: 0;
+}
+
+.tui-table__cell-title {
+  font-size: inherit;
+  font-weight: var(--tui-font-weight-medium);
+  color: var(--tui-color-text-primary);
+  line-height: var(--tui-leading-tight);
+}
+
+.tui-table__cell-subtitle {
+  font-size: var(--tui-font-size-xs);
+  font-weight: var(--tui-font-weight-normal);
+  color: var(--tui-color-text-secondary);
+  line-height: var(--tui-leading-tight);
+}
+
+.tui-table__cell-extra {
+  font-size: var(--tui-font-size-xs);
+  font-weight: var(--tui-font-weight-normal);
+  color: var(--tui-color-text-tertiary);
+  line-height: var(--tui-leading-tight);
+}
+
+/* ─── Cell Link ───────────────────────────────────────────────────────────── */
+.tui-table__cell-link {
+  color: var(--tui-color-brand-blue-600);
+  text-decoration: none;
+  font-weight: var(--tui-font-weight-medium);
+  transition: color var(--tui-duration-fast) var(--tui-ease-in-out);
+}
+
+.tui-table__cell-link:hover {
+  color: var(--tui-color-brand-blue-700);
+  text-decoration: underline;
+}
+
+.tui-table__cell-link:focus-visible {
+  outline: 2px solid var(--tui-color-brand-blue-500);
+  outline-offset: 2px;
+  border-radius: var(--tui-radius-sm);
+}
+
+/* ─── Sticky Header ───────────────────────────────────────────────────────── */
+/* z-index layers:
+   - Body sticky column cells: z-index 2
+   - Sticky header cells:      z-index 3
+   - Header + sticky column:   z-index 4 (intersection)
+*/
+
+.tui-table--sticky-header .tui-table__header-cell {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+/* ─── Sticky Column ───────────────────────────────────────────────────────── */
+.tui-table__header-cell--sticky-left,
+.tui-table__cell--sticky-left,
+.tui-table__row-label--sticky-left {
+  position: sticky;
+  z-index: 2;
+}
+
+.tui-table__header-cell--sticky-right,
+.tui-table__cell--sticky-right,
+.tui-table__row-label--sticky-right {
+  position: sticky;
+  z-index: 2;
+}
+
+/* Header cell that is also a sticky column — highest z-index */
+.tui-table--sticky-header .tui-table__header-cell--sticky-left,
+.tui-table--sticky-header .tui-table__header-cell--sticky-right {
+  z-index: 4;
+}
+
+/* Shadow hints for sticky left columns */
+.tui-table__header-cell--sticky-left,
+.tui-table__cell--sticky-left,
+.tui-table__row-label--sticky-left {
+  position: sticky;
+}
+
+.tui-table__header-cell--sticky-left::after,
+.tui-table__cell--sticky-left::after,
+.tui-table__row-label--sticky-left::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -6px;
+  bottom: 0;
+  width: 6px;
+  pointer-events: none;
+  box-shadow: inset 6px 0 6px -6px rgba(0, 0, 0, 0.06);
+}
+
+/* Shadow hints for sticky right columns */
+.tui-table__header-cell--sticky-right::before,
+.tui-table__cell--sticky-right::before,
+.tui-table__row-label--sticky-right::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -6px;
+  bottom: 0;
+  width: 6px;
+  pointer-events: none;
+  box-shadow: inset -6px 0 6px -6px rgba(0, 0, 0, 0.06);
+}
+
+/* ─── Sort Icons ──────────────────────────────────────────────────────────── */
+.tui-table__sort {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: var(--tui-spacing-2);
+  vertical-align: middle;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.tui-table__sort-icon {
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  transition: border-color var(--tui-duration-fast) var(--tui-ease-in-out);
+}
+
+/* Up arrow (ascending) — default gray-400 */
+.tui-table__sort-icon--asc {
+  border-bottom: 5px solid var(--tui-color-brand-gray-400);
+}
+
+/* Down arrow (descending) — default gray-400 */
+.tui-table__sort-icon--desc {
+  border-top: 5px solid var(--tui-color-brand-gray-400);
+}
+
+
+/* Active sort — ascending: top arrow stays brand-gray-600 always */
+.tui-table__sort--asc .tui-table__sort-icon--asc {
+  border-bottom-color: var(--tui-color-brand-gray-600);
+}
+
+/* Active sort — descending: bottom arrow stays brand-gray-600 always */
+.tui-table__sort--desc .tui-table__sort-icon--desc {
+  border-top-color: var(--tui-color-brand-gray-600);
+}
+
+/* Sortable header cell cursor + hover bg */
+.tui-table__header-cell--sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--tui-duration-fast) var(--tui-ease-in-out);
+}
+
+.tui-table__header-cell--sortable:hover {
+  background-color: var(--tui-color-brand-navy-50);
+}
+
+/* ─── Expandable / Accordion Row ──────────────────────────────────────────── */
+.tui-table__expand-cell {
+  width: 28px;
+  text-align: center;
+  vertical-align: top;
+}
+
+.tui-table__cell.tui-table__expand-cell,
+.tui-table__header-cell.tui-table__expand-cell {
+  padding: var(--tui-spacing-3) var(--tui-spacing-2) var(--tui-spacing-3) var(--tui-spacing-2);
+}
+
+.tui-table__expand-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  border-radius: var(--tui-radius-sm);
+  transition: background-color var(--tui-duration-fast) var(--tui-ease-in-out);
+  color: var(--tui-color-text-secondary);
+}
+
+.tui-table__expand-toggle:hover {
+  background-color: var(--tui-color-brand-navy-100);
+  color: var(--tui-color-text-primary);
+}
+
+.tui-table__expand-toggle svg {
+  display: block;
+  transition: transform var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+.tui-table__expand-toggle--open svg {
+  transform: rotate(-180deg);
+}
+
+.tui-table__expand-row .tui-table__cell {
+  padding: var(--tui-spacing-4) var(--tui-spacing-4);
+  background-color: var(--tui-color-surface-secondary);
+}

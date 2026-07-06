@@ -108,6 +108,7 @@ import { Button, Text, Box, LinkText, Shimmer } from "@tantuui/react";`}
         { name: "TimeSelector", path: "?path=/docs/components-timeselector--docs", desc: "Scrollable time picker" },
         { name: "DatePicker", path: "?path=/docs/components-datepicker--docs", desc: "Full date/time picker" },
         { name: "Popover", path: "?path=/docs/components-popover--docs", desc: "Portal floating container" },
+        { name: "Table", path: "?path=/docs/components-table--docs", desc: "Data table with sorting, selection, expand" },
         { name: "Shimmer", path: "?path=/docs/components-shimmer--docs", desc: "Skeleton loading" },
       ].map((item) => (
         <a
