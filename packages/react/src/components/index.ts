@@ -20,3 +20,4 @@ export * from "./DatePicker";
 export * from "./TimePicker";
 export * from "./Popover";
 export * from "./Table";
+export * from "./Modal";

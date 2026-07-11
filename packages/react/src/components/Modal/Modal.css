@@ -1,0 +1,297 @@
+/* ─── Modal Overlay ────────────────────────────────────────────────────────── */
+
+.tui-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--tui-z-modal, 1100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.tui-modal-overlay--backdrop {
+  background: rgb(0 0 0 / 0.5);
+}
+
+/* Placement alignment overrides */
+.tui-modal-overlay--left {
+  justify-content: flex-start;
+}
+
+.tui-modal-overlay--right {
+  justify-content: flex-end;
+}
+
+.tui-modal-overlay--top {
+  align-items: flex-start;
+}
+
+.tui-modal-overlay--bottom {
+  align-items: flex-end;
+}
+
+.tui-modal-overlay--fullscreen {
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+/* ─── Overlay animation ───────────────────────────────────────────────────── */
+
+.tui-modal-overlay--animated {
+  animation: tui-modal-overlay-fadein var(--tui-duration-normal, 200ms) var(--tui-ease-in-out, ease-in-out);
+}
+
+@keyframes tui-modal-overlay-fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ─── Modal Panel ──────────────────────────────────────────────────────────── */
+
+.tui-modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: var(--tui-color-white, #fff);
+  border-radius: var(--tui-radius-lg, 8px);
+  box-shadow: var(--tui-shadow-xl, 0 20px 60px rgb(0 0 0 / 0.15));
+  outline: none;
+  overflow: hidden;
+  font-family: inherit;
+  max-height: 90vh;
+  max-width: 90vw;
+}
+
+/* ─── Size presets (center placement) ──────────────────────────────────────── */
+
+.tui-modal--xs { width: 320px; }
+.tui-modal--sm { width: 400px; }
+.tui-modal--md { width: 520px; }
+.tui-modal--lg { width: 680px; }
+.tui-modal--xl { width: 860px; }
+
+/* ─── Placement variants ───────────────────────────────────────────────────── */
+
+/* Center (default) — already handled by overlay flex */
+.tui-modal--center {
+  border-radius: var(--tui-radius-lg, 8px);
+}
+
+/* Left drawer */
+.tui-modal--left {
+  height: 100vh;
+  max-height: 100vh;
+  max-width: 90vw;
+  width: 380px;
+  border-radius: 0;
+  border-top-right-radius: var(--tui-radius-lg, 8px);
+  border-bottom-right-radius: var(--tui-radius-lg, 8px);
+}
+
+/* Right drawer */
+.tui-modal--right {
+  height: 100vh;
+  max-height: 100vh;
+  max-width: 90vw;
+  width: 380px;
+  border-radius: 0;
+  border-top-left-radius: var(--tui-radius-lg, 8px);
+  border-bottom-left-radius: var(--tui-radius-lg, 8px);
+}
+
+/* Top drawer */
+.tui-modal--top {
+  width: 100vw;
+  max-width: 100vw;
+  max-height: 80vh;
+  border-radius: 0;
+  border-bottom-left-radius: var(--tui-radius-lg, 8px);
+  border-bottom-right-radius: var(--tui-radius-lg, 8px);
+}
+
+/* Bottom drawer */
+.tui-modal--bottom {
+  width: 100vw;
+  max-width: 100vw;
+  max-height: 80vh;
+  border-radius: 0;
+  border-top-left-radius: var(--tui-radius-lg, 8px);
+  border-top-right-radius: var(--tui-radius-lg, 8px);
+}
+
+/* Fullscreen */
+.tui-modal--fullscreen {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  border-radius: 0;
+}
+
+/* ─── Panel animation ──────────────────────────────────────────────────────── */
+
+.tui-modal--animated.tui-modal--center {
+  animation: tui-modal-scale-in var(--tui-duration-normal, 200ms) var(--tui-ease-in-out, ease-in-out);
+}
+
+.tui-modal--animated.tui-modal--left {
+  animation: tui-modal-slide-left var(--tui-duration-normal, 200ms) var(--tui-ease-in-out, ease-in-out);
+}
+
+.tui-modal--animated.tui-modal--right {
+  animation: tui-modal-slide-right var(--tui-duration-normal, 200ms) var(--tui-ease-in-out, ease-in-out);
+}
+
+.tui-modal--animated.tui-modal--top {
+  animation: tui-modal-slide-top var(--tui-duration-normal, 200ms) var(--tui-ease-in-out, ease-in-out);
+}
+
+.tui-modal--animated.tui-modal--bottom {
+  animation: tui-modal-slide-bottom var(--tui-duration-normal, 200ms) var(--tui-ease-in-out, ease-in-out);
+}
+
+.tui-modal--animated.tui-modal--fullscreen {
+  animation: tui-modal-scale-in var(--tui-duration-normal, 200ms) var(--tui-ease-in-out, ease-in-out);
+}
+
+@keyframes tui-modal-scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes tui-modal-slide-left {
+  from { opacity: 0; transform: translateX(-100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes tui-modal-slide-right {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes tui-modal-slide-top {
+  from { opacity: 0; transform: translateY(-100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes tui-modal-slide-bottom {
+  from { opacity: 0; transform: translateY(100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Modal Header ─────────────────────────────────────────────────────────── */
+
+.tui-modal__header {
+  display: flex;
+  align-items: center;
+  gap: var(--tui-spacing-3, 12px);
+  padding: var(--tui-spacing-3, 12px) var(--tui-spacing-4, 16px);
+  border-bottom: 1px solid var(--tui-color-brand-black-100, #f0f0f0);
+  flex-shrink: 0;
+}
+
+/* Extra right padding when close icon is visible (avoid overlap) */
+.tui-modal--has-close .tui-modal__header {
+  padding-right: 40px;
+}
+
+.tui-modal__header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--tui-spacing-3, 12px);
+  flex-shrink: 0;
+}
+
+.tui-modal__header-titles {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.tui-modal__header-center {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  align-items: flex-start;
+}
+
+.tui-modal__header-right {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.tui-modal__header-title {
+  font-size: var(--tui-font-size-lg, 18px);
+  font-weight: var(--tui-font-weight-semibold, 600);
+  color: var(--tui-color-brand-black-900, #111);
+  line-height: var(--tui-leading-tight, 1.25);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.tui-modal__header-subtitle {
+  font-size: var(--tui-font-size-sm, 14px);
+  color: var(--tui-color-brand-gray-500, #6b7280);
+  line-height: var(--tui-leading-normal, 1.5);
+  margin-top: var(--tui-spacing-0_5, 2px);
+  text-align: left;
+}
+
+/* Close button — absolute top-right corner of the modal */
+.tui-modal__close {
+  position: absolute;
+  top: var(--tui-spacing-2, 8px);
+  right: var(--tui-spacing-2, 8px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: var(--tui-radius-md, 6px);
+  color: var(--tui-color-brand-black-500, #6b7280);
+  cursor: pointer;
+  transition: background var(--tui-duration-fast, 150ms) var(--tui-ease-in-out, ease-in-out),
+              color var(--tui-duration-fast, 150ms) var(--tui-ease-in-out, ease-in-out);
+  z-index: 1;
+}
+
+.tui-modal__close:hover {
+  background: var(--tui-color-brand-black-100, #f3f4f6);
+  color: var(--tui-color-brand-black-900, #111);
+}
+
+.tui-modal__close:active {
+  background: var(--tui-color-brand-black-200, #e5e7eb);
+}
+
+/* ─── Modal Body ───────────────────────────────────────────────────────────── */
+
+.tui-modal__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--tui-spacing-3, 12px) var(--tui-spacing-4, 16px);
+  font-size: var(--tui-font-size-base, 16px);
+  color: var(--tui-color-brand-black-800, #1f2937);
+  line-height: var(--tui-leading-relaxed, 1.625);
+}
+
+/* ─── Modal Footer ─────────────────────────────────────────────────────────── */
+
+.tui-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--tui-spacing-3, 12px);
+  padding: var(--tui-spacing-3, 12px) var(--tui-spacing-4, 16px);
+  border-top: 1px solid var(--tui-color-brand-black-100, #f0f0f0);
+  flex-shrink: 0;
+}

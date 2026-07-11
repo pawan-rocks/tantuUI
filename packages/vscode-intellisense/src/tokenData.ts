@@ -53,6 +53,28 @@ function generateColorTokens(): TokenEntry[] {
 
   const allColors = { ...brandColors, ...semanticColors };
 
+  // Default hex values for each color group
+  const defaultColorHex: Record<string, string> = {
+    "brand-white": "#ffffff",
+    "brand-black": "#000000",
+    "brand-navy": "#2c4091",
+    "brand-blue": "#2563EB",
+    "brand-purple": "#7C3AED",
+    "brand-pink": "#c026d3",
+    "brand-gray": "#4B5563",
+    "brand-light": "#F3F4F6",
+    "success": "#16a34a",
+    "warning": "#d97706",
+    "danger": "#dc2626",
+    "info": "#2563eb",
+    "teal": "#0d9488",
+    "orange": "#ea580c",
+    "rose": "#e11d48",
+    "indigo": "#4f46e5",
+    "mint": "#059669",
+    "coal": "#475569",
+  };
+
   for (const [group, scales] of Object.entries(allColors)) {
     for (const [scale, hex] of Object.entries(scales)) {
       const token = `--tui-color-${group}-${scale}`;
@@ -60,6 +82,17 @@ function generateColorTokens(): TokenEntry[] {
         { label: `tui-bg-${group}-${scale}`, css: `background-color: var(${token}); /* ${hex} */`, description: `Background: ${group}-${scale}`, color: hex },
         { label: `tui-text-${group}-${scale}`, css: `color: var(${token}); /* ${hex} */`, description: `Text color: ${group}-${scale}`, color: hex },
         { label: `tui-border-${group}-${scale}`, css: `border-color: var(${token}); /* ${hex} */`, description: `Border color: ${group}-${scale}`, color: hex },
+      );
+    }
+
+    // Add -default entry for each color group
+    const defHex = defaultColorHex[group];
+    if (defHex) {
+      const defToken = `--tui-color-${group}-default`;
+      entries.push(
+        { label: `tui-bg-${group}-default`, css: `background-color: var(${defToken}); /* ${defHex} */`, description: `Background: ${group} default`, color: defHex },
+        { label: `tui-text-${group}-default`, css: `color: var(${defToken}); /* ${defHex} */`, description: `Text color: ${group} default`, color: defHex },
+        { label: `tui-border-${group}-default`, css: `border-color: var(${defToken}); /* ${defHex} */`, description: `Border color: ${group} default`, color: defHex },
       );
     }
   }
@@ -163,6 +196,7 @@ function generateBorderRadiusTokens(): TokenEntry[] {
   const radii: Record<string, string> = {
     none: "0px", xs: "2px", sm: "4px", md: "6px", lg: "8px",
     xl: "12px", "2xl": "16px", "3xl": "24px", full: "9999px",
+    default: "var(--tui-radius-md) /* 6px */",
   };
 
   return Object.entries(radii).map(([key, px]) => ({
@@ -181,6 +215,7 @@ function generateShadowTokens(): TokenEntry[] {
     lg: "0 10px 15px -3px rgb(0 0 0 / 0.10)",
     xl: "0 20px 25px -5px rgb(0 0 0 / 0.10)",
     "2xl": "0 25px 50px -12px rgb(0 0 0 / 0.25)",
+    default: "var(--tui-shadow-sm)",
   };
 
   return Object.entries(shadows).map(([key, val]) => ({
@@ -193,6 +228,7 @@ function generateShadowTokens(): TokenEntry[] {
 function generateBorderWidthTokens(): TokenEntry[] {
   const widths: Record<string, string> = {
     "0": "0px", "1": "1px", "2": "2px", "3": "3px", "4": "4px", "5": "5px", "8": "8px",
+    "default": "var(--tui-border-width-1) /* 1px */",
   };
 
   const entries: TokenEntry[] = [];
