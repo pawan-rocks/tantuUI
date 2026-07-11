@@ -99,3 +99,7 @@ if (placed) {
   console.log("\n  📘 TantuUI: AI context doc added for your coding assistant.");
   console.log("     AI tools will now understand TantuUI tokens & components.\n");
 }
+
+// Print VS Code extension hint
+console.log("  💡 TantuUI VS Code IntelliSense: Get autocomplete for tui-* classes");
+console.log("     code --install-extension node_modules/@tantuui/react/dist/tantuui-css-intellisense.vsix\n");

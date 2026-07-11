@@ -95,6 +95,8 @@ function App() {
 | `TimePicker` | Time input with popup |
 | `TimeSelector` | Inline time selector |
 | `Popover` | Positioned overlay |
+| `Table` | Data table with columns, sorting, selection, expandable, ghost |
+| `Modal` | Dialog/drawer with center, left, right, top, bottom, fullscreen |
 
 ## Shared Props
 
@@ -109,6 +111,17 @@ All components support:
 - React 17+
 - React 18 (recommended)
 - React 19 compatible
+
+## VS Code IntelliSense
+
+Get autocomplete, hover previews, and color decorators for TantuUI utility classes:
+
+```bash
+# Install from the bundled .vsix (after npm install)
+code --install-extension node_modules/@tantuui/react/dist/tantuui-css-intellisense.vsix
+```
+
+Or download from [GitHub Releases](https://github.com/pawan-rocks/tantuUI/releases).
 
 ## Links
 

@@ -1,0 +1,19 @@
+name: Attach VS Code Extension to Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  attach-vsix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Upload .vsix to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: packages/vscode-intellisense/tantuui-css-intellisense-0.0.1.vsix

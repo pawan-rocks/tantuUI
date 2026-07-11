@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React, { useState } from "react";
-import { ExTable, Table } from "../components/Table/Table";
+import { ExTable, Table, TableRow, TableCell, TableHeader, TableHeaderCell, TableBody } from "../components/Table/Table";
 import type { TableColumn } from "../components/Table/Table";
 
 // ── Icons ─────────────────────────────────────────────────────────────────────
@@ -43,20 +43,29 @@ const users: User[] = [
 ];
 
 // ── Meta ──────────────────────────────────────────────────────────────────────
-const meta: Meta<typeof ExTable> = {
+const meta: Meta<any> = {
   title: "Components/Table",
   component: ExTable,
   tags: ["autodocs"],
   argTypes: {
-    rounded: { control: "boolean", description: "Rounded corners on wrapper", table: { category: "Table", defaultValue: { summary: "true" } } },
-    bordered: { control: "boolean", description: "Outer border on wrapper", table: { category: "Table", defaultValue: { summary: "false" } } },
-    striped: { control: "boolean", description: "Alternating row background", table: { category: "Table", defaultValue: { summary: "false" } } },
-    hoverable: { control: "boolean", description: "Highlight rows on hover (brand-navy-50)", table: { category: "Table", defaultValue: { summary: "false" } } },
-    compact: { control: "boolean", description: "Reduced cell padding", table: { category: "Table", defaultValue: { summary: "false" } } },
-    stickyHeader: { control: "boolean", description: "Header stays fixed on vertical scroll", table: { category: "Table", defaultValue: { summary: "false" } } },
-    size: { control: "select", options: ["sm", "md", "lg"], description: "Table size (padding & font)", table: { category: "Table", defaultValue: { summary: "md" } } },
+    rounded: { control: "boolean", description: "Rounded corners on wrapper", table: { category: "Appearance", defaultValue: { summary: "true" } } },
+    bordered: { control: "boolean", description: "Outer border on wrapper", table: { category: "Appearance", defaultValue: { summary: "false" } } },
+    striped: { control: "boolean", description: "Alternating row background", table: { category: "Appearance", defaultValue: { summary: "false" } } },
+    hoverable: { control: "boolean", description: "Highlight rows on hover", table: { category: "Appearance", defaultValue: { summary: "false" } } },
+    compact: { control: "boolean", description: "Reduced cell padding", table: { category: "Appearance", defaultValue: { summary: "false" } } },
+    size: { control: "select", options: ["sm", "md", "lg"], description: "Table size — affects padding and font size", table: { category: "Appearance", defaultValue: { summary: "md" } } },
+    stickyHeader: { control: "boolean", description: "Header stays fixed on vertical scroll", table: { category: "Behavior", defaultValue: { summary: "false" } } },
+    isGhost: { control: "boolean", description: "Show shimmer/skeleton for all body rows. Pass empty dataSource with this.", table: { category: "Ghost / Loading", defaultValue: { summary: "false" } } },
+    ghostRowsCount: { control: { type: "number", min: 1, max: 20 }, description: "Number of ghost rows to display when isGhost is true", table: { category: "Ghost / Loading", defaultValue: { summary: "5" } } },
   },
-  args: { rounded: true, bordered: true, striped: false, hoverable: true, compact: false, stickyHeader: false, size: "md" },
+  args: { rounded: true, bordered: true, striped: false, hoverable: true, compact: false, stickyHeader: false, size: "md", isGhost: false, ghostRowsCount: 5 },
+  parameters: {
+    docs: {
+      description: {
+        component: "Data-driven Table with columns + dataSource. Supports ghost/loading states, row selection, sorting, expandable rows, and sticky columns.",
+      },
+    },
+  },
 };
 
 export default meta;
@@ -759,108 +768,597 @@ export const CustomClassOnly: Story = {
   },
 };
 
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-//  API Reference
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// ══════════════════════════════════════════════════════════════════════════
+// Ghost / Skeleton Examples
+// ══════════════════════════════════════════════════════════════════════════
 
+// ── Ghost Rows ────────────────────────────────────────────────────────────
+/**
+ * Use `isGhost` on the data-driven `Table` to show loading shimmer rows.
+ * Just pass your `columns` and an empty `dataSource` — the ghost rows auto-generate
+ * from the column definitions. No need to manually create cells.
+ */
+export const GhostRows: Story = {
+  name: "Ghost Rows",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const columns: TableColumn[] = [
+      { key: "name", title: "Name", dataIndex: "name", width: "150px" },
+      { key: "email", title: "Email", dataIndex: "email", width: "200px" },
+      { key: "role", title: "Role", dataIndex: "role", width: "100px" },
+      { key: "status", title: "Status", dataIndex: "status", width: "80px" },
+    ];
+
+    return (
+      <Table
+        columns={columns}
+        dataSource={[]}
+        isGhost
+        ghostRowsCount={5}
+      />
+    );
+  },
+};
+
+// ── Ghost Cells ───────────────────────────────────────────────────────────
+/**
+ * Use `isGhost` on individual columns in the `columns` array to show shimmer for specific cells.
+ * The shimmer auto-sizes to the cell content. Use `ghostWidth` on the column for explicit width.
+ * Great when some columns load async (e.g. computed fields, external API data).
+ */
+export const GhostCells: Story = {
+  name: "Ghost Cells (Per-Column)",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const columns: TableColumn[] = [
+      { key: "name", title: "Name", dataIndex: "name" },
+      { key: "email", title: "Email", dataIndex: "email", isGhost: true },
+      { key: "role", title: "Role", dataIndex: "role" },
+      { key: "score", title: "Score", dataIndex: "score", isGhost: true, ghostWidth: "60px" },
+    ];
+
+    const data = [
+      { id: "1", name: "Alice Johnson", email: "alice@co.com", role: "Engineer", score: "95" },
+      { id: "2", name: "Bob Williams", email: "bob@co.com", role: "Designer", score: "88" },
+      { id: "3", name: "Charlie Brown", email: "charlie@co.com", role: "Manager", score: "92" },
+    ];
+
+    return (
+      <Table columns={columns} dataSource={data} hoverable />
+    );
+  },
+};
+
+// ── Mixed Real and Ghost Rows ─────────────────────────────────────────────
+/**
+ * Use `ghostRows` array on the data-driven `Table` to mark specific row indices as ghost.
+ * Real data rows render normally, ghost rows show shimmer. Great for "loading more" states.
+ */
+export const MixedRealAndGhostRows: Story = {
+  name: "Mixed Real & Ghost Rows",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const columns: TableColumn[] = [
+      { key: "name", title: "Name", dataIndex: "name" },
+      { key: "email", title: "Email", dataIndex: "email" },
+      { key: "role", title: "Role", dataIndex: "role" },
+    ];
+
+    const data = [
+      { id: "1", name: "Alice Johnson", email: "alice@company.com", role: "Engineer" },
+      { id: "2", name: "Bob Williams", email: "bob@company.com", role: "Designer" },
+      { id: "3", name: "Loading...", email: "...", role: "..." },
+      { id: "4", name: "Loading...", email: "...", role: "..." },
+      { id: "5", name: "Loading...", email: "...", role: "..." },
+    ];
+
+    return (
+      <Table
+        columns={columns}
+        dataSource={data}
+        ghostRows={[2, 3, 4]}
+        hoverable
+      />
+    );
+  },
+};
+
+// ── Data Table: Full Ghost (isGhost) ──────────────────────────────────────
+/**
+ * Use `isGhost` on the data-driven `Table` component to show all rows as shimmer.
+ * Headers render normally. Pass `ghostRowsCount` to control how many ghost rows appear (default: 5).
+ * Checkbox/radio columns also render as shimmer placeholders.
+ */
+export const DataTableFullGhost: Story = {
+  name: "Data Table: Full Ghost",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const columns: TableColumn[] = [
+      { key: "name", title: "Name", dataIndex: "name" },
+      { key: "email", title: "Email", dataIndex: "email" },
+      { key: "role", title: "Role", dataIndex: "role" },
+      { key: "status", title: "Status", dataIndex: "status" },
+    ];
+
+    return (
+      <Table
+        columns={columns}
+        dataSource={[]}
+        isGhost
+        ghostRowsCount={6}
+        hoverable
+        striped
+      />
+    );
+  },
+};
+
+// ── Data Table: Ghost with Checkbox ───────────────────────────────────────
+/**
+ * Full ghost mode with checkbox row selection enabled.
+ * The checkbox column shows shimmer squares matching the checkbox size.
+ */
+export const DataTableGhostWithCheckbox: Story = {
+  name: "Data Table: Ghost + Checkbox",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const columns: TableColumn[] = [
+      { key: "name", title: "Name", dataIndex: "name" },
+      { key: "email", title: "Email", dataIndex: "email" },
+      { key: "role", title: "Role", dataIndex: "role" },
+    ];
+
+    return (
+      <Table
+        columns={columns}
+        dataSource={[]}
+        isGhost
+        ghostRowsCount={5}
+        rowSelection={{
+          type: "checkbox",
+          selectedRowKeys: [],
+          onChange: () => {},
+        }}
+      />
+    );
+  },
+};
+
+// ── Data Table: Ghost with Radio ──────────────────────────────────────────
+/**
+ * Full ghost mode with radio row selection.
+ * Radio column shows shimmer circles.
+ */
+export const DataTableGhostWithRadio: Story = {
+  name: "Data Table: Ghost + Radio",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const columns: TableColumn[] = [
+      { key: "name", title: "Name", dataIndex: "name" },
+      { key: "email", title: "Email", dataIndex: "email" },
+      { key: "department", title: "Department", dataIndex: "department" },
+    ];
+
+    return (
+      <Table
+        columns={columns}
+        dataSource={[]}
+        isGhost
+        ghostRowsCount={4}
+        rowSelection={{
+          type: "radio",
+          selectedRowKeys: [],
+          onChange: () => {},
+        }}
+      />
+    );
+  },
+};
+
+// ── Data Table: Per-Row Ghost (ghostRows) ─────────────────────────────────
+/**
+ * Use `ghostRows` array to mark specific rows (by index) as ghost/loading.
+ * Other rows render normally. Great for per-row actions like "refreshing" a single row.
+ */
+export const DataTablePerRowGhost: Story = {
+  name: "Data Table: Per-Row Ghost",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const columns: TableColumn[] = [
+      { key: "name", title: "Name", dataIndex: "name" },
+      { key: "email", title: "Email", dataIndex: "email" },
+      { key: "role", title: "Role", dataIndex: "role" },
+    ];
+
+    const data = [
+      { id: "1", name: "Alice Johnson", email: "alice@company.com", role: "Engineer" },
+      { id: "2", name: "Bob Williams", email: "bob@company.com", role: "Designer" },
+      { id: "3", name: "Charlie Brown", email: "charlie@company.com", role: "Manager" },
+      { id: "4", name: "Diana Ross", email: "diana@company.com", role: "Analyst" },
+      { id: "5", name: "Eve Davis", email: "eve@company.com", role: "Developer" },
+    ];
+
+    return (
+      <Table
+        columns={columns}
+        dataSource={data}
+        ghostRows={[1, 3]}
+        hoverable
+      />
+    );
+  },
+};
+
+// ── Ghost Cell: Title + Subtitle + Extra ──────────────────────────────────
+/**
+ * When a column has structured content (title/subtitle/extra rendered via `render`),
+ * passing `isGhost: true` on the column will render separate shimmer lines for each text.
+ * The shimmer auto-sizes to the actual content width.
+ */
+export const GhostCellStructuredContent: Story = {
+  name: "Ghost Cell: Structured Content",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const columns: TableColumn[] = [
+      {
+        key: "user",
+        title: "User",
+        dataIndex: "name",
+        isGhost: true,
+      },
+      {
+        key: "details",
+        title: "Details",
+        dataIndex: "role",
+        isGhost: true,
+        ghostWidth: "120px",
+      },
+      {
+        key: "status",
+        title: "Status",
+        dataIndex: "status",
+      },
+    ];
+
+    const data = [
+      { id: "1", name: "John Doe", role: "Senior Engineer", status: "Active" },
+      { id: "2", name: "Jane Smith", role: "Product Designer", status: "Away" },
+    ];
+
+    return (
+      <Table columns={columns} dataSource={data} />
+    );
+  },
+};
+
+// ── Single Row Ghost (action loading) ─────────────────────────────────────
+/**
+ * Use `ghostRows` with a single index to show one row loading (e.g. after clicking an action button).
+ * Other rows remain interactive. The ghost row auto-matches column widths.
+ */
+export const SingleRowGhost: Story = {
+  name: "Single Row Ghost (Action Loading)",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const columns: TableColumn[] = [
+      { key: "name", title: "Name", dataIndex: "name" },
+      { key: "email", title: "Email", dataIndex: "email" },
+      { key: "actions", title: "Actions", render: () => "Edit | Delete" },
+    ];
+
+    const data = [
+      { id: "1", name: "Alice Johnson", email: "alice@company.com" },
+      { id: "2", name: "Bob Williams", email: "bob@company.com" },
+      { id: "3", name: "Charlie Brown", email: "charlie@company.com" },
+    ];
+
+    return (
+      <Table
+        columns={columns}
+        dataSource={data}
+        ghostRows={[1]}
+        hoverable
+      />
+    );
+  },
+};
+
+// ── Interactive Row Ghost (Click to Load) ─────────────────────────────────
+/**
+ * Click "Refresh" on any row to trigger ghost state for that row.
+ * Uses `ghostRows` with React state — update the array on action click,
+ * then remove the index after async completes (simulated with setTimeout).
+ */
+export const InteractiveRowGhost: Story = {
+  name: "Interactive: Row Ghost on Action",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const [loadingRows, setLoadingRows] = useState<number[]>([]);
+
+    const handleRefresh = (rowIndex: number) => {
+      setLoadingRows((prev) => [...prev, rowIndex]);
+      // Simulate async — remove ghost after 2s
+      setTimeout(() => {
+        setLoadingRows((prev) => prev.filter((i) => i !== rowIndex));
+      }, 2000);
+    };
+
+    const columns: TableColumn[] = [
+      { key: "name", title: "Name", dataIndex: "name" },
+      { key: "email", title: "Email", dataIndex: "email" },
+      { key: "role", title: "Role", dataIndex: "role" },
+      {
+        key: "actions",
+        title: "Actions",
+        render: (_value, _record, index) => (
+          <button
+            onClick={() => handleRefresh(index)}
+            disabled={loadingRows.includes(index)}
+            style={{
+              padding: "var(--tui-spacing-1) var(--tui-spacing-3)",
+              fontSize: "var(--tui-font-size-xs)",
+              border: "1px solid var(--tui-color-brand-black-200)",
+              borderRadius: "var(--tui-radius-md)",
+              background: "transparent",
+              cursor: loadingRows.includes(index) ? "not-allowed" : "pointer",
+            }}
+          >
+            Refresh
+          </button>
+        ),
+      },
+    ];
+
+    const data = [
+      { id: "1", name: "Alice Johnson", email: "alice@company.com", role: "Engineer" },
+      { id: "2", name: "Bob Williams", email: "bob@company.com", role: "Designer" },
+      { id: "3", name: "Charlie Brown", email: "charlie@company.com", role: "Manager" },
+      { id: "4", name: "Diana Ross", email: "diana@company.com", role: "Analyst" },
+    ];
+
+    return (
+      <Table
+        columns={columns}
+        dataSource={data}
+        ghostRows={loadingRows}
+        hoverable
+      />
+    );
+  },
+};
+
+// ── Interactive Cell Ghost (Per-Column Toggle) ────────────────────────────
+/**
+ * Toggle individual columns into ghost state dynamically.
+ * Uses state to set `isGhost` on specific columns — useful when
+ * reloading a single field (e.g. recalculating scores, refreshing status).
+ */
+export const InteractiveCellGhost: Story = {
+  name: "Interactive: Cell Ghost on Action",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const [ghostCols, setGhostCols] = useState<string[]>([]);
+
+    const handleRefreshColumn = (colKey: string) => {
+      setGhostCols((prev) => [...prev, colKey]);
+      setTimeout(() => {
+        setGhostCols((prev) => prev.filter((k) => k !== colKey));
+      }, 2000);
+    };
+
+    const columns: TableColumn[] = [
+      { key: "name", title: "Name", dataIndex: "name" },
+      { key: "email", title: "Email", dataIndex: "email", isGhost: ghostCols.includes("email") },
+      { key: "score", title: "Score", dataIndex: "score", isGhost: ghostCols.includes("score"), ghostWidth: "50px" },
+      {
+        key: "actions",
+        title: "Actions",
+        render: () => (
+          <div style={{ display: "flex", gap: "var(--tui-spacing-2)" }}>
+            <button
+              onClick={() => handleRefreshColumn("email")}
+              style={{ fontSize: "var(--tui-font-size-xs)", border: "1px solid var(--tui-color-brand-black-200)", borderRadius: "var(--tui-radius-sm)", padding: "2px 8px", background: "transparent", cursor: "pointer" }}
+            >
+              ↻ Email
+            </button>
+            <button
+              onClick={() => handleRefreshColumn("score")}
+              style={{ fontSize: "var(--tui-font-size-xs)", border: "1px solid var(--tui-color-brand-black-200)", borderRadius: "var(--tui-radius-sm)", padding: "2px 8px", background: "transparent", cursor: "pointer" }}
+            >
+              ↻ Score
+            </button>
+          </div>
+        ),
+      },
+    ];
+
+    const data = [
+      { id: "1", name: "Alice", email: "alice@co.com", score: "95" },
+      { id: "2", name: "Bob", email: "bob@co.com", score: "88" },
+      { id: "3", name: "Charlie", email: "charlie@co.com", score: "92" },
+    ];
+
+    return (
+      <Table columns={columns} dataSource={data} hoverable />
+    );
+  },
+};
+
+// ══════════════════════════════════════════════════════════════════════════
+// API Reference
+// ══════════════════════════════════════════════════════════════════════════
+
+/**
+ * Complete props reference for Table, TableColumn, rowSelection, and expandable config.
+ * Basic props are also available in the Controls panel on the Playground story.
+ */
 export const APIReference: Story = {
   name: "📖 API Reference",
   parameters: { controls: { disable: true } },
   render: () => (
-    <div style={{ fontFamily: "inherit", fontSize: "var(--tui-font-size-sm)", lineHeight: "1.6", maxWidth: "96%" }}>
-      <h2 style={{ fontSize: "var(--tui-font-size-lg)", marginBottom: "var(--tui-spacing-4)" }}>Table Props</h2>
-      <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "var(--tui-spacing-8)" }}>
+    <div style={{ padding: "var(--tui-spacing-4)", fontSize: "var(--tui-font-size-md)", color: "var(--tui-color-brand-black-700)", lineHeight: "1.7" }}>
+      <p style={{ margin: "0 0 var(--tui-spacing-4)", color: "var(--tui-color-brand-gray-500)" }}>
+        Basic props (rounded, bordered, striped, hoverable, compact, size, stickyHeader, isGhost, ghostRowsCount) are available in the <strong>Controls</strong> panel above.
+        Below are additional props that require objects/arrays.
+      </p>
+
+      <h3 style={{ margin: "0 0 var(--tui-spacing-4)", fontSize: "var(--tui-font-size-lg)" }}>Data & Ghost Props</h3>
+      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "var(--tui-font-size-sm)" }}>
         <thead>
-          <tr style={{ borderBottom: "2px solid var(--tui-color-border-default)" }}>
-            <th style={{ textAlign: "left", padding: "8px 12px", width: "180px" }}>Prop</th>
-            <th style={{ textAlign: "left", padding: "8px 12px", width: "200px" }}>Type</th>
-            <th style={{ textAlign: "left", padding: "8px 12px", width: "80px" }}>Default</th>
-            <th style={{ textAlign: "left", padding: "8px 12px" }}>Description</th>
+          <tr style={{ borderBottom: "2px solid var(--tui-color-brand-black-200)", textAlign: "left" }}>
+            <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>Prop</th>
+            <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>Type</th>
+            <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>Default</th>
+            <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>Description</th>
           </tr>
         </thead>
         <tbody>
           {[
-            ["columns", "TableColumn<T>[]", "—", "Column definitions"],
-            ["dataSource", "T[]", "—", "Data rows array"],
-            ["rowKey", "keyof T & string", '"id"', "Unique key field in each row"],
-            ["rounded", "boolean", "true", "Rounded corners on wrapper"],
-            ["bordered", "boolean", "false", "Outer border on wrapper"],
-            ["striped", "boolean", "false", "Alternating row background"],
-            ["hoverable", "boolean", "false", "Highlight rows on hover"],
-            ["compact", "boolean", "false", "Reduced cell padding"],
-            ["stickyHeader", "boolean", "false", "Sticky header on scroll.y"],
-            ["size", '"sm"|"md"|"lg"', '"md"', "Table size (padding & font)"],
-            ["scroll", "{ x?, y? }", "—", "Scroll dimensions for overflow"],
-            ["rowClassName", "string | (record, i) => string", "—", "Custom row className"],
-            ["selectedRowKeys", "(string|number)[]", "—", "Highlighted row keys"],
-            ["rowSelection", "object", "—", "Checkbox / radio row selection config"],
-            ["rowSelection.type", '"checkbox" | "radio"', "—", "Selection mode"],
-            ["rowSelection.selectedRowKeys", "(string|number)[]", "—", "Controlled selected keys"],
-            ["rowSelection.onChange", "(keys, rows) => void", "—", "Fires with keys + full row data"],
-            ["rowSelection.columnWidth", "string", '"48px"', "Selection column width"],
-            ["rowSelection.fixed", "boolean", "—", "Stick selection column to left"],
-            ["sortState", "{ columnKey, order } | null", "—", "Controlled sort state"],
-            ["onSortChange", "(state | null) => void", "—", "Fires on sort click"],
-            ["expandable", "object", "—", "Row accordion / expand config"],
-            ["expandable.expandedRowRender", "(record, i) => ReactNode", "—", "Expanded row content"],
-            ["expandable.togglePosition", '"start"|"end"|columnKey', '"start"', "Toggle column position"],
-            ["expandable.expandToggle", "(expanded, record) => ReactNode", "chevron", "Custom toggle"],
-            ["expandable.accordion", "boolean", "false", "Only one row open at a time"],
-            ["expandable.expandedRowKeys", "(string|number)[]", "—", "Controlled expanded keys"],
-            ["expandable.onExpandChange", "(keys) => void", "—", "Fires on expand change"],
-            ["headerBgColor", "string", "brand-navy-100", "Header background color"],
-            ["bodyBgColor", "string", "white", "Body background color"],
-            ["onRow", "(record, i) => HTMLAttributes", "—", "Custom row attributes"],
-          ].map(([prop, type, def, desc], i) => (
-            <tr key={i} style={{ borderBottom: "1px solid var(--tui-color-border-default)" }}>
-              <td style={{ padding: "6px 12px", fontWeight: 500, fontFamily: "monospace", fontSize: "12px" }}>{prop}</td>
-              <td style={{ padding: "6px 12px", fontFamily: "monospace", fontSize: "11px", color: "var(--tui-color-text-secondary)" }}>{type}</td>
-              <td style={{ padding: "6px 12px", fontFamily: "monospace", fontSize: "11px" }}>{def}</td>
-              <td style={{ padding: "6px 12px" }}>{desc}</td>
+            ["columns", "TableColumn[]", "—", "Column definitions array"],
+            ["dataSource", "T[]", "—", "Array of row data objects"],
+            ["rowKey", "string", '"id"', "Unique key field in each data object"],
+            ["ghostRows", "number[]", "—", "Specific row indices to show as ghost (0-based). Use with state for per-row loading."],
+            ["rowClassName", "string | (record, i) => string", "—", "Custom class on each row"],
+            ["scroll", "{ x?: string, y?: string }", "—", "Scroll dimensions for overflow (e.g. { x: '1200px', y: '400px' })"],
+            ["headerBgColor", "string", "—", "Custom header background color"],
+            ["bodyBgColor", "string", "—", "Custom body background color"],
+            ["onRow", "(record, i) => HTMLAttributes", "—", "Custom row HTML attributes/events"],
+          ].map(([prop, type, def, desc]) => (
+            <tr key={prop} style={{ borderBottom: "1px solid var(--tui-color-brand-black-100)" }}>
+              <td style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)", fontFamily: "monospace", fontWeight: 600 }}>{prop}</td>
+              <td style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)", fontFamily: "monospace", color: "var(--tui-color-brand-blue-700)" }}>{type}</td>
+              <td style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>{def}</td>
+              <td style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>{desc}</td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      <h2 style={{ fontSize: "var(--tui-font-size-lg)", marginBottom: "var(--tui-spacing-4)" }}>TableColumn Props</h2>
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+      <h3 style={{ margin: "var(--tui-spacing-6) 0 var(--tui-spacing-4)", fontSize: "var(--tui-font-size-lg)" }}>Row Selection Config</h3>
+      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "var(--tui-font-size-sm)" }}>
         <thead>
-          <tr style={{ borderBottom: "2px solid var(--tui-color-border-default)" }}>
-            <th style={{ textAlign: "left", padding: "8px 12px", width: "160px" }}>Prop</th>
-            <th style={{ textAlign: "left", padding: "8px 12px", width: "200px" }}>Type</th>
-            <th style={{ textAlign: "left", padding: "8px 12px" }}>Description</th>
+          <tr style={{ borderBottom: "2px solid var(--tui-color-brand-black-200)", textAlign: "left" }}>
+            <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>Prop</th>
+            <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>Type</th>
+            <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            ["type", '"checkbox" | "radio"', "Selection mode"],
+            ["selectedRowKeys", "(string|number)[]", "Controlled selected row keys"],
+            ["onChange", "(keys, rows) => void", "Called when selection changes"],
+            ["columnWidth", "string", "Width of selection column (default: 48px)"],
+            ["fixed", "boolean", "Stick selection column to left"],
+          ].map(([prop, type, desc]) => (
+            <tr key={prop} style={{ borderBottom: "1px solid var(--tui-color-brand-black-100)" }}>
+              <td style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)", fontFamily: "monospace", fontWeight: 600 }}>{prop}</td>
+              <td style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)", fontFamily: "monospace", color: "var(--tui-color-brand-blue-700)" }}>{type}</td>
+              <td style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>{desc}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <h3 style={{ margin: "var(--tui-spacing-6) 0 var(--tui-spacing-4)", fontSize: "var(--tui-font-size-lg)" }}>Expandable Config</h3>
+      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "var(--tui-font-size-sm)" }}>
+        <thead>
+          <tr style={{ borderBottom: "2px solid var(--tui-color-brand-black-200)", textAlign: "left" }}>
+            <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>Prop</th>
+            <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>Type</th>
+            <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            ["expandedRowRender", "(record, i) => ReactNode", "Content to show when row is expanded"],
+            ["togglePosition", '"start" | "end" | columnKey', "Where to place the expand toggle"],
+            ["expandToggle", "(expanded, record) => ReactNode", "Custom toggle element"],
+            ["accordion", "boolean", "Only one row expandable at a time"],
+            ["expandedRowKeys", "(string|number)[]", "Controlled expanded keys"],
+            ["onExpandChange", "(keys) => void", "Called when expanded state changes"],
+            ["columnWidth", "string", "Width of expand toggle column"],
+          ].map(([prop, type, desc]) => (
+            <tr key={prop} style={{ borderBottom: "1px solid var(--tui-color-brand-black-100)" }}>
+              <td style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)", fontFamily: "monospace", fontWeight: 600 }}>{prop}</td>
+              <td style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)", fontFamily: "monospace", color: "var(--tui-color-brand-blue-700)" }}>{type}</td>
+              <td style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>{desc}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <h3 style={{ margin: "var(--tui-spacing-6) 0 var(--tui-spacing-4)", fontSize: "var(--tui-font-size-lg)" }}>TableColumn Props</h3>
+      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "var(--tui-font-size-sm)" }}>
+        <thead>
+          <tr style={{ borderBottom: "2px solid var(--tui-color-brand-black-200)", textAlign: "left" }}>
+            <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>Prop</th>
+            <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>Type</th>
+            <th style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>Description</th>
           </tr>
         </thead>
         <tbody>
           {[
             ["key", "string", "Unique column identifier"],
-            ["title", "ReactNode", "Header title text"],
-            ["subtitle", "ReactNode", "Header subtitle"],
-            ["extra", "ReactNode", "Header extra text"],
-            ["dataIndex", "keyof T", "Field to display from row data"],
-            ["render", "(value, record, i) => ReactNode", "Custom cell render function"],
-            ["align", '"left"|"center"|"right"', "Text alignment"],
-            ["width", "string", "Column width"],
-            ["minWidth", "string", "Minimum column width"],
-            ["maxWidth", "string", "Maximum column width"],
-            ["fixed", '"left"|"right"', "Sticky column position"],
-            ["fixedOffset", "string | number", "Sticky offset value"],
-            ["borderLeft", "boolean", "Show left border on column"],
-            ["borderRight", "boolean", "Show right border on column"],
-            ["borderColor", "string", "Custom border color"],
-            ["borderWidth", "string", "Custom border width"],
-            ["sorter", "boolean | (a, b) => number", "Enable sorting (true = auto, fn = custom)"],
+            ["title", "ReactNode", "Column header text"],
+            ["dataIndex", "string", "Property name in data to display"],
+            ["render", "(value, record, index) => ReactNode", "Custom cell render function"],
+            ["align", '"left" | "center" | "right"', "Text alignment"],
+            ["width / minWidth / maxWidth", "string", "Column dimensions"],
+            ["fixed", '"left" | "right"', "Sticky column position"],
+            ["fixedOffset", "string | number", "Sticky position offset"],
+            ["sorter", "boolean | (a, b) => number", "Enable sorting (true = default, fn = custom)"],
+            ["isGhost", "boolean", "Show shimmer for all cells in this column"],
+            ["ghostWidth", "string", "Custom shimmer width for ghost column"],
+            ["borderLeft / borderRight", "boolean", "Show border on column sides"],
             ["headerClassName", "string", "Extra class on header cell"],
             ["cellClassName", "string", "Extra class on body cells"],
-          ].map(([prop, type, desc], i) => (
-            <tr key={i} style={{ borderBottom: "1px solid var(--tui-color-border-default)" }}>
-              <td style={{ padding: "6px 12px", fontWeight: 500, fontFamily: "monospace", fontSize: "12px" }}>{prop}</td>
-              <td style={{ padding: "6px 12px", fontFamily: "monospace", fontSize: "11px", color: "var(--tui-color-text-secondary)" }}>{type}</td>
-              <td style={{ padding: "6px 12px" }}>{desc}</td>
+          ].map(([prop, type, desc]) => (
+            <tr key={prop} style={{ borderBottom: "1px solid var(--tui-color-brand-black-100)" }}>
+              <td style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)", fontFamily: "monospace", fontWeight: 600 }}>{prop}</td>
+              <td style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)", fontFamily: "monospace", color: "var(--tui-color-brand-blue-700)" }}>{type}</td>
+              <td style={{ padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>{desc}</td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      <h3 style={{ margin: "var(--tui-spacing-6) 0 var(--tui-spacing-4)", fontSize: "var(--tui-font-size-lg)" }}>Ghost Usage Examples</h3>
+
+      <h4 style={{ margin: "0 0 var(--tui-spacing-2)", fontSize: "var(--tui-font-size-base)" }}>Full table loading</h4>
+      <pre style={{ background: "var(--tui-color-brand-black-50)", padding: "var(--tui-spacing-3) var(--tui-spacing-4)", borderRadius: "var(--tui-radius-md)", overflow: "auto", fontSize: "var(--tui-font-size-xs)", margin: "0 0 var(--tui-spacing-4)" }}>
+        <code>{`<Table columns={columns} dataSource={[]} isGhost ghostRowsCount={6} />`}</code>
+      </pre>
+
+      <h4 style={{ margin: "0 0 var(--tui-spacing-2)", fontSize: "var(--tui-font-size-base)" }}>Per-row ghost (action loading)</h4>
+      <pre style={{ background: "var(--tui-color-brand-black-50)", padding: "var(--tui-spacing-3) var(--tui-spacing-4)", borderRadius: "var(--tui-radius-md)", overflow: "auto", fontSize: "var(--tui-font-size-xs)", margin: "0 0 var(--tui-spacing-4)" }}>
+        <code>{`const [loadingRows, setLoadingRows] = useState<number[]>([]);
+
+const handleAction = (index: number) => {
+  setLoadingRows(prev => [...prev, index]);
+  await fetchData();
+  setLoadingRows(prev => prev.filter(i => i !== index));
+};
+
+<Table columns={columns} dataSource={data} ghostRows={loadingRows} />`}</code>
+      </pre>
+
+      <h4 style={{ margin: "0 0 var(--tui-spacing-2)", fontSize: "var(--tui-font-size-base)" }}>Per-column ghost (field reloading)</h4>
+      <pre style={{ background: "var(--tui-color-brand-black-50)", padding: "var(--tui-spacing-3) var(--tui-spacing-4)", borderRadius: "var(--tui-radius-md)", overflow: "auto", fontSize: "var(--tui-font-size-xs)", margin: "0 0 var(--tui-spacing-4)" }}>
+        <code>{`const columns = [
+  { key: "name", title: "Name", dataIndex: "name" },
+  { key: "email", title: "Email", dataIndex: "email", isGhost: isEmailLoading },
+  { key: "score", title: "Score", dataIndex: "score", isGhost: isScoreLoading, ghostWidth: "60px" },
+];
+
+<Table columns={columns} dataSource={data} />`}</code>
+      </pre>
+
+      <h4 style={{ margin: "0 0 var(--tui-spacing-2)", fontSize: "var(--tui-font-size-base)" }}>TableCell ghost (manual ExTable)</h4>
+      <pre style={{ background: "var(--tui-color-brand-black-50)", padding: "var(--tui-spacing-3) var(--tui-spacing-4)", borderRadius: "var(--tui-radius-md)", overflow: "auto", fontSize: "var(--tui-font-size-xs)", margin: "0" }}>
+        <code>{`<TableCell isGhost title="Auto-sized content" />
+<TableCell isGhost ghostWidth="100px" ghostHeight="16px" />`}</code>
+      </pre>
     </div>
   ),
 };
