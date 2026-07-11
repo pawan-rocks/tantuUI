@@ -275,6 +275,18 @@ Any browser with CSS custom properties support (all modern browsers).
 
 ---
 
+## VS Code IntelliSense
+
+Get autocomplete, hover previews, and color decorators for `tui-*` utility classes:
+
+```bash
+code --install-extension node_modules/@tantuui/tokens/dist/tantuui-css-intellisense.vsix
+```
+
+Or download from [GitHub Releases](https://github.com/pawan-rocks/tantuUI/releases).
+
+---
+
 ## Links
 
 - [Changelog](https://github.com/pawan-rocks/tantuUI/blob/main/packages/tokens/CHANGELOG.md)

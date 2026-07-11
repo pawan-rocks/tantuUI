@@ -4,6 +4,7 @@ import type { BaseProps } from "../../types";
 import { cn } from "../../utils/cn";
 import { Checkbox } from "../Checkbox/Checkbox";
 import { Radio } from "../Radio/Radio";
+import { Shimmer } from "../Shimmer/Shimmer";
 import "./Table.css";
 
 // ─── Scroll config ────────────────────────────────────────────────────────────
@@ -328,6 +329,8 @@ export interface TableRowProps
   disabled?: boolean;
   /** Hide row border */
   borderless?: boolean;
+  /** Show shimmer/skeleton for all cells in this row */
+  isGhost?: boolean;
 }
 
 export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
@@ -336,6 +339,7 @@ export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
       selected = false,
       disabled = false,
       borderless = false,
+      isGhost = false,
       className,
       style,
       children,
@@ -455,6 +459,12 @@ export interface TableCellProps
   fixed?: "left" | "right";
   /** Offset for sticky positioning (e.g. "0", "48px") */
   fixedOffset?: string | number;
+  /** Show shimmer/skeleton for this cell (auto-sizes to content if children/title provided) */
+  isGhost?: boolean;
+  /** Custom ghost shimmer width */
+  ghostWidth?: string;
+  /** Custom ghost shimmer height */
+  ghostHeight?: string;
 }
 
 export const TableCell = forwardRef<HTMLTableCellElement, TableCellProps>(
@@ -477,6 +487,9 @@ export const TableCell = forwardRef<HTMLTableCellElement, TableCellProps>(
       borderWidth,
       fixed,
       fixedOffset,
+      isGhost = false,
+      ghostWidth,
+      ghostHeight,
       className,
       style,
       children,
@@ -508,6 +521,39 @@ export const TableCell = forwardRef<HTMLTableCellElement, TableCellProps>(
     };
 
     const renderContent = () => {
+      if (isGhost) {
+        // If structured content (title/subtitle/extra), render each as separate shimmer
+        if (hasStructuredContent && !ghostWidth) {
+          return (
+            <div className="tui-table__cell-content">
+              <span className="tui-table__cell-text">
+                {title && (
+                  <Shimmer width={undefined} height="16px" shape="rounded" style={{ marginBottom: subtitle || extra ? "var(--tui-spacing-1)" : undefined }}>
+                    <span style={{ visibility: "hidden", whiteSpace: "nowrap" }}>{title}</span>
+                  </Shimmer>
+                )}
+                {subtitle && (
+                  <Shimmer width={undefined} height="13px" shape="rounded" style={{ marginBottom: extra ? "var(--tui-spacing-0_5)" : undefined }}>
+                    <span style={{ visibility: "hidden", whiteSpace: "nowrap", fontSize: "var(--tui-font-size-xs)" }}>{subtitle}</span>
+                  </Shimmer>
+                )}
+                {extra && (
+                  <Shimmer width={undefined} height="12px" shape="rounded">
+                    <span style={{ visibility: "hidden", whiteSpace: "nowrap", fontSize: "var(--tui-font-size-xs)" }}>{extra}</span>
+                  </Shimmer>
+                )}
+              </span>
+            </div>
+          );
+        }
+        return (
+          <Shimmer width={ghostWidth} height={ghostHeight || "16px"} shape="rounded">
+            {!ghostWidth && (children || title) && (
+              <span style={{ visibility: "hidden", whiteSpace: "nowrap" }}>{children || title}</span>
+            )}
+          </Shimmer>
+        );
+      }
       if (href) {
         return (
           <a
@@ -602,6 +648,10 @@ export interface TableColumn<T = any> {
   cellClassName?: string;
   /** Enable sorting on this column (true for default compare, or custom comparator) */
   sorter?: boolean | ((a: T, b: T) => number);
+  /** Show ghost/shimmer for all cells in this column */
+  isGhost?: boolean;
+  /** Custom ghost shimmer width for this column */
+  ghostWidth?: string;
 }
 
 export interface TableProps<T = any>
@@ -656,6 +706,12 @@ export interface TableProps<T = any>
   headerBgColor?: string;
   /** Body background color */
   bodyBgColor?: string;
+  /** Show ghost/shimmer for all body rows */
+  isGhost?: boolean;
+  /** Number of ghost rows to display (default: 5) */
+  ghostRowsCount?: number;
+  /** Array of specific row indices (0-based) to show as ghost */
+  ghostRows?: number[];
 }
 
 export function Table<T extends Record<string, any> = any>({
@@ -671,6 +727,9 @@ export function Table<T extends Record<string, any> = any>({
   onRow,
   headerBgColor,
   bodyBgColor,
+  isGhost = false,
+  ghostRowsCount = 5,
+  ghostRows,
   testId,
   ...tableProps
 }: TableProps<T>) {
@@ -849,7 +908,46 @@ export function Table<T extends Record<string, any> = any>({
         </TableRow>
       </TableHeader>
       <TableBody bgColor={bodyBgColor}>
-        {sortedData.map((record, rowIndex) => {
+        {isGhost ? (
+          // Full ghost mode — render shimmer rows
+          Array.from({ length: ghostRowsCount }, (_, rowIndex) => {
+            const totalCellCount = columns.length + (rowSelection ? 1 : 0) + (expandable ? 1 : 0);
+            return (
+              <TableRow key={`ghost-${rowIndex}`}>
+                {rowSelection && (
+                  <TableRowLabel fixed={selFixed} fixedOffset={selFixed ? 0 : undefined}>
+                    <Shimmer width="16px" height="16px" shape="rounded" />
+                  </TableRowLabel>
+                )}
+                {expandable && togglePosition === "start" && (
+                  <TableCell width={expandColumnWidth} className="tui-table__expand-cell">
+                    <Shimmer width="16px" height="16px" shape="rounded" />
+                  </TableCell>
+                )}
+                {columns.map((col) => (
+                  <TableCell
+                    key={col.key}
+                    align={col.align}
+                    width={col.width}
+                    minWidth={col.minWidth}
+                    maxWidth={col.maxWidth}
+                    fixed={col.fixed}
+                    fixedOffset={col.fixedOffset}
+                    className={col.cellClassName}
+                  >
+                    <Shimmer width={`${55 + ((rowIndex * 7 + columns.indexOf(col) * 13) % 35)}%`} height="16px" shape="rounded" />
+                  </TableCell>
+                ))}
+                {expandable && togglePosition === "end" && (
+                  <TableCell width={expandColumnWidth} className="tui-table__expand-cell">
+                    <Shimmer width="16px" height="16px" shape="rounded" />
+                  </TableCell>
+                )}
+              </TableRow>
+            );
+          })
+        ) : (
+        sortedData.map((record, rowIndex) => {
           const key = String(record[rowKey] ?? rowIndex);
           const isSelected = selKeys.includes(record[rowKey] ?? rowIndex);
           const rowProps = onRow?.(record, rowIndex);
@@ -857,14 +955,49 @@ export function Table<T extends Record<string, any> = any>({
             typeof rowClassName === "function"
               ? rowClassName(record, rowIndex)
               : rowClassName;
+          const isRowGhost = ghostRows?.includes(rowIndex) ?? false;
 
           return (
             <React.Fragment key={key}>
               <TableRow
-                selected={isSelected}
+                selected={!isRowGhost && isSelected}
                 className={resolvedRowClassName}
-                {...rowProps}
+                {...(isRowGhost ? {} : rowProps)}
               >
+                {isRowGhost ? (
+                  <>
+                    {expandable && togglePosition === "start" && (
+                      <TableCell width={expandColumnWidth} className="tui-table__expand-cell">
+                        <Shimmer width="16px" height="16px" shape="rounded" />
+                      </TableCell>
+                    )}
+                    {rowSelection && (
+                      <TableRowLabel fixed={selFixed} fixedOffset={selFixed ? 0 : undefined}>
+                        <Shimmer width="16px" height="16px" shape="rounded" />
+                      </TableRowLabel>
+                    )}
+                    {columns.map((col, colIdx) => (
+                      <TableCell
+                        key={col.key}
+                        align={col.align}
+                        width={col.width}
+                        minWidth={col.minWidth}
+                        maxWidth={col.maxWidth}
+                        fixed={col.fixed}
+                        fixedOffset={col.fixedOffset}
+                        className={col.cellClassName}
+                      >
+                        <Shimmer width={`${55 + ((rowIndex * 7 + colIdx * 13) % 35)}%`} height="16px" shape="rounded" />
+                      </TableCell>
+                    ))}
+                    {expandable && togglePosition === "end" && (
+                      <TableCell width={expandColumnWidth} className="tui-table__expand-cell">
+                        <Shimmer width="16px" height="16px" shape="rounded" />
+                      </TableCell>
+                    )}
+                  </>
+                ) : (
+                  <>
                 {expandable && togglePosition === "start" && (
                   <TableCell width={expandColumnWidth} className="tui-table__expand-cell">
                     {renderExpandToggle(record, record[rowKey] ?? rowIndex)}
@@ -913,15 +1046,18 @@ export function Table<T extends Record<string, any> = any>({
                       borderColor={col.borderColor}
                       borderWidth={col.borderWidth}
                       className={col.cellClassName}
+                      isGhost={col.isGhost}
+                      ghostWidth={col.ghostWidth}
                     >
-                      {showToggleInCol ? (
+                      {!col.isGhost && (showToggleInCol ? (
                         <div style={{ display: "flex", alignItems: "center", gap: "var(--tui-spacing-2)" }}>
                           {renderExpandToggle(record, record[rowKey] ?? rowIndex)}
                           <span>{content}</span>
                         </div>
                       ) : (
                         content
-                      )}
+                      ))}
+                      {col.isGhost && content}
                     </TableCell>
                   );
                 })}
@@ -930,8 +1066,10 @@ export function Table<T extends Record<string, any> = any>({
                     {renderExpandToggle(record, record[rowKey] ?? rowIndex)}
                   </TableCell>
                 )}
+                  </>
+                )}
               </TableRow>
-              {expandable && isExpanded(record[rowKey] ?? rowIndex) && (
+              {!isRowGhost && expandable && isExpanded(record[rowKey] ?? rowIndex) && (
                 <tr className="tui-table__row tui-table__expand-row">
                   <td className="tui-table__cell" colSpan={totalCols}>
                     {expandable.expandedRowRender(record, rowIndex)}
@@ -940,7 +1078,8 @@ export function Table<T extends Record<string, any> = any>({
               )}
             </React.Fragment>
           );
-        })}
+        })
+        )}
       </TableBody>
     </ExTable>
   );

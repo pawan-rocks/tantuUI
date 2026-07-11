@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.0.8
+
+### Added
+- **Modal component** — full-featured modal/dialog with multiple placements
+  - Placements: `center`, `left`, `right`, `top`, `bottom`, `fullscreen`
+  - Size presets: `xs`, `sm`, `md`, `lg`, `xl` (center placement)
+  - Custom `width`, `height`, `maxWidth`, `maxHeight` props
+  - **ModalHeader** sub-component with `title`, `subtitle`, `leftSection`, `rightSection`, `centerSection`
+  - **ModalFooter** sub-component for action buttons
+  - Close icon: absolute top-right, customizable via `closeIcon` prop, show/hide via `showCloseIcon`
+  - Body content height control: `contentHeight`, `contentMinHeight`, `contentMaxHeight`
+  - Ghost/skeleton: `isGhost` on Modal (body shimmer), ModalHeader (`isGhost`, `isTitleGhost`, `isSubtitleGhost`), ModalFooter (`isGhost`)
+  - Ghost auto-sizes to title/subtitle text width; override with `ghostTitleWidth`/`ghostSubtitleWidth`
+  - Backdrop click, escape key, body scroll lock, animations (scale/slide per placement)
+  - Portal-based rendering, focus management, `aria-modal` accessibility
+
+- **Table ghost/loading states**
+  - `isGhost` prop on Table — renders shimmer rows matching column count
+  - `ghostRowsCount` — number of ghost rows to show (default: 5)
+  - `ghostRows` — array of row indices to show as ghost (per-row loading)
+  - `column.isGhost` — per-column ghost shimmer for individual cells
+  - `column.ghostWidth` — explicit ghost shimmer width per column
+  - `TableCell isGhost` — per-cell ghost with auto-sizing to content
+  - `TableCell ghostWidth`/`ghostHeight` — explicit cell shimmer dimensions
+  - Structured content ghost: title/subtitle/extra render as separate shimmer lines
+  - Checkbox/radio columns show shimmer in ghost mode
+
+### Changed
+- Table `ExTable` stories now use data-driven `Table` component for ghost examples
+- Removed `ghostCells` prop from `TableRow` (unnecessary — use `Table isGhost` or explicit `TableCell isGhost`)
+
 ## 0.0.7
 
 ### Added
