@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.0.8
+
+### Added
+- **Brand primary palette** — `brandPrimary50`–`brandPrimary950` plus `brandPrimaryDefault`
+- **Brand secondary palette** — `brandSecondary50`–`brandSecondary950` plus `brandSecondaryDefault`
+- **Brand tertiary palette** — `brandTertiary50`–`brandTertiary950` plus `brandTertiaryDefault`
+- **Semantic color aliases** — primary, secondary, and tertiary default, hover, active, subtle, light, and text mappings
+
+### Changed
+- Brand interactive colors now use the primary palette
+- Border defaults and focus colors now use semantic secondary and primary tokens
+
+### Breaking Changes
+- Renamed `brandPurple*` tokens to `brandPrimary*`
+- Renamed `brandLight*` tokens to `brandSecondary*`
+- Renamed `brandNavy*` tokens to `brandTertiary*`
+
+## 0.0.7
+
+- Skip
+
+## 0.0.6
+
+- Skip
+
 ## 0.0.5
 
 ### Added

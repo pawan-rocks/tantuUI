@@ -207,6 +207,19 @@ Then use Tailwind classes mapped to TantuUI tokens:
 
 ---
 
+## React Component Integration
+
+Use the framework-agnostic tokens with the React component library by importing both packages at your application root:
+
+```tsx
+import "@tantuui/tokens/css";
+import "@tantuui/react/css";
+
+import { Button, Dropdown } from "@tantuui/react";
+```
+
+React components consume the same `--tui-*` CSS variables, so custom token overrides and themes apply consistently across utility classes and components.
+
 ## Package Exports
 
 | Import | Description |
