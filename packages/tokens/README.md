@@ -1,3 +1,4 @@
+
 # @tantuui/tokens
 
 [![npm](https://img.shields.io/npm/v/@tantuui/tokens?color=blue)](https://www.npmjs.com/package/@tantuui/tokens)
@@ -17,6 +18,8 @@ npm install @tantuui/tokens
 > ```
 
 ---
+
+## [Changelog](https://tantuui.com/storybook/?path=/docs/documentation-token-change-log--docs)
 
 ## Setup Options
 
@@ -302,7 +305,6 @@ Or download from [GitHub Releases](https://github.com/pawan-rocks/tantuUI/releas
 
 ## Links
 
-- [Changelog](https://github.com/pawan-rocks/tantuUI/blob/main/packages/tokens/CHANGELOG.md)
 - [React components](https://www.npmjs.com/package/@tantuui/react)
 - [GitHub](https://github.com/pawan-rocks/tantuUI)
 - [Storybook](https://tantuui.com/storybook/)
