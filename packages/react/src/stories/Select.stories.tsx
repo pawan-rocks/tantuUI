@@ -34,7 +34,7 @@ const meta: Meta<typeof Select> = {
     },
     intent: {
       control: "select",
-      options: ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
+      options: ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
       description: "Color intent / semantic meaning",
       table: { category: "Appearance", defaultValue: { summary: "default" } },
     },
@@ -123,7 +123,7 @@ export const Intents: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 200px)", gap: "var(--tui-spacing-3)", }}>
-      {(["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const).map((intent) => (
+      {(["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const).map((intent) => (
         <Select key={intent} intent={intent} placeholder={intent.charAt(0).toUpperCase() + intent.slice(1)}>
           <ExampleOptions />
         </Select>
@@ -153,28 +153,74 @@ export const AllStates: Story = {
   name: "All States",
   parameters: { controls: { disable: true } },
   render: () => {
-    const intents = ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
+    const intents = ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
     const variants = ["outline", "soft", "plain"] as const;
     const states = ["base", "hover", "focused", "disabled", "ghost"] as const;
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-6)" }}>
         <style>{`
-          .tui-force-hover .tui-select--outline { border-color: var(--tui-color-brand-black-400); }
-          .tui-force-hover .tui-select--soft { border-color: var(--tui-color-brand-black-200); }
-          .tui-force-hover .tui-select--plain { border-color: var(--tui-color-brand-black-100); }
-          .tui-force-hover .tui-select--primary.tui-select--outline { border-color: var(--tui-color-brand-pink-600); }
+          .tui-force-hover .tui-select--outline { border-color: var(--tui-color-brand-primary-400); }
+          .tui-force-hover .tui-select--soft { border-color: var(--tui-color-brand-primary-200); }
+          .tui-force-hover .tui-select--plain { border-color: var(--tui-color-brand-primary-100); }
+          .tui-force-hover .tui-select--primary.tui-select--outline { border-color: var(--tui-color-brand-primary-600); }
+          .tui-force-hover .tui-select--primary.tui-select--soft { border-color: var(--tui-color-brand-primary-300); }
+          .tui-force-hover .tui-select--primary.tui-select--plain { border-color: var(--tui-color-brand-primary-100); }
+          .tui-force-hover .tui-select--secondary.tui-select--outline { border-color: var(--tui-color-brand-secondary-500); }
+          .tui-force-hover .tui-select--secondary.tui-select--soft { border-color: var(--tui-color-brand-secondary-300); }
+          .tui-force-hover .tui-select--secondary.tui-select--plain { border-color: var(--tui-color-brand-secondary-200); }
+          .tui-force-hover .tui-select--tertiary.tui-select--outline { border-color: var(--tui-color-brand-tertiary-600); }
+          .tui-force-hover .tui-select--tertiary.tui-select--soft { border-color: var(--tui-color-brand-tertiary-300); }
+          .tui-force-hover .tui-select--tertiary.tui-select--plain { border-color: var(--tui-color-brand-tertiary-100); }
           .tui-force-hover .tui-select--success.tui-select--outline { border-color: var(--tui-color-success-600); }
+          .tui-force-hover .tui-select--success.tui-select--soft { border-color: var(--tui-color-success-300); }
+          .tui-force-hover .tui-select--success.tui-select--plain { border-color: var(--tui-color-success-100); }
           .tui-force-hover .tui-select--warning.tui-select--outline { border-color: var(--tui-color-warning-600); }
+          .tui-force-hover .tui-select--warning.tui-select--soft { border-color: var(--tui-color-warning-300); }
+          .tui-force-hover .tui-select--warning.tui-select--plain { border-color: var(--tui-color-warning-100); }
           .tui-force-hover .tui-select--danger.tui-select--outline { border-color: var(--tui-color-danger-600); }
+          .tui-force-hover .tui-select--danger.tui-select--soft { border-color: var(--tui-color-danger-300); }
+          .tui-force-hover .tui-select--danger.tui-select--plain { border-color: var(--tui-color-danger-100); }
           .tui-force-hover .tui-select--info.tui-select--outline { border-color: var(--tui-color-info-600); }
+          .tui-force-hover .tui-select--info.tui-select--soft { border-color: var(--tui-color-info-300); }
+          .tui-force-hover .tui-select--info.tui-select--plain { border-color: var(--tui-color-info-100); }
+          .tui-force-hover .tui-select--teal.tui-select--outline { border-color: var(--tui-color-teal-600); }
+          .tui-force-hover .tui-select--teal.tui-select--soft { border-color: var(--tui-color-teal-300); }
+          .tui-force-hover .tui-select--teal.tui-select--plain { border-color: var(--tui-color-teal-100); }
+          .tui-force-hover .tui-select--orange.tui-select--outline { border-color: var(--tui-color-orange-600); }
+          .tui-force-hover .tui-select--orange.tui-select--soft { border-color: var(--tui-color-orange-300); }
+          .tui-force-hover .tui-select--orange.tui-select--plain { border-color: var(--tui-color-orange-100); }
+          .tui-force-hover .tui-select--rose.tui-select--outline { border-color: var(--tui-color-rose-600); }
+          .tui-force-hover .tui-select--rose.tui-select--soft { border-color: var(--tui-color-rose-300); }
+          .tui-force-hover .tui-select--rose.tui-select--plain { border-color: var(--tui-color-rose-100); }
+          .tui-force-hover .tui-select--indigo.tui-select--outline { border-color: var(--tui-color-indigo-600); }
+          .tui-force-hover .tui-select--indigo.tui-select--soft { border-color: var(--tui-color-indigo-300); }
+          .tui-force-hover .tui-select--indigo.tui-select--plain { border-color: var(--tui-color-indigo-100); }
+          .tui-force-hover .tui-select--mint.tui-select--outline { border-color: var(--tui-color-mint-600); }
+          .tui-force-hover .tui-select--mint.tui-select--soft { border-color: var(--tui-color-mint-300); }
+          .tui-force-hover .tui-select--mint.tui-select--plain { border-color: var(--tui-color-mint-100); }
+          .tui-force-hover .tui-select--coal.tui-select--outline { border-color: var(--tui-color-coal-600); }
+          .tui-force-hover .tui-select--coal.tui-select--soft { border-color: var(--tui-color-coal-300); }
+          .tui-force-hover .tui-select--coal.tui-select--plain { border-color: var(--tui-color-coal-100); }
           .tui-force-hover .tui-select--white.tui-select--outline { border-color: var(--tui-color-brand-black-300); }
+          .tui-force-hover .tui-select--white.tui-select--soft { border-color: var(--tui-color-brand-black-200); }
+          .tui-force-hover .tui-select--white.tui-select--plain { border-color: var(--tui-color-brand-black-100); }
           .tui-force-hover .tui-select--black.tui-select--outline { border-color: var(--tui-color-brand-black-900); }
-          .tui-force-focus .tui-select { box-shadow: 0 0 0 0.5px var(--tui-color-focus-ring-gap), 0 0 1px 2px var(--tui-ring-color, var(--tui-color-focus-ring)); }
-          .tui-force-focus .tui-select--primary { --tui-ring-color: var(--tui-color-brand-pink-400); }
+          .tui-force-hover .tui-select--black.tui-select--soft { border-color: var(--tui-color-brand-black-700); }
+          .tui-force-hover .tui-select--black.tui-select--plain { border-color: var(--tui-color-brand-black-500); }
+          .tui-force-focus .tui-select { box-shadow: 0 0 0 0.5px var(--tui-color-focus-ring-gap), 0 0 1px 2px var(--tui-ring-color, var(--tui-color-brand-primary-400)); }
+          .tui-force-focus .tui-select--primary { --tui-ring-color: var(--tui-color-brand-primary-400); }
+          .tui-force-focus .tui-select--secondary { --tui-ring-color: var(--tui-color-brand-secondary-400); }
+          .tui-force-focus .tui-select--tertiary { --tui-ring-color: var(--tui-color-brand-tertiary-400); }
           .tui-force-focus .tui-select--success { --tui-ring-color: var(--tui-color-success-400); }
           .tui-force-focus .tui-select--warning { --tui-ring-color: var(--tui-color-warning-400); }
           .tui-force-focus .tui-select--danger { --tui-ring-color: var(--tui-color-danger-400); }
           .tui-force-focus .tui-select--info { --tui-ring-color: var(--tui-color-info-400); }
+          .tui-force-focus .tui-select--teal { --tui-ring-color: var(--tui-color-teal-400); }
+          .tui-force-focus .tui-select--orange { --tui-ring-color: var(--tui-color-orange-400); }
+          .tui-force-focus .tui-select--rose { --tui-ring-color: var(--tui-color-rose-400); }
+          .tui-force-focus .tui-select--indigo { --tui-ring-color: var(--tui-color-indigo-400); }
+          .tui-force-focus .tui-select--mint { --tui-ring-color: var(--tui-color-mint-400); }
+          .tui-force-focus .tui-select--coal { --tui-ring-color: var(--tui-color-coal-400); }
           .tui-force-focus .tui-select--white { --tui-ring-color: var(--tui-color-brand-black-300); }
           .tui-force-focus .tui-select--black { --tui-ring-color: var(--tui-color-brand-black-600); }
         `}</style>

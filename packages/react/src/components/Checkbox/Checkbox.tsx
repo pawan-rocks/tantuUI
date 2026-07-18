@@ -28,6 +28,8 @@ export interface CheckboxProps
   isInvalid?: boolean;
   /** Ghost/skeleton mode */
   isGhost?: boolean;
+  /** Color the label/title/subtitle text according to intent color */
+  textColorAsIntent?: boolean;
 }
 
 /** Checkmark SVG icon */
@@ -82,6 +84,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       labelPlacement = "end",
       isInvalid = false,
       isGhost = false,
+      textColorAsIntent = false,
       disabled,
       checked,
       className,
@@ -196,6 +199,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           (title || subtitle) ? "tui-checkbox--has-description" : undefined,
           type === "box" && "tui-checkbox--box",
           type === "box" && checked && "tui-checkbox--box-checked",
+          textColorAsIntent && "tui-checkbox--text-intent",
           className,
         )}
         style={style}

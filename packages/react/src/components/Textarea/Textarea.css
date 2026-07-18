@@ -37,16 +37,16 @@
 .tui-textarea__native:focus-visible {
   box-shadow:
     0 0 0 0.5px var(--tui-color-focus-ring-gap),
-    0 0 1px 2px var(--tui-ring-color, var(--tui-color-focus-ring));
+    0 0 1px 2px var(--tui-ring-color, var(--tui-color-brand-primary-400));
 }
 
 /* ─── Variants ───────────────────────────────────────────────────────────── */
 .tui-textarea--outline .tui-textarea__native {
   background-color: transparent;
-  border-color: var(--tui-color-brand-black-300);
+  border-color: var(--tui-color-brand-primary-300);
 }
 .tui-textarea--outline .tui-textarea__native:hover:not(:disabled) {
-  border-color: var(--tui-color-brand-black-400);
+  border-color: var(--tui-color-brand-primary-400);
 }
 
 .tui-textarea--soft .tui-textarea__native {
@@ -54,7 +54,7 @@
   border-color: var(--tui-color-brand-black-100);
 }
 .tui-textarea--soft .tui-textarea__native:hover:not(:disabled) {
-  border-color: var(--tui-color-brand-black-200);
+  border-color: var(--tui-color-brand-primary-200);
 }
 
 .tui-textarea--plain .tui-textarea__native {
@@ -103,13 +103,35 @@
 
 /* ─── primary ────────────────────────────────────────────────────────────── */
 .tui-textarea--primary .tui-textarea__native {
-  border-color: var(--tui-color-brand-pink-500);
+  border-color: var(--tui-color-brand-primary-500);
 }
 .tui-textarea--primary .tui-textarea__native:hover:not(:disabled) {
-  border-color: var(--tui-color-brand-pink-600);
+  border-color: var(--tui-color-brand-primary-600);
 }
 .tui-textarea--primary .tui-textarea__native:focus-visible {
-  --tui-ring-color: var(--tui-color-brand-pink-400);
+  --tui-ring-color: var(--tui-color-brand-primary-400);
+}
+
+/* ─── secondary ──────────────────────────────────────────────────────────── */
+.tui-textarea--secondary .tui-textarea__native {
+  border-color: var(--tui-color-brand-secondary-400);
+}
+.tui-textarea--secondary .tui-textarea__native:hover:not(:disabled) {
+  border-color: var(--tui-color-brand-secondary-500);
+}
+.tui-textarea--secondary .tui-textarea__native:focus-visible {
+  --tui-ring-color: var(--tui-color-brand-secondary-400);
+}
+
+/* ─── tertiary ───────────────────────────────────────────────────────────── */
+.tui-textarea--tertiary .tui-textarea__native {
+  border-color: var(--tui-color-brand-tertiary-500);
+}
+.tui-textarea--tertiary .tui-textarea__native:hover:not(:disabled) {
+  border-color: var(--tui-color-brand-tertiary-600);
+}
+.tui-textarea--tertiary .tui-textarea__native:focus-visible {
+  --tui-ring-color: var(--tui-color-brand-tertiary-400);
 }
 
 /* ─── success ────────────────────────────────────────────────────────────── */
@@ -234,11 +256,23 @@
 }
 
 /* ─── black ──────────────────────────────────────────────────────────────── */
-.tui-textarea--black .tui-textarea__native {
-  border-color: var(--tui-color-brand-black-800);
+.tui-textarea--black.tui-textarea--outline .tui-textarea__native {
+  border-color: var(--tui-color-brand-black-500);
 }
-.tui-textarea--black .tui-textarea__native:hover:not(:disabled) {
-  border-color: var(--tui-color-brand-black-900);
+.tui-textarea--black.tui-textarea--outline .tui-textarea__native:hover:not(:disabled) {
+  border-color: var(--tui-color-brand-black-700);
+}
+.tui-textarea--black.tui-textarea--soft .tui-textarea__native {
+  border-color: var(--tui-color-brand-black-400);
+}
+.tui-textarea--black.tui-textarea--soft .tui-textarea__native:hover:not(:disabled) {
+  border-color: var(--tui-color-brand-black-600);
+}
+.tui-textarea--black.tui-textarea--plain .tui-textarea__native {
+  border-color: var(--tui-color-brand-black-200);
+}
+.tui-textarea--black.tui-textarea--plain .tui-textarea__native:hover:not(:disabled) {
+  border-color: var(--tui-color-brand-black-400);
 }
 .tui-textarea--black .tui-textarea__native:focus-visible {
   --tui-ring-color: var(--tui-color-brand-black-600);

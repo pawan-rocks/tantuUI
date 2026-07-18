@@ -42,7 +42,7 @@ const meta: Meta<typeof TimeSelector> = {
     },
     intent: {
       control: "select",
-      options: ["default", "primary", "secondary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
+      options: ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
       description: "Color intent",
       table: { category: "Appearance", defaultValue: { summary: "default" } },
     },
@@ -183,7 +183,7 @@ export const Intents: Story = {
   name: "Intents",
   parameters: { controls: { disable: true } },
   render: () => {
-    const intents = ["primary", "success", "danger", "info", "teal", "indigo"] as const;
+    const intents = ["primary", "secondary", "tertiary", "success", "danger", "info", "teal", "indigo"] as const;
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)" }}>
         {intents.map((intent) => (

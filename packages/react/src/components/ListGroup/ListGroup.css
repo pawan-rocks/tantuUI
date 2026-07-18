@@ -1,0 +1,158 @@
+/* ─── ListGroup ───────────────────────────────────────────────────────────── */
+.tui-list-group {
+  --tui-list-group-border-color: var(--tui-color-brand-primary-200);
+  --tui-list-group-focus-color: var(--tui-color-brand-primary-400);
+  --tui-list-group-header-padding-y: var(--tui-spacing-3);
+  --tui-list-group-header-padding-x: var(--tui-spacing-4);
+  --tui-list-group-header-font-size: var(--tui-font-size-sm);
+  --tui-list-group-radius-top: var(--tui-radius-lg);
+  --tui-list-group-radius-bottom: var(--tui-radius-lg);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: var(--tui-color-white);
+}
+
+.tui-list-group--bordered {
+  border: var(--tui-border-width-1, 1px) solid var(--tui-list-group-border-color);
+}
+
+.tui-list-group--rounded {
+  border-top-left-radius: var(--tui-list-group-radius-top);
+  border-top-right-radius: var(--tui-list-group-radius-top);
+  border-bottom-right-radius: var(--tui-list-group-radius-bottom);
+  border-bottom-left-radius: var(--tui-list-group-radius-bottom);
+}
+
+/* ─── Header / footer ─────────────────────────────────────────────────────── */
+.tui-list-group__header,
+.tui-list-group__footer {
+  flex-shrink: 0;
+  padding: var(--tui-list-group-header-padding-y) var(--tui-list-group-header-padding-x);
+  color: var(--tui-color-brand-black-900);
+  font-size: var(--tui-list-group-header-font-size);
+  line-height: var(--tui-leading-normal);
+}
+
+.tui-list-group__header {
+  border-bottom: var(--tui-border-width-1, 1px) solid var(--tui-list-group-border-color);
+}
+
+.tui-list-group__footer {
+  border-top: var(--tui-border-width-1, 1px) solid var(--tui-list-group-border-color);
+}
+
+.tui-list-group__items {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* ─── Sizes ──────────────────────────────────────────────────────────────── */
+.tui-list-group--xs {
+  --tui-list-group-header-padding-y: var(--tui-spacing-1);
+  --tui-list-group-header-padding-x: var(--tui-spacing-2);
+  --tui-list-group-header-font-size: var(--tui-font-size-xs);
+}
+
+.tui-list-group--sm {
+  --tui-list-group-header-padding-y: var(--tui-spacing-2);
+  --tui-list-group-header-padding-x: var(--tui-spacing-3);
+  --tui-list-group-header-font-size: var(--tui-font-size-sm);
+}
+
+.tui-list-group--md {
+  --tui-list-group-header-padding-y: var(--tui-spacing-3);
+  --tui-list-group-header-padding-x: var(--tui-spacing-4);
+  --tui-list-group-header-font-size: var(--tui-font-size-sm);
+}
+
+.tui-list-group--lg {
+  --tui-list-group-header-padding-y: var(--tui-spacing-4);
+  --tui-list-group-header-padding-x: var(--tui-spacing-5);
+  --tui-list-group-header-font-size: var(--tui-font-size-base);
+}
+
+.tui-list-group--xl {
+  --tui-list-group-header-padding-y: var(--tui-spacing-5);
+  --tui-list-group-header-padding-x: var(--tui-spacing-6);
+  --tui-list-group-header-font-size: var(--tui-font-size-lg);
+}
+
+/* ─── Intent colors ────────────────────────────────────────────────────────── */
+.tui-list-group--primary {
+  --tui-list-group-border-color: var(--tui-color-brand-primary-200);
+  --tui-list-group-focus-color: var(--tui-color-brand-primary-400);
+}
+
+.tui-list-group--secondary {
+  --tui-list-group-border-color: var(--tui-color-brand-secondary-200);
+  --tui-list-group-focus-color: var(--tui-color-brand-secondary-400);
+}
+
+.tui-list-group--tertiary {
+  --tui-list-group-border-color: var(--tui-color-brand-tertiary-200);
+  --tui-list-group-focus-color: var(--tui-color-brand-tertiary-400);
+}
+
+.tui-list-group--success {
+  --tui-list-group-border-color: var(--tui-color-success-200);
+  --tui-list-group-focus-color: var(--tui-color-success-400);
+}
+
+.tui-list-group--warning {
+  --tui-list-group-border-color: var(--tui-color-warning-200);
+  --tui-list-group-focus-color: var(--tui-color-warning-400);
+}
+
+.tui-list-group--danger {
+  --tui-list-group-border-color: var(--tui-color-danger-200);
+  --tui-list-group-focus-color: var(--tui-color-danger-400);
+}
+
+.tui-list-group--info {
+  --tui-list-group-border-color: var(--tui-color-info-200);
+  --tui-list-group-focus-color: var(--tui-color-info-400);
+}
+
+.tui-list-group--teal {
+  --tui-list-group-border-color: var(--tui-color-teal-200);
+  --tui-list-group-focus-color: var(--tui-color-teal-400);
+}
+
+.tui-list-group--orange {
+  --tui-list-group-border-color: var(--tui-color-orange-200);
+  --tui-list-group-focus-color: var(--tui-color-orange-400);
+}
+
+.tui-list-group--rose {
+  --tui-list-group-border-color: var(--tui-color-rose-200);
+  --tui-list-group-focus-color: var(--tui-color-rose-400);
+}
+
+.tui-list-group--indigo {
+  --tui-list-group-border-color: var(--tui-color-indigo-200);
+  --tui-list-group-focus-color: var(--tui-color-indigo-400);
+}
+
+.tui-list-group--mint {
+  --tui-list-group-border-color: var(--tui-color-mint-200);
+  --tui-list-group-focus-color: var(--tui-color-mint-400);
+}
+
+.tui-list-group--coal {
+  --tui-list-group-border-color: var(--tui-color-coal-200);
+  --tui-list-group-focus-color: var(--tui-color-coal-400);
+}
+
+.tui-list-group--white {
+  --tui-list-group-border-color: var(--tui-color-brand-black-200);
+  --tui-list-group-focus-color: var(--tui-color-brand-black-300);
+}
+
+.tui-list-group--black {
+  --tui-list-group-border-color: var(--tui-color-brand-black-300);
+  --tui-list-group-focus-color: var(--tui-color-brand-black-600);
+}

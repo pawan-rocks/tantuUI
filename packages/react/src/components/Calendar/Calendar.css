@@ -245,42 +245,78 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   SELECTED & RANGE — Default intent (brand-black)
+   SELECTED & RANGE — Default intent (same as primary / brand-primary)
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .tui-calendar--default .tui-calendar__day--selected,
 .tui-calendar--default .tui-calendar__day--range-start,
 .tui-calendar--default .tui-calendar__day--range-end {
-  background-color: var(--tui-color-brand-black-900);
+  background-color: var(--tui-color-brand-primary-600);
   color: var(--tui-color-white);
   font-weight: var(--tui-font-weight-medium);
 }
 
 .tui-calendar--default .tui-calendar__day--in-range {
-  background-color: var(--tui-color-brand-black-100);
+  background-color: var(--tui-color-brand-primary-100);
   border-radius: 0;
 }
 
 .tui-calendar--default .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
-  background-color: var(--tui-color-brand-black-50);
+  background-color: var(--tui-color-brand-primary-50);
 }
 
-/* ─── Primary ────────────────────────────────────────────────────────────── */
+/* ─── Primary (brand-primary / purple) ───────────────────────────────────── */
 .tui-calendar--primary .tui-calendar__day--selected,
 .tui-calendar--primary .tui-calendar__day--range-start,
 .tui-calendar--primary .tui-calendar__day--range-end {
-  background-color: var(--tui-color-brand-pink-600);
+  background-color: var(--tui-color-brand-primary-600);
   color: var(--tui-color-white);
   font-weight: var(--tui-font-weight-medium);
 }
 
 .tui-calendar--primary .tui-calendar__day--in-range {
-  background-color: var(--tui-color-brand-pink-100);
+  background-color: var(--tui-color-brand-primary-100);
   border-radius: 0;
 }
 
 .tui-calendar--primary .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
-  background-color: var(--tui-color-brand-pink-50);
+  background-color: var(--tui-color-brand-primary-50);
+}
+
+/* ─── Secondary (brand-secondary / light) ────────────────────────────────── */
+.tui-calendar--secondary .tui-calendar__day--selected,
+.tui-calendar--secondary .tui-calendar__day--range-start,
+.tui-calendar--secondary .tui-calendar__day--range-end {
+  background-color: var(--tui-color-brand-secondary-500);
+  color: var(--tui-color-brand-black-900);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar--secondary .tui-calendar__day--in-range {
+  background-color: var(--tui-color-brand-secondary-200);
+  border-radius: 0;
+}
+
+.tui-calendar--secondary .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
+  background-color: var(--tui-color-brand-secondary-100);
+}
+
+/* ─── Tertiary (brand-tertiary / navy) ───────────────────────────────────── */
+.tui-calendar--tertiary .tui-calendar__day--selected,
+.tui-calendar--tertiary .tui-calendar__day--range-start,
+.tui-calendar--tertiary .tui-calendar__day--range-end {
+  background-color: var(--tui-color-brand-tertiary-600);
+  color: var(--tui-color-white);
+  font-weight: var(--tui-font-weight-medium);
+}
+
+.tui-calendar--tertiary .tui-calendar__day--in-range {
+  background-color: var(--tui-color-brand-tertiary-100);
+  border-radius: 0;
+}
+
+.tui-calendar--tertiary .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
+  background-color: var(--tui-color-brand-tertiary-50);
 }
 
 /* ─── Success ────────────────────────────────────────────────────────────── */
@@ -461,24 +497,6 @@
 
 .tui-calendar--coal .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
   background-color: var(--tui-color-coal-50);
-}
-
-/* ─── Secondary ──────────────────────────────────────────────────────────── */
-.tui-calendar--secondary .tui-calendar__day--selected,
-.tui-calendar--secondary .tui-calendar__day--range-start,
-.tui-calendar--secondary .tui-calendar__day--range-end {
-  background-color: var(--tui-color-brand-gray-600);
-  color: var(--tui-color-white);
-  font-weight: var(--tui-font-weight-medium);
-}
-
-.tui-calendar--secondary .tui-calendar__day--in-range {
-  background-color: var(--tui-color-brand-gray-100);
-  border-radius: 0;
-}
-
-.tui-calendar--secondary .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
-  background-color: var(--tui-color-brand-gray-50);
 }
 
 /* ─── White ──────────────────────────────────────────────────────────────── */

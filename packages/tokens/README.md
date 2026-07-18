@@ -152,7 +152,7 @@ Then use Tailwind classes mapped to TantuUI tokens:
 
 <!-- Group hover -->
 <div class="group tui-p-4">
-  <span class="group-hover:tui-text-brand-navy-default">Shows on parent hover</span>
+  <span class="group-hover:tui-text-brand-tertiary-default">Shows on parent hover</span>
 </div>
 ```
 

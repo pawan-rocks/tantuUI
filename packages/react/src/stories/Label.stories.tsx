@@ -17,8 +17,8 @@ const meta: Meta<typeof Label> = {
     },
     intent: {
       control: "select",
-      options: ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
-      description: "Color intent / semantic meaning",
+      options: ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
+      description: "Color intent. default and primary use the same primary token color.",
       table: { category: "Appearance", defaultValue: { summary: "default" } },
     },
     required: {
@@ -86,7 +86,7 @@ export const Intents: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)" }}>
-      {(["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const).map((intent) => (
+      {(["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const).map((intent) => (
         <Label key={intent} intent={intent} size="md">
           {intent.charAt(0).toUpperCase() + intent.slice(1)} label
         </Label>

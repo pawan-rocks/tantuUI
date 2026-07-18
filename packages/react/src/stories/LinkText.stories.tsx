@@ -16,8 +16,8 @@ const meta: Meta<typeof LinkText> = {
     },
     variant: {
       control: "select",
-      options: ["blue", "black", "white", "navy"],
-      description: "Color variant",
+      options: ["primary", "secondary", "tertiary", "blue", "black", "white"],
+      description: "Color variant with token-based base, hover, active, and variant-specific focus colors. Supported: primary, secondary, tertiary, blue, black, and white; navy was replaced by tertiary.",
       table: { category: "Appearance", defaultValue: { summary: "blue" } },
     },
     size: {
@@ -84,9 +84,11 @@ export const Variants: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-4)" }}>
       <div style={{ display: "flex", gap: "var(--tui-spacing-6)", alignItems: "center" }}>
+        <LinkText as="a" href="#" variant="primary">Primary</LinkText>
+        <LinkText as="a" href="#" variant="secondary">Secondary</LinkText>
+        <LinkText as="a" href="#" variant="tertiary">Tertiary</LinkText>
         <LinkText as="a" href="#" variant="blue">Blue (default)</LinkText>
         <LinkText as="a" href="#" variant="black">Black</LinkText>
-        <LinkText as="a" href="#" variant="navy">Navy</LinkText>
       </div>
       <div style={{ background: "var(--tui-color-brand-black-900)", padding: "var(--tui-spacing-4)", borderRadius: "var(--tui-radius-md)", display: "inline-flex" }}>
         <LinkText as="a" href="#" variant="white">White (on dark bg)</LinkText>
@@ -120,11 +122,13 @@ export const FocusAndPressed: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)" }}>
       <p style={{ fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)" }}>
-        Tab to focus (shows ring + indigo color). Click/hold to see pressed state (indigo-600).
+        Tab to focus to see the variant-specific focus ring and text color. Click/hold to see the variant's active color.
       </p>
+      <LinkText as="a" href="#" variant="primary" size="lg" weight="semibold">Primary — tab or click me</LinkText>
+      <LinkText as="a" href="#" variant="secondary" size="lg" weight="semibold">Secondary — tab or click me</LinkText>
+      <LinkText as="a" href="#" variant="tertiary" size="lg" weight="semibold">Tertiary — tab or click me</LinkText>
       <LinkText as="a" href="#" variant="blue" size="lg" weight="semibold">Blue — tab or click me</LinkText>
       <LinkText as="a" href="#" variant="black" size="lg" weight="semibold">Black — tab or click me</LinkText>
-      <LinkText as="a" href="#" variant="navy" size="lg" weight="semibold">Navy — tab or click me</LinkText>
     </div>
   ),
 };
@@ -149,8 +153,9 @@ export const Disabled: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "var(--tui-spacing-6)", alignItems: "center" }}>
       <LinkText as="a" href="#" disabled variant="blue">Disabled blue</LinkText>
+      <LinkText as="a" href="#" disabled variant="primary">Disabled primary</LinkText>
+      <LinkText as="a" href="#" disabled variant="secondary">Disabled secondary</LinkText>
       <LinkText as="a" href="#" disabled variant="black">Disabled black</LinkText>
-      <LinkText as="a" href="#" disabled variant="navy">Disabled coal</LinkText>
     </div>
   ),
 };
@@ -198,13 +203,13 @@ export const AsElement: Story = {
         <span style={{ fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)", display: "block", marginBottom: "var(--tui-spacing-1)" }}>
           as="span" (default) — use inside NavLink/Link
         </span>
-        <LinkText as="span" variant="navy" size="sm" weight="medium">Dashboard</LinkText>
+        <LinkText as="span" variant="tertiary" size="sm" weight="medium">Dashboard</LinkText>
       </div>
       <div>
         <span style={{ fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)", display: "block", marginBottom: "var(--tui-spacing-1)" }}>
           as="a" — standalone anchor link
         </span>
-        <LinkText as="a" href="#" variant="navy" size="sm" weight="medium">External Link</LinkText>
+        <LinkText as="a" href="#" variant="tertiary" size="sm" weight="medium">External Link</LinkText>
       </div>
     </div>
   ),

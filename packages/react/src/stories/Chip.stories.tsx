@@ -15,7 +15,7 @@ const FilterIcon = () => (
   </svg>
 );
 
-const INTENTS = ["default", "primary", "secondary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
+const INTENTS = ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
 
 // ── Meta ──────────────────────────────────────────────────────────────────
 const meta: Meta<typeof Chip> = {

@@ -41,11 +41,11 @@ Use `@apply` in your CSS files to compose TantuUI utility classes:
 }
 
 .sidebar__link:hover {
-  @apply tui-bg-brand-black-100 tui-text-brand-navy-default;
+  @apply tui-bg-brand-black-100 tui-text-brand-tertiary-default;
 }
 
 .sidebar__link--active {
-  @apply tui-bg-info-50 tui-text-brand-navy-default;
+  @apply tui-bg-info-50 tui-text-brand-tertiary-default;
 }
 ```
 

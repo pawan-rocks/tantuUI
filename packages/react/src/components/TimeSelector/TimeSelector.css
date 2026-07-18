@@ -259,9 +259,10 @@
    INTENT COLORS
    ═══════════════════════════════════════════════════════════════════════════ */
 
-.tui-timeselector--default { --tui-tp-selected-bg: var(--tui-color-brand-black-900); --tui-tp-selected-color: var(--tui-color-white); }
-.tui-timeselector--primary { --tui-tp-selected-bg: var(--tui-color-brand-pink-600); --tui-tp-selected-color: var(--tui-color-white); }
-.tui-timeselector--secondary { --tui-tp-selected-bg: var(--tui-color-brand-gray-600); --tui-tp-selected-color: var(--tui-color-white); }
+.tui-timeselector--default { --tui-tp-selected-bg: var(--tui-color-brand-primary-600); --tui-tp-selected-color: var(--tui-color-white); }
+.tui-timeselector--primary { --tui-tp-selected-bg: var(--tui-color-brand-primary-600); --tui-tp-selected-color: var(--tui-color-white); }
+.tui-timeselector--secondary { --tui-tp-selected-bg: var(--tui-color-brand-secondary-500); --tui-tp-selected-color: var(--tui-color-brand-black-900); }
+.tui-timeselector--tertiary { --tui-tp-selected-bg: var(--tui-color-brand-tertiary-600); --tui-tp-selected-color: var(--tui-color-white); }
 .tui-timeselector--success { --tui-tp-selected-bg: var(--tui-color-success-600); --tui-tp-selected-color: var(--tui-color-white); }
 .tui-timeselector--warning { --tui-tp-selected-bg: var(--tui-color-warning-600); --tui-tp-selected-color: var(--tui-color-white); }
 .tui-timeselector--danger { --tui-tp-selected-bg: var(--tui-color-danger-600); --tui-tp-selected-color: var(--tui-color-white); }

@@ -27,6 +27,8 @@ export interface RadioProps
   isInvalid?: boolean;
   /** Ghost/skeleton mode */
   isGhost?: boolean;
+  /** Color the label/title/subtitle text according to intent color */
+  textColorAsIntent?: boolean;
 }
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
@@ -41,6 +43,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       value,
       isInvalid: isInvalidProp,
       isGhost = false,
+      textColorAsIntent = false,
       disabled: disabledProp,
       checked: checkedProp,
       name: nameProp,
@@ -86,25 +89,15 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       }
     };
 
-    // Determine tabIndex for roving tabindex
-    // In a group: checked radio gets tabIndex=0, others get -1
-    // If nothing is checked, first non-disabled radio should be tabbable (handled by not setting -1 when no context value exists)
+    // Determine tabIndex
     let computedTabIndex: number | undefined;
     if (tabIndexProp !== undefined) {
       computedTabIndex = tabIndexProp;
     } else if (disabled) {
       computedTabIndex = -1;
-    } else if (context) {
-      // Inside a RadioGroup: only the checked radio (or first if none checked) is tabbable
-      if (context.value) {
-        computedTabIndex = isChecked ? 0 : -1;
-      } else {
-        // No value selected — leave undefined so browser picks the first
-        computedTabIndex = undefined;
-      }
     } else {
-      // Standalone radio — always tabbable
-      computedTabIndex = 0;
+      // Let native radio behavior handle focus — no roving tabindex needed
+      computedTabIndex = undefined;
     }
 
     // Ghost mode → render Shimmer with explicit indicator dimensions
@@ -176,6 +169,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           (title || subtitle) ? "tui-radio--has-description" : undefined,
           type === "box" && "tui-radio--box",
           type === "box" && isChecked && "tui-radio--box-checked",
+          textColorAsIntent && "tui-radio--text-intent",
           className,
         )}
         style={style}

@@ -42,7 +42,7 @@
   - **Sticky header**: `stickyHeader` + `scroll.y` for vertical scroll with pinned header
   - **Sticky columns**: `fixed: "left" | "right"` on columns for horizontal scroll with pinned columns
   - **Scroll**: `scroll={{ x, y }}` for horizontal/vertical overflow
-  - **Row states**: selected (brand-blue-50), disabled (brand-gray-200 + cursor not-allowed), borderless, hover (brand-navy-50)
+  - **Row states**: selected (brand-blue-50), disabled (brand-gray-200 + cursor not-allowed), borderless, hover (brand-tertiary-50)
   - **Header customization**: `bgColor`, `verticalAlign`, title/subtitle/extra structured content
   - **Cell features**: title/subtitle/extra, href (link), prefixIcon/suffixIcon, align, column borders with custom color/width
   - **Sizes**: sm, md, lg with distinct padding and font

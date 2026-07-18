@@ -4,6 +4,8 @@ import type { ReactNode, CSSProperties } from "react";
 import type { DropdownPlacement } from "../../hooks/useDropdownPosition";
 import "./Popover.css";
 
+export type PopoverPositionStrategy = "absolute" | "fixed";
+
 // ── Position helpers (inline — no hook needed for initial calc) ────────────
 
 function getAvailableSpace(triggerRect: DOMRect) {
@@ -58,11 +60,13 @@ function applyPosition(
   triggerRect: DOMRect,
   placement: DropdownPlacement,
   offset: number,
+  positionStrategy: PopoverPositionStrategy,
 ) {
   const base = placement.split("-")[0] as "top" | "bottom" | "left" | "right";
   const alignment = placement.split("-")[1] as "start" | "end" | undefined;
-  const scrollX = window.scrollX;
-  const scrollY = window.scrollY;
+  const scrollX = positionStrategy === "fixed" ? 0 : window.scrollX;
+  const scrollY = positionStrategy === "fixed" ? 0 : window.scrollY;
+  el.style.position = positionStrategy;
 
   switch (base) {
     case "bottom":
@@ -114,6 +118,8 @@ export interface PopoverProps {
   style?: CSSProperties;
   closeOnOutsideClick?: boolean;
   closeOnEscape?: boolean;
+  /** Position strategy for portal coordinates */
+  positionStrategy?: PopoverPositionStrategy;
   zIndex?: number;
 }
 
@@ -130,6 +136,7 @@ export const Popover: React.FC<PopoverProps> = ({
   style,
   closeOnOutsideClick = true,
   closeOnEscape = true,
+  positionStrategy = "absolute",
   zIndex,
 }) => {
   const popoverRef = useRef<HTMLDivElement>(null);
@@ -143,7 +150,7 @@ export const Popover: React.FC<PopoverProps> = ({
     const el = popoverRef.current;
     const dropdownRect = { width: el.offsetWidth, height: el.offsetHeight };
     const resolved = resolveAutoPlacement(triggerRect, dropdownRect, placement, offset);
-    applyPosition(el, triggerRect, resolved, offset);
+    applyPosition(el, triggerRect, resolved, offset, positionStrategy);
     // Make visible after positioning
     el.style.visibility = "visible";
   }, [triggerRef, placement, offset]);
@@ -158,12 +165,12 @@ export const Popover: React.FC<PopoverProps> = ({
           const triggerRect = triggerRef.current.getBoundingClientRect();
           const dropdownRect = { width: node.offsetWidth, height: node.offsetHeight };
           const resolved = resolveAutoPlacement(triggerRect, dropdownRect, placement, offset);
-          applyPosition(node, triggerRect, resolved, offset);
+          applyPosition(node, triggerRect, resolved, offset, positionStrategy);
           setIsPositioned(true);
         }, 0);
       }
     },
-    [triggerRef, placement, offset],
+    [triggerRef, placement, offset, positionStrategy],
   );
 
   // Scroll/resize repositioning
@@ -180,7 +187,7 @@ export const Popover: React.FC<PopoverProps> = ({
       const triggerRect = triggerRef.current.getBoundingClientRect();
       const dropdownRect = { width: el.offsetWidth, height: el.offsetHeight };
       const resolved = resolveAutoPlacement(triggerRect, dropdownRect, placement, offset);
-      applyPosition(el, triggerRect, resolved, offset);
+      applyPosition(el, triggerRect, resolved, offset, positionStrategy);
       setIsPositioned(true);
     };
 
@@ -201,7 +208,7 @@ export const Popover: React.FC<PopoverProps> = ({
       window.removeEventListener("scroll", handleReposition, true);
       window.removeEventListener("resize", handleReposition);
     };
-  }, [isOpen, updatePosition, triggerRef, placement, offset]);
+  }, [isOpen, updatePosition, triggerRef, placement, offset, positionStrategy]);
 
   // Outside click
   useEffect(() => {
@@ -232,7 +239,7 @@ export const Popover: React.FC<PopoverProps> = ({
   if (!isOpen) return null;
 
   const popoverStyle: CSSProperties = {
-    position: "absolute",
+    position: positionStrategy,
     visibility: isPositioned ? "visible" : "hidden",
     ...style,
     ...(zIndex != null ? { zIndex } : {}),

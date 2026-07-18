@@ -49,7 +49,7 @@ const meta: Meta<typeof Radio> = {
     },
     intent: {
       control: "select",
-      options: ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
+      options: ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
       description: "Color intent / semantic meaning",
       table: { category: "Appearance", defaultValue: { summary: "default" } },
     },
@@ -63,6 +63,11 @@ const meta: Meta<typeof Radio> = {
       description: "Disabled state",
       table: { category: "State" },
     },
+    textColorAsIntent: {
+      control: "boolean",
+      description: "Color the label/title/subtitle text according to the intent color",
+      table: { category: "Appearance", defaultValue: { summary: "false" } },
+    },
   },
 
   args: {
@@ -72,6 +77,7 @@ const meta: Meta<typeof Radio> = {
     isInvalid: false,
     isGhost: false,
     disabled: false,
+    textColorAsIntent: false,
   },
 };
 
@@ -82,17 +88,14 @@ type Story = StoryObj<typeof Radio>;
 export const Playground: Story = {
   name: "⚡ Playground",
   render: (args) => {
-    const PlaygroundDemo = () => {
-      const [selected, setSelected] = useState("apple");
-      return (
-        <RadioGroup name="playground" value={selected} onChange={setSelected} size={args.size} disabled={args.disabled}>
-          <Radio value="apple" label="Apple" intent={args.intent} isInvalid={args.isInvalid} isGhost={args.isGhost} />
-          <Radio value="banana" label="Banana" intent={args.intent} isInvalid={args.isInvalid} isGhost={args.isGhost} />
-          <Radio value="cherry" label="Cherry" intent={args.intent} isInvalid={args.isInvalid} isGhost={args.isGhost} />
-        </RadioGroup>
-      );
-    };
-    return <PlaygroundDemo />;
+    const [selected, setSelected] = useState("apple");
+    return (
+      <RadioGroup name="playground" value={selected} onChange={setSelected} size={args.size} disabled={args.disabled}>
+        <Radio value="apple" label="Apple" intent={args.intent} isInvalid={args.isInvalid} isGhost={args.isGhost} textColorAsIntent={args.textColorAsIntent} />
+        <Radio value="banana" label="Banana" intent={args.intent} isInvalid={args.isInvalid} isGhost={args.isGhost} textColorAsIntent={args.textColorAsIntent} />
+        <Radio value="cherry" label="Cherry" intent={args.intent} isInvalid={args.isInvalid} isGhost={args.isGhost} textColorAsIntent={args.textColorAsIntent} />
+      </RadioGroup>
+    );
   },
 };
 
@@ -117,7 +120,7 @@ export const Intents: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-4)" }}>
-      {(["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const).map((intent) => (
+      {(["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const).map((intent) => (
         <RadioGroup key={intent} name={`intent-${intent}`} value="a">
           <Radio value="a" intent={intent} label={`${intent.charAt(0).toUpperCase() + intent.slice(1)} (selected)`} />
           <Radio value="b" intent={intent} label={`${intent.charAt(0).toUpperCase() + intent.slice(1)} (unselected)`} />
@@ -171,7 +174,7 @@ export const AllStates: Story = {
   name: "All States",
   parameters: { controls: { disable: true } },
   render: () => {
-    const intents = ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
+    const intents = ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
     const states = ["base", "selected", "hover", "disabled", "ghost"] as const;
     return (
       <div style={{ overflowX: "auto" }}>
@@ -298,7 +301,7 @@ export const BoxTypeIntents: Story = {
   render: () => {
     const Demo = () => {
       const [selected, setSelected] = useState("primary");
-      const intents = ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal"] as const;
+      const intents = ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal"] as const;
       return (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: "var(--tui-spacing-3)" }}>
           {intents.map((intent) => (
@@ -326,7 +329,7 @@ export const BoxStates: Story = {
   name: "Box Card States",
   parameters: { controls: { disable: true } },
   render: () => {
-    const intents = ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal"] as const;
+    const intents = ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal"] as const;
     return (
       <div style={{ overflowX: "auto" }}>
         <table style={{ borderCollapse: "collapse", width: "100%", minWidth: "800px", fontFamily: "var(--tui-font-family-sans)" }}>
@@ -385,6 +388,26 @@ export const CustomClassOnly: Story = {
         <Radio value="custom-1" label="Custom styled radio" className="my-custom-radio" />
         <Radio value="custom-2" label="Another custom radio" className="my-custom-radio" />
       </RadioGroup>
+    </div>
+  ),
+};
+
+// ── Text Color As Intent ──────────────────────────────────────────────────
+/**
+ * When `textColorAsIntent` is true, the label/title/subtitle text color
+ * matches the intent color.
+ */
+export const TextColorAsIntent: Story = {
+  name: "Text Color As Intent",
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)" }}>
+      <Radio intent="primary" textColorAsIntent checked value="p" label="Primary colored text" onChange={() => {}} />
+      <Radio intent="secondary" textColorAsIntent value="s" label="Secondary colored text" onChange={() => {}} />
+      <Radio intent="tertiary" textColorAsIntent value="t" label="Tertiary colored text" onChange={() => {}} />
+      <Radio intent="success" textColorAsIntent checked value="su" label="Success colored text" onChange={() => {}} />
+      <Radio intent="danger" textColorAsIntent value="d" label="Danger colored text" onChange={() => {}} />
+      <Radio intent="primary" textColorAsIntent checked value="pt" title="Primary Title" subtitle="Subtitle in intent color too" onChange={() => {}} />
     </div>
   ),
 };

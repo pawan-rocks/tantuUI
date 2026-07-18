@@ -118,118 +118,154 @@
    Soft: light/subtle bg, colored text
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* ─── primary (magenta purple) ───────────────────────────────────────────── */
+/* ─── primary (brand-primary / purple) ───────────────────────────────────── */
 .tui-btn--primary.tui-btn--solid {
-  background-color: var(--tui-color-brand-pink-600);
+  background-color: var(--tui-color-brand-primary-600);
   color: var(--tui-color-white);
-  border-color: var(--tui-color-brand-pink-600);
+  border-color: var(--tui-color-brand-primary-600);
 }
 .tui-btn--primary.tui-btn--solid:hover:not(:disabled) {
-  background-color: var(--tui-color-brand-pink-700);
-  border-color: var(--tui-color-brand-pink-700);
+  background-color: var(--tui-color-brand-primary-700);
+  border-color: var(--tui-color-brand-primary-700);
 }
 .tui-btn--primary.tui-btn--solid:active:not(:disabled) {
-  background-color: var(--tui-color-brand-pink-800);
-  border-color: var(--tui-color-brand-pink-800);
+  background-color: var(--tui-color-brand-primary-800);
+  border-color: var(--tui-color-brand-primary-800);
 }
 .tui-btn--primary.tui-btn--outline {
   background-color: transparent;
-  color: var(--tui-color-brand-pink-600);
-  border-color: var(--tui-color-brand-pink-600);
+  color: var(--tui-color-brand-primary-600);
+  border-color: var(--tui-color-brand-primary-600);
 }
 .tui-btn--primary.tui-btn--outline:hover:not(:disabled) {
-  background-color: var(--tui-color-brand-pink-50);
+  background-color: var(--tui-color-brand-primary-50);
 }
 .tui-btn--primary.tui-btn--outline:active:not(:disabled) {
-  background-color: var(--tui-color-brand-pink-100);
+  background-color: var(--tui-color-brand-primary-100);
 }
 .tui-btn--primary.tui-btn--soft {
-  background-color: var(--tui-color-brand-pink-50);
-  color: var(--tui-color-brand-pink-700);
+  background-color: var(--tui-color-brand-primary-50);
+  color: var(--tui-color-brand-primary-700);
   border-color: transparent;
 }
 .tui-btn--primary.tui-btn--soft:hover:not(:disabled) {
-  background-color: var(--tui-color-brand-pink-100);
+  background-color: var(--tui-color-brand-primary-100);
 }
 .tui-btn--primary.tui-btn--soft:active:not(:disabled) {
-  background-color: var(--tui-color-brand-pink-200);
+  background-color: var(--tui-color-brand-primary-200);
 }
 
-/* ─── default (black/dark) ────────────────────────────────────────────────── */
+/* ─── default (same as primary / brand-primary) ──────────────────────────── */
 .tui-btn--default.tui-btn--solid {
-  background-color: var(--tui-color-brand-black-900);
+  background-color: var(--tui-color-brand-primary-600);
   color: var(--tui-color-white);
-  border-color: var(--tui-color-brand-black-900);
+  border-color: var(--tui-color-brand-primary-600);
 }
 .tui-btn--default.tui-btn--solid:hover:not(:disabled) {
-  background-color: var(--tui-color-brand-black-800);
-  border-color: var(--tui-color-brand-black-800);
+  background-color: var(--tui-color-brand-primary-700);
+  border-color: var(--tui-color-brand-primary-700);
 }
 .tui-btn--default.tui-btn--solid:active:not(:disabled) {
-  background-color: var(--tui-color-brand-black-700);
-  border-color: var(--tui-color-brand-black-700);
+  background-color: var(--tui-color-brand-primary-800);
+  border-color: var(--tui-color-brand-primary-800);
 }
 .tui-btn--default.tui-btn--outline {
   background-color: transparent;
-  color: var(--tui-color-brand-black-900);
-  border-color: var(--tui-color-brand-black-800);
+  color: var(--tui-color-brand-primary-600);
+  border-color: var(--tui-color-brand-primary-600);
 }
 .tui-btn--default.tui-btn--outline:hover:not(:disabled) {
-  background-color: var(--tui-color-brand-black-50);
-  border-color: var(--tui-color-brand-black-900);
+  background-color: var(--tui-color-brand-primary-50);
 }
 .tui-btn--default.tui-btn--outline:active:not(:disabled) {
-  background-color: var(--tui-color-brand-black-100);
+  background-color: var(--tui-color-brand-primary-100);
 }
 .tui-btn--default.tui-btn--soft {
-  background-color: var(--tui-color-brand-black-100);
-  color: var(--tui-color-brand-black-900);
+  background-color: var(--tui-color-brand-primary-50);
+  color: var(--tui-color-brand-primary-700);
   border-color: transparent;
 }
 .tui-btn--default.tui-btn--soft:hover:not(:disabled) {
-  background-color: var(--tui-color-brand-black-200);
+  background-color: var(--tui-color-brand-primary-100);
 }
 .tui-btn--default.tui-btn--soft:active:not(:disabled) {
-  background-color: var(--tui-color-brand-black-300);
+  background-color: var(--tui-color-brand-primary-200);
 }
 
-/* ─── secondary (gray) ───────────────────────────────────────────────────── */
+/* ─── secondary (brand-secondary / light gray) ──────────────────────────── */
 .tui-btn--secondary.tui-btn--solid {
-  background-color: var(--tui-color-brand-gray-200);
+  background-color: var(--tui-color-brand-secondary-300);
   color: var(--tui-color-brand-black-900);
-  border-color: var(--tui-color-brand-gray-200);
+  border-color: var(--tui-color-brand-secondary-300);
 }
 .tui-btn--secondary.tui-btn--solid:hover:not(:disabled) {
-  background-color: var(--tui-color-brand-gray-300);
-  border-color: var(--tui-color-brand-gray-300);
+  background-color: var(--tui-color-brand-secondary-400);
+  border-color: var(--tui-color-brand-secondary-400);
 }
 .tui-btn--secondary.tui-btn--solid:active:not(:disabled) {
-  background-color: var(--tui-color-brand-gray-400);
-  border-color: var(--tui-color-brand-gray-400);
+  background-color: var(--tui-color-brand-secondary-500);
+  border-color: var(--tui-color-brand-secondary-500);
 }
 .tui-btn--secondary.tui-btn--outline {
   background-color: transparent;
   color: var(--tui-color-brand-black-900);
-  border-color: var(--tui-color-brand-gray-200);
+  border-color: var(--tui-color-brand-secondary-300);
 }
 .tui-btn--secondary.tui-btn--outline:hover:not(:disabled) {
-  background-color: var(--tui-color-brand-gray-50);
-  border-color: var(--tui-color-brand-gray-300);
+  background-color: var(--tui-color-brand-secondary-100);
+  border-color: var(--tui-color-brand-secondary-400);
 }
 .tui-btn--secondary.tui-btn--outline:active:not(:disabled) {
-  background-color: var(--tui-color-brand-gray-100);
-  border-color: var(--tui-color-brand-gray-400);
+  background-color: var(--tui-color-brand-secondary-200);
+  border-color: var(--tui-color-brand-secondary-500);
 }
 .tui-btn--secondary.tui-btn--soft {
-  background-color: var(--tui-color-brand-gray-100);
-  color: var(--tui-color-brand-black-900);
+  background-color: var(--tui-color-brand-secondary-200);
+  color: var(--tui-color-brand-black-800);
   border-color: transparent;
 }
 .tui-btn--secondary.tui-btn--soft:hover:not(:disabled) {
-  background-color: var(--tui-color-brand-gray-200);
+  background-color: var(--tui-color-brand-secondary-300);
 }
 .tui-btn--secondary.tui-btn--soft:active:not(:disabled) {
-  background-color: var(--tui-color-brand-gray-300);
+  background-color: var(--tui-color-brand-secondary-400);
+}
+
+/* ─── tertiary (brand-tertiary / navy) ────────────────────────────────────── */
+.tui-btn--tertiary.tui-btn--solid {
+  background-color: var(--tui-color-brand-tertiary-600);
+  color: var(--tui-color-white);
+  border-color: var(--tui-color-brand-tertiary-600);
+}
+.tui-btn--tertiary.tui-btn--solid:hover:not(:disabled) {
+  background-color: var(--tui-color-brand-tertiary-700);
+  border-color: var(--tui-color-brand-tertiary-700);
+}
+.tui-btn--tertiary.tui-btn--solid:active:not(:disabled) {
+  background-color: var(--tui-color-brand-tertiary-800);
+  border-color: var(--tui-color-brand-tertiary-800);
+}
+.tui-btn--tertiary.tui-btn--outline {
+  background-color: transparent;
+  color: var(--tui-color-brand-tertiary-600);
+  border-color: var(--tui-color-brand-tertiary-600);
+}
+.tui-btn--tertiary.tui-btn--outline:hover:not(:disabled) {
+  background-color: var(--tui-color-brand-tertiary-50);
+}
+.tui-btn--tertiary.tui-btn--outline:active:not(:disabled) {
+  background-color: var(--tui-color-brand-tertiary-100);
+}
+.tui-btn--tertiary.tui-btn--soft {
+  background-color: var(--tui-color-brand-tertiary-50);
+  color: var(--tui-color-brand-tertiary-700);
+  border-color: transparent;
+}
+.tui-btn--tertiary.tui-btn--soft:hover:not(:disabled) {
+  background-color: var(--tui-color-brand-tertiary-100);
+}
+.tui-btn--tertiary.tui-btn--soft:active:not(:disabled) {
+  background-color: var(--tui-color-brand-tertiary-200);
 }
 
 /* ─── danger ─────────────────────────────────────────────────────────────── */
@@ -690,19 +726,24 @@
 }
 
 /* primary plain */
-.tui-btn--primary.tui-btn--plain { color: var(--tui-color-brand-pink-700); }
-.tui-btn--primary.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-brand-pink-600); }
-.tui-btn--primary.tui-btn--plain:active:not(:disabled) { color: var(--tui-color-brand-pink-800); }
+.tui-btn--primary.tui-btn--plain { color: var(--tui-color-brand-primary-700); }
+.tui-btn--primary.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-brand-primary-600); }
+.tui-btn--primary.tui-btn--plain:active:not(:disabled) { color: var(--tui-color-brand-primary-800); }
 
 /* default plain */
-.tui-btn--default.tui-btn--plain { color: var(--tui-color-brand-black-700); }
-.tui-btn--default.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-brand-black-600); }
-.tui-btn--default.tui-btn--plain:active:not(:disabled) { color: var(--tui-color-brand-black-900); }
+.tui-btn--default.tui-btn--plain { color: var(--tui-color-brand-primary-700); }
+.tui-btn--default.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-brand-primary-600); }
+.tui-btn--default.tui-btn--plain:active:not(:disabled) { color: var(--tui-color-brand-primary-800); }
 
 /* secondary plain */
 .tui-btn--secondary.tui-btn--plain { color: var(--tui-color-brand-black-600); }
 .tui-btn--secondary.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-brand-black-700); }
 .tui-btn--secondary.tui-btn--plain:active:not(:disabled) { color: var(--tui-color-brand-black-950); }
+
+/* tertiary plain */
+.tui-btn--tertiary.tui-btn--plain { color: var(--tui-color-brand-tertiary-700); }
+.tui-btn--tertiary.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-brand-tertiary-600); }
+.tui-btn--tertiary.tui-btn--plain:active:not(:disabled) { color: var(--tui-color-brand-tertiary-800); }
 
 /* danger plain */
 .tui-btn--danger.tui-btn--plain { color: var(--tui-color-danger-700); }
@@ -767,8 +808,10 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    FOCUS RING — intent-based colors
    ═══════════════════════════════════════════════════════════════════════════ */
-.tui-btn--primary:focus-visible   { --tui-ring-color: var(--tui-color-brand-pink-400); }
-.tui-btn--secondary:focus-visible { --tui-ring-color: var(--tui-color-brand-gray-300); }
+.tui-btn--default:focus-visible   { --tui-ring-color: var(--tui-color-brand-primary-400); }
+.tui-btn--primary:focus-visible   { --tui-ring-color: var(--tui-color-brand-primary-400); }
+.tui-btn--secondary:focus-visible { --tui-ring-color: var(--tui-color-brand-secondary-400); }
+.tui-btn--tertiary:focus-visible  { --tui-ring-color: var(--tui-color-brand-tertiary-400); }
 .tui-btn--success:focus-visible   { --tui-ring-color: var(--tui-color-success-400); }
 .tui-btn--warning:focus-visible   { --tui-ring-color: var(--tui-color-warning-400); }
 .tui-btn--danger:focus-visible    { --tui-ring-color: var(--tui-color-danger-400); }

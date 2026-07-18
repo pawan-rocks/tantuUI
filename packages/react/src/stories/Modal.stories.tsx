@@ -924,7 +924,7 @@ export const HeaderAllSections: Story = {
             <ModalHeader
               leftSection={
                 <div style={{ display: "flex", alignItems: "center", gap: "var(--tui-spacing-2)" }}>
-                  <div style={{ width: 32, height: 32, borderRadius: "var(--tui-radius-md)", background: "var(--tui-color-brand-purple-100)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-brand-purple-700)" }}>📁</div>
+                  <div style={{ width: 32, height: 32, borderRadius: "var(--tui-radius-md)", background: "var(--tui-color-brand-primary-100)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-brand-primary-700)" }}>📁</div>
                   <span style={{ fontWeight: "var(--tui-font-weight-semibold)", fontSize: "var(--tui-font-size-sm)" }}>My Project</span>
                 </div>
               }
@@ -1353,6 +1353,84 @@ export const GhostHeaderOnly: Story = {
           }
         >
           <p style={{ margin: 0 }}>Body content is loaded, but the header is still in a loading/shimmer state.</p>
+        </Modal>
+      </div>
+    );
+  },
+};
+
+// ── Ghost Header: Title Only ──────────────────────────────────────────────
+/**
+ * Ghost header with only `title` passed — shimmer auto-sizes to title text width.
+ */
+export const GhostHeaderTitleOnly: Story = {
+  name: "Ghost: Header Title Only",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <div style={{ padding: "var(--tui-spacing-8)" }}>
+        <Button onClick={() => setIsOpen(true)}>Ghost Title Only</Button>
+        <Modal
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          size="md"
+          header={<ModalHeader isGhost title="Project Settings" />}
+        >
+          <p style={{ margin: 0 }}>Header ghost shows one shimmer line matching "Project Settings" width.</p>
+        </Modal>
+      </div>
+    );
+  },
+};
+
+// ── Ghost Header: Subtitle Only ───────────────────────────────────────────
+/**
+ * Ghost header with only `subtitle` passed — shimmer auto-sizes to subtitle text width.
+ */
+export const GhostHeaderSubtitleOnly: Story = {
+  name: "Ghost: Header Subtitle Only",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <div style={{ padding: "var(--tui-spacing-8)" }}>
+        <Button onClick={() => setIsOpen(true)}>Ghost Subtitle Only</Button>
+        <Modal
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          size="md"
+          header={<ModalHeader isGhost subtitle="Configure your preferences" />}
+        >
+          <p style={{ margin: 0 }}>Header ghost shows one shimmer line matching "Configure your preferences" width.</p>
+        </Modal>
+      </div>
+    );
+  },
+};
+
+// ── Ghost Header: Title + Subtitle ────────────────────────────────────────
+/**
+ * Ghost header with both `title` and `subtitle` passed — two shimmer lines, each auto-sized.
+ */
+export const GhostHeaderTitleAndSubtitle: Story = {
+  name: "Ghost: Header Title + Subtitle",
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <div style={{ padding: "var(--tui-spacing-8)" }}>
+        <Button onClick={() => setIsOpen(true)}>Ghost Title + Subtitle</Button>
+        <Modal
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          size="md"
+          header={<ModalHeader isGhost title="Project Settings" subtitle="Configure your preferences" />}
+        >
+          <p style={{ margin: 0 }}>Header ghost shows two shimmer lines — title and subtitle — each auto-sized to content.</p>
         </Modal>
       </div>
     );

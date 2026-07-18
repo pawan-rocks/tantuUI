@@ -175,19 +175,19 @@
 
 /* default filled */
 .tui-tag--default.tui-tag--filled {
-  background-color: var(--tui-color-brand-black-100);
-  color: var(--tui-color-brand-black-800);
+  background-color: var(--tui-color-brand-primary-50);
+  color: var(--tui-color-brand-primary-700);
 }
 
 /* primary filled */
 .tui-tag--primary.tui-tag--filled {
-  background-color: var(--tui-color-brand-pink-100);
-  color: var(--tui-color-brand-pink-800);
+  background-color: var(--tui-color-brand-primary-100);
+  color: var(--tui-color-brand-primary-800);
 }
 
 /* secondary filled */
 .tui-tag--secondary.tui-tag--filled {
-  background-color: var(--tui-color-brand-gray-200);
+  background-color: var(--tui-color-brand-secondary-300);
   color: var(--tui-color-brand-black-800);
 }
 
@@ -270,21 +270,21 @@
 /* default outlined */
 .tui-tag--default.tui-tag--outlined {
   background-color: transparent;
-  border-color: var(--tui-color-brand-black-200);
-  color: var(--tui-color-brand-black-800);
+  border-color: var(--tui-color-brand-primary-300);
+  color: var(--tui-color-brand-primary-700);
 }
 
 /* primary outlined */
 .tui-tag--primary.tui-tag--outlined {
   background-color: transparent;
-  border-color: var(--tui-color-brand-pink-200);
-  color: var(--tui-color-brand-pink-700);
+  border-color: var(--tui-color-brand-primary-200);
+  color: var(--tui-color-brand-primary-700);
 }
 
 /* secondary outlined */
 .tui-tag--secondary.tui-tag--outlined {
   background-color: transparent;
-  border-color: var(--tui-color-brand-gray-200);
+  border-color: var(--tui-color-brand-secondary-300);
   color: var(--tui-color-brand-black-700);
 }
 
@@ -378,13 +378,13 @@
 
 /* filled hover */
 .tui-tag--interactive.tui-tag--default.tui-tag--filled:hover:not(.tui-tag--disabled) {
-  background-color: var(--tui-color-brand-black-200);
+  background-color: var(--tui-color-brand-primary-200);
 }
 .tui-tag--interactive.tui-tag--primary.tui-tag--filled:hover:not(.tui-tag--disabled) {
-  background-color: var(--tui-color-brand-pink-200);
+  background-color: var(--tui-color-brand-primary-200);
 }
 .tui-tag--interactive.tui-tag--secondary.tui-tag--filled:hover:not(.tui-tag--disabled) {
-  background-color: var(--tui-color-brand-gray-300);
+  background-color: var(--tui-color-brand-secondary-400);
 }
 .tui-tag--interactive.tui-tag--success.tui-tag--filled:hover:not(.tui-tag--disabled) {
   background-color: var(--tui-color-success-200);
@@ -425,13 +425,13 @@
 
 /* outlined hover */
 .tui-tag--interactive.tui-tag--default.tui-tag--outlined:hover:not(.tui-tag--disabled) {
-  background-color: var(--tui-color-brand-black-50);
+  background-color: var(--tui-color-brand-primary-50);
 }
 .tui-tag--interactive.tui-tag--primary.tui-tag--outlined:hover:not(.tui-tag--disabled) {
-  background-color: var(--tui-color-brand-pink-50);
+  background-color: var(--tui-color-brand-primary-50);
 }
 .tui-tag--interactive.tui-tag--secondary.tui-tag--outlined:hover:not(.tui-tag--disabled) {
-  background-color: var(--tui-color-brand-gray-50);
+  background-color: var(--tui-color-brand-secondary-100);
 }
 .tui-tag--interactive.tui-tag--success.tui-tag--outlined:hover:not(.tui-tag--disabled) {
   background-color: var(--tui-color-success-50);
@@ -476,16 +476,16 @@
 
 /* filled selected — darken bg one step + add border */
 .tui-tag--default.tui-tag--filled.tui-tag--selected {
-  background-color: var(--tui-color-brand-black-200);
-  border-color: var(--tui-color-brand-black-300);
+  background-color: var(--tui-color-brand-primary-200);
+  border-color: var(--tui-color-brand-primary-300);
 }
 .tui-tag--primary.tui-tag--filled.tui-tag--selected {
-  background-color: var(--tui-color-brand-pink-200);
-  border-color: var(--tui-color-brand-pink-300);
+  background-color: var(--tui-color-brand-primary-200);
+  border-color: var(--tui-color-brand-primary-300);
 }
 .tui-tag--secondary.tui-tag--filled.tui-tag--selected {
-  background-color: var(--tui-color-brand-gray-300);
-  border-color: var(--tui-color-brand-gray-400);
+  background-color: var(--tui-color-brand-secondary-400);
+  border-color: var(--tui-color-brand-secondary-500);
 }
 .tui-tag--success.tui-tag--filled.tui-tag--selected {
   background-color: var(--tui-color-success-200);
@@ -538,16 +538,16 @@
 
 /* outlined selected — fill bg + darken border */
 .tui-tag--default.tui-tag--outlined.tui-tag--selected {
-  background-color: var(--tui-color-brand-black-50);
-  border-color: var(--tui-color-brand-black-400);
+  background-color: var(--tui-color-brand-primary-50);
+  border-color: var(--tui-color-brand-primary-500);
 }
 .tui-tag--primary.tui-tag--outlined.tui-tag--selected {
-  background-color: var(--tui-color-brand-pink-50);
-  border-color: var(--tui-color-brand-pink-400);
+  background-color: var(--tui-color-brand-primary-50);
+  border-color: var(--tui-color-brand-primary-400);
 }
 .tui-tag--secondary.tui-tag--outlined.tui-tag--selected {
-  background-color: var(--tui-color-brand-gray-50);
-  border-color: var(--tui-color-brand-gray-400);
+  background-color: var(--tui-color-brand-secondary-100);
+  border-color: var(--tui-color-brand-secondary-500);
 }
 .tui-tag--success.tui-tag--outlined.tui-tag--selected {
   background-color: var(--tui-color-success-50);
@@ -603,5 +603,47 @@
   outline: none;
   box-shadow:
     0 0 0 0.5px var(--tui-color-focus-ring-gap),
-    0 0 1px 2px var(--tui-color-brand-black-400);
+    0 0 1px 2px var(--tui-tag-ring, var(--tui-color-brand-primary-400));
+}
+
+.tui-tag--default { --tui-tag-ring: var(--tui-color-brand-primary-400); }
+.tui-tag--primary { --tui-tag-ring: var(--tui-color-brand-primary-400); }
+.tui-tag--secondary { --tui-tag-ring: var(--tui-color-brand-secondary-400); }
+.tui-tag--tertiary { --tui-tag-ring: var(--tui-color-brand-tertiary-400); }
+.tui-tag--success { --tui-tag-ring: var(--tui-color-success-400); }
+.tui-tag--danger { --tui-tag-ring: var(--tui-color-danger-400); }
+.tui-tag--warning { --tui-tag-ring: var(--tui-color-warning-400); }
+.tui-tag--info { --tui-tag-ring: var(--tui-color-info-400); }
+.tui-tag--teal { --tui-tag-ring: var(--tui-color-teal-400); }
+.tui-tag--orange { --tui-tag-ring: var(--tui-color-orange-400); }
+.tui-tag--rose { --tui-tag-ring: var(--tui-color-rose-400); }
+.tui-tag--indigo { --tui-tag-ring: var(--tui-color-indigo-400); }
+.tui-tag--mint { --tui-tag-ring: var(--tui-color-mint-400); }
+.tui-tag--coal { --tui-tag-ring: var(--tui-color-coal-400); }
+
+/* ─── Intent: tertiary ─────────────────────────────────────────────────── */
+.tui-tag--tertiary.tui-tag--filled {
+  background-color: var(--tui-color-brand-tertiary-50);
+  color: var(--tui-color-brand-tertiary-700);
+}
+.tui-tag--tertiary.tui-tag--outlined {
+  background-color: transparent;
+  border-color: var(--tui-color-brand-tertiary-300);
+  color: var(--tui-color-brand-tertiary-700);
+}
+.tui-tag--interactive.tui-tag--tertiary.tui-tag--filled:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-brand-tertiary-100);
+}
+.tui-tag--interactive.tui-tag--tertiary.tui-tag--outlined:hover:not(.tui-tag--disabled) {
+  background-color: var(--tui-color-brand-tertiary-50);
+  border-color: var(--tui-color-brand-tertiary-400);
+}
+.tui-tag--tertiary.tui-tag--filled.tui-tag--selected {
+  background-color: var(--tui-color-brand-tertiary-600);
+  color: var(--tui-color-white);
+}
+.tui-tag--tertiary.tui-tag--outlined.tui-tag--selected {
+  border-color: var(--tui-color-brand-tertiary-600);
+  background-color: var(--tui-color-brand-tertiary-50);
+  color: var(--tui-color-brand-tertiary-700);
 }

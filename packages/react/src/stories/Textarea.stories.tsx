@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Textarea } from "../components/Textarea/Textarea";
 
 // ── Meta ──────────────────────────────────────────────────────────────────
@@ -48,7 +48,7 @@ const meta: Meta<typeof Textarea> = {
     },
     intent: {
       control: "select",
-      options: ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
+      options: ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
       description: "Color intent / semantic meaning",
       table: { category: "Appearance", defaultValue: { summary: "default" } },
     },
@@ -130,7 +130,7 @@ export const Intents: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 400 }}>
-      {(["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const).map((intent) => (
+      {(["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const).map((intent) => (
         <Textarea key={intent} intent={intent} placeholder={intent.charAt(0).toUpperCase() + intent.slice(1)} rows={2} />
       ))}
     </div>
@@ -234,28 +234,46 @@ export const AllStates: Story = {
   name: "All States",
   parameters: { controls: { disable: true } },
   render: () => {
-    const intents = ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
+    const intents = ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
     const variants = ["outline", "soft", "plain"] as const;
     const states = ["base", "hover", "focused", "disabled", "ghost"] as const;
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-6)" }}>
         <style>{`
-          .tui-force-hover .tui-textarea--outline .tui-textarea__native { border-color: var(--tui-color-brand-black-400); }
-          .tui-force-hover .tui-textarea--soft .tui-textarea__native { border-color: var(--tui-color-brand-black-200); }
-          .tui-force-hover .tui-textarea--plain .tui-textarea__native { border-color: var(--tui-color-brand-black-100); }
-          .tui-force-hover .tui-textarea--primary .tui-textarea__native { border-color: var(--tui-color-brand-pink-600); }
+          .tui-force-hover .tui-textarea--outline .tui-textarea__native { border-color: var(--tui-color-brand-primary-400); }
+          .tui-force-hover .tui-textarea--soft .tui-textarea__native { border-color: var(--tui-color-brand-primary-200); }
+          .tui-force-hover .tui-textarea--plain .tui-textarea__native { border-color: var(--tui-color-brand-primary-100); }
+          .tui-force-hover .tui-textarea--primary .tui-textarea__native { border-color: var(--tui-color-brand-primary-600); }
+          .tui-force-hover .tui-textarea--secondary .tui-textarea__native { border-color: var(--tui-color-brand-secondary-500); }
+          .tui-force-hover .tui-textarea--tertiary .tui-textarea__native { border-color: var(--tui-color-brand-tertiary-600); }
           .tui-force-hover .tui-textarea--success .tui-textarea__native { border-color: var(--tui-color-success-600); }
           .tui-force-hover .tui-textarea--warning .tui-textarea__native { border-color: var(--tui-color-warning-600); }
           .tui-force-hover .tui-textarea--danger .tui-textarea__native { border-color: var(--tui-color-danger-600); }
           .tui-force-hover .tui-textarea--info .tui-textarea__native { border-color: var(--tui-color-info-600); }
+          .tui-force-hover .tui-textarea--teal .tui-textarea__native { border-color: var(--tui-color-teal-600); }
+          .tui-force-hover .tui-textarea--orange .tui-textarea__native { border-color: var(--tui-color-orange-600); }
+          .tui-force-hover .tui-textarea--rose .tui-textarea__native { border-color: var(--tui-color-rose-600); }
+          .tui-force-hover .tui-textarea--indigo .tui-textarea__native { border-color: var(--tui-color-indigo-600); }
+          .tui-force-hover .tui-textarea--mint .tui-textarea__native { border-color: var(--tui-color-mint-600); }
+          .tui-force-hover .tui-textarea--coal .tui-textarea__native { border-color: var(--tui-color-coal-600); }
           .tui-force-hover .tui-textarea--white .tui-textarea__native { border-color: var(--tui-color-brand-black-300); }
-          .tui-force-hover .tui-textarea--black .tui-textarea__native { border-color: var(--tui-color-brand-black-900); }
-          .tui-force-focus .tui-textarea__native { box-shadow: 0 0 0 0.5px var(--tui-color-focus-ring-gap), 0 0 1px 2px var(--tui-ring-color, var(--tui-color-focus-ring)); }
-          .tui-force-focus .tui-textarea--primary .tui-textarea__native { --tui-ring-color: var(--tui-color-brand-pink-400); }
+          .tui-force-hover .tui-textarea--black.tui-textarea--outline .tui-textarea__native { border-color: var(--tui-color-brand-black-700); }
+          .tui-force-hover .tui-textarea--black.tui-textarea--soft .tui-textarea__native { border-color: var(--tui-color-brand-black-600); }
+          .tui-force-hover .tui-textarea--black.tui-textarea--plain .tui-textarea__native { border-color: var(--tui-color-brand-black-400); }
+          .tui-force-focus .tui-textarea__native { box-shadow: 0 0 0 0.5px var(--tui-color-focus-ring-gap), 0 0 1px 2px var(--tui-ring-color, var(--tui-color-brand-primary-400)); }
+          .tui-force-focus .tui-textarea--primary .tui-textarea__native { --tui-ring-color: var(--tui-color-brand-primary-400); }
+          .tui-force-focus .tui-textarea--secondary .tui-textarea__native { --tui-ring-color: var(--tui-color-brand-secondary-400); }
+          .tui-force-focus .tui-textarea--tertiary .tui-textarea__native { --tui-ring-color: var(--tui-color-brand-tertiary-400); }
           .tui-force-focus .tui-textarea--success .tui-textarea__native { --tui-ring-color: var(--tui-color-success-400); }
           .tui-force-focus .tui-textarea--warning .tui-textarea__native { --tui-ring-color: var(--tui-color-warning-400); }
           .tui-force-focus .tui-textarea--danger .tui-textarea__native { --tui-ring-color: var(--tui-color-danger-400); }
           .tui-force-focus .tui-textarea--info .tui-textarea__native { --tui-ring-color: var(--tui-color-info-400); }
+          .tui-force-focus .tui-textarea--teal .tui-textarea__native { --tui-ring-color: var(--tui-color-teal-400); }
+          .tui-force-focus .tui-textarea--orange .tui-textarea__native { --tui-ring-color: var(--tui-color-orange-400); }
+          .tui-force-focus .tui-textarea--rose .tui-textarea__native { --tui-ring-color: var(--tui-color-rose-400); }
+          .tui-force-focus .tui-textarea--indigo .tui-textarea__native { --tui-ring-color: var(--tui-color-indigo-400); }
+          .tui-force-focus .tui-textarea--mint .tui-textarea__native { --tui-ring-color: var(--tui-color-mint-400); }
+          .tui-force-focus .tui-textarea--coal .tui-textarea__native { --tui-ring-color: var(--tui-color-coal-400); }
           .tui-force-focus .tui-textarea--white .tui-textarea__native { --tui-ring-color: var(--tui-color-brand-black-300); }
           .tui-force-focus .tui-textarea--black .tui-textarea__native { --tui-ring-color: var(--tui-color-brand-black-600); }
         `}</style>

@@ -27,6 +27,12 @@ const meta: Meta<typeof Popover> = {
       description: "Gap between trigger and popover (px)",
       table: { category: "Position", defaultValue: { summary: "4" } },
     },
+    positionStrategy: {
+      control: "select",
+      options: ["absolute", "fixed"],
+      description: "Coordinate system used by the portal positioning logic",
+      table: { category: "Position", defaultValue: { summary: "absolute" } },
+    },
     closeOnOutsideClick: {
       control: "boolean",
       description: "Close when clicking outside the popover",
@@ -103,6 +109,7 @@ export const Playground: Story = {
           onClose={() => setIsOpen(false)}
           placement={args.placement}
           offset={args.offset}
+          positionStrategy={args.positionStrategy}
           closeOnOutsideClick={args.closeOnOutsideClick}
           closeOnEscape={args.closeOnEscape}
           zIndex={args.zIndex}

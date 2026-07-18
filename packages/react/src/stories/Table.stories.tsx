@@ -513,8 +513,8 @@ export const CustomBgColors: Story = {
         dataSource={users.slice(0, 3)}
         rowKey="id"
         bordered
-        headerBgColor="var(--tui-color-brand-purple-100)"
-        bodyBgColor="var(--tui-color-brand-purple-50)"
+        headerBgColor="var(--tui-color-brand-primary-100)"
+        bodyBgColor="var(--tui-color-brand-primary-50)"
       />
     );
   },

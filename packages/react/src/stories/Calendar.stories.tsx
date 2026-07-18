@@ -11,7 +11,7 @@ const meta: Meta<typeof Calendar> = {
   argTypes: {
     intent: {
       control: "select",
-      options: ["default", "primary", "secondary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
+      options: ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
       description: "Color intent for selected state",
       table: { category: "Appearance", defaultValue: { summary: "default" } },
     },
@@ -166,7 +166,7 @@ export const IntentsSingleDate: Story = {
   name: "Single Date — All Intents",
   parameters: { controls: { disable: true } },
   render: () => {
-    const intents = ["default", "primary", "success", "danger", "warning", "info", "teal", "indigo"] as const;
+    const intents = ["default", "primary", "secondary", "tertiary", "success", "danger", "warning", "info", "teal", "indigo"] as const;
     return (
       <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--tui-spacing-4)" }}>
         {intents.map((intent) => (
@@ -191,7 +191,7 @@ export const IntentsDateRange: Story = {
   name: "Date Range — All Intents",
   parameters: { controls: { disable: true } },
   render: () => {
-    const intents = ["default", "primary", "success", "danger", "warning", "info", "teal", "indigo"] as const;
+    const intents = ["default", "primary", "secondary", "tertiary", "success", "danger", "warning", "info", "teal", "indigo"] as const;
     return (
       <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--tui-spacing-4)" }}>
         {intents.map((intent) => (

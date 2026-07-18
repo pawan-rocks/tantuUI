@@ -17,6 +17,7 @@ export type Intent =
   | "default"
   | "primary"
   | "secondary"
+  | "tertiary"
   | "success"
   | "warning"
   | "danger"

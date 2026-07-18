@@ -39,10 +39,6 @@ export interface ModalHeaderProps extends BaseProps, Omit<HTMLAttributes<HTMLEle
   isTitleGhost?: boolean;
   /** Show shimmer for subtitle only */
   isSubtitleGhost?: boolean;
-  /** Custom ghost width for title shimmer (auto-sizes to title text if not set) */
-  ghostTitleWidth?: string;
-  /** Custom ghost width for subtitle shimmer (auto-sizes to subtitle text if not set) */
-  ghostSubtitleWidth?: string;
 }
 
 export interface ModalFooterProps extends BaseProps, HTMLAttributes<HTMLElement> {
@@ -119,8 +115,6 @@ export const ModalHeader = forwardRef<HTMLElement, ModalHeaderProps>(
       isGhost = false,
       isTitleGhost = false,
       isSubtitleGhost = false,
-      ghostTitleWidth,
-      ghostSubtitleWidth,
       ...rest
     },
     ref,
@@ -134,22 +128,24 @@ export const ModalHeader = forwardRef<HTMLElement, ModalHeaderProps>(
           data-testid={testId}
           {...rest}
         >
-          <div className="tui-modal__header-left">
-            <div className="tui-modal__header-titles">
-              <Shimmer width={ghostTitleWidth} height="18px" shape="rounded">
-                {!ghostTitleWidth && title && (
-                  <span style={{ visibility: "hidden", fontSize: "var(--tui-font-size-lg)", fontWeight: "var(--tui-font-weight-semibold)", whiteSpace: "nowrap" }}>{title}</span>
+          {title || subtitle ? (
+            <div className="tui-modal__header-left">
+              <div className="tui-modal__header-titles">
+                {title && (
+                  <Shimmer shape="rounded">
+                    <span style={{ visibility: "hidden", fontSize: "var(--tui-font-size-lg)", fontWeight: "var(--tui-font-weight-semibold)", whiteSpace: "nowrap", lineHeight: "var(--tui-leading-tight)" }}>{title}</span>
+                  </Shimmer>
                 )}
-              </Shimmer>
-              {subtitle && (
-                <Shimmer width={ghostSubtitleWidth} height="14px" shape="rounded" style={{ marginTop: "var(--tui-spacing-1)" }}>
-                  {!ghostSubtitleWidth && (
-                    <span style={{ visibility: "hidden", fontSize: "var(--tui-font-size-sm)", whiteSpace: "nowrap" }}>{subtitle}</span>
-                  )}
-                </Shimmer>
-              )}
+                {subtitle && (
+                  <Shimmer shape="rounded" style={{ marginTop: "var(--tui-spacing-0_5)" }}>
+                    <span style={{ visibility: "hidden", fontSize: "var(--tui-font-size-sm)", whiteSpace: "nowrap", lineHeight: "var(--tui-leading-normal)" }}>{subtitle}</span>
+                  </Shimmer>
+                )}
+              </div>
             </div>
-          </div>
+          ) : (
+            <Shimmer width="100%" height="20px" shape="rounded" />
+          )}
           <div className="tui-modal__header-center" />
         </header>
       );
@@ -168,19 +164,15 @@ export const ModalHeader = forwardRef<HTMLElement, ModalHeaderProps>(
           {leftSection || (
             (title || subtitle || isTitleGhost || isSubtitleGhost) && (
               <div className="tui-modal__header-titles">
-                {isTitleGhost
-                  ? <Shimmer width={ghostTitleWidth} height="18px" shape="rounded">
-                      {!ghostTitleWidth && title && (
-                        <span style={{ visibility: "hidden", fontSize: "var(--tui-font-size-lg)", fontWeight: "var(--tui-font-weight-semibold)", whiteSpace: "nowrap" }}>{title}</span>
-                      )}
+                {isTitleGhost && title
+                  ? <Shimmer shape="rounded">
+                      <span style={{ visibility: "hidden", fontSize: "var(--tui-font-size-lg)", fontWeight: "var(--tui-font-weight-semibold)", whiteSpace: "nowrap", lineHeight: "var(--tui-leading-tight)" }}>{title}</span>
                     </Shimmer>
                   : title && <div className="tui-modal__header-title">{title}</div>
                 }
-                {isSubtitleGhost
-                  ? <Shimmer width={ghostSubtitleWidth} height="14px" shape="rounded" style={{ marginTop: "var(--tui-spacing-1)" }}>
-                      {!ghostSubtitleWidth && subtitle && (
-                        <span style={{ visibility: "hidden", fontSize: "var(--tui-font-size-sm)", whiteSpace: "nowrap" }}>{subtitle}</span>
-                      )}
+                {isSubtitleGhost && subtitle
+                  ? <Shimmer shape="rounded" style={{ marginTop: "var(--tui-spacing-0_5)" }}>
+                      <span style={{ visibility: "hidden", fontSize: "var(--tui-font-size-sm)", whiteSpace: "nowrap", lineHeight: "var(--tui-leading-normal)" }}>{subtitle}</span>
                     </Shimmer>
                   : subtitle && <div className="tui-modal__header-subtitle">{subtitle}</div>
                 }

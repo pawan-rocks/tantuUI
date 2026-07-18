@@ -165,7 +165,7 @@ import { Button, Text, Input, Box, Switch, Select, Calendar } from "@tantuui/rea
 ## Color palette
 
 ### Brand colors (50–950 scale)
-`brand-white`, `brand-black`, `brand-navy`, `brand-blue`, `brand-purple`, `brand-pink`, `brand-gray`, `brand-light`
+`brand-white`, `brand-black`, `brand-tertiary`, `brand-blue`, `brand-primary`, `brand-pink`, `brand-gray`, `brand-secondary`
 
 ### Semantic colors (50–950 scale)
 `success`, `warning`, `danger`, `info`, `teal`, `orange`, `rose`, `indigo`, `mint`, `coal`

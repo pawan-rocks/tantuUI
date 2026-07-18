@@ -28,9 +28,9 @@ const meta: Meta<typeof Text> = {
     },
     color: {
       control: "select",
-      options: ["primary", "secondary", "tertiary", "disabled", "inverse", "link", "danger", "success", "warning"],
-      description: "Semantic color token",
-      table: { category: "Typography" },
+      options: ["default", "primary", "secondary", "tertiary", "disabled", "inverse", "link", "danger", "success", "warning", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
+      description: "Color intent or semantic color. default preserves the current text appearance; custom token/CSS values are also supported.",
+      table: { category: "Typography", defaultValue: { summary: "undefined" } },
     },
     align: {
       control: "select",
@@ -118,12 +118,12 @@ export const Colors: Story = {
   name: "Colors",
   parameters: { controls: { disable: true } },
   render: () => {
-    const colors = ["primary", "secondary", "tertiary", "disabled", "link", "danger", "success", "warning"] as const;
+    const colors = ["default", "primary", "secondary", "tertiary", "disabled", "inverse", "link", "danger", "success", "warning", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)" }}>
         {colors.map((color) => (
-          <div key={color} style={{ display: "flex", alignItems: "center", gap: "var(--tui-spacing-4)" }}>
-            <span style={{ width: 80, flexShrink: 0, fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)", fontFamily: "var(--tui-font-family-mono)" }}>{color}</span>
+          <div key={color} style={{ display: "flex", alignItems: "center", gap: "var(--tui-spacing-4)", padding: "var(--tui-spacing-2)", background: color === "white" ? "var(--tui-color-brand-black-800)" : undefined }}>
+            <span style={{ width: 80, flexShrink: 0, fontSize: "var(--tui-font-size-xs)", color: color === "white" ? "var(--tui-color-brand-black-200)" : "var(--tui-color-text-tertiary)", fontFamily: "var(--tui-font-family-mono)" }}>{color}</span>
             <Text color={color}>Sample text using the {color} color token</Text>
           </div>
         ))}

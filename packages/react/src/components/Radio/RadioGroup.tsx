@@ -1,5 +1,4 @@
-import React, { forwardRef, useCallback, useRef } from "react";
-import type { KeyboardEvent } from "react";
+import React, { forwardRef } from "react";
 import type { Size, BaseProps } from "../../types";
 import { cn } from "../../utils/cn";
 import { RadioGroupContext } from "./RadioGroupContext";
@@ -39,18 +38,6 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
     },
     ref,
   ) => {
-    const groupRef = useRef<HTMLDivElement | null>(null);
-
-    // Merge external ref with internal ref
-    const setRefs = (el: HTMLDivElement | null) => {
-      groupRef.current = el;
-      if (typeof ref === "function") {
-        ref(el);
-      } else if (ref) {
-        (ref as React.MutableRefObject<HTMLDivElement | null>).current = el;
-      }
-    };
-
     const contextValue: RadioGroupContextValue = {
       name,
       value,
@@ -60,59 +47,10 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
       disabled,
     };
 
-    // Arrow key navigation with roving tabindex
-    const handleKeyDown = useCallback(
-      (e: KeyboardEvent<HTMLDivElement>) => {
-        if (disabled) return;
-
-        const isArrowKey = ["ArrowDown", "ArrowRight", "ArrowUp", "ArrowLeft"].includes(
-          e.key,
-        );
-        if (!isArrowKey) return;
-
-        e.preventDefault();
-
-        const container = groupRef.current;
-        if (!container) return;
-
-        // Get all radio inputs within this group that are not disabled
-        const radios = Array.from(
-          container.querySelectorAll<HTMLInputElement>(
-            'input[type="radio"]:not(:disabled)',
-          ),
-        );
-
-        if (radios.length === 0) return;
-
-        const currentIndex = radios.findIndex(
-          (radio) => radio === document.activeElement,
-        );
-
-        let nextIndex: number;
-
-        if (e.key === "ArrowDown" || e.key === "ArrowRight") {
-          // Move to next, wrap around
-          nextIndex =
-            currentIndex === -1 ? 0 : (currentIndex + 1) % radios.length;
-        } else {
-          // ArrowUp or ArrowLeft — move to previous, wrap around
-          nextIndex =
-            currentIndex === -1
-              ? radios.length - 1
-              : (currentIndex - 1 + radios.length) % radios.length;
-        }
-
-        const nextRadio = radios[nextIndex];
-        nextRadio.focus();
-        nextRadio.click();
-      },
-      [disabled],
-    );
-
     return (
       <RadioGroupContext.Provider value={contextValue}>
         <div
-          ref={setRefs}
+          ref={ref}
           role="radiogroup"
           className={cn(
             "tui-radio-group",
@@ -121,7 +59,6 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
           )}
           style={style}
           data-testid={testId}
-          onKeyDown={handleKeyDown}
         >
           {children}
         </div>

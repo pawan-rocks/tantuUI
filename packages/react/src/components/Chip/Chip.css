@@ -170,19 +170,19 @@
 
 /* default filled */
 .tui-chip--default.tui-chip--filled {
-  background-color: var(--tui-color-brand-black-100);
-  color: var(--tui-color-brand-black-800);
+  background-color: var(--tui-color-brand-primary-50);
+  color: var(--tui-color-brand-primary-700);
 }
 
 /* primary filled */
 .tui-chip--primary.tui-chip--filled {
-  background-color: var(--tui-color-brand-pink-100);
-  color: var(--tui-color-brand-pink-800);
+  background-color: var(--tui-color-brand-primary-100);
+  color: var(--tui-color-brand-primary-800);
 }
 
 /* secondary filled */
 .tui-chip--secondary.tui-chip--filled {
-  background-color: var(--tui-color-brand-gray-200);
+  background-color: var(--tui-color-brand-secondary-300);
   color: var(--tui-color-brand-black-800);
 }
 
@@ -265,21 +265,21 @@
 /* default outlined */
 .tui-chip--default.tui-chip--outlined {
   background-color: transparent;
-  border-color: var(--tui-color-brand-black-200);
-  color: var(--tui-color-brand-black-800);
+  border-color: var(--tui-color-brand-primary-300);
+  color: var(--tui-color-brand-primary-700);
 }
 
 /* primary outlined */
 .tui-chip--primary.tui-chip--outlined {
   background-color: transparent;
-  border-color: var(--tui-color-brand-pink-200);
-  color: var(--tui-color-brand-pink-700);
+  border-color: var(--tui-color-brand-primary-200);
+  color: var(--tui-color-brand-primary-700);
 }
 
 /* secondary outlined */
 .tui-chip--secondary.tui-chip--outlined {
   background-color: transparent;
-  border-color: var(--tui-color-brand-gray-200);
+  border-color: var(--tui-color-brand-secondary-300);
   color: var(--tui-color-brand-black-700);
 }
 
@@ -373,13 +373,13 @@
 
 /* filled hover */
 .tui-chip--default.tui-chip--filled:hover:not(.tui-chip--disabled) {
-  background-color: var(--tui-color-brand-black-200);
+  background-color: var(--tui-color-brand-primary-200);
 }
 .tui-chip--primary.tui-chip--filled:hover:not(.tui-chip--disabled) {
-  background-color: var(--tui-color-brand-pink-200);
+  background-color: var(--tui-color-brand-primary-200);
 }
 .tui-chip--secondary.tui-chip--filled:hover:not(.tui-chip--disabled) {
-  background-color: var(--tui-color-brand-gray-300);
+  background-color: var(--tui-color-brand-secondary-400);
 }
 .tui-chip--success.tui-chip--filled:hover:not(.tui-chip--disabled) {
   background-color: var(--tui-color-success-200);
@@ -420,13 +420,13 @@
 
 /* outlined hover */
 .tui-chip--default.tui-chip--outlined:hover:not(.tui-chip--disabled) {
-  background-color: var(--tui-color-brand-black-50);
+  background-color: var(--tui-color-brand-primary-50);
 }
 .tui-chip--primary.tui-chip--outlined:hover:not(.tui-chip--disabled) {
-  background-color: var(--tui-color-brand-pink-50);
+  background-color: var(--tui-color-brand-primary-50);
 }
 .tui-chip--secondary.tui-chip--outlined:hover:not(.tui-chip--disabled) {
-  background-color: var(--tui-color-brand-gray-50);
+  background-color: var(--tui-color-brand-secondary-100);
 }
 .tui-chip--success.tui-chip--outlined:hover:not(.tui-chip--disabled) {
   background-color: var(--tui-color-success-50);
@@ -471,16 +471,16 @@
 
 /* filled selected — darken bg one step + add border */
 .tui-chip--default.tui-chip--filled.tui-chip--selected {
-  background-color: var(--tui-color-brand-black-200);
-  border-color: var(--tui-color-brand-black-300);
+  background-color: var(--tui-color-brand-primary-200);
+  border-color: var(--tui-color-brand-primary-300);
 }
 .tui-chip--primary.tui-chip--filled.tui-chip--selected {
-  background-color: var(--tui-color-brand-pink-200);
-  border-color: var(--tui-color-brand-pink-300);
+  background-color: var(--tui-color-brand-primary-200);
+  border-color: var(--tui-color-brand-primary-300);
 }
 .tui-chip--secondary.tui-chip--filled.tui-chip--selected {
-  background-color: var(--tui-color-brand-gray-300);
-  border-color: var(--tui-color-brand-gray-400);
+  background-color: var(--tui-color-brand-secondary-400);
+  border-color: var(--tui-color-brand-secondary-500);
 }
 .tui-chip--success.tui-chip--filled.tui-chip--selected {
   background-color: var(--tui-color-success-200);
@@ -533,16 +533,16 @@
 
 /* outlined selected — fill bg + darken border */
 .tui-chip--default.tui-chip--outlined.tui-chip--selected {
-  background-color: var(--tui-color-brand-black-50);
-  border-color: var(--tui-color-brand-black-400);
+  background-color: var(--tui-color-brand-primary-50);
+  border-color: var(--tui-color-brand-primary-500);
 }
 .tui-chip--primary.tui-chip--outlined.tui-chip--selected {
-  background-color: var(--tui-color-brand-pink-50);
-  border-color: var(--tui-color-brand-pink-400);
+  background-color: var(--tui-color-brand-primary-50);
+  border-color: var(--tui-color-brand-primary-400);
 }
 .tui-chip--secondary.tui-chip--outlined.tui-chip--selected {
-  background-color: var(--tui-color-brand-gray-50);
-  border-color: var(--tui-color-brand-gray-400);
+  background-color: var(--tui-color-brand-secondary-100);
+  border-color: var(--tui-color-brand-secondary-500);
 }
 .tui-chip--success.tui-chip--outlined.tui-chip--selected {
   background-color: var(--tui-color-success-50);
@@ -598,5 +598,47 @@
   outline: none;
   box-shadow:
     0 0 0 0.5px var(--tui-color-focus-ring-gap),
-    0 0 1px 2px var(--tui-color-brand-black-400);
+    0 0 1px 2px var(--tui-chip-ring, var(--tui-color-brand-primary-400));
+}
+
+.tui-chip--default { --tui-chip-ring: var(--tui-color-brand-primary-400); }
+.tui-chip--primary { --tui-chip-ring: var(--tui-color-brand-primary-400); }
+.tui-chip--secondary { --tui-chip-ring: var(--tui-color-brand-secondary-400); }
+.tui-chip--tertiary { --tui-chip-ring: var(--tui-color-brand-tertiary-400); }
+.tui-chip--success { --tui-chip-ring: var(--tui-color-success-400); }
+.tui-chip--danger { --tui-chip-ring: var(--tui-color-danger-400); }
+.tui-chip--warning { --tui-chip-ring: var(--tui-color-warning-400); }
+.tui-chip--info { --tui-chip-ring: var(--tui-color-info-400); }
+.tui-chip--teal { --tui-chip-ring: var(--tui-color-teal-400); }
+.tui-chip--orange { --tui-chip-ring: var(--tui-color-orange-400); }
+.tui-chip--rose { --tui-chip-ring: var(--tui-color-rose-400); }
+.tui-chip--indigo { --tui-chip-ring: var(--tui-color-indigo-400); }
+.tui-chip--mint { --tui-chip-ring: var(--tui-color-mint-400); }
+.tui-chip--coal { --tui-chip-ring: var(--tui-color-coal-400); }
+
+/* ─── Intent: tertiary ─────────────────────────────────────────────────── */
+.tui-chip--tertiary.tui-chip--filled {
+  background-color: var(--tui-color-brand-tertiary-50);
+  color: var(--tui-color-brand-tertiary-700);
+}
+.tui-chip--tertiary.tui-chip--outlined {
+  background-color: transparent;
+  border-color: var(--tui-color-brand-tertiary-300);
+  color: var(--tui-color-brand-tertiary-700);
+}
+.tui-chip--interactive.tui-chip--tertiary.tui-chip--filled:hover:not(.tui-chip--disabled) {
+  background-color: var(--tui-color-brand-tertiary-100);
+}
+.tui-chip--interactive.tui-chip--tertiary.tui-chip--outlined:hover:not(.tui-chip--disabled) {
+  background-color: var(--tui-color-brand-tertiary-50);
+  border-color: var(--tui-color-brand-tertiary-400);
+}
+.tui-chip--tertiary.tui-chip--filled.tui-chip--selected {
+  background-color: var(--tui-color-brand-tertiary-600);
+  color: var(--tui-color-white);
+}
+.tui-chip--tertiary.tui-chip--outlined.tui-chip--selected {
+  border-color: var(--tui-color-brand-tertiary-600);
+  background-color: var(--tui-color-brand-tertiary-50);
+  color: var(--tui-color-brand-tertiary-700);
 }
