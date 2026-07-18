@@ -152,7 +152,7 @@ Then use Tailwind classes mapped to TantuUI tokens:
 
 <!-- Group hover -->
 <div class="group tui-p-4">
-  <span class="group-hover:tui-text-brand-navy-default">Shows on parent hover</span>
+  <span class="group-hover:tui-text-brand-tertiary-default">Shows on parent hover</span>
 </div>
 ```
 
@@ -206,6 +206,19 @@ Then use Tailwind classes mapped to TantuUI tokens:
 ```
 
 ---
+
+## React Component Integration
+
+Use the framework-agnostic tokens with the React component library by importing both packages at your application root:
+
+```tsx
+import "@tantuui/tokens/css";
+import "@tantuui/react/css";
+
+import { Button, Dropdown } from "@tantuui/react";
+```
+
+React components consume the same `--tui-*` CSS variables, so custom token overrides and themes apply consistently across utility classes and components.
 
 ## Package Exports
 

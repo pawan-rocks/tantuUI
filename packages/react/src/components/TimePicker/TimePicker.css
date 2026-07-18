@@ -111,20 +111,32 @@
 }
 
 .tui-timepicker__ok-btn {
+  --tui-timepicker-ok-bg: var(--tui-color-brand-primary-600);
+  --tui-timepicker-ok-bg-hover: var(--tui-color-brand-primary-700);
+  --tui-timepicker-ok-focus: var(--tui-color-brand-primary-400);
+  --tui-timepicker-ok-text: var(--tui-color-white);
   padding: var(--tui-spacing-1) var(--tui-spacing-2_5);
   border-radius: var(--tui-radius-md);
   border: none;
-  background: var(--tui-color-brand-black-800);
-  color: var(--tui-color-white);
+  background: var(--tui-timepicker-ok-bg);
+  color: var(--tui-timepicker-ok-text);
   font-size: var(--tui-font-size-xs);
   font-weight: var(--tui-font-weight-medium);
   font-family: inherit;
   cursor: pointer;
-  transition: background var(--tui-duration-normal) var(--tui-ease-in-out);
+  transition: background var(--tui-duration-normal) var(--tui-ease-in-out),
+    box-shadow var(--tui-duration-normal) var(--tui-ease-in-out);
 }
 
-.tui-timepicker__ok-btn:hover {
-  background: var(--tui-color-brand-black-900);
+.tui-timepicker__ok-btn:hover:not(:disabled) {
+  background: var(--tui-timepicker-ok-bg-hover);
+}
+
+.tui-timepicker__ok-btn:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 0.5px var(--tui-color-focus-ring-gap),
+    0 0 1px 2px var(--tui-timepicker-ok-focus);
 }
 
 .tui-timepicker__ok-btn:disabled {
@@ -134,13 +146,94 @@
 
 /* ─── OK button intents ────────────────────────────────────────────────────── */
 
-.tui-timepicker__ok-btn--primary { background: var(--tui-color-brand-pink-600); }
-.tui-timepicker__ok-btn--primary:hover { background: var(--tui-color-brand-pink-700); }
-.tui-timepicker__ok-btn--success { background: var(--tui-color-success-600); }
-.tui-timepicker__ok-btn--success:hover { background: var(--tui-color-success-700); }
-.tui-timepicker__ok-btn--danger { background: var(--tui-color-danger-600); }
-.tui-timepicker__ok-btn--danger:hover { background: var(--tui-color-danger-700); }
-.tui-timepicker__ok-btn--warning { background: var(--tui-color-warning-600); }
-.tui-timepicker__ok-btn--warning:hover { background: var(--tui-color-warning-700); }
-.tui-timepicker__ok-btn--info { background: var(--tui-color-info-600); }
-.tui-timepicker__ok-btn--info:hover { background: var(--tui-color-info-700); }
+.tui-timepicker__ok-btn--default,
+.tui-timepicker__ok-btn--primary {
+  --tui-timepicker-ok-bg: var(--tui-color-brand-primary-600);
+  --tui-timepicker-ok-bg-hover: var(--tui-color-brand-primary-700);
+  --tui-timepicker-ok-focus: var(--tui-color-brand-primary-400);
+}
+
+.tui-timepicker__ok-btn--secondary {
+  --tui-timepicker-ok-bg: var(--tui-color-brand-secondary-600);
+  --tui-timepicker-ok-bg-hover: var(--tui-color-brand-secondary-700);
+  --tui-timepicker-ok-focus: var(--tui-color-brand-secondary-400);
+}
+
+.tui-timepicker__ok-btn--tertiary {
+  --tui-timepicker-ok-bg: var(--tui-color-brand-tertiary-600);
+  --tui-timepicker-ok-bg-hover: var(--tui-color-brand-tertiary-700);
+  --tui-timepicker-ok-focus: var(--tui-color-brand-tertiary-400);
+}
+
+.tui-timepicker__ok-btn--success {
+  --tui-timepicker-ok-bg: var(--tui-color-success-600);
+  --tui-timepicker-ok-bg-hover: var(--tui-color-success-700);
+  --tui-timepicker-ok-focus: var(--tui-color-success-400);
+}
+
+.tui-timepicker__ok-btn--warning {
+  --tui-timepicker-ok-bg: var(--tui-color-warning-600);
+  --tui-timepicker-ok-bg-hover: var(--tui-color-warning-700);
+  --tui-timepicker-ok-focus: var(--tui-color-warning-400);
+}
+
+.tui-timepicker__ok-btn--danger {
+  --tui-timepicker-ok-bg: var(--tui-color-danger-600);
+  --tui-timepicker-ok-bg-hover: var(--tui-color-danger-700);
+  --tui-timepicker-ok-focus: var(--tui-color-danger-400);
+}
+
+.tui-timepicker__ok-btn--info {
+  --tui-timepicker-ok-bg: var(--tui-color-info-600);
+  --tui-timepicker-ok-bg-hover: var(--tui-color-info-700);
+  --tui-timepicker-ok-focus: var(--tui-color-info-400);
+}
+
+.tui-timepicker__ok-btn--teal {
+  --tui-timepicker-ok-bg: var(--tui-color-teal-600);
+  --tui-timepicker-ok-bg-hover: var(--tui-color-teal-700);
+  --tui-timepicker-ok-focus: var(--tui-color-teal-400);
+}
+
+.tui-timepicker__ok-btn--orange {
+  --tui-timepicker-ok-bg: var(--tui-color-orange-600);
+  --tui-timepicker-ok-bg-hover: var(--tui-color-orange-700);
+  --tui-timepicker-ok-focus: var(--tui-color-orange-400);
+}
+
+.tui-timepicker__ok-btn--rose {
+  --tui-timepicker-ok-bg: var(--tui-color-rose-600);
+  --tui-timepicker-ok-bg-hover: var(--tui-color-rose-700);
+  --tui-timepicker-ok-focus: var(--tui-color-rose-400);
+}
+
+.tui-timepicker__ok-btn--indigo {
+  --tui-timepicker-ok-bg: var(--tui-color-indigo-600);
+  --tui-timepicker-ok-bg-hover: var(--tui-color-indigo-700);
+  --tui-timepicker-ok-focus: var(--tui-color-indigo-400);
+}
+
+.tui-timepicker__ok-btn--mint {
+  --tui-timepicker-ok-bg: var(--tui-color-mint-600);
+  --tui-timepicker-ok-bg-hover: var(--tui-color-mint-700);
+  --tui-timepicker-ok-focus: var(--tui-color-mint-400);
+}
+
+.tui-timepicker__ok-btn--coal {
+  --tui-timepicker-ok-bg: var(--tui-color-coal-600);
+  --tui-timepicker-ok-bg-hover: var(--tui-color-coal-700);
+  --tui-timepicker-ok-focus: var(--tui-color-coal-400);
+}
+
+.tui-timepicker__ok-btn--white {
+  --tui-timepicker-ok-bg: var(--tui-color-white);
+  --tui-timepicker-ok-bg-hover: var(--tui-color-brand-black-100);
+  --tui-timepicker-ok-focus: var(--tui-color-brand-black-300);
+  --tui-timepicker-ok-text: var(--tui-color-brand-black-900);
+}
+
+.tui-timepicker__ok-btn--black {
+  --tui-timepicker-ok-bg: var(--tui-color-brand-black-800);
+  --tui-timepicker-ok-bg-hover: var(--tui-color-brand-black-900);
+  --tui-timepicker-ok-focus: var(--tui-color-brand-black-600);
+}

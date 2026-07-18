@@ -149,19 +149,19 @@
 
 /* default subtle */
 .tui-pill--default.tui-pill--subtle {
-  background-color: var(--tui-color-brand-black-100);
-  color: var(--tui-color-brand-black-800);
+  background-color: var(--tui-color-brand-primary-50);
+  color: var(--tui-color-brand-primary-700);
 }
 
 /* primary subtle */
 .tui-pill--primary.tui-pill--subtle {
-  background-color: var(--tui-color-brand-pink-100);
-  color: var(--tui-color-brand-pink-800);
+  background-color: var(--tui-color-brand-primary-100);
+  color: var(--tui-color-brand-primary-800);
 }
 
 /* secondary subtle */
 .tui-pill--secondary.tui-pill--subtle {
-  background-color: var(--tui-color-brand-gray-200);
+  background-color: var(--tui-color-brand-secondary-300);
   color: var(--tui-color-brand-black-800);
 }
 
@@ -243,19 +243,19 @@
 
 /* default solid */
 .tui-pill--default.tui-pill--solid {
-  background-color: var(--tui-color-brand-black-600);
+  background-color: var(--tui-color-brand-primary-600);
   color: var(--tui-color-white);
 }
 
 /* primary solid */
 .tui-pill--primary.tui-pill--solid {
-  background-color: var(--tui-color-brand-pink-600);
+  background-color: var(--tui-color-brand-primary-600);
   color: var(--tui-color-white);
 }
 
 /* secondary solid */
 .tui-pill--secondary.tui-pill--solid {
-  background-color: var(--tui-color-brand-gray-600);
+  background-color: var(--tui-color-brand-secondary-700);
   color: var(--tui-color-white);
 }
 
@@ -338,21 +338,21 @@
 /* default outlined */
 .tui-pill--default.tui-pill--outlined {
   background-color: transparent;
-  border: 1px solid var(--tui-color-brand-black-200);
-  color: var(--tui-color-brand-black-800);
+  border: 1px solid var(--tui-color-brand-primary-300);
+  color: var(--tui-color-brand-primary-700);
 }
 
 /* primary outlined */
 .tui-pill--primary.tui-pill--outlined {
   background-color: transparent;
-  border: 1px solid var(--tui-color-brand-pink-200);
-  color: var(--tui-color-brand-pink-700);
+  border: 1px solid var(--tui-color-brand-primary-200);
+  color: var(--tui-color-brand-primary-700);
 }
 
 /* secondary outlined */
 .tui-pill--secondary.tui-pill--outlined {
   background-color: transparent;
-  border: 1px solid var(--tui-color-brand-gray-200);
+  border: 1px solid var(--tui-color-brand-secondary-300);
   color: var(--tui-color-brand-black-700);
 }
 
@@ -445,5 +445,35 @@
   outline: none;
   box-shadow:
     0 0 0 0.5px var(--tui-color-focus-ring-gap),
-    0 0 1px 2px var(--tui-color-brand-black-400);
+    0 0 1px 2px var(--tui-pill-ring, var(--tui-color-brand-primary-400));
+}
+
+.tui-pill--default { --tui-pill-ring: var(--tui-color-brand-primary-400); }
+.tui-pill--primary { --tui-pill-ring: var(--tui-color-brand-primary-400); }
+.tui-pill--secondary { --tui-pill-ring: var(--tui-color-brand-secondary-400); }
+.tui-pill--tertiary { --tui-pill-ring: var(--tui-color-brand-tertiary-400); }
+.tui-pill--success { --tui-pill-ring: var(--tui-color-success-400); }
+.tui-pill--danger { --tui-pill-ring: var(--tui-color-danger-400); }
+.tui-pill--warning { --tui-pill-ring: var(--tui-color-warning-400); }
+.tui-pill--info { --tui-pill-ring: var(--tui-color-info-400); }
+.tui-pill--teal { --tui-pill-ring: var(--tui-color-teal-400); }
+.tui-pill--orange { --tui-pill-ring: var(--tui-color-orange-400); }
+.tui-pill--rose { --tui-pill-ring: var(--tui-color-rose-400); }
+.tui-pill--indigo { --tui-pill-ring: var(--tui-color-indigo-400); }
+.tui-pill--mint { --tui-pill-ring: var(--tui-color-mint-400); }
+.tui-pill--coal { --tui-pill-ring: var(--tui-color-coal-400); }
+
+/* ─── Intent: tertiary ─────────────────────────────────────────────────── */
+.tui-pill--tertiary.tui-pill--solid {
+  background-color: var(--tui-color-brand-tertiary-600);
+  color: var(--tui-color-white);
+}
+.tui-pill--tertiary.tui-pill--subtle {
+  background-color: var(--tui-color-brand-tertiary-50);
+  color: var(--tui-color-brand-tertiary-700);
+}
+.tui-pill--tertiary.tui-pill--outlined {
+  background-color: transparent;
+  border-color: var(--tui-color-brand-tertiary-300);
+  color: var(--tui-color-brand-tertiary-700);
 }

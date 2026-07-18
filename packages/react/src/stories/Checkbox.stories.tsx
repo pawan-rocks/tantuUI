@@ -64,7 +64,7 @@ const meta: Meta<typeof Checkbox> = {
     },
     intent: {
       control: "select",
-      options: ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
+      options: ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
       description: "Color intent / semantic meaning",
       table: { category: "Appearance", defaultValue: { summary: "default" } },
     },
@@ -72,6 +72,11 @@ const meta: Meta<typeof Checkbox> = {
       control: "boolean",
       description: "Ghost/skeleton mode — renders Shimmer",
       table: { category: "State" },
+    },
+    textColorAsIntent: {
+      control: "boolean",
+      description: "Color the label/title/subtitle text according to the intent color",
+      table: { category: "Appearance", defaultValue: { summary: "false" } },
     },
     onChange: { action: "changed" },
   },
@@ -85,6 +90,7 @@ const meta: Meta<typeof Checkbox> = {
     disabled: false,
     isInvalid: false,
     isGhost: false,
+    textColorAsIntent: false,
   },
 };
 
@@ -140,7 +146,7 @@ export const Intents: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)" }}>
-      {(["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const).map((intent) => (
+      {(["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const).map((intent) => (
         <Checkbox key={intent} intent={intent} label={intent.charAt(0).toUpperCase() + intent.slice(1)} checked={false} onChange={() => {}} />
       ))}
     </div>
@@ -226,7 +232,7 @@ export const AllStates: Story = {
   name: "All States",
   parameters: { controls: { disable: true } },
   render: () => {
-    const intents = ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
+    const intents = ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
     const states = ["base", "checked", "hover", "disabled", "ghost"] as const;
     return (
       <div style={{ overflowX: "auto" }}>
@@ -414,7 +420,7 @@ export const BoxTypeIntents: Story = {
   render: () => {
     const IntentsDemo = () => {
       const [checked, setChecked] = useState<Record<string, boolean>>({});
-      const intents = ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal"] as const;
+      const intents = ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal"] as const;
       return (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: "var(--tui-spacing-3)" }}>
           {intents.map((intent) => (
@@ -440,7 +446,7 @@ export const BoxStates: Story = {
   name: "Box Card States",
   parameters: { controls: { disable: true } },
   render: () => {
-    const intents = ["default", "primary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal"] as const;
+    const intents = ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal"] as const;
     return (
       <div style={{ overflowX: "auto" }}>
         <table style={{ borderCollapse: "collapse", width: "100%", minWidth: "800px", fontFamily: "var(--tui-font-family-sans)" }}>
@@ -504,6 +510,29 @@ export const CustomClassOnly: Story = {
       </p>
       <Checkbox className="my-round-checkbox" label="Round gradient indicator" checked={true} onChange={() => {}} />
       <Checkbox className="my-large-checkbox" label="Scaled up checkbox" checked={false} onChange={() => {}} />
+    </div>
+  ),
+};
+
+// ── Text Color As Intent ──────────────────────────────────────────────────
+/**
+ * When `textColorAsIntent` is true, the label/title/subtitle text color
+ * matches the intent color. Default text stays black/gray without this prop.
+ */
+export const TextColorAsIntent: Story = {
+  name: "Text Color As Intent",
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)" }}>
+      <Checkbox intent="primary" textColorAsIntent checked label="Primary colored text" onChange={() => {}} />
+      <Checkbox intent="secondary" textColorAsIntent checked label="Secondary colored text" onChange={() => {}} />
+      <Checkbox intent="tertiary" textColorAsIntent checked label="Tertiary colored text" onChange={() => {}} />
+      <Checkbox intent="success" textColorAsIntent checked label="Success colored text" onChange={() => {}} />
+      <Checkbox intent="danger" textColorAsIntent checked label="Danger colored text" onChange={() => {}} />
+      <Checkbox intent="warning" textColorAsIntent checked label="Warning colored text" onChange={() => {}} />
+      <Checkbox intent="info" textColorAsIntent checked label="Info colored text" onChange={() => {}} />
+      <Checkbox intent="primary" textColorAsIntent checked title="Primary Title" subtitle="With subtitle in intent color too" onChange={() => {}} />
+      <Checkbox intent="danger" textColorAsIntent title="Danger Title" subtitle="Subtitle also red" onChange={() => {}} />
     </div>
   ),
 };

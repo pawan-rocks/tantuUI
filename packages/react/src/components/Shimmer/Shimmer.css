@@ -15,9 +15,9 @@
   background-color: transparent !important;
   background-image: linear-gradient(
     90deg,
-    var(--tui-shimmer-from, var(--tui-color-brand-gray-300, #e5e7eb)) 0%,
-    var(--tui-shimmer-via,  var(--tui-color-brand-gray-100, #f3f4f6)) 50%,
-    var(--tui-shimmer-from, var(--tui-color-brand-gray-300, #e5e7eb)) 100%
+    var(--tui-shimmer-from, var(--tui-color-brand-secondary-300)) 0%,
+    var(--tui-shimmer-via,  var(--tui-color-brand-secondary-100)) 50%,
+    var(--tui-shimmer-from, var(--tui-color-brand-secondary-300,)) 100%
   ) !important;
   background-size: 200% 100% !important;
   animation: tui-shimmer 2s infinite linear !important;

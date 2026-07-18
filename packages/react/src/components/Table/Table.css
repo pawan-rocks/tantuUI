@@ -45,7 +45,7 @@
 /* ─── Hoverable ───────────────────────────────────────────────────────────── */
 .tui-table--hoverable .tui-table__body .tui-table__row:hover .tui-table__cell,
 .tui-table--hoverable .tui-table__body .tui-table__row:hover .tui-table__row-label {
-  background-color: var(--tui-color-brand-navy-50);
+  background-color: var(--tui-color-brand-tertiary-50);
 }
 
 /* ─── Compact ─────────────────────────────────────────────────────────────── */
@@ -75,7 +75,7 @@
 
 /* ─── Table Header ────────────────────────────────────────────────────────── */
 .tui-table__header {
-  background-color: var(--tui-table-header-bg, var(--tui-color-brand-navy-100));
+  background-color: var(--tui-table-header-bg, var(--tui-color-brand-tertiary-100));
 }
 
 /* ─── Table Header Cell ───────────────────────────────────────────────────── */
@@ -86,7 +86,7 @@
   color: var(--tui-color-text-secondary);
   white-space: nowrap;
   vertical-align: top;
-  background-color: var(--tui-table-header-bg, var(--tui-color-brand-navy-100));
+  background-color: var(--tui-table-header-bg, var(--tui-color-brand-tertiary-100));
   border-bottom: var(--tui-border-width-1) solid var(--tui-color-border-default);
 }
 
@@ -390,7 +390,7 @@
 }
 
 .tui-table__header-cell--sortable:hover {
-  background-color: var(--tui-color-brand-navy-50);
+  background-color: var(--tui-color-brand-tertiary-50);
 }
 
 /* ─── Expandable / Accordion Row ──────────────────────────────────────────── */
@@ -418,7 +418,7 @@
 }
 
 .tui-table__expand-toggle:hover {
-  background-color: var(--tui-color-brand-navy-100);
+  background-color: var(--tui-color-brand-tertiary-100);
   color: var(--tui-color-text-primary);
 }
 

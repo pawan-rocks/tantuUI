@@ -113,7 +113,7 @@ ExTable.displayName = "ExTable";
 export interface TableHeaderProps
   extends BaseProps,
     Omit<HTMLAttributes<HTMLTableSectionElement>, "className" | "style"> {
-  /** Custom background color (any CSS color value). Defaults to brand-navy-100 */
+  /** Custom background color (any CSS color value). Defaults to brand-tertiary-100 */
   bgColor?: string;
 }
 

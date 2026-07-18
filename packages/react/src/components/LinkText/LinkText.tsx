@@ -12,8 +12,8 @@ export interface LinkTextProps
     Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "className" | "style"> {
   /** HTML element to render. Use "span" when wrapping inside NavLink/Link to avoid nested anchors */
   as?: LinkTextTag;
-  /** Color variant */
-  variant?: "blue" | "black" | "white" | "navy";
+  /** Color variant. Blue is the default. */
+  variant?: "primary" | "secondary" | "tertiary" | "blue" | "black" | "white";
   /** Font size */
   size?: "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl";
   /** Font weight */

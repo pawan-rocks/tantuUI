@@ -29,7 +29,7 @@
   width: var(--tui-switch-track-w, 36px);
   height: var(--tui-switch-track-h, 20px);
   border-radius: var(--tui-radius-full);
-  background-color: var(--tui-switch-track-off, var(--tui-color-brand-black-300));
+  background-color: var(--tui-switch-track-off, var(--tui-color-brand-primary-300));
   transition:
     background-color var(--tui-duration-normal) var(--tui-ease-in-out);
 }
@@ -52,7 +52,7 @@
 
 /* ─── Checked state ──────────────────────────────────────────────────────── */
 .tui-switch--checked .tui-switch__track {
-  background-color: var(--tui-switch-active, var(--tui-color-brand-black-900));
+  background-color: var(--tui-switch-active, var(--tui-color-brand-primary-600));
 }
 
 .tui-switch--checked .tui-switch__thumb {
@@ -61,11 +61,11 @@
 
 /* ─── Hover state ────────────────────────────────────────────────────────── */
 .tui-switch:hover:not(.tui-switch--disabled) .tui-switch__track {
-  background-color: var(--tui-switch-track-off-hover, var(--tui-color-brand-black-300));
+  background-color: var(--tui-switch-track-off-hover, var(--tui-color-brand-primary-400));
 }
 
 .tui-switch--checked:hover:not(.tui-switch--disabled) .tui-switch__track {
-  background-color: var(--tui-switch-active-hover, var(--tui-color-brand-black-800));
+  background-color: var(--tui-switch-active-hover, var(--tui-color-brand-primary-700));
 }
 
 /* ─── Pressed / Active state ─────────────────────────────────────────────── */
@@ -75,10 +75,22 @@
 
 /* ─── Intent colors ──────────────────────────────────────────────────────── */
 .tui-switch--primary {
-  --tui-switch-active: var(--tui-color-brand-pink-600);
-  --tui-switch-active-hover: var(--tui-color-brand-pink-700);
-  --tui-switch-track-off: var(--tui-color-brand-pink-400);
-  --tui-switch-track-off-hover: var(--tui-color-brand-pink-500);
+  --tui-switch-active: var(--tui-color-brand-primary-600);
+  --tui-switch-active-hover: var(--tui-color-brand-primary-700);
+  --tui-switch-track-off: var(--tui-color-brand-primary-400);
+  --tui-switch-track-off-hover: var(--tui-color-brand-primary-500);
+}
+.tui-switch--secondary {
+  --tui-switch-active: var(--tui-color-brand-secondary-500);
+  --tui-switch-active-hover: var(--tui-color-brand-secondary-600);
+  --tui-switch-track-off: var(--tui-color-brand-secondary-300);
+  --tui-switch-track-off-hover: var(--tui-color-brand-secondary-400);
+}
+.tui-switch--tertiary {
+  --tui-switch-active: var(--tui-color-brand-tertiary-600);
+  --tui-switch-active-hover: var(--tui-color-brand-tertiary-700);
+  --tui-switch-track-off: var(--tui-color-brand-tertiary-400);
+  --tui-switch-track-off-hover: var(--tui-color-brand-tertiary-500);
 }
 .tui-switch--success {
   --tui-switch-active: var(--tui-color-success-600);

@@ -288,6 +288,7 @@ describe("Modal ghost mode", () => {
     );
     const header = screen.getByTestId("header");
     expect(header).toHaveClass("tui-modal__header");
+    // No title/subtitle → full-width shimmer
     expect(header.querySelector(".tui-shimmer")).toBeInTheDocument();
   });
 

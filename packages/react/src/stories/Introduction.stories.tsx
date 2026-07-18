@@ -93,6 +93,7 @@ import { Button, Text, Box, LinkText, Shimmer } from "@tantuui/react";`}
         { name: "Input", path: "?path=/docs/components-input--docs", desc: "Text input with icons, clear" },
         { name: "Textarea", path: "?path=/docs/components-textarea--docs", desc: "Multi-line text input" },
         { name: "Select", path: "?path=/docs/components-select--docs", desc: "Native select dropdown" },
+        { name: "Dropdown", path: "?path=/docs/components-dropdown--docs", desc: "Searchable dropdown with selection" },
         { name: "Checkbox", path: "?path=/docs/components-checkbox--docs", desc: "Checkbox with label" },
         { name: "Radio", path: "?path=/docs/components-radio--docs", desc: "Radio button" },
         { name: "Switch", path: "?path=/docs/components-switch--docs", desc: "Toggle switch" },

@@ -6,7 +6,7 @@ describe("LinkText", () => {
   it("renders with no props", () => {
     render(<LinkText data-testid="link" />);
     expect(screen.getByTestId("link")).toBeInTheDocument();
-    expect(screen.getByTestId("link").tagName).toBe("A");
+    expect(screen.getByTestId("link").tagName).toBe("SPAN");
   });
 
   it("renders children", () => {
@@ -70,7 +70,7 @@ describe("LinkText", () => {
   });
 
   it("sets target and rel attributes", () => {
-    render(<LinkText target="_blank" rel="noopener noreferrer" data-testid="link" />);
+    render(<LinkText as="a" target="_blank" rel="noopener noreferrer" data-testid="link" />);
     const el = screen.getByTestId("link");
     expect(el).toHaveAttribute("target", "_blank");
     expect(el).toHaveAttribute("rel", "noopener noreferrer");

@@ -17,8 +17,8 @@ export interface TextProps extends BaseProps, HTMLAttributes<HTMLElement> {
   size?: "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl";
   /** Font weight token key */
   weight?: "thin" | "extralight" | "light" | "normal" | "medium" | "semibold" | "bold" | "extrabold" | "black";
-  /** Semantic color or any CSS color value (hex, rgb, var(--tui-color-*)) */
-  color?: "primary" | "secondary" | "tertiary" | "disabled" | "inverse" | "link" | "danger" | "success" | "warning" | (string & {});
+  /** Color intent, semantic color, or custom color value. `default` preserves the current inherited text color. */
+  color?: "default" | "primary" | "secondary" | "tertiary" | "disabled" | "inverse" | "link" | "danger" | "success" | "warning" | "info" | "teal" | "orange" | "rose" | "indigo" | "mint" | "coal" | "white" | "black" | (string & {});
   /** Text alignment */
   align?: "left" | "center" | "right" | "justify";
   /** Truncate with ellipsis (true = 1 line, number = multi-line clamp) */
@@ -84,15 +84,20 @@ export const Text = forwardRef<any, TextProps>(
     }
 
     // Normal render
-    const semanticColors = ["primary", "secondary", "tertiary", "disabled", "inverse", "link", "danger", "success", "warning"];
-    const isSemanticColor = color && semanticColors.includes(color);
-    const isCustomColor = color && !isSemanticColor;
+    const knownColors = [
+      "default", "primary", "secondary", "tertiary", "disabled", "inverse", "link",
+      "danger", "success", "warning", "info", "teal", "orange", "rose", "indigo",
+      "mint", "coal", "white", "black",
+    ];
+    const isDefaultColor = color === "default";
+    const isSemanticColor = Boolean(color && !isDefaultColor && knownColors.includes(color));
+    const isCustomColor = Boolean(color && !isDefaultColor && !isSemanticColor);
 
     const cssVars: Record<string, string | number> = {};
     if (typeof truncate === "number" && truncate > 1) {
       cssVars["--tui-text-clamp-lines"] = truncate;
     }
-    if (isCustomColor) {
+    if (color && isCustomColor) {
       // Custom color: resolve as token variable or pass-through raw value
       const colorValue = color.startsWith("var(") || color.startsWith("#") || color.startsWith("rgb")
         ? color

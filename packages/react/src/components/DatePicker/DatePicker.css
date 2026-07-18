@@ -162,9 +162,10 @@
 
 /* ─── OK button intent colors ──────────────────────────────────────────────── */
 
-.tui-datepicker__ok-btn--default { --_ok-bg: var(--tui-color-brand-black-800); --_ok-bg-hover: var(--tui-color-brand-black-900); --_ok-ring: var(--tui-color-brand-black-500); }
-.tui-datepicker__ok-btn--primary { --_ok-bg: var(--tui-color-brand-pink-600); --_ok-bg-hover: var(--tui-color-brand-pink-700); --_ok-ring: var(--tui-color-brand-pink-500); }
-.tui-datepicker__ok-btn--secondary { --_ok-bg: var(--tui-color-brand-black-600); --_ok-bg-hover: var(--tui-color-brand-black-700); --_ok-ring: var(--tui-color-brand-black-400); }
+.tui-datepicker__ok-btn--default { --_ok-bg: var(--tui-color-brand-primary-600); --_ok-bg-hover: var(--tui-color-brand-primary-700); --_ok-ring: var(--tui-color-brand-primary-500); }
+.tui-datepicker__ok-btn--primary { --_ok-bg: var(--tui-color-brand-primary-600); --_ok-bg-hover: var(--tui-color-brand-primary-700); --_ok-ring: var(--tui-color-brand-primary-500); }
+.tui-datepicker__ok-btn--secondary { --_ok-bg: var(--tui-color-brand-secondary-400); --_ok-bg-hover: var(--tui-color-brand-secondary-500); --_ok-ring: var(--tui-color-brand-secondary-300); color: var(--tui-color-brand-black-900); }
+.tui-datepicker__ok-btn--tertiary { --_ok-bg: var(--tui-color-brand-tertiary-600); --_ok-bg-hover: var(--tui-color-brand-tertiary-700); --_ok-ring: var(--tui-color-brand-tertiary-500); }
 .tui-datepicker__ok-btn--success { --_ok-bg: var(--tui-color-success-600); --_ok-bg-hover: var(--tui-color-success-700); --_ok-ring: var(--tui-color-success-500); }
 .tui-datepicker__ok-btn--warning { --_ok-bg: var(--tui-color-warning-600); --_ok-bg-hover: var(--tui-color-warning-700); --_ok-ring: var(--tui-color-warning-500); }
 .tui-datepicker__ok-btn--danger { --_ok-bg: var(--tui-color-danger-600); --_ok-bg-hover: var(--tui-color-danger-700); --_ok-ring: var(--tui-color-danger-500); }

@@ -28,16 +28,27 @@
 .tui-text--extrabold   { font-weight: var(--tui-font-weight-extrabold);  }
 .tui-text--black       { font-weight: var(--tui-font-weight-black);      }
 
-/* ─── Colors ─────────────────────────────────────────────────────────────── */
-.tui-text--color-primary   { color: var(--tui-color-text-primary);   }
-.tui-text--color-secondary { color: var(--tui-color-text-secondary); }
-.tui-text--color-tertiary  { color: var(--tui-color-text-tertiary);  }
-.tui-text--color-disabled  { color: var(--tui-color-text-disabled);  }
-.tui-text--color-inverse   { color: var(--tui-color-text-inverse);   }
-.tui-text--color-link      { color: var(--tui-color-text-link);      }
-.tui-text--color-danger    { color: var(--tui-color-danger-text);    }
-.tui-text--color-success   { color: var(--tui-color-success-text);   }
-.tui-text--color-warning   { color: var(--tui-color-warning-text);   }
+/* ─── Colors ────────────────────────────────────────────────────────────────
+   `color="default"` intentionally has no class so it preserves the current
+   inherited text color. The remaining named values use intent-like tokens. */
+.tui-text--color-primary   { color: var(--tui-color-brand-primary-700); }
+.tui-text--color-secondary { color: var(--tui-color-brand-secondary-700); }
+.tui-text--color-tertiary  { color: var(--tui-color-brand-tertiary-700); }
+.tui-text--color-disabled  { color: var(--tui-color-text-disabled); }
+.tui-text--color-inverse   { color: var(--tui-color-text-inverse); }
+.tui-text--color-link      { color: var(--tui-color-text-link); }
+.tui-text--color-danger    { color: var(--tui-color-danger-700); }
+.tui-text--color-success   { color: var(--tui-color-success-700); }
+.tui-text--color-warning   { color: var(--tui-color-warning-700); }
+.tui-text--color-info      { color: var(--tui-color-info-700); }
+.tui-text--color-teal      { color: var(--tui-color-teal-700); }
+.tui-text--color-orange    { color: var(--tui-color-orange-700); }
+.tui-text--color-rose      { color: var(--tui-color-rose-700); }
+.tui-text--color-indigo    { color: var(--tui-color-indigo-700); }
+.tui-text--color-mint      { color: var(--tui-color-mint-700); }
+.tui-text--color-coal      { color: var(--tui-color-coal-700); }
+.tui-text--color-white     { color: var(--tui-color-white); }
+.tui-text--color-black     { color: var(--tui-color-brand-black-900); }
 
 /* ─── Alignment ──────────────────────────────────────────────────────────── */
 .tui-text--left    { text-align: left;    }

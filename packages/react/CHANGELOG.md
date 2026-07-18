@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.0.9
+
+### Added
+- **Dropdown component** — searchable single- and multi-select dropdown with autocomplete, custom option rendering, removable selected tags, keyboard navigation, and intent/size variants
+- **ListItem component** — composable option row with title/subtitle content, selected and disabled states, intent colors, and configurable selection controls
+- **ListGroup component** — grouped ListItem container with headers, footers, separators, selection support, and size/intent variants
+
+### Changed
+- Updated component styles and stories to use the expanded semantic color system (`primary`, `secondary`, and `tertiary`)
+- Added exports and component styles for Dropdown, ListItem, and ListGroup
+
 ## 0.0.8
 
 ### Added
@@ -42,7 +53,7 @@
   - **Sticky header**: `stickyHeader` + `scroll.y` for vertical scroll with pinned header
   - **Sticky columns**: `fixed: "left" | "right"` on columns for horizontal scroll with pinned columns
   - **Scroll**: `scroll={{ x, y }}` for horizontal/vertical overflow
-  - **Row states**: selected (brand-blue-50), disabled (brand-gray-200 + cursor not-allowed), borderless, hover (brand-navy-50)
+  - **Row states**: selected (brand-blue-50), disabled (brand-gray-200 + cursor not-allowed), borderless, hover (brand-tertiary-50)
   - **Header customization**: `bgColor`, `verticalAlign`, title/subtitle/extra structured content
   - **Cell features**: title/subtitle/extra, href (link), prefixIcon/suffixIcon, align, column borders with custom color/width
   - **Sizes**: sm, md, lg with distinct padding and font

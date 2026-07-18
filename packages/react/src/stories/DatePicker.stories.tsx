@@ -12,7 +12,7 @@ const meta: Meta<typeof DatePicker> = {
   argTypes: {
     intent: {
       control: "select",
-      options: ["default", "primary", "secondary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
+      options: ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
       description: "Color intent for input and calendar",
       table: { category: "Appearance", defaultValue: { summary: "default" } },
     },
@@ -288,7 +288,7 @@ export const Intents: Story = {
   name: "Intents",
   parameters: { controls: { disable: true } },
   render: () => {
-    const intents = ["default", "primary", "secondary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
+    const intents = ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 320 }}>
         {intents.map((intent) => (
@@ -426,7 +426,7 @@ export const FooterIntents: Story = {
   name: "Footer Intents",
   parameters: { controls: { disable: true } },
   render: () => {
-    const intents = ["default", "primary", "secondary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
+    const intents = ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const;
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 320 }}>
         {intents.map((intent) => (

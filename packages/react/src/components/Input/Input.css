@@ -68,28 +68,28 @@
 /* Outline */
 .tui-input--outline {
   background-color: transparent;
-  border-color: var(--tui-color-brand-black-300);
+  border-color: var(--tui-color-brand-primary-300);
 }
 .tui-input--outline:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-brand-black-400);
+  border-color: var(--tui-color-brand-primary-400);
 }
 
 /* Soft */
 .tui-input--soft {
   background-color: transparent;
-  border-color: var(--tui-color-brand-black-100);
+  border-color: var(--tui-color-brand-primary-100);
 }
 .tui-input--soft:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-brand-black-200);
+  border-color: var(--tui-color-brand-primary-200);
 }
 
 /* Plain */
 .tui-input--plain {
   background-color: transparent;
-  border-color: var(--tui-color-brand-black-50);
+  border-color: var(--tui-color-brand-primary-50);
 }
 .tui-input--plain:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-brand-black-100);
+  border-color: var(--tui-color-brand-primary-100);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -98,22 +98,62 @@
 
 /* ─── primary ────────────────────────────────────────────────────────────── */
 .tui-input--primary.tui-input--outline {
-  border-color: var(--tui-color-brand-pink-500);
+  border-color: var(--tui-color-brand-primary-500);
 }
 .tui-input--primary.tui-input--outline:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-brand-pink-600);
+  border-color: var(--tui-color-brand-primary-600);
 }
 .tui-input--primary.tui-input--soft {
-  border-color: var(--tui-color-brand-pink-200);
+  border-color: var(--tui-color-brand-primary-200);
 }
 .tui-input--primary.tui-input--soft:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-brand-pink-300);
+  border-color: var(--tui-color-brand-primary-300);
 }
 .tui-input--primary.tui-input--plain {
-  border-color: var(--tui-color-brand-pink-50);
+  border-color: var(--tui-color-brand-primary-50);
 }
 .tui-input--primary.tui-input--plain:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-brand-pink-100);
+  border-color: var(--tui-color-brand-primary-100);
+}
+
+/* ─── Intent: secondary ──────────────────────────────────────────────────── */
+.tui-input--secondary.tui-input--outline {
+  border-color: var(--tui-color-brand-secondary-400);
+}
+.tui-input--secondary.tui-input--outline:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-brand-secondary-500);
+}
+.tui-input--secondary.tui-input--soft {
+  border-color: var(--tui-color-brand-secondary-200);
+}
+.tui-input--secondary.tui-input--soft:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-brand-secondary-300);
+}
+.tui-input--secondary.tui-input--plain {
+  border-color: var(--tui-color-brand-secondary-100);
+}
+.tui-input--secondary.tui-input--plain:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-brand-secondary-200);
+}
+
+/* ─── Intent: tertiary ───────────────────────────────────────────────────── */
+.tui-input--tertiary.tui-input--outline {
+  border-color: var(--tui-color-brand-tertiary-500);
+}
+.tui-input--tertiary.tui-input--outline:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-brand-tertiary-600);
+}
+.tui-input--tertiary.tui-input--soft {
+  border-color: var(--tui-color-brand-tertiary-200);
+}
+.tui-input--tertiary.tui-input--soft:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-brand-tertiary-300);
+}
+.tui-input--tertiary.tui-input--plain {
+  border-color: var(--tui-color-brand-tertiary-50);
+}
+.tui-input--tertiary.tui-input--plain:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-brand-tertiary-100);
 }
 
 /* ─── success ────────────────────────────────────────────────────────────── */
@@ -338,22 +378,22 @@
 
 /* ─── black ──────────────────────────────────────────────────────────────── */
 .tui-input--black.tui-input--outline {
-  border-color: var(--tui-color-brand-black-800);
+  border-color: var(--tui-color-brand-black-500);
 }
 .tui-input--black.tui-input--outline:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-brand-black-900);
-}
-.tui-input--black.tui-input--soft {
-  border-color: var(--tui-color-brand-black-600);
-}
-.tui-input--black.tui-input--soft:hover:not(.tui-input--disabled) {
   border-color: var(--tui-color-brand-black-700);
 }
-.tui-input--black.tui-input--plain {
+.tui-input--black.tui-input--soft {
   border-color: var(--tui-color-brand-black-400);
 }
+.tui-input--black.tui-input--soft:hover:not(.tui-input--disabled) {
+  border-color: var(--tui-color-brand-black-600);
+}
+.tui-input--black.tui-input--plain {
+  border-color: var(--tui-color-brand-black-200);
+}
 .tui-input--black.tui-input--plain:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-brand-black-500);
+  border-color: var(--tui-color-brand-black-400);
 }
 
 /* ─── Disabled state (overrides all intents/variants) ────────────────────── */
@@ -397,11 +437,13 @@
 .tui-input:has(.tui-input__native:focus-visible) {
   box-shadow:
     0 0 0 0.5px var(--tui-color-focus-ring-gap),
-    0 0 1px 2px var(--tui-ring-color, var(--tui-color-focus-ring));
+    0 0 1px 2px var(--tui-ring-color, var(--tui-color-brand-primary-400));
 }
 
 /* Intent-based ring color on Input wrapper */
-.tui-input--primary:has(.tui-input__native:focus-visible)   { --tui-ring-color: var(--tui-color-brand-pink-400); }
+.tui-input--primary:has(.tui-input__native:focus-visible)   { --tui-ring-color: var(--tui-color-brand-primary-400); }
+.tui-input--secondary:has(.tui-input__native:focus-visible) { --tui-ring-color: var(--tui-color-brand-secondary-400); }
+.tui-input--tertiary:has(.tui-input__native:focus-visible)  { --tui-ring-color: var(--tui-color-brand-tertiary-400); }
 .tui-input--success:has(.tui-input__native:focus-visible)   { --tui-ring-color: var(--tui-color-success-400); }
 .tui-input--warning:has(.tui-input__native:focus-visible)   { --tui-ring-color: var(--tui-color-warning-400); }
 .tui-input--danger:has(.tui-input__native:focus-visible)    { --tui-ring-color: var(--tui-color-danger-400); }

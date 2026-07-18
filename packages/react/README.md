@@ -82,8 +82,11 @@ function App() {
 | `Checkbox` | With indeterminate, box style, labels |
 | `Radio` | With group context, box style |
 | `Select` | Native dropdown with variants |
+| `Dropdown` | Searchable dropdown with single or multiple selection |
 | `Switch` | Toggle with label and intent colors |
 | `Label` | Form label with required indicator |
+| `ListItem` | Composable item row with selection and state support |
+| `ListGroup` | Grouped list items with headers and separators |
 | `FormField` | Field wrapper with label, helper, error text |
 | `LinkText` | Styled anchor/span with color variants |
 | `Tag` | Labeling with filled/outlined, removable |

@@ -10,7 +10,8 @@ const meta: Meta<typeof TimePicker> = {
   argTypes: {
     intent: {
       control: "select",
-      options: ["default", "primary", "secondary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
+      options: ["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"],
+      description: "Intent controls the input, time selector, and footer OK action colors. The footer uses matching base, hover, and focus tokens.",
       table: { category: "Appearance", defaultValue: { summary: "default" } },
     },
     size: {
@@ -280,8 +281,8 @@ export const Intents: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 280 }}>
-      {(["default", "primary", "secondary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal"] as const).map((i) => (
-        <TimePicker key={i} intent={i} placeholder={`${i} intent`} />
+      {(["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal"] as const).map((i) => (
+        <TimePicker key={i} intent={i} value={{ hours: 10, minutes: 30 }} placeholder={`${i} intent — open to view footer`} />
       ))}
     </div>
   ),

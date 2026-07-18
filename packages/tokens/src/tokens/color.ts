@@ -14,6 +14,49 @@ export const color = {
     white: "#ffffff",
     black: "#000000",
 
+    // ── Brand Primary (#7C3AED base) ────────────────────────────────────
+    brandPrimary50:  "#f5f3ff",
+    brandPrimary100: "#ede8ff",
+    brandPrimary200: "#ddd6fe",
+    brandPrimary300: "#c4b5fc",
+    brandPrimary400: "#a78bfa",
+    brandPrimary500: "#8b5cf6",
+    brandPrimary600: "#7c3aed",
+    brandPrimary700: "#6d28d9",
+    brandPrimary800: "#5b21b6",
+    brandPrimary900: "#4c1d95",
+    brandPrimary950: "#2e1065",
+    brandPrimaryDefault: "#7C3AED",  // base from brand palette
+
+    // ── Brand Secondary (#F3F4F6 base) ─────────────────────────────────────
+    brandSecondary50:  "#fdfefe",
+    brandSecondary100: "#f9fafb",
+    brandSecondary200: "#f3f4f6",
+    brandSecondary300: "#e5e7eb",
+    brandSecondary400: "#d1d5db",
+    brandSecondary500: "#9ca3af",
+    brandSecondary600: "#6b7280",
+    brandSecondary700: "#4b5563",
+    brandSecondary800: "#374151",
+    brandSecondary900: "#1f2937",
+    brandSecondary950: "#111827",
+    brandSecondaryDefault: "#F3F4F6",  // base from brand palette
+
+
+    // ── Brand Tertiary (#0D132B base) ──────────────────────────────────────
+    brandTertiary50:  "#f3f4f7",
+    brandTertiary100: "#e7e8ef",
+    brandTertiary200: "#cacfe2",
+    brandTertiary300: "#9da8d2",
+    brandTertiary400: "#6377c5",
+    brandTertiary500: "#354eb0",
+    brandTertiary600: "#2c4091",
+    brandTertiary700: "#223272",
+    brandTertiary800: "#1a2656",
+    brandTertiary900: "#121a3b",
+    brandTertiary950: "#0a0e1f",
+    brandTertiaryDefault: "#2c4091",  // base from brand palette
+
     // ── Brand White (scale from pure white) ────────────────────────────
     brandWhite50:  "#ffffff",
     brandWhite100: "#fefefe",
@@ -42,19 +85,6 @@ export const color = {
     brandBlack950: "#000000",
     brandBlackDefault: "#000000",  // base from brand palette
 
-    // ── Brand Navy (#0D132B base) ──────────────────────────────────────
-    brandNavy50:  "#f3f4f7",
-    brandNavy100: "#e7e8ef",
-    brandNavy200: "#cacfe2",
-    brandNavy300: "#9da8d2",
-    brandNavy400: "#6377c5",
-    brandNavy500: "#354eb0",
-    brandNavy600: "#2c4091",
-    brandNavy700: "#223272",
-    brandNavy800: "#1a2656",
-    brandNavy900: "#121a3b",
-    brandNavy950: "#0a0e1f",
-    brandNavyDefault: "#2c4091",  // base from brand palette
 
     // ── Brand Blue (#2563EB base) ──────────────────────────────────────
     brandBlue50:  "#eff4ff",
@@ -69,20 +99,6 @@ export const color = {
     brandBlue900: "#1e398a",
     brandBlue950: "#172554",
     brandBlueDefault: "#2563EB",  // base from brand palette
-
-    // ── Brand Purple (#7C3AED base) ────────────────────────────────────
-    brandPurple50:  "#f5f3ff",
-    brandPurple100: "#ede8ff",
-    brandPurple200: "#ddd6fe",
-    brandPurple300: "#c4b5fc",
-    brandPurple400: "#a78bfa",
-    brandPurple500: "#8b5cf6",
-    brandPurple600: "#7c3aed",
-    brandPurple700: "#6d28d9",
-    brandPurple800: "#5b21b6",
-    brandPurple900: "#4c1d95",
-    brandPurple950: "#2e1065",
-    brandPurpleDefault: "#7C3AED",  // base from brand palette
 
     // ── Brand Pink (#D946EF base) ──────────────────────────────────────
     brandPink50:  "#fdf4ff",
@@ -111,20 +127,6 @@ export const color = {
     brandGray900: "#111827",
     brandGray950: "#030712",
     brandGrayDefault: "#4B5563",  // base from brand palette
-
-    // ── Brand Light (#F3F4F6 base) ─────────────────────────────────────
-    brandLight50:  "#fdfefe",
-    brandLight100: "#f9fafb",
-    brandLight200: "#f3f4f6",
-    brandLight300: "#e5e7eb",
-    brandLight400: "#d1d5db",
-    brandLight500: "#9ca3af",
-    brandLight600: "#6b7280",
-    brandLight700: "#4b5563",
-    brandLight800: "#374151",
-    brandLight900: "#1f2937",
-    brandLight950: "#111827",
-    brandLightDefault: "#F3F4F6",  // base from brand palette
 
     // ── Success (green) ───────────────────────────────────────────────
     success50:  "#f0fdf4",
@@ -290,20 +292,44 @@ export const color = {
     textLinkHover:   "var(--tui-color-brand-blue-700)",
 
     // Border
-    borderDefault:   "var(--tui-color-brand-black-200)",
-    borderStrong:    "var(--tui-color-brand-black-400)",
-    borderFocus:     "var(--tui-color-brand-pink-500)",
+    borderDefault:   "var(--tui-color-secondary-200)",
+    borderStrong:    "var(--tui-color-secondary-400)",
+    borderFocus:     "var(--tui-color-primary-500)",
 
     // Focus ring
     focusRing:       "var(--tui-color-brand-black-500)",
     focusRingGap:    "var(--tui-color-white)",
 
     // Brand interactive (uses brand-pink as primary)
-    brandDefault:    "var(--tui-color-brand-pink-600)",
-    brandHover:      "var(--tui-color-brand-pink-700)",
-    brandActive:     "var(--tui-color-brand-pink-800)",
-    brandSubtle:     "var(--tui-color-brand-pink-50)",
+    brandDefault:    "var(--tui-color-brand-primary-600)",
+    brandHover:      "var(--tui-color-brand-primary-700)",
+    brandActive:     "var(--tui-color-brand-primary-800)",
+    brandSubtle:     "var(--tui-color-brand-primary-50)",
     brandText:       "var(--tui-color-white)",
+
+    // Primary → Brand Primary (purple)
+    primaryDefault:  "var(--tui-color-brand-primary-600)",
+    primaryHover:    "var(--tui-color-brand-primary-700)",
+    primaryActive:   "var(--tui-color-brand-primary-800)",
+    primarySubtle:   "var(--tui-color-brand-primary-50)",
+    primaryLight:    "var(--tui-color-brand-primary-100)",
+    primaryText:     "var(--tui-color-white)",
+
+    // Secondary → Brand Secondary (light gray)
+    secondaryDefault: "var(--tui-color-brand-secondary-200)",
+    secondaryHover:   "var(--tui-color-brand-secondary-300)",
+    secondaryActive:  "var(--tui-color-brand-secondary-400)",
+    secondarySubtle:  "var(--tui-color-brand-secondary-50)",
+    secondaryLight:   "var(--tui-color-brand-secondary-100)",
+    secondaryText:    "var(--tui-color-brand-black-800)",
+
+    // Tertiary → Brand Tertiary (navy)
+    tertiaryDefault: "var(--tui-color-brand-tertiary-600)",
+    tertiaryHover:   "var(--tui-color-brand-tertiary-700)",
+    tertiaryActive:  "var(--tui-color-brand-tertiary-800)",
+    tertiarySubtle:  "var(--tui-color-brand-tertiary-50)",
+    tertiaryLight:   "var(--tui-color-brand-tertiary-100)",
+    tertiaryText:    "var(--tui-color-white)",
 
     // Status
     successDefault:  "var(--tui-color-success-600)",

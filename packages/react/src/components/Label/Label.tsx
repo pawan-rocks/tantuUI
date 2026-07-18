@@ -63,13 +63,15 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(
       );
     }
 
+    const effectiveIntent = intent === "default" ? "primary" : intent;
+
     return (
       <label
         ref={ref}
         className={cn(
           "tui-label",
           `tui-label--${size}`,
-          intent !== "default" && `tui-label--${intent}`,
+          `tui-label--${effectiveIntent}`,
           disabled && "tui-label--disabled",
           className,
         )}
