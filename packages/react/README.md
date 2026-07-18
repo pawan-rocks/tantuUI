@@ -11,6 +11,8 @@ React component library for **TantuUI** — token-driven, accessible, and lightw
 npm install @tantuui/react @tantuui/tokens
 ```
 
+## [Changelog](https://tantuui.com/storybook/?path=/docs/documentation-react-lib-change-log--docs)
+
 ## Setup
 
 ### With Vite (Recommended — Zero Config)
@@ -128,7 +130,6 @@ Or download from [GitHub Releases](https://github.com/pawan-rocks/tantuUI/releas
 
 ## Links
 
-- [Changelog](https://github.com/pawan-rocks/tantuUI/blob/main/packages/react/CHANGELOG.md)
 - [Design Tokens](https://www.npmjs.com/package/@tantuui/tokens)
 - [GitHub](https://github.com/pawan-rocks/tantuUI)
 - [Storybook](https://tantuui.com/storybook/)
