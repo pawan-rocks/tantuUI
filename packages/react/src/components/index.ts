@@ -5,6 +5,7 @@ export * from "./Shimmer";
 export * from "./LinkText";
 export * from "./Label";
 export * from "./Input";
+export * from "./InputOtp";
 export * from "./Textarea";
 export * from "./Checkbox";
 export * from "./Radio";

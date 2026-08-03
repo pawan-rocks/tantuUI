@@ -231,7 +231,7 @@ export const ListGroup = forwardRef<HTMLDivElement, ListGroupProps>(
     },
     ref,
   ) => {
-    const effectiveIntent = intent === "default" ? "primary" : intent;
+    const effectiveIntent = intent;
     const hasHeader = hasListGroupContent(header);
     const hasFooter = hasListGroupContent(footer);
     const effectiveSelection = isCheckbox ? "checkbox" : selection;

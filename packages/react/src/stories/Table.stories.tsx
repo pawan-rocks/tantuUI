@@ -170,8 +170,8 @@ export const CustomRender: Story = {
           <span style={{
             display: "inline-block", padding: "var(--tui-spacing-0_5) var(--tui-spacing-2)",
             borderRadius: "var(--tui-radius-full)", fontSize: "var(--tui-font-size-xs)", fontWeight: "var(--tui-font-weight-medium)",
-            background: status === "Active" ? "var(--tui-color-success-100)" : status === "Pending" ? "var(--tui-color-warning-100)" : "var(--tui-color-neutral-100)",
-            color: status === "Active" ? "var(--tui-color-success-700)" : status === "Pending" ? "var(--tui-color-warning-700)" : "var(--tui-color-neutral-600)",
+            background: status === "Active" ? "var(--tui-color-success-100)" : status === "Pending" ? "var(--tui-color-warning-100)" : "var(--tui-color-brand-default-100)",
+            color: status === "Active" ? "var(--tui-color-success-700)" : status === "Pending" ? "var(--tui-color-warning-700)" : "var(--tui-color-brand-default-600)",
           }}>{status}</span>
         ),
       },
@@ -323,8 +323,8 @@ export const RadioSelection: Story = {
           <span style={{
             display: "inline-block", padding: "var(--tui-spacing-0_5) var(--tui-spacing-2)",
             borderRadius: "var(--tui-radius-full)", fontSize: "var(--tui-font-size-xs)", fontWeight: "var(--tui-font-weight-medium)",
-            background: status === "Active" ? "var(--tui-color-success-100)" : status === "Pending" ? "var(--tui-color-warning-100)" : "var(--tui-color-neutral-100)",
-            color: status === "Active" ? "var(--tui-color-success-700)" : status === "Pending" ? "var(--tui-color-warning-700)" : "var(--tui-color-neutral-600)",
+            background: status === "Active" ? "var(--tui-color-success-100)" : status === "Pending" ? "var(--tui-color-warning-100)" : "var(--tui-color-brand-default-100)",
+            color: status === "Active" ? "var(--tui-color-success-700)" : status === "Pending" ? "var(--tui-color-warning-700)" : "var(--tui-color-brand-default-600)",
           }}>{status}</span>
         ),
       },
@@ -1325,12 +1325,12 @@ export const APIReference: Story = {
 
       <h3 style={{ margin: "var(--tui-spacing-6) 0 var(--tui-spacing-4)", fontSize: "var(--tui-font-size-lg)" }}>Ghost Usage Examples</h3>
 
-      <h4 style={{ margin: "0 0 var(--tui-spacing-2)", fontSize: "var(--tui-font-size-base)" }}>Full table loading</h4>
+      <h4 style={{ margin: "0 0 var(--tui-spacing-2)", fontSize: "var(--tui-font-size-md)" }}>Full table loading</h4>
       <pre style={{ background: "var(--tui-color-brand-black-50)", padding: "var(--tui-spacing-3) var(--tui-spacing-4)", borderRadius: "var(--tui-radius-md)", overflow: "auto", fontSize: "var(--tui-font-size-xs)", margin: "0 0 var(--tui-spacing-4)" }}>
         <code>{`<Table columns={columns} dataSource={[]} isGhost ghostRowsCount={6} />`}</code>
       </pre>
 
-      <h4 style={{ margin: "0 0 var(--tui-spacing-2)", fontSize: "var(--tui-font-size-base)" }}>Per-row ghost (action loading)</h4>
+      <h4 style={{ margin: "0 0 var(--tui-spacing-2)", fontSize: "var(--tui-font-size-md)" }}>Per-row ghost (action loading)</h4>
       <pre style={{ background: "var(--tui-color-brand-black-50)", padding: "var(--tui-spacing-3) var(--tui-spacing-4)", borderRadius: "var(--tui-radius-md)", overflow: "auto", fontSize: "var(--tui-font-size-xs)", margin: "0 0 var(--tui-spacing-4)" }}>
         <code>{`const [loadingRows, setLoadingRows] = useState<number[]>([]);
 
@@ -1343,7 +1343,7 @@ const handleAction = (index: number) => {
 <Table columns={columns} dataSource={data} ghostRows={loadingRows} />`}</code>
       </pre>
 
-      <h4 style={{ margin: "0 0 var(--tui-spacing-2)", fontSize: "var(--tui-font-size-base)" }}>Per-column ghost (field reloading)</h4>
+      <h4 style={{ margin: "0 0 var(--tui-spacing-2)", fontSize: "var(--tui-font-size-md)" }}>Per-column ghost (field reloading)</h4>
       <pre style={{ background: "var(--tui-color-brand-black-50)", padding: "var(--tui-spacing-3) var(--tui-spacing-4)", borderRadius: "var(--tui-radius-md)", overflow: "auto", fontSize: "var(--tui-font-size-xs)", margin: "0 0 var(--tui-spacing-4)" }}>
         <code>{`const columns = [
   { key: "name", title: "Name", dataIndex: "name" },
@@ -1354,7 +1354,7 @@ const handleAction = (index: number) => {
 <Table columns={columns} dataSource={data} />`}</code>
       </pre>
 
-      <h4 style={{ margin: "0 0 var(--tui-spacing-2)", fontSize: "var(--tui-font-size-base)" }}>TableCell ghost (manual ExTable)</h4>
+      <h4 style={{ margin: "0 0 var(--tui-spacing-2)", fontSize: "var(--tui-font-size-md)" }}>TableCell ghost (manual ExTable)</h4>
       <pre style={{ background: "var(--tui-color-brand-black-50)", padding: "var(--tui-spacing-3) var(--tui-spacing-4)", borderRadius: "var(--tui-radius-md)", overflow: "auto", fontSize: "var(--tui-font-size-xs)", margin: "0" }}>
         <code>{`<TableCell isGhost title="Auto-sized content" />
 <TableCell isGhost ghostWidth="100px" ghostHeight="16px" />`}</code>

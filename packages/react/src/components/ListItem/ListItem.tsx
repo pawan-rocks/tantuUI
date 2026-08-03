@@ -110,7 +110,7 @@ export const ListItem = forwardRef<HTMLDivElement, ListItemProps>(
     },
     ref,
   ) => {
-    const effectiveIntent = intent === "default" ? "primary" : intent;
+    const effectiveIntent = intent;
     const showDivider = divider ?? bordered ?? true;
 
     // Build inline style with custom colors

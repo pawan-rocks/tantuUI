@@ -65,7 +65,7 @@
   flex-shrink: 0;
   width: var(--tui-radio-indicator-size, 18px);
   height: var(--tui-radio-indicator-size, 18px);
-  border: var(--tui-border-width-1, 1px) solid var(--tui-radio-border, var(--tui-color-brand-primary-300));
+  border: var(--tui-border-width-1, 1px) solid var(--tui-radio-border, var(--tui-color-brand-default-300));
   border-radius: 50%;
   background-color: transparent;
   transition:
@@ -76,7 +76,7 @@
 
 /* Hover state on indicator */
 .tui-radio:hover:not(.tui-radio--disabled) .tui-radio__indicator {
-  border-color: var(--tui-radio-border-hover, var(--tui-color-brand-primary-500));
+  border-color: var(--tui-radio-border-hover, var(--tui-color-brand-default-500));
 }
 
 /* ─── Dot (inner circle, visible when checked) ───────────────────────────── */
@@ -91,19 +91,19 @@
 
 /* ─── Checked state ──────────────────────────────────────────────────────── */
 .tui-radio__indicator--checked {
-  border-color: var(--tui-radio-active, var(--tui-color-brand-primary-600));
+  border-color: var(--tui-radio-active, var(--tui-color-brand-default-600));
 }
 
 .tui-radio__indicator--checked .tui-radio__dot {
-  background-color: var(--tui-radio-active, var(--tui-color-brand-primary-600));
+  background-color: var(--tui-radio-active, var(--tui-color-brand-default-600));
 }
 
 .tui-radio:hover:not(.tui-radio--disabled) .tui-radio__indicator--checked {
-  border-color: var(--tui-radio-active-hover, var(--tui-color-brand-primary-700));
+  border-color: var(--tui-radio-active-hover, var(--tui-color-brand-default-700));
 }
 
 .tui-radio:hover:not(.tui-radio--disabled) .tui-radio__indicator--checked .tui-radio__dot {
-  background-color: var(--tui-radio-active-hover, var(--tui-color-brand-primary-700));
+  background-color: var(--tui-radio-active-hover, var(--tui-color-brand-default-700));
 }
 
 /* ─── Label ──────────────────────────────────────────────────────────────── */
@@ -383,8 +383,8 @@
   display: flex;
   width: 100%;
   padding: var(--tui-spacing-2) var(--tui-spacing-3);
-  background-color: var(--tui-radio-box-bg, var(--tui-color-brand-black-50));
-  border: var(--tui-border-width-1) solid var(--tui-radio-box-border, var(--tui-color-brand-black-200));
+  background-color: var(--tui-radio-box-bg, var(--tui-color-brand-default-50));
+  border: var(--tui-border-width-1) solid var(--tui-radio-box-border, var(--tui-color-brand-default-200));
   border-radius: var(--tui-radius-md);
   max-width: none;
   transition:
@@ -394,30 +394,30 @@
 }
 
 .tui-radio--box:hover:not(.tui-radio--disabled) {
-  background-color: var(--tui-radio-box-bg-hover, var(--tui-color-brand-black-100));
-  border-color: var(--tui-radio-box-border-hover, var(--tui-color-brand-black-300));
+  background-color: var(--tui-radio-box-bg-hover, var(--tui-color-brand-default-100));
+  border-color: var(--tui-radio-box-border-hover, var(--tui-color-brand-default-300));
 }
 
 .tui-radio--box:active:not(.tui-radio--disabled) {
-  background-color: var(--tui-radio-box-bg-active, var(--tui-color-brand-black-100));
-  border-color: var(--tui-radio-box-border-active, var(--tui-color-brand-black-400));
+  background-color: var(--tui-radio-box-bg-active, var(--tui-color-brand-default-100));
+  border-color: var(--tui-radio-box-border-active, var(--tui-color-brand-default-400));
 }
 
 /* Box checked state */
 .tui-radio--box-checked {
-  background-color: var(--tui-radio-box-bg-checked, var(--tui-color-brand-black-50));
-  border-color: var(--tui-radio-box-border-checked, var(--tui-color-brand-black-600));
+  background-color: var(--tui-radio-box-bg-checked, var(--tui-color-brand-default-50));
+  border-color: var(--tui-radio-box-border-checked, var(--tui-color-brand-default-600));
 }
 
 .tui-radio--box-checked:hover:not(.tui-radio--disabled) {
-  border-color: var(--tui-radio-box-border-checked-hover, var(--tui-color-brand-black-700));
+  border-color: var(--tui-radio-box-border-checked-hover, var(--tui-color-brand-default-700));
 }
 
 /* Box focus state */
 .tui-radio--box:has(.tui-radio__native:focus-visible) {
   box-shadow:
     0 0 0 0.5px var(--tui-color-focus-ring-gap),
-    0 0 1px 2px var(--tui-radio-box-ring, var(--tui-color-brand-black-400));
+    0 0 1px 2px var(--tui-radio-box-ring, var(--tui-color-brand-default-400));
 }
 
 /* Box disabled */
@@ -580,7 +580,7 @@
 .tui-radio:has(.tui-radio__native:focus-visible) .tui-radio__indicator {
   box-shadow:
     0 0 0 0.5px var(--tui-color-focus-ring-gap),
-    0 0 1px 2px var(--tui-ring-color, var(--tui-color-brand-primary-400));
+    0 0 1px 2px var(--tui-ring-color, var(--tui-color-brand-default-400));
 }
 
 /* ─── RadioGroup ─────────────────────────────────────────────────────────── */
@@ -602,11 +602,11 @@
 
 .tui-radio--text-intent .tui-radio__title,
 .tui-radio--text-intent .tui-label {
-  color: var(--tui-radio-active, var(--tui-color-brand-primary-600));
+  color: var(--tui-radio-active, var(--tui-color-brand-default-600));
 }
 
 .tui-radio--text-intent .tui-radio__subtitle {
-  color: var(--tui-color-brand-primary-500);
+  color: var(--tui-color-brand-default-500);
 }
 
 .tui-radio--text-intent.tui-radio--primary .tui-radio__title,

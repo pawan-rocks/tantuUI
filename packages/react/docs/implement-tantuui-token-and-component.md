@@ -69,7 +69,7 @@ module.exports = { presets: [tantuPreset], content: ["./src/**/*.{tsx,ts}"] };
 
 - Decimal spacing uses underscore: `--tui-spacing-0_5`, `--tui-spacing-1_5`
 - Size scales have no hyphen before number: `--tui-radius-2xl`, `--tui-font-size-3xl`
-- Color with opacity: `rgb(var(--tui-color-primary-600-rgb) / 0.5)`
+- Color with opacity: `rgb(var(--tui-color-brand-primary-600-rgb) / 0.5)`
 
 ### Never use hardcoded values
 

@@ -80,6 +80,7 @@ function App() {
 | `Text` | Typography with size, weight, color, truncation |
 | `Box` | Layout container with spacing, flex/grid, rounded, shadow |
 | `Input` | Text input with icons, prefix/suffix, clearable |
+| `InputOtp` | Multi-cell one-time-password input with configurable length, min/max, paste, and auto-advance |
 | `Textarea` | Multi-line input with auto-resize, character count |
 | `Checkbox` | With indeterminate, box style, labels |
 | `Radio` | With group context, box style |

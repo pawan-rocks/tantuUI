@@ -5,7 +5,7 @@
  * with the `--tui-` prefix.
  *
  * Supports nested objects with kebab-case key joining:
- *   color.primitive.primary500 → --tui-color-primary-500
+ *   color.primitive.brandPrimary600 → --tui-color-brand-primary-600
  */
 
 type TokenValue = string | number;
@@ -13,7 +13,7 @@ type TokenObject = { [key: string]: TokenValue | TokenObject };
 
 /**
  * Converts a camelCase or PascalCase key segment to kebab-case.
- * e.g. "primary500" → "primary-500"
+ * e.g. "brandPrimary600" → "brand-primary-600"
  *      "fontFamily"  → "font-family"
  *      "2xl"         → "2xl"  (already fine)
  */

@@ -8,15 +8,15 @@
   font-family: inherit;
   box-sizing: border-box;
   transition: background var(--tui-duration-fast, 150ms) var(--tui-ease-in-out, ease-in-out);
-  --tui-list-item-hover-default-bg: var(--tui-color-brand-black-50);
-  --tui-list-item-selected-default-bg: var(--tui-color-brand-blue-100);
-  --tui-list-item-border-default-color: var(--tui-color-brand-black-100);
-  --tui-list-item-focus-color: var(--tui-color-brand-blue-500);
-  --tui-list-item-title-size: var(--tui-font-size-base);
+  --tui-list-item-hover-default-bg: var(--tui-color-brand-default-50);
+  --tui-list-item-selected-default-bg: var(--tui-color-brand-default-100);
+  --tui-list-item-border-default-color: var(--tui-color-brand-default-200);
+  --tui-list-item-focus-color: var(--tui-color-brand-default-400);
+  --tui-list-item-title-size: var(--tui-font-size-md);
   --tui-list-item-subtitle-size: var(--tui-font-size-sm);
   --tui-list-item-title-leading: var(--tui-leading-tight);
   --tui-list-item-subtitle-leading: var(--tui-leading-normal);
-  --tui-list-item-title-icon-size: var(--tui-font-size-base);
+  --tui-list-item-title-icon-size: var(--tui-font-size-md);
   --tui-list-item-subtitle-icon-size: var(--tui-font-size-sm);
 }
 
@@ -41,9 +41,9 @@
 }
 
 .tui-list-item--md {
-  --tui-list-item-title-size: var(--tui-font-size-base);
+  --tui-list-item-title-size: var(--tui-font-size-md);
   --tui-list-item-subtitle-size: var(--tui-font-size-sm);
-  --tui-list-item-title-icon-size: var(--tui-font-size-base);
+  --tui-list-item-title-icon-size: var(--tui-font-size-md);
   --tui-list-item-subtitle-icon-size: var(--tui-font-size-sm);
   padding: var(--tui-spacing-3, 12px) var(--tui-spacing-4, 16px);
   min-height: 48px;
@@ -51,9 +51,9 @@
 
 .tui-list-item--lg {
   --tui-list-item-title-size: var(--tui-font-size-lg);
-  --tui-list-item-subtitle-size: var(--tui-font-size-base);
+  --tui-list-item-subtitle-size: var(--tui-font-size-md);
   --tui-list-item-title-icon-size: var(--tui-font-size-lg);
-  --tui-list-item-subtitle-icon-size: var(--tui-font-size-base);
+  --tui-list-item-subtitle-icon-size: var(--tui-font-size-md);
   padding: var(--tui-spacing-4, 16px) var(--tui-spacing-5, 20px);
   min-height: 56px;
 }
@@ -210,9 +210,9 @@
 }
 
 .tui-list-item--black {
-  --tui-list-item-hover-default-bg: var(--tui-color-brand-black-100);
+  --tui-list-item-hover-default-bg: var(--tui-color-brand-black-50);
   --tui-list-item-selected-default-bg: var(--tui-color-brand-black-200);
-  --tui-list-item-border-default-color: var(--tui-color-brand-black-300);
+  --tui-list-item-border-default-color: var(--tui-color-brand-black-200);
   --tui-list-item-focus-color: var(--tui-color-brand-black-400);
 }
 

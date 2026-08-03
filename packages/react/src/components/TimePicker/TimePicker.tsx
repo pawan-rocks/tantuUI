@@ -412,7 +412,11 @@ export const TimePicker = forwardRef<HTMLDivElement, TimePickerProps>(
           onClose={() => setIsOpen(false)}
           placement={placement}
           offset={4}
-          className={cn("tui-timepicker__popup", `tui-timepicker__popup--${size}`)}
+          className={cn(
+            "tui-timepicker__popup",
+            `tui-timepicker__popup--${size}`,
+            `tui-timepicker__popup--${intent}`,
+          )}
         >
           {isRange && (
             <div className="tui-timepicker__tabs">

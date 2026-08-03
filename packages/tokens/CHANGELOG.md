@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+- Corrected `--tui-opacity-85` from `0.55` to `0.85`
+- Added `surfaceSecondary` and a backwards-compatible `fontSize.base` alias
+- Documented the Sizing token category and corrected the JavaScript API examples
+
 ## 0.0.8
 
 ### Added

@@ -286,8 +286,8 @@ export const DateAwareConstraints: Story = {
                 fontSize: "var(--tui-font-size-xs)",
                 borderRadius: "4px",
                 border: "1px solid",
-                borderColor: selectedDate.getDate() === d.date.getDate() ? "var(--tui-color-primary-500)" : "var(--tui-color-neutral-200)",
-                background: selectedDate.getDate() === d.date.getDate() ? "var(--tui-color-primary-50)" : "transparent",
+                borderColor: selectedDate.getDate() === d.date.getDate() ? "var(--tui-color-brand-primary-500)" : "var(--tui-color-brand-default-200)",
+                background: selectedDate.getDate() === d.date.getDate() ? "var(--tui-color-brand-primary-50)" : "transparent",
                 cursor: "pointer",
               }}
             >

@@ -306,15 +306,15 @@ export const Ghost: Story = {
 
 // ── Custom Class Only ─────────────────────────────────────────────────────
 /**
- * Using only className with no design props — fully custom styled.
+ * Using only className and children — fully custom styled.
  */
 export const CustomClassOnly: Story = {
   name: "Custom Class Only",
   parameters: { controls: { disable: true } },
   render: () => (
     <>
-      <style>{`.my-list-item { background: linear-gradient(90deg, #f0f9ff, #fff); border-left: 3px solid #3b82f6; }`}</style>
-      <ListItem className="my-list-item" title="Custom styled" subtitle="Via className only" bordered={false} />
+      <style>{`.my-list-item { background: linear-gradient(90deg, var(--tui-color-info-50), var(--tui-color-white)); border-left: var(--tui-border-width-3) solid var(--tui-color-info-500); padding: var(--tui-spacing-3) var(--tui-spacing-4); }`}</style>
+      <ListItem className="my-list-item">Custom styled</ListItem>
     </>
   ),
 };

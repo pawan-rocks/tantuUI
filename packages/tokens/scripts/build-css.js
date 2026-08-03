@@ -64,7 +64,7 @@ function hexToRGB(hex) {
 
 /**
  * Generates companion --tui-color-*-rgb variables for all primitive colors.
- * Usage: rgb(var(--tui-color-primary-600-rgb) / 0.5)
+ * Usage: rgb(var(--tui-color-brand-primary-600-rgb) / 0.5)
  */
 function buildColorRGB(primitiveObj, selector = ":root") {
   const prefix = "--tui-color";

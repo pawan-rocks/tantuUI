@@ -28,9 +28,9 @@ const preview: Preview = {
     backgrounds: {
       default: "Light",
       values: [
-        { name: "Light",   value: "#ffffff" },
-        { name: "Dark",    value: "#111827" },
-        { name: "Subtle",  value: "#f9fafb" },
+        { name: "Light",   value: "var(--tui-color-bg-base)" },
+        { name: "Dark",    value: "var(--tui-color-brand-default-900)" },
+        { name: "Subtle",  value: "var(--tui-color-bg-subtle)" },
       ],
     },
 

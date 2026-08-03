@@ -129,7 +129,7 @@
 }
 
 .tui-datepicker__cancel-btn:focus-visible {
-  outline: 2px solid var(--tui-color-primary-500);
+  outline: 2px solid var(--tui-color-brand-default-500);
   outline-offset: 2px;
 }
 
@@ -162,7 +162,7 @@
 
 /* ─── OK button intent colors ──────────────────────────────────────────────── */
 
-.tui-datepicker__ok-btn--default { --_ok-bg: var(--tui-color-brand-primary-600); --_ok-bg-hover: var(--tui-color-brand-primary-700); --_ok-ring: var(--tui-color-brand-primary-500); }
+.tui-datepicker__ok-btn--default { --_ok-bg: var(--tui-color-brand-default-600); --_ok-bg-hover: var(--tui-color-brand-default-700); --_ok-ring: var(--tui-color-brand-default-500); }
 .tui-datepicker__ok-btn--primary { --_ok-bg: var(--tui-color-brand-primary-600); --_ok-bg-hover: var(--tui-color-brand-primary-700); --_ok-ring: var(--tui-color-brand-primary-500); }
 .tui-datepicker__ok-btn--secondary { --_ok-bg: var(--tui-color-brand-secondary-400); --_ok-bg-hover: var(--tui-color-brand-secondary-500); --_ok-ring: var(--tui-color-brand-secondary-300); color: var(--tui-color-brand-black-900); }
 .tui-datepicker__ok-btn--tertiary { --_ok-bg: var(--tui-color-brand-tertiary-600); --_ok-bg-hover: var(--tui-color-brand-tertiary-700); --_ok-ring: var(--tui-color-brand-tertiary-500); }
@@ -217,19 +217,19 @@
 }
 
 .tui-datepicker__preset-btn:focus-visible {
-  outline: 2px solid var(--tui-color-primary-500);
+  outline: 2px solid var(--tui-color-brand-default-500);
   outline-offset: 2px;
 }
 
 .tui-datepicker__preset-btn--active {
-  background: var(--tui-color-primary-50);
-  color: var(--tui-color-primary-700);
+  background: var(--tui-color-brand-default-50);
+  color: var(--tui-color-brand-default-700);
   font-weight: var(--tui-font-weight-medium);
 }
 
 .tui-datepicker__preset-btn--active:hover {
-  background: var(--tui-color-primary-100);
-  color: var(--tui-color-primary-800);
+  background: var(--tui-color-brand-default-100);
+  color: var(--tui-color-brand-default-800);
 }
 
 .tui-datepicker__range-calendar {

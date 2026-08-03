@@ -1,0 +1,35 @@
+.tui-input-otp {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tui-spacing-2);
+  width: max-content;
+  max-width: 100%;
+}
+
+.tui-input-otp--xs { --tui-input-otp-cell-size: var(--tui-size-xs); }
+.tui-input-otp--sm { --tui-input-otp-cell-size: var(--tui-size-sm); }
+.tui-input-otp--md { --tui-input-otp-cell-size: var(--tui-size-md); }
+.tui-input-otp--lg { --tui-input-otp-cell-size: var(--tui-size-lg); }
+.tui-input-otp--xl { --tui-input-otp-cell-size: var(--tui-size-xl); }
+
+.tui-input-otp__cell {
+  flex: 0 1 var(--tui-input-otp-cell-size);
+  width: var(--tui-input-otp-cell-size);
+  min-width: 0;
+}
+
+.tui-input-otp__cell .tui-input__native {
+  text-align: center;
+}
+
+.tui-input-otp__cell .tui-input__native::placeholder {
+  text-align: center;
+}
+
+.tui-input-otp .tui-shimmer {
+  flex: 0 0 var(--tui-input-otp-cell-size);
+  width: var(--tui-input-otp-cell-size);
+  height: var(--tui-input-otp-cell-size);
+  min-height: var(--tui-input-otp-cell-size);
+  box-sizing: border-box;
+}

@@ -13,6 +13,7 @@
 @import "./components/LinkText/LinkText.css";
 @import "./components/Label/Label.css";
 @import "./components/Input/Input.css";
+@import "./components/InputOtp/InputOtp.css";
 @import "./components/Textarea/Textarea.css";
 @import "./components/Checkbox/Checkbox.css";
 @import "./components/Radio/Radio.css";
@@ -32,3 +33,5 @@
 @import "./components/Modal/Modal.css";
 @import "./components/ListItem/ListItem.css";
 @import "./components/ListGroup/ListGroup.css";
+/* Dark-mode semantic roles and component state overrides must load last. */
+@import "./styles/dark-mode.css";

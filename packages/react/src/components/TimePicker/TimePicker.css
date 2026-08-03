@@ -111,9 +111,9 @@
 }
 
 .tui-timepicker__ok-btn {
-  --tui-timepicker-ok-bg: var(--tui-color-brand-primary-600);
-  --tui-timepicker-ok-bg-hover: var(--tui-color-brand-primary-700);
-  --tui-timepicker-ok-focus: var(--tui-color-brand-primary-400);
+  --tui-timepicker-ok-bg: var(--tui-color-brand-default-600);
+  --tui-timepicker-ok-bg-hover: var(--tui-color-brand-default-700);
+  --tui-timepicker-ok-focus: var(--tui-color-brand-default-400);
   --tui-timepicker-ok-text: var(--tui-color-white);
   padding: var(--tui-spacing-1) var(--tui-spacing-2_5);
   border-radius: var(--tui-radius-md);
@@ -146,7 +146,12 @@
 
 /* ─── OK button intents ────────────────────────────────────────────────────── */
 
-.tui-timepicker__ok-btn--default,
+.tui-timepicker__ok-btn--default {
+  --tui-timepicker-ok-bg: var(--tui-color-brand-default-600);
+  --tui-timepicker-ok-bg-hover: var(--tui-color-brand-default-700);
+  --tui-timepicker-ok-focus: var(--tui-color-brand-default-400);
+}
+
 .tui-timepicker__ok-btn--primary {
   --tui-timepicker-ok-bg: var(--tui-color-brand-primary-600);
   --tui-timepicker-ok-bg-hover: var(--tui-color-brand-primary-700);

@@ -17,7 +17,7 @@
   outline: none;
   box-shadow:
     0 0 0 0.5px var(--tui-color-focus-ring-gap),
-    0 0 1px 2px var(--tui-ring-color, var(--tui-color-focus-ring));
+    0 0 1px 2px var(--tui-ring-color, var(--tui-color-brand-default-400));
   border-radius: var(--tui-radius-full);
 }
 
@@ -29,7 +29,7 @@
   width: var(--tui-switch-track-w, 36px);
   height: var(--tui-switch-track-h, 20px);
   border-radius: var(--tui-radius-full);
-  background-color: var(--tui-switch-track-off, var(--tui-color-brand-primary-300));
+  background-color: var(--tui-switch-track-off, var(--tui-color-brand-default-300));
   transition:
     background-color var(--tui-duration-normal) var(--tui-ease-in-out);
 }
@@ -47,12 +47,12 @@
   transition:
     transform var(--tui-duration-normal) var(--tui-ease-in-out),
     width var(--tui-duration-fast) var(--tui-ease-in-out);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--tui-shadow-xs);
 }
 
 /* ─── Checked state ──────────────────────────────────────────────────────── */
 .tui-switch--checked .tui-switch__track {
-  background-color: var(--tui-switch-active, var(--tui-color-brand-primary-600));
+  background-color: var(--tui-switch-active, var(--tui-color-brand-default-600));
 }
 
 .tui-switch--checked .tui-switch__thumb {
@@ -61,11 +61,11 @@
 
 /* ─── Hover state ────────────────────────────────────────────────────────── */
 .tui-switch:hover:not(.tui-switch--disabled) .tui-switch__track {
-  background-color: var(--tui-switch-track-off-hover, var(--tui-color-brand-primary-400));
+  background-color: var(--tui-switch-track-off-hover, var(--tui-color-brand-default-400));
 }
 
 .tui-switch--checked:hover:not(.tui-switch--disabled) .tui-switch__track {
-  background-color: var(--tui-switch-active-hover, var(--tui-color-brand-primary-700));
+  background-color: var(--tui-switch-active-hover, var(--tui-color-brand-default-700));
 }
 
 /* ─── Pressed / Active state ─────────────────────────────────────────────── */

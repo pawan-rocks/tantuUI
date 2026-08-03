@@ -251,8 +251,9 @@ React components consume the same `--tui-*` CSS variables, so custom token overr
 | Shadows | `--tui-shadow-*` | `tui-shadow-*` | `tui-shadow-md` |
 | Border Width | `--tui-border-width-*` | `tui-border-*` | `tui-border-1` |
 | Z-Index | `--tui-z-*` | `tui-z-*` | `tui-z-dropdown` |
+| Duration | `--tui-duration-*` | — | `--tui-duration-normal` |
 | Opacity | `--tui-opacity-*` | `tui-opacity-*` | `tui-opacity-60` |
-| Duration | `--tui-duration-*` | `tui-transition-*` | `tui-transition-colors` |
+| Sizing | `--tui-size-*` | — | `--tui-size-md` |
 
 ---
 
@@ -280,7 +281,8 @@ React components consume the same `--tui-*` CSS variables, so custom token overr
 import { color, spacing, typography, radius, shadow, tokens } from "@tantuui/tokens";
 
 console.log(spacing[4]);     // "1rem"
-console.log(color.brand.blue[600]); // "#2563eb"
+console.log(color.primitive.brandBlue600); // "#2563eb"
+console.log(color.semantic.primaryDefault); // "var(--tui-color-brand-primary-600)"
 ```
 
 ---

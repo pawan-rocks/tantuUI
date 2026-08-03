@@ -8,21 +8,33 @@ VS Code extension providing intelligent autocomplete, hover preview, and inline 
 
 Start typing `tui-` in any `class`, `className`, or `@apply` context and get smart suggestions with CSS output previews.
 
-- All `tui-bg-*`, `tui-text-*`, `tui-border-*` color classes
-- Spacing: `tui-p-*`, `tui-m-*`, `tui-gap-*`
-- Typography: `tui-text-lg`, `tui-font-bold`, `tui-leading-*`
-- Layout: `tui-flex`, `tui-grid`, `tui-items-center`, etc.
-- Border radius: `tui-rounded-*`
-- Shadows: `tui-shadow-*`
-- Opacity: `tui-opacity-*`
-- Z-index: `tui-z-*`
+- Color utilities: `tui-bg-*`, `tui-text-*`, and `tui-border-*`
+- Brand palettes: `brand-default`, `brand-primary`, `brand-secondary`, `brand-tertiary`, `brand-blue`, `brand-pink`, `brand-gray`, `brand-white`, and `brand-black`
+- Semantic palettes: `success`, `warning`, `danger`, `info`, `teal`, `orange`, `rose`, `indigo`, `mint`, and `coal`
+- Spacing and sizing: `tui-p-*`, `tui-m-*`, `tui-gap-*`, `tui-w-*`, and `tui-h-*`
+- Typography: `tui-text-lg`, `tui-font-bold`, and `tui-leading-*`
+- Layout: `tui-flex`, `tui-grid`, `tui-items-center`, and more
+- Border radius, shadows, opacity, z-index, transforms, animations, filters, and additional utilities
+
+The color palettes provide the 50–950 scales plus each palette's `-default` utility where the token exists.
+
+### Variants and arbitrary values
+
+The extension also suggests and previews:
+
+- Pseudo-class variants: `hover:`, `focus:`, `focus-visible:`, `active:`, `disabled:`, `visited:`, and child variants such as `first:` and `odd:`
+- Group variants: `group-hover:`, `group-focus:`, and `group-active:`
+- Responsive variants: `sm:`, `md:`, `lg:`, `xl:`, and `2xl:`
+- Important variants such as `!tui-p-4`
+- Arbitrary values such as `tui-w-[320px]`, `tui-p-[1.25rem]`, and `tui-text-[18px]` in hover preview
 
 ### Hover Preview
 
 Hover over any `tui-*` class to see:
-- The exact CSS output
+- The exact CSS output, including variants and `!important`
 - The token variable it maps to
 - Color swatch (for color utilities)
+- Resolved CSS for supported arbitrary values
 
 ### Color Decorators
 

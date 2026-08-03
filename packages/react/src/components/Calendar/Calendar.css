@@ -245,24 +245,24 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   SELECTED & RANGE — Default intent (same as primary / brand-primary)
+   SELECTED & RANGE — Default intent (brand-default / neutral)
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .tui-calendar--default .tui-calendar__day--selected,
 .tui-calendar--default .tui-calendar__day--range-start,
 .tui-calendar--default .tui-calendar__day--range-end {
-  background-color: var(--tui-color-brand-primary-600);
+  background-color: var(--tui-color-brand-default-600);
   color: var(--tui-color-white);
   font-weight: var(--tui-font-weight-medium);
 }
 
 .tui-calendar--default .tui-calendar__day--in-range {
-  background-color: var(--tui-color-brand-primary-100);
+  background-color: var(--tui-color-brand-default-100);
   border-radius: 0;
 }
 
 .tui-calendar--default .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end) {
-  background-color: var(--tui-color-brand-primary-50);
+  background-color: var(--tui-color-brand-default-50);
 }
 
 /* ─── Primary (brand-primary / purple) ───────────────────────────────────── */

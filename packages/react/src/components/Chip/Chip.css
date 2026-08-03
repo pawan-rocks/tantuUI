@@ -170,8 +170,8 @@
 
 /* default filled */
 .tui-chip--default.tui-chip--filled {
-  background-color: var(--tui-color-brand-primary-50);
-  color: var(--tui-color-brand-primary-700);
+  background-color: var(--tui-color-brand-default-50);
+  color: var(--tui-color-brand-default-700);
 }
 
 /* primary filled */
@@ -265,8 +265,8 @@
 /* default outlined */
 .tui-chip--default.tui-chip--outlined {
   background-color: transparent;
-  border-color: var(--tui-color-brand-primary-300);
-  color: var(--tui-color-brand-primary-700);
+  border-color: var(--tui-color-brand-default-300);
+  color: var(--tui-color-brand-default-700);
 }
 
 /* primary outlined */
@@ -373,7 +373,7 @@
 
 /* filled hover */
 .tui-chip--default.tui-chip--filled:hover:not(.tui-chip--disabled) {
-  background-color: var(--tui-color-brand-primary-200);
+  background-color: var(--tui-color-brand-default-200);
 }
 .tui-chip--primary.tui-chip--filled:hover:not(.tui-chip--disabled) {
   background-color: var(--tui-color-brand-primary-200);
@@ -420,7 +420,7 @@
 
 /* outlined hover */
 .tui-chip--default.tui-chip--outlined:hover:not(.tui-chip--disabled) {
-  background-color: var(--tui-color-brand-primary-50);
+  background-color: var(--tui-color-brand-default-50);
 }
 .tui-chip--primary.tui-chip--outlined:hover:not(.tui-chip--disabled) {
   background-color: var(--tui-color-brand-primary-50);
@@ -471,8 +471,8 @@
 
 /* filled selected — darken bg one step + add border */
 .tui-chip--default.tui-chip--filled.tui-chip--selected {
-  background-color: var(--tui-color-brand-primary-200);
-  border-color: var(--tui-color-brand-primary-300);
+  background-color: var(--tui-color-brand-default-200);
+  border-color: var(--tui-color-brand-default-300);
 }
 .tui-chip--primary.tui-chip--filled.tui-chip--selected {
   background-color: var(--tui-color-brand-primary-200);
@@ -533,8 +533,8 @@
 
 /* outlined selected — fill bg + darken border */
 .tui-chip--default.tui-chip--outlined.tui-chip--selected {
-  background-color: var(--tui-color-brand-primary-50);
-  border-color: var(--tui-color-brand-primary-500);
+  background-color: var(--tui-color-brand-default-50);
+  border-color: var(--tui-color-brand-default-500);
 }
 .tui-chip--primary.tui-chip--outlined.tui-chip--selected {
   background-color: var(--tui-color-brand-primary-50);
@@ -601,7 +601,7 @@
     0 0 1px 2px var(--tui-chip-ring, var(--tui-color-brand-primary-400));
 }
 
-.tui-chip--default { --tui-chip-ring: var(--tui-color-brand-primary-400); }
+.tui-chip--default { --tui-chip-ring: var(--tui-color-brand-default-400); }
 .tui-chip--primary { --tui-chip-ring: var(--tui-color-brand-primary-400); }
 .tui-chip--secondary { --tui-chip-ring: var(--tui-color-brand-secondary-400); }
 .tui-chip--tertiary { --tui-chip-ring: var(--tui-color-brand-tertiary-400); }

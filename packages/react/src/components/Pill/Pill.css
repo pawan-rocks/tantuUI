@@ -149,8 +149,8 @@
 
 /* default subtle */
 .tui-pill--default.tui-pill--subtle {
-  background-color: var(--tui-color-brand-primary-50);
-  color: var(--tui-color-brand-primary-700);
+  background-color: var(--tui-color-brand-default-50);
+  color: var(--tui-color-brand-default-700);
 }
 
 /* primary subtle */
@@ -243,7 +243,7 @@
 
 /* default solid */
 .tui-pill--default.tui-pill--solid {
-  background-color: var(--tui-color-brand-primary-600);
+  background-color: var(--tui-color-brand-default-600);
   color: var(--tui-color-white);
 }
 
@@ -338,8 +338,8 @@
 /* default outlined */
 .tui-pill--default.tui-pill--outlined {
   background-color: transparent;
-  border: 1px solid var(--tui-color-brand-primary-300);
-  color: var(--tui-color-brand-primary-700);
+  border: 1px solid var(--tui-color-brand-default-300);
+  color: var(--tui-color-brand-default-700);
 }
 
 /* primary outlined */
@@ -448,7 +448,7 @@
     0 0 1px 2px var(--tui-pill-ring, var(--tui-color-brand-primary-400));
 }
 
-.tui-pill--default { --tui-pill-ring: var(--tui-color-brand-primary-400); }
+.tui-pill--default { --tui-pill-ring: var(--tui-color-brand-default-400); }
 .tui-pill--primary { --tui-pill-ring: var(--tui-color-brand-primary-400); }
 .tui-pill--secondary { --tui-pill-ring: var(--tui-color-brand-secondary-400); }
 .tui-pill--tertiary { --tui-pill-ring: var(--tui-color-brand-tertiary-400); }
