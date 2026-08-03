@@ -70,7 +70,7 @@
 .tui-table--lg .tui-table__header-cell,
 .tui-table--lg .tui-table__cell {
   padding: var(--tui-spacing-4) var(--tui-spacing-5);
-  font-size: var(--tui-font-size-base);
+  font-size: var(--tui-font-size-md);
 }
 
 /* ─── Table Header ────────────────────────────────────────────────────────── */
@@ -134,7 +134,7 @@
 
 /* ─── Table Body ──────────────────────────────────────────────────────────── */
 .tui-table__body {
-  background-color: var(--tui-table-body-bg, white);
+  background-color: var(--tui-table-body-bg, var(--tui-color-surface-default));
 }
 
 /* ─── Table Row ───────────────────────────────────────────────────────────── */
@@ -177,7 +177,7 @@
   padding-top: calc(var(--tui-spacing-3) + 1px);
   vertical-align: top;
   text-align: center;
-  background-color: var(--tui-table-body-bg, white);
+  background-color: var(--tui-table-body-bg, var(--tui-color-surface-default));
   border-bottom: var(--tui-border-width-1) solid var(--tui-color-border-default);
 }
 
@@ -195,7 +195,7 @@
   padding: var(--tui-spacing-3) var(--tui-spacing-4);
   vertical-align: top;
   color: var(--tui-color-text-primary);
-  background-color: var(--tui-table-body-bg, white);
+  background-color: var(--tui-table-body-bg, var(--tui-color-surface-default));
   border-bottom: var(--tui-border-width-1) solid var(--tui-color-border-default);
 }
 
@@ -323,7 +323,7 @@
   bottom: 0;
   width: 6px;
   pointer-events: none;
-  box-shadow: inset 6px 0 6px -6px rgba(0, 0, 0, 0.06);
+  box-shadow: inset 6px 0 6px -6px rgb(var(--tui-color-brand-black-950-rgb) / var(--tui-opacity-5));
 }
 
 /* Shadow hints for sticky right columns */
@@ -337,7 +337,7 @@
   bottom: 0;
   width: 6px;
   pointer-events: none;
-  box-shadow: inset -6px 0 6px -6px rgba(0, 0, 0, 0.06);
+  box-shadow: inset -6px 0 6px -6px rgb(var(--tui-color-brand-black-950-rgb) / var(--tui-opacity-5));
 }
 
 /* ─── Sort Icons ──────────────────────────────────────────────────────────── */

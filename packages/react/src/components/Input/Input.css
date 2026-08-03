@@ -68,28 +68,28 @@
 /* Outline */
 .tui-input--outline {
   background-color: transparent;
-  border-color: var(--tui-color-brand-primary-300);
+  border-color: var(--tui-color-brand-default-300);
 }
 .tui-input--outline:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-brand-primary-400);
+  border-color: var(--tui-color-brand-default-400);
 }
 
 /* Soft */
 .tui-input--soft {
   background-color: transparent;
-  border-color: var(--tui-color-brand-primary-100);
+  border-color: var(--tui-color-brand-default-100);
 }
 .tui-input--soft:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-brand-primary-200);
+  border-color: var(--tui-color-brand-default-200);
 }
 
 /* Plain */
 .tui-input--plain {
   background-color: transparent;
-  border-color: var(--tui-color-brand-primary-50);
+  border-color: var(--tui-color-brand-default-50);
 }
 .tui-input--plain:hover:not(.tui-input--disabled) {
-  border-color: var(--tui-color-brand-primary-100);
+  border-color: var(--tui-color-brand-default-100);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -437,7 +437,7 @@
 .tui-input:has(.tui-input__native:focus-visible) {
   box-shadow:
     0 0 0 0.5px var(--tui-color-focus-ring-gap),
-    0 0 1px 2px var(--tui-ring-color, var(--tui-color-brand-primary-400));
+    0 0 1px 2px var(--tui-ring-color, var(--tui-color-brand-default-400));
 }
 
 /* Intent-based ring color on Input wrapper */

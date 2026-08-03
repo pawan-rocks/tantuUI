@@ -36,9 +36,9 @@
   line-height: var(--tui-leading-7);
 }
 
-/* ─── Intent colors ────────────────────────────────────────────────────────
-   Label.tsx normalizes default to the primary intent. */
-.tui-label--primary  { color: var(--tui-color-brand-primary-700); }
+/* ─── Intent colors ──────────────────────────────────────────────────────── */
+.tui-label--default   { color: var(--tui-color-brand-default-700); }
+.tui-label--primary   { color: var(--tui-color-brand-primary-700); }
 .tui-label--secondary { color: var(--tui-color-brand-secondary-700); }
 .tui-label--tertiary  { color: var(--tui-color-brand-tertiary-700); }
 .tui-label--success  { color: var(--tui-color-success-700); }

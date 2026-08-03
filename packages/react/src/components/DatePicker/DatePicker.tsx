@@ -809,7 +809,11 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
           onClose={() => setIsOpen(false)}
           placement={placement}
           offset={4}
-          className={cn("tui-datepicker__popup", `tui-datepicker__popup--${effectiveCalendarSize}`)}
+          className={cn(
+            "tui-datepicker__popup",
+            `tui-datepicker__popup--${effectiveCalendarSize}`,
+            `tui-datepicker__popup--${intent}`,
+          )}
         >
             <div className={cn((showSidebar || showTime) && "tui-datepicker__range-body")}>
               {sidebar ??

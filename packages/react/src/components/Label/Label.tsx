@@ -63,7 +63,7 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(
       );
     }
 
-    const effectiveIntent = intent === "default" ? "primary" : intent;
+    const effectiveIntent = intent;
 
     return (
       <label

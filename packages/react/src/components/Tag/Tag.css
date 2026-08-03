@@ -10,7 +10,7 @@
   white-space: nowrap;
   user-select: none;
   cursor: default;
-  border: 1px solid transparent;
+  border: var(--tui-border-width-1) solid transparent;
   padding-inline: var(--tui-tag-px, var(--tui-spacing-2_5));
   font-size: var(--tui-tag-font-size, var(--tui-font-size-xs));
   border-radius: var(--tui-tag-radius, var(--tui-radius-md));
@@ -31,7 +31,7 @@
 
 /* ─── Disabled ───────────────────────────────────────────────────────────── */
 .tui-tag--disabled {
-  opacity: var(--tui-opacity-40, 0.4);
+  opacity: var(--tui-opacity-40);
   pointer-events: none;
 }
 
@@ -111,7 +111,7 @@
 }
 
 .tui-tag--radius-full {
-  --tui-tag-radius: 9999px;
+  --tui-tag-radius: var(--tui-radius-full);
 }
 
 /* ─── Label truncation ───────────────────────────────────────────────────── */
@@ -175,8 +175,8 @@
 
 /* default filled */
 .tui-tag--default.tui-tag--filled {
-  background-color: var(--tui-color-brand-primary-50);
-  color: var(--tui-color-brand-primary-700);
+  background-color: var(--tui-color-brand-default-50);
+  color: var(--tui-color-brand-default-700);
 }
 
 /* primary filled */
@@ -270,8 +270,8 @@
 /* default outlined */
 .tui-tag--default.tui-tag--outlined {
   background-color: transparent;
-  border-color: var(--tui-color-brand-primary-300);
-  color: var(--tui-color-brand-primary-700);
+  border-color: var(--tui-color-brand-default-300);
+  color: var(--tui-color-brand-default-700);
 }
 
 /* primary outlined */
@@ -378,7 +378,7 @@
 
 /* filled hover */
 .tui-tag--interactive.tui-tag--default.tui-tag--filled:hover:not(.tui-tag--disabled) {
-  background-color: var(--tui-color-brand-primary-200);
+  background-color: var(--tui-color-brand-default-200);
 }
 .tui-tag--interactive.tui-tag--primary.tui-tag--filled:hover:not(.tui-tag--disabled) {
   background-color: var(--tui-color-brand-primary-200);
@@ -425,7 +425,7 @@
 
 /* outlined hover */
 .tui-tag--interactive.tui-tag--default.tui-tag--outlined:hover:not(.tui-tag--disabled) {
-  background-color: var(--tui-color-brand-primary-50);
+  background-color: var(--tui-color-brand-default-50);
 }
 .tui-tag--interactive.tui-tag--primary.tui-tag--outlined:hover:not(.tui-tag--disabled) {
   background-color: var(--tui-color-brand-primary-50);
@@ -476,8 +476,8 @@
 
 /* filled selected — darken bg one step + add border */
 .tui-tag--default.tui-tag--filled.tui-tag--selected {
-  background-color: var(--tui-color-brand-primary-200);
-  border-color: var(--tui-color-brand-primary-300);
+  background-color: var(--tui-color-brand-default-200);
+  border-color: var(--tui-color-brand-default-300);
 }
 .tui-tag--primary.tui-tag--filled.tui-tag--selected {
   background-color: var(--tui-color-brand-primary-200);
@@ -538,8 +538,8 @@
 
 /* outlined selected — fill bg + darken border */
 .tui-tag--default.tui-tag--outlined.tui-tag--selected {
-  background-color: var(--tui-color-brand-primary-50);
-  border-color: var(--tui-color-brand-primary-500);
+  background-color: var(--tui-color-brand-default-50);
+  border-color: var(--tui-color-brand-default-500);
 }
 .tui-tag--primary.tui-tag--outlined.tui-tag--selected {
   background-color: var(--tui-color-brand-primary-50);
@@ -606,7 +606,7 @@
     0 0 1px 2px var(--tui-tag-ring, var(--tui-color-brand-primary-400));
 }
 
-.tui-tag--default { --tui-tag-ring: var(--tui-color-brand-primary-400); }
+.tui-tag--default { --tui-tag-ring: var(--tui-color-brand-default-400); }
 .tui-tag--primary { --tui-tag-ring: var(--tui-color-brand-primary-400); }
 .tui-tag--secondary { --tui-tag-ring: var(--tui-color-brand-secondary-400); }
 .tui-tag--tertiary { --tui-tag-ring: var(--tui-color-brand-tertiary-400); }

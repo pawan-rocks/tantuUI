@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
+import { Calendar } from "../components/Calendar/Calendar";
+import { DatePicker } from "../components/DatePicker/DatePicker";
+import { TimePicker } from "../components/TimePicker/TimePicker";
 
 // ─── Color Swatch ──────────────────────────────────────────────────────────
 const Swatch = ({ name, value }: { name: string; value: string }) => (
@@ -29,6 +32,7 @@ const ColorsPage = () => {
     ]},
     { title: "Brand Primary (Purple)", prefix: "brand-primary", steps: scale },
     { title: "Brand Secondary (Light)", prefix: "brand-secondary", steps: scale },
+    { title: "Brand Default (Neutral)", prefix: "brand-default", steps: scale },
     { title: "Brand Tertiary (Navy)", prefix: "brand-tertiary", steps: scale },
     { title: "Brand Blue", prefix: "brand-blue", steps: scale },
     { title: "Brand Pink", prefix: "brand-pink", steps: scale },
@@ -68,21 +72,39 @@ const ColorsPage = () => {
         </p>
         <div style={{ display: "flex", gap: "var(--tui-spacing-3)", flexWrap: "wrap" }}>
           {[
-            { varName: "--tui-color-bg-base",         label: "bg-base" },
+            { varName: "--tui-color-bg-base",          label: "bg-base" },
             { varName: "--tui-color-bg-subtle",        label: "bg-subtle" },
             { varName: "--tui-color-bg-muted",         label: "bg-muted" },
+            { varName: "--tui-color-bg-inverse",       label: "bg-inverse" },
+            { varName: "--tui-color-surface-default",  label: "surface-default" },
+            { varName: "--tui-color-surface-raised",   label: "surface-raised" },
+            { varName: "--tui-color-surface-secondary",label: "surface-secondary" },
+            { varName: "--tui-color-surface-overlay",  label: "surface-overlay" },
+            { varName: "--tui-color-text-primary",     label: "text-primary" },
+            { varName: "--tui-color-text-secondary",   label: "text-secondary" },
+            { varName: "--tui-color-text-tertiary",    label: "text-tertiary" },
+            { varName: "--tui-color-text-disabled",    label: "text-disabled" },
+            { varName: "--tui-color-text-inverse",     label: "text-inverse" },
+            { varName: "--tui-color-text-link",        label: "text-link" },
+            { varName: "--tui-color-text-link-hover",  label: "text-link-hover" },
+            { varName: "--tui-color-brand-default",    label: "brand-default" },
             { varName: "--tui-color-primary-default",  label: "primary" },
             { varName: "--tui-color-primary-hover",    label: "primary-hover" },
             { varName: "--tui-color-primary-subtle",   label: "primary-subtle" },
             { varName: "--tui-color-primary-light",    label: "primary-light" },
-            { varName: "--tui-color-secondary-default", label: "secondary" },
+            { varName: "--tui-color-secondary-default",label: "secondary" },
             { varName: "--tui-color-secondary-hover",  label: "secondary-hover" },
             { varName: "--tui-color-secondary-subtle", label: "secondary-subtle" },
             { varName: "--tui-color-tertiary-default", label: "tertiary" },
             { varName: "--tui-color-tertiary-hover",   label: "tertiary-hover" },
             { varName: "--tui-color-tertiary-subtle",  label: "tertiary-subtle" },
             { varName: "--tui-color-border-default",   label: "border" },
-            { varName: "--tui-color-border-strong",    label: "border-strong" },
+            { varName: "--tui-color-border-strong",   label: "border-strong" },
+            { varName: "--tui-color-border-focus",    label: "border-focus" },
+            { varName: "--tui-color-focus-ring",      label: "focus-ring" },
+            { varName: "--tui-color-disabled-bg",     label: "disabled-bg" },
+            { varName: "--tui-color-disabled-text",   label: "disabled-text" },
+            { varName: "--tui-color-disabled-border", label: "disabled-border" },
           ].map(({ varName, label }) => <VarSwatch key={varName} varName={varName} label={label} />)}
         </div>
       </section>
@@ -107,6 +129,35 @@ const SpacingPage = () => {
             </div>
           );
         })}
+      </div>
+    </div>
+  );
+};
+
+// ── Sizing page ───────────────────────────────────────────────────────────
+const SizingPage = () => {
+  const values = [
+    { name: "xxs", label: "14px" },
+    { name: "xs-1", label: "16px" },
+    { name: "xs-2", label: "20px" },
+    { name: "xs", label: "24px" },
+    { name: "sm", label: "32px" },
+    { name: "md", label: "36px" },
+    { name: "lg", label: "42px" },
+    { name: "xl", label: "46px" },
+  ];
+
+  return (
+    <div style={{ fontFamily: "var(--tui-font-family-sans)", padding: "var(--tui-spacing-6)" }}>
+      <h2 style={{ fontSize: "var(--tui-font-size-lg)", fontWeight: "var(--tui-font-weight-semibold)", marginBottom: "var(--tui-spacing-6)", color: "var(--tui-color-text-primary)" }}>Sizing Scale</h2>
+      <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)" }}>
+        {values.map(({ name, label }) => (
+          <div key={name} style={{ display: "flex", alignItems: "center", gap: "var(--tui-spacing-4)" }}>
+            <span style={{ width: "var(--tui-spacing-8)", flexShrink: 0, fontFamily: "var(--tui-font-family-mono)", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)" }}>{name}</span>
+            <div style={{ width: `var(--tui-size-${name})`, height: "var(--tui-size-${name})", minWidth: "var(--tui-size-${name})", background: "var(--tui-color-brand-default-500)", borderRadius: "var(--tui-radius-md)" }} />
+            <span style={{ fontFamily: "var(--tui-font-family-mono)", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-secondary)" }}>--tui-size-{name} ({label})</span>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -172,7 +223,7 @@ const TypographyPage = () => (
     <section>
       <h2 style={{ fontSize: "var(--tui-font-size-lg)", fontWeight: "var(--tui-font-weight-semibold)", marginBottom: "var(--tui-spacing-4)", color: "var(--tui-color-text-primary)" }}>Font Sizes</h2>
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)" }}>
-        {(["2xs","xs","sm","md","lg","xl","2xl","3xl","4xl","5xl","6xl","7xl"] as const).map((size) => (
+        {(["2xs","xs","sm","md","base","lg","xl","2xl","3xl","4xl","5xl","6xl","7xl"] as const).map((size) => (
           <div key={size} style={{ display: "flex", alignItems: "baseline", gap: "var(--tui-spacing-4)" }}>
             <span style={{ width: 40, flexShrink: 0, fontFamily: "var(--tui-font-family-mono)", fontSize: "var(--tui-font-size-xs)", color: "var(--tui-color-text-tertiary)" }}>{size}</span>
             <span style={{ fontSize: `var(--tui-font-size-${size})`, color: "var(--tui-color-text-primary)", lineHeight: 1.2 }}>
@@ -296,6 +347,11 @@ export const Spacing: StoryObj = {
   render: () => <SpacingPage />,
 };
 
+export const Sizing: StoryObj = {
+  name: "Sizing",
+  render: () => <SizingPage />,
+};
+
 export const Radius: StoryObj = {
   name: "Radius",
   render: () => <RadiusPage />,
@@ -319,7 +375,7 @@ export const BorderWidths: StoryObj = {
 export const Opacity: StoryObj = {
   name: "Opacity",
   render: () => {
-    const steps = [0, 5, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 95, 100];
+    const steps = [0, 5, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 85, 90, 95, 100];
     return (
       <div style={{ fontFamily: "var(--tui-font-family-sans)", padding: "var(--tui-spacing-6)" }}>
         <h2 style={{ fontSize: "var(--tui-font-size-lg)", fontWeight: "var(--tui-font-weight-semibold)", marginBottom: "var(--tui-spacing-6)", color: "var(--tui-color-text-primary)" }}>Opacity</h2>
@@ -433,4 +489,64 @@ export const Animation: StoryObj = {
       </div>
     );
   },
+};
+
+
+export const DarkMode: StoryObj = {
+  name: "Dark Mode Contract",
+  render: () => (
+    <div style={{
+      fontFamily: "var(--tui-font-family-sans)",
+      padding: "var(--tui-spacing-6)",
+      background: "var(--tui-color-bg-base)",
+      color: "var(--tui-color-text-primary)",
+      display: "flex",
+      flexDirection: "column",
+      gap: "var(--tui-spacing-4)",
+    }}>
+      <div>
+        <h2 style={{ margin: 0, color: "var(--tui-color-text-primary)" }}>Theme-aware semantic roles</h2>
+        <p style={{ color: "var(--tui-color-text-secondary)" }}>
+          Toggle the Storybook theme toolbar. Components consume these roles for surfaces, text, borders, focus, disabled, and intent states.
+        </p>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "var(--tui-spacing-3)" }}>
+        {[
+          ["surface-default", "--tui-color-surface-default"],
+          ["surface-raised", "--tui-color-surface-raised"],
+          ["surface-overlay", "--tui-color-surface-overlay"],
+          ["bg-muted", "--tui-color-bg-muted"],
+        ].map(([label, token]) => (
+          <div key={label} style={{ background: `var(${token})`, border: "1px solid var(--tui-color-border-default)", borderRadius: "var(--tui-radius-lg)", padding: "var(--tui-spacing-4)" }}>
+            <strong>{label}</strong>
+            <div style={{ color: "var(--tui-color-text-secondary)", fontSize: "var(--tui-font-size-xs)", marginTop: "var(--tui-spacing-2)" }}>{token}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--tui-spacing-3)", alignItems: "center" }}>
+        <span style={{ color: "var(--tui-color-text-primary)" }}>Primary text</span>
+        <span style={{ color: "var(--tui-color-text-secondary)" }}>Secondary text</span>
+        <span style={{ color: "var(--tui-color-text-tertiary)" }}>Tertiary text</span>
+        <span style={{ color: "var(--tui-color-text-disabled)" }}>Disabled text</span>
+        <a href="#dark-mode-contract" style={{ color: "var(--tui-color-text-link)" }}>Link role</a>
+        <span style={{ border: "1px solid var(--tui-color-disabled-border)", background: "var(--tui-color-disabled-bg)", color: "var(--tui-color-disabled-text)", borderRadius: "var(--tui-radius-md)", padding: "var(--tui-spacing-2) var(--tui-spacing-3)" }}>Disabled control roles</span>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-3)", maxWidth: 360 }}>
+        <strong style={{ color: "var(--tui-color-text-primary)" }}>Current-month date hover</strong>
+        <span style={{ color: "var(--tui-color-text-secondary)", fontSize: "var(--tui-font-size-sm)" }}>
+          Hover a normal date or an unselected time option to verify each intent uses a dark hover background with readable text.
+        </span>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--tui-spacing-3)" }}>
+          {(["default", "primary", "secondary", "tertiary", "success", "warning", "danger", "info", "teal", "orange", "rose", "indigo", "mint", "coal", "white", "black"] as const).map((intent) => (
+            <div key={intent} style={{ display: "flex", flexDirection: "column", gap: "var(--tui-spacing-1)" }}>
+              <span style={{ color: "var(--tui-color-text-secondary)", fontSize: "var(--tui-font-size-xs)" }}>{intent}</span>
+              <Calendar today={new Date()} intent={intent} size="sm" />
+            </div>
+          ))}
+        </div>
+        <DatePicker intent="primary" placeholder="Primary date picker" />
+        <TimePicker intent="danger" placeholder="Danger time picker" />
+      </div>
+    </div>
+  ),
 };

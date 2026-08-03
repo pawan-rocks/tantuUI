@@ -105,3 +105,27 @@ export const SkeletonCard: Story = {
     </Box>
   ),
 };
+
+// ── Custom Class Only ─────────────────────────────────────────────────────
+export const CustomClassOnly: Story = {
+  name: "Custom Class Only",
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <>
+      <style>{`
+        .my-custom-shimmer {
+          display: inline-flex;
+          width: var(--tui-spacing-32);
+          height: var(--tui-spacing-8);
+          align-items: center;
+          justify-content: center;
+          border-radius: var(--tui-radius-full);
+          background: var(--tui-color-brand-primary-600);
+          color: var(--tui-color-white);
+          font-size: var(--tui-font-size-sm);
+        }
+      `}</style>
+      <Shimmer className="my-custom-shimmer">Custom styled</Shimmer>
+    </>
+  ),
+};

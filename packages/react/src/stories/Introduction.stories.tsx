@@ -91,6 +91,7 @@ import { Button, Text, Box, LinkText, Shimmer } from "@tantuui/react";`}
       {[
         { name: "Button", path: "?path=/docs/components-button--docs", desc: "Interactive button with variants" },
         { name: "Input", path: "?path=/docs/components-input--docs", desc: "Text input with icons, clear" },
+        { name: "InputOtp", path: "?path=/docs/components-inputotp--docs", desc: "Multi-cell one-time-password input" },
         { name: "Textarea", path: "?path=/docs/components-textarea--docs", desc: "Multi-line text input" },
         { name: "Select", path: "?path=/docs/components-select--docs", desc: "Native select dropdown" },
         { name: "Dropdown", path: "?path=/docs/components-dropdown--docs", desc: "Searchable dropdown with selection" },

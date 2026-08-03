@@ -471,7 +471,7 @@ export const CustomLeftSection: Story = {
                     JS
                   </div>
                   <div>
-                    <div style={{ fontWeight: "var(--tui-font-weight-semibold)", fontSize: "var(--tui-font-size-base)" }}>Jane Smith</div>
+                    <div style={{ fontWeight: "var(--tui-font-weight-semibold)", fontSize: "var(--tui-font-size-md)" }}>Jane Smith</div>
                     <div style={{ fontSize: "var(--tui-font-size-sm)", color: "var(--tui-color-brand-gray-500)" }}>Product Designer</div>
                   </div>
                 </div>

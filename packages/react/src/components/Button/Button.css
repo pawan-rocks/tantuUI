@@ -155,41 +155,41 @@
   background-color: var(--tui-color-brand-primary-200);
 }
 
-/* ─── default (same as primary / brand-primary) ──────────────────────────── */
+/* ─── default (neutral / brand-default) ──────────────────────────────────── */
 .tui-btn--default.tui-btn--solid {
-  background-color: var(--tui-color-brand-primary-600);
+  background-color: var(--tui-color-brand-default-600);
   color: var(--tui-color-white);
-  border-color: var(--tui-color-brand-primary-600);
+  border-color: var(--tui-color-brand-default-600);
 }
 .tui-btn--default.tui-btn--solid:hover:not(:disabled) {
-  background-color: var(--tui-color-brand-primary-700);
-  border-color: var(--tui-color-brand-primary-700);
+  background-color: var(--tui-color-brand-default-700);
+  border-color: var(--tui-color-brand-default-700);
 }
 .tui-btn--default.tui-btn--solid:active:not(:disabled) {
-  background-color: var(--tui-color-brand-primary-800);
-  border-color: var(--tui-color-brand-primary-800);
+  background-color: var(--tui-color-brand-default-800);
+  border-color: var(--tui-color-brand-default-800);
 }
 .tui-btn--default.tui-btn--outline {
   background-color: transparent;
-  color: var(--tui-color-brand-primary-600);
-  border-color: var(--tui-color-brand-primary-600);
+  color: var(--tui-color-brand-default-600);
+  border-color: var(--tui-color-brand-default-600);
 }
 .tui-btn--default.tui-btn--outline:hover:not(:disabled) {
-  background-color: var(--tui-color-brand-primary-50);
+  background-color: var(--tui-color-brand-default-50);
 }
 .tui-btn--default.tui-btn--outline:active:not(:disabled) {
-  background-color: var(--tui-color-brand-primary-100);
+  background-color: var(--tui-color-brand-default-100);
 }
 .tui-btn--default.tui-btn--soft {
-  background-color: var(--tui-color-brand-primary-50);
-  color: var(--tui-color-brand-primary-700);
+  background-color: var(--tui-color-brand-default-50);
+  color: var(--tui-color-brand-default-700);
   border-color: transparent;
 }
 .tui-btn--default.tui-btn--soft:hover:not(:disabled) {
-  background-color: var(--tui-color-brand-primary-100);
+  background-color: var(--tui-color-brand-default-100);
 }
 .tui-btn--default.tui-btn--soft:active:not(:disabled) {
-  background-color: var(--tui-color-brand-primary-200);
+  background-color: var(--tui-color-brand-default-200);
 }
 
 /* ─── secondary (brand-secondary / light gray) ──────────────────────────── */
@@ -731,9 +731,9 @@
 .tui-btn--primary.tui-btn--plain:active:not(:disabled) { color: var(--tui-color-brand-primary-800); }
 
 /* default plain */
-.tui-btn--default.tui-btn--plain { color: var(--tui-color-brand-primary-700); }
-.tui-btn--default.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-brand-primary-600); }
-.tui-btn--default.tui-btn--plain:active:not(:disabled) { color: var(--tui-color-brand-primary-800); }
+.tui-btn--default.tui-btn--plain { color: var(--tui-color-brand-default-700); }
+.tui-btn--default.tui-btn--plain:hover:not(:disabled) { color: var(--tui-color-brand-default-600); }
+.tui-btn--default.tui-btn--plain:active:not(:disabled) { color: var(--tui-color-brand-default-800); }
 
 /* secondary plain */
 .tui-btn--secondary.tui-btn--plain { color: var(--tui-color-brand-black-600); }
@@ -808,7 +808,7 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    FOCUS RING — intent-based colors
    ═══════════════════════════════════════════════════════════════════════════ */
-.tui-btn--default:focus-visible   { --tui-ring-color: var(--tui-color-brand-primary-400); }
+.tui-btn--default:focus-visible   { --tui-ring-color: var(--tui-color-brand-default-400); }
 .tui-btn--primary:focus-visible   { --tui-ring-color: var(--tui-color-brand-primary-400); }
 .tui-btn--secondary:focus-visible { --tui-ring-color: var(--tui-color-brand-secondary-400); }
 .tui-btn--tertiary:focus-visible  { --tui-ring-color: var(--tui-color-brand-tertiary-400); }

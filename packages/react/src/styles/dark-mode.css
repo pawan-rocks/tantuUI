@@ -1,0 +1,1430 @@
+/*
+ * TantuUI dark-mode contract
+ *
+ * This file is intentionally loaded after every component stylesheet. It
+ * changes semantic roles and component state variables only; primitive brand
+ * scales (especially literal black/white) remain untouched.
+ */
+
+:root,
+[data-theme="light"] {
+  --tui-color-bg-base: var(--tui-color-white);
+  --tui-color-bg-subtle: var(--tui-color-brand-black-50);
+  --tui-color-bg-muted: var(--tui-color-brand-black-100);
+  --tui-color-bg-inverse: var(--tui-color-brand-black-900);
+  --tui-color-surface-default: var(--tui-color-white);
+  --tui-color-surface-raised: var(--tui-color-brand-black-50);
+  --tui-color-surface-secondary: var(--tui-color-brand-black-100);
+  --tui-color-surface-overlay: var(--tui-color-brand-black-100);
+  --tui-color-text-primary: var(--tui-color-brand-black-900);
+  --tui-color-text-secondary: var(--tui-color-brand-gray-600);
+  --tui-color-text-tertiary: var(--tui-color-brand-gray-400);
+  --tui-color-text-disabled: var(--tui-color-brand-black-300);
+  --tui-color-text-inverse: var(--tui-color-white);
+  --tui-color-text-link: var(--tui-color-brand-blue-600);
+  --tui-color-text-link-hover: var(--tui-color-brand-blue-700);
+  --tui-color-border-default: var(--tui-color-brand-default-200);
+  --tui-color-border-strong: var(--tui-color-brand-default-400);
+  --tui-color-border-focus: var(--tui-color-brand-default-500);
+  --tui-color-focus-ring: var(--tui-color-brand-black-500);
+  --tui-color-focus-ring-gap: var(--tui-color-white);
+  --tui-color-disabled-bg: var(--tui-color-brand-black-100);
+  --tui-color-disabled-text: var(--tui-color-brand-black-300);
+  --tui-color-disabled-border: var(--tui-color-brand-black-100);
+  --tui-color-shimmer-from: var(--tui-color-brand-secondary-300);
+  --tui-color-shimmer-via: var(--tui-color-brand-secondary-100);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --tui-color-bg-base: var(--tui-color-brand-default-950);
+  --tui-color-bg-subtle: var(--tui-color-brand-default-900);
+  --tui-color-bg-muted: var(--tui-color-brand-default-800);
+  --tui-color-bg-inverse: var(--tui-color-brand-default-50);
+  --tui-color-surface-default: var(--tui-color-brand-default-900);
+  --tui-color-surface-raised: var(--tui-color-brand-default-800);
+  --tui-color-surface-secondary: var(--tui-color-brand-default-800);
+  --tui-color-surface-overlay: var(--tui-color-brand-default-700);
+  --tui-color-text-primary: var(--tui-color-brand-default-50);
+  --tui-color-text-secondary: var(--tui-color-brand-default-200);
+  --tui-color-text-tertiary: var(--tui-color-brand-default-400);
+  --tui-color-text-disabled: var(--tui-color-brand-default-500);
+  --tui-color-text-inverse: var(--tui-color-brand-default-950);
+  --tui-color-text-link: var(--tui-color-brand-blue-300);
+  --tui-color-text-link-hover: var(--tui-color-brand-blue-200);
+  --tui-color-border-default: var(--tui-color-brand-default-700);
+  --tui-color-border-strong: var(--tui-color-brand-default-500);
+  --tui-color-border-focus: var(--tui-color-brand-primary-400);
+  --tui-color-focus-ring: var(--tui-color-brand-primary-400);
+  --tui-color-focus-ring-gap: var(--tui-color-brand-default-950);
+  --tui-color-disabled-bg: var(--tui-color-brand-default-800);
+  --tui-color-disabled-text: var(--tui-color-brand-default-500);
+  --tui-color-disabled-border: var(--tui-color-brand-default-700);
+  --tui-color-shimmer-from: var(--tui-color-brand-secondary-700);
+  --tui-color-shimmer-via: var(--tui-color-brand-secondary-500);
+
+  --tui-color-brand-hover: var(--tui-color-brand-primary-500);
+  --tui-color-brand-active: var(--tui-color-brand-primary-400);
+  --tui-color-brand-subtle: var(--tui-color-brand-primary-950);
+  --tui-color-primary-default: var(--tui-color-brand-primary-500);
+  --tui-color-primary-hover: var(--tui-color-brand-primary-400);
+  --tui-color-primary-active: var(--tui-color-brand-primary-300);
+  --tui-color-primary-subtle: var(--tui-color-brand-primary-950);
+  --tui-color-primary-light: var(--tui-color-brand-primary-900);
+  --tui-color-secondary-default: var(--tui-color-brand-secondary-600);
+  --tui-color-secondary-hover: var(--tui-color-brand-secondary-500);
+  --tui-color-secondary-active: var(--tui-color-brand-secondary-400);
+  --tui-color-secondary-subtle: var(--tui-color-brand-secondary-900);
+  --tui-color-secondary-light: var(--tui-color-brand-secondary-800);
+  --tui-color-tertiary-default: var(--tui-color-brand-tertiary-500);
+  --tui-color-tertiary-hover: var(--tui-color-brand-tertiary-400);
+  --tui-color-tertiary-active: var(--tui-color-brand-tertiary-300);
+  --tui-color-tertiary-subtle: var(--tui-color-brand-tertiary-950);
+  --tui-color-tertiary-light: var(--tui-color-brand-tertiary-900);
+
+  --tui-color-success-subtle: var(--tui-color-success-950);
+  --tui-color-success-text: var(--tui-color-success-300);
+  --tui-color-warning-subtle: var(--tui-color-warning-950);
+  --tui-color-warning-text: var(--tui-color-warning-300);
+  --tui-color-danger-subtle: var(--tui-color-danger-950);
+  --tui-color-danger-text: var(--tui-color-danger-300);
+  --tui-color-info-subtle: var(--tui-color-info-950);
+  --tui-color-info-text: var(--tui-color-info-300);
+  --tui-color-teal-subtle: var(--tui-color-teal-950);
+  --tui-color-teal-text: var(--tui-color-teal-300);
+  --tui-color-orange-subtle: var(--tui-color-orange-950);
+  --tui-color-orange-text: var(--tui-color-orange-300);
+  --tui-color-rose-subtle: var(--tui-color-rose-950);
+  --tui-color-rose-text: var(--tui-color-rose-300);
+  --tui-color-indigo-subtle: var(--tui-color-indigo-950);
+  --tui-color-indigo-text: var(--tui-color-indigo-300);
+  --tui-color-mint-subtle: var(--tui-color-mint-950);
+  --tui-color-mint-text: var(--tui-color-mint-300);
+  --tui-color-coal-subtle: var(--tui-color-coal-950);
+  --tui-color-coal-text: var(--tui-color-coal-300);
+}
+
+[data-theme="dark"] body {
+  background-color: var(--tui-color-bg-base);
+  color: var(--tui-color-text-primary);
+}
+/* ─── Dark intent contract ──────────────────────────────────────────────── */
+/* The same variables are consumed by buttons, fields, status components,
+   pickers, lists, and calendar controls so every intent has one dark role. */
+[data-theme="dark"] .tui-btn--default,
+[data-theme="dark"] .tui-input--default,
+[data-theme="dark"] .tui-textarea--default,
+[data-theme="dark"] .tui-select--default,
+[data-theme="dark"] .tui-checkbox--default,
+[data-theme="dark"] .tui-radio--default,
+[data-theme="dark"] .tui-switch--default,
+[data-theme="dark"] .tui-tag--default,
+[data-theme="dark"] .tui-chip--default,
+[data-theme="dark"] .tui-pill--default,
+[data-theme="dark"] .tui-calendar--default,
+[data-theme="dark"] .tui-timeselector--default,
+[data-theme="dark"] .tui-list-item--default,
+[data-theme="dark"] .tui-list-group--default,
+[data-theme="dark"] .tui-dropdown__popover--default,
+[data-theme="dark"] .tui-datepicker__ok-btn--default,
+[data-theme="dark"] .tui-timepicker__ok-btn--default {
+  --tui-dark-intent-text: var(--tui-color-brand-default-200);
+  --tui-dark-intent-muted: var(--tui-color-brand-default-300);
+  --tui-dark-intent-border: var(--tui-color-brand-default-400);
+  --tui-dark-intent-border-hover: var(--tui-color-brand-default-300);
+  --tui-dark-intent-subtle: var(--tui-color-brand-default-800);
+  --tui-dark-intent-subtle-hover: var(--tui-color-brand-default-700);
+  --tui-dark-intent-subtle-active: var(--tui-color-brand-default-600);
+  --tui-dark-intent-solid: var(--tui-color-brand-default-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-brand-default-500);
+  --tui-dark-intent-solid-active: var(--tui-color-brand-default-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-brand-default-700);
+  --tui-dark-intent-focus: var(--tui-color-brand-default-300);
+}
+
+[data-theme="dark"] .tui-btn--primary,
+[data-theme="dark"] .tui-input--primary,
+[data-theme="dark"] .tui-textarea--primary,
+[data-theme="dark"] .tui-select--primary,
+[data-theme="dark"] .tui-checkbox--primary,
+[data-theme="dark"] .tui-radio--primary,
+[data-theme="dark"] .tui-switch--primary,
+[data-theme="dark"] .tui-tag--primary,
+[data-theme="dark"] .tui-chip--primary,
+[data-theme="dark"] .tui-pill--primary,
+[data-theme="dark"] .tui-calendar--primary,
+[data-theme="dark"] .tui-timeselector--primary,
+[data-theme="dark"] .tui-list-item--primary,
+[data-theme="dark"] .tui-list-group--primary,
+[data-theme="dark"] .tui-dropdown__popover--primary,
+[data-theme="dark"] .tui-datepicker__ok-btn--primary,
+[data-theme="dark"] .tui-timepicker__ok-btn--primary {
+  --tui-dark-intent-text: var(--tui-color-brand-primary-300);
+  --tui-dark-intent-muted: var(--tui-color-brand-primary-400);
+  --tui-dark-intent-border: var(--tui-color-brand-primary-400);
+  --tui-dark-intent-border-hover: var(--tui-color-brand-primary-300);
+  --tui-dark-intent-subtle: var(--tui-color-brand-primary-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-brand-primary-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-brand-primary-800);
+  --tui-dark-intent-solid: var(--tui-color-brand-primary-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-brand-primary-500);
+  --tui-dark-intent-solid-active: var(--tui-color-brand-primary-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-brand-primary-900);
+  --tui-dark-intent-focus: var(--tui-color-brand-primary-300);
+}
+
+[data-theme="dark"] .tui-btn--secondary,
+[data-theme="dark"] .tui-input--secondary,
+[data-theme="dark"] .tui-textarea--secondary,
+[data-theme="dark"] .tui-select--secondary,
+[data-theme="dark"] .tui-checkbox--secondary,
+[data-theme="dark"] .tui-radio--secondary,
+[data-theme="dark"] .tui-switch--secondary,
+[data-theme="dark"] .tui-tag--secondary,
+[data-theme="dark"] .tui-chip--secondary,
+[data-theme="dark"] .tui-pill--secondary,
+[data-theme="dark"] .tui-calendar--secondary,
+[data-theme="dark"] .tui-timeselector--secondary,
+[data-theme="dark"] .tui-list-item--secondary,
+[data-theme="dark"] .tui-list-group--secondary,
+[data-theme="dark"] .tui-dropdown__popover--secondary,
+[data-theme="dark"] .tui-datepicker__ok-btn--secondary,
+[data-theme="dark"] .tui-timepicker__ok-btn--secondary {
+  --tui-dark-intent-text: var(--tui-color-brand-secondary-200);
+  --tui-dark-intent-muted: var(--tui-color-brand-secondary-300);
+  --tui-dark-intent-border: var(--tui-color-brand-secondary-500);
+  --tui-dark-intent-border-hover: var(--tui-color-brand-secondary-400);
+  --tui-dark-intent-subtle: var(--tui-color-brand-secondary-900);
+  --tui-dark-intent-subtle-hover: var(--tui-color-brand-secondary-800);
+  --tui-dark-intent-subtle-active: var(--tui-color-brand-secondary-700);
+  --tui-dark-intent-solid: var(--tui-color-brand-secondary-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-brand-secondary-500);
+  --tui-dark-intent-solid-active: var(--tui-color-brand-secondary-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-brand-secondary-800);
+  --tui-dark-intent-focus: var(--tui-color-brand-secondary-300);
+}
+
+[data-theme="dark"] .tui-btn--tertiary,
+[data-theme="dark"] .tui-input--tertiary,
+[data-theme="dark"] .tui-textarea--tertiary,
+[data-theme="dark"] .tui-select--tertiary,
+[data-theme="dark"] .tui-checkbox--tertiary,
+[data-theme="dark"] .tui-radio--tertiary,
+[data-theme="dark"] .tui-switch--tertiary,
+[data-theme="dark"] .tui-tag--tertiary,
+[data-theme="dark"] .tui-chip--tertiary,
+[data-theme="dark"] .tui-pill--tertiary,
+[data-theme="dark"] .tui-calendar--tertiary,
+[data-theme="dark"] .tui-timeselector--tertiary,
+[data-theme="dark"] .tui-list-item--tertiary,
+[data-theme="dark"] .tui-list-group--tertiary,
+[data-theme="dark"] .tui-dropdown__popover--tertiary,
+[data-theme="dark"] .tui-datepicker__ok-btn--tertiary,
+[data-theme="dark"] .tui-timepicker__ok-btn--tertiary {
+  --tui-dark-intent-text: var(--tui-color-brand-tertiary-300);
+  --tui-dark-intent-muted: var(--tui-color-brand-tertiary-400);
+  --tui-dark-intent-border: var(--tui-color-brand-tertiary-400);
+  --tui-dark-intent-border-hover: var(--tui-color-brand-tertiary-300);
+  --tui-dark-intent-subtle: var(--tui-color-brand-tertiary-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-brand-tertiary-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-brand-tertiary-800);
+  --tui-dark-intent-solid: var(--tui-color-brand-tertiary-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-brand-tertiary-500);
+  --tui-dark-intent-solid-active: var(--tui-color-brand-tertiary-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-brand-tertiary-900);
+  --tui-dark-intent-focus: var(--tui-color-brand-tertiary-300);
+}
+
+[data-theme="dark"] .tui-btn--success,
+[data-theme="dark"] .tui-input--success,
+[data-theme="dark"] .tui-textarea--success,
+[data-theme="dark"] .tui-select--success,
+[data-theme="dark"] .tui-checkbox--success,
+[data-theme="dark"] .tui-radio--success,
+[data-theme="dark"] .tui-switch--success,
+[data-theme="dark"] .tui-tag--success,
+[data-theme="dark"] .tui-chip--success,
+[data-theme="dark"] .tui-pill--success,
+[data-theme="dark"] .tui-calendar--success,
+[data-theme="dark"] .tui-timeselector--success,
+[data-theme="dark"] .tui-list-item--success,
+[data-theme="dark"] .tui-list-group--success,
+[data-theme="dark"] .tui-dropdown__popover--success,
+[data-theme="dark"] .tui-datepicker__ok-btn--success,
+[data-theme="dark"] .tui-timepicker__ok-btn--success {
+  --tui-dark-intent-text: var(--tui-color-success-300);
+  --tui-dark-intent-muted: var(--tui-color-success-400);
+  --tui-dark-intent-border: var(--tui-color-success-400);
+  --tui-dark-intent-border-hover: var(--tui-color-success-300);
+  --tui-dark-intent-subtle: var(--tui-color-success-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-success-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-success-800);
+  --tui-dark-intent-solid: var(--tui-color-success-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-success-500);
+  --tui-dark-intent-solid-active: var(--tui-color-success-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-success-900);
+  --tui-dark-intent-focus: var(--tui-color-success-300);
+}
+
+[data-theme="dark"] .tui-btn--warning,
+[data-theme="dark"] .tui-input--warning,
+[data-theme="dark"] .tui-textarea--warning,
+[data-theme="dark"] .tui-select--warning,
+[data-theme="dark"] .tui-checkbox--warning,
+[data-theme="dark"] .tui-radio--warning,
+[data-theme="dark"] .tui-switch--warning,
+[data-theme="dark"] .tui-tag--warning,
+[data-theme="dark"] .tui-chip--warning,
+[data-theme="dark"] .tui-pill--warning,
+[data-theme="dark"] .tui-calendar--warning,
+[data-theme="dark"] .tui-timeselector--warning,
+[data-theme="dark"] .tui-list-item--warning,
+[data-theme="dark"] .tui-list-group--warning,
+[data-theme="dark"] .tui-dropdown__popover--warning,
+[data-theme="dark"] .tui-datepicker__ok-btn--warning,
+[data-theme="dark"] .tui-timepicker__ok-btn--warning {
+  --tui-dark-intent-text: var(--tui-color-warning-300);
+  --tui-dark-intent-muted: var(--tui-color-warning-400);
+  --tui-dark-intent-border: var(--tui-color-warning-400);
+  --tui-dark-intent-border-hover: var(--tui-color-warning-300);
+  --tui-dark-intent-subtle: var(--tui-color-warning-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-warning-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-warning-800);
+  --tui-dark-intent-solid: var(--tui-color-warning-400);
+  --tui-dark-intent-solid-hover: var(--tui-color-warning-300);
+  --tui-dark-intent-solid-active: var(--tui-color-warning-200);
+  --tui-dark-intent-solid-text: var(--tui-color-brand-default-950);
+  --tui-dark-intent-range: var(--tui-color-warning-900);
+  --tui-dark-intent-focus: var(--tui-color-warning-300);
+}
+
+[data-theme="dark"] .tui-btn--danger,
+[data-theme="dark"] .tui-input--danger,
+[data-theme="dark"] .tui-textarea--danger,
+[data-theme="dark"] .tui-select--danger,
+[data-theme="dark"] .tui-checkbox--danger,
+[data-theme="dark"] .tui-radio--danger,
+[data-theme="dark"] .tui-switch--danger,
+[data-theme="dark"] .tui-tag--danger,
+[data-theme="dark"] .tui-chip--danger,
+[data-theme="dark"] .tui-pill--danger,
+[data-theme="dark"] .tui-calendar--danger,
+[data-theme="dark"] .tui-timeselector--danger,
+[data-theme="dark"] .tui-list-item--danger,
+[data-theme="dark"] .tui-list-group--danger,
+[data-theme="dark"] .tui-dropdown__popover--danger,
+[data-theme="dark"] .tui-datepicker__ok-btn--danger,
+[data-theme="dark"] .tui-timepicker__ok-btn--danger {
+  --tui-dark-intent-text: var(--tui-color-danger-300);
+  --tui-dark-intent-muted: var(--tui-color-danger-400);
+  --tui-dark-intent-border: var(--tui-color-danger-400);
+  --tui-dark-intent-border-hover: var(--tui-color-danger-300);
+  --tui-dark-intent-subtle: var(--tui-color-danger-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-danger-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-danger-800);
+  --tui-dark-intent-solid: var(--tui-color-danger-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-danger-500);
+  --tui-dark-intent-solid-active: var(--tui-color-danger-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-danger-900);
+  --tui-dark-intent-focus: var(--tui-color-danger-300);
+}
+
+[data-theme="dark"] .tui-btn--info,
+[data-theme="dark"] .tui-input--info,
+[data-theme="dark"] .tui-textarea--info,
+[data-theme="dark"] .tui-select--info,
+[data-theme="dark"] .tui-checkbox--info,
+[data-theme="dark"] .tui-radio--info,
+[data-theme="dark"] .tui-switch--info,
+[data-theme="dark"] .tui-tag--info,
+[data-theme="dark"] .tui-chip--info,
+[data-theme="dark"] .tui-pill--info,
+[data-theme="dark"] .tui-calendar--info,
+[data-theme="dark"] .tui-timeselector--info,
+[data-theme="dark"] .tui-list-item--info,
+[data-theme="dark"] .tui-list-group--info,
+[data-theme="dark"] .tui-dropdown__popover--info,
+[data-theme="dark"] .tui-datepicker__ok-btn--info,
+[data-theme="dark"] .tui-timepicker__ok-btn--info,
+[data-theme="dark"] .tui-btn--teal,
+[data-theme="dark"] .tui-input--teal,
+[data-theme="dark"] .tui-textarea--teal,
+[data-theme="dark"] .tui-select--teal,
+[data-theme="dark"] .tui-checkbox--teal,
+[data-theme="dark"] .tui-radio--teal,
+[data-theme="dark"] .tui-switch--teal,
+[data-theme="dark"] .tui-tag--teal,
+[data-theme="dark"] .tui-chip--teal,
+[data-theme="dark"] .tui-pill--teal,
+[data-theme="dark"] .tui-calendar--teal,
+[data-theme="dark"] .tui-timeselector--teal,
+[data-theme="dark"] .tui-list-item--teal,
+[data-theme="dark"] .tui-list-group--teal,
+[data-theme="dark"] .tui-dropdown__popover--teal,
+[data-theme="dark"] .tui-datepicker__ok-btn--teal,
+[data-theme="dark"] .tui-timepicker__ok-btn--teal {
+  --tui-dark-intent-text: var(--tui-color-info-300);
+  --tui-dark-intent-muted: var(--tui-color-info-400);
+  --tui-dark-intent-border: var(--tui-color-info-400);
+  --tui-dark-intent-border-hover: var(--tui-color-info-300);
+  --tui-dark-intent-subtle: var(--tui-color-info-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-info-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-info-800);
+  --tui-dark-intent-solid: var(--tui-color-info-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-info-500);
+  --tui-dark-intent-solid-active: var(--tui-color-info-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-info-900);
+  --tui-dark-intent-focus: var(--tui-color-info-300);
+}
+
+[data-theme="dark"] .tui-btn--teal,
+[data-theme="dark"] .tui-input--teal,
+[data-theme="dark"] .tui-textarea--teal,
+[data-theme="dark"] .tui-select--teal,
+[data-theme="dark"] .tui-checkbox--teal,
+[data-theme="dark"] .tui-radio--teal,
+[data-theme="dark"] .tui-switch--teal,
+[data-theme="dark"] .tui-tag--teal,
+[data-theme="dark"] .tui-chip--teal,
+[data-theme="dark"] .tui-pill--teal,
+[data-theme="dark"] .tui-calendar--teal,
+[data-theme="dark"] .tui-timeselector--teal,
+[data-theme="dark"] .tui-list-item--teal,
+[data-theme="dark"] .tui-list-group--teal,
+[data-theme="dark"] .tui-dropdown__popover--teal,
+[data-theme="dark"] .tui-datepicker__ok-btn--teal,
+[data-theme="dark"] .tui-timepicker__ok-btn--teal {
+  --tui-dark-intent-text: var(--tui-color-teal-300);
+  --tui-dark-intent-muted: var(--tui-color-teal-400);
+  --tui-dark-intent-border: var(--tui-color-teal-400);
+  --tui-dark-intent-border-hover: var(--tui-color-teal-300);
+  --tui-dark-intent-subtle: var(--tui-color-teal-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-teal-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-teal-800);
+  --tui-dark-intent-solid: var(--tui-color-teal-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-teal-500);
+  --tui-dark-intent-solid-active: var(--tui-color-teal-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-teal-900);
+  --tui-dark-intent-focus: var(--tui-color-teal-300);
+}
+
+[data-theme="dark"] .tui-btn--orange,
+[data-theme="dark"] .tui-input--orange,
+[data-theme="dark"] .tui-textarea--orange,
+[data-theme="dark"] .tui-select--orange,
+[data-theme="dark"] .tui-checkbox--orange,
+[data-theme="dark"] .tui-radio--orange,
+[data-theme="dark"] .tui-switch--orange,
+[data-theme="dark"] .tui-tag--orange,
+[data-theme="dark"] .tui-chip--orange,
+[data-theme="dark"] .tui-pill--orange,
+[data-theme="dark"] .tui-calendar--orange,
+[data-theme="dark"] .tui-timeselector--orange,
+[data-theme="dark"] .tui-list-item--orange,
+[data-theme="dark"] .tui-list-group--orange,
+[data-theme="dark"] .tui-dropdown__popover--orange,
+[data-theme="dark"] .tui-datepicker__ok-btn--orange,
+[data-theme="dark"] .tui-timepicker__ok-btn--orange {
+  --tui-dark-intent-text: var(--tui-color-orange-300);
+  --tui-dark-intent-muted: var(--tui-color-orange-400);
+  --tui-dark-intent-border: var(--tui-color-orange-400);
+  --tui-dark-intent-border-hover: var(--tui-color-orange-300);
+  --tui-dark-intent-subtle: var(--tui-color-orange-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-orange-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-orange-800);
+  --tui-dark-intent-solid: var(--tui-color-orange-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-orange-500);
+  --tui-dark-intent-solid-active: var(--tui-color-orange-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-orange-900);
+  --tui-dark-intent-focus: var(--tui-color-orange-300);
+}
+
+[data-theme="dark"] .tui-btn--rose,
+[data-theme="dark"] .tui-input--rose,
+[data-theme="dark"] .tui-textarea--rose,
+[data-theme="dark"] .tui-select--rose,
+[data-theme="dark"] .tui-checkbox--rose,
+[data-theme="dark"] .tui-radio--rose,
+[data-theme="dark"] .tui-switch--rose,
+[data-theme="dark"] .tui-tag--rose,
+[data-theme="dark"] .tui-chip--rose,
+[data-theme="dark"] .tui-pill--rose,
+[data-theme="dark"] .tui-calendar--rose,
+[data-theme="dark"] .tui-timeselector--rose,
+[data-theme="dark"] .tui-list-item--rose,
+[data-theme="dark"] .tui-list-group--rose,
+[data-theme="dark"] .tui-dropdown__popover--rose,
+[data-theme="dark"] .tui-datepicker__ok-btn--rose,
+[data-theme="dark"] .tui-timepicker__ok-btn--rose {
+  --tui-dark-intent-text: var(--tui-color-rose-300);
+  --tui-dark-intent-muted: var(--tui-color-rose-400);
+  --tui-dark-intent-border: var(--tui-color-rose-400);
+  --tui-dark-intent-border-hover: var(--tui-color-rose-300);
+  --tui-dark-intent-subtle: var(--tui-color-rose-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-rose-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-rose-800);
+  --tui-dark-intent-solid: var(--tui-color-rose-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-rose-500);
+  --tui-dark-intent-solid-active: var(--tui-color-rose-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-rose-900);
+  --tui-dark-intent-focus: var(--tui-color-rose-300);
+}
+
+[data-theme="dark"] .tui-btn--indigo,
+[data-theme="dark"] .tui-input--indigo,
+[data-theme="dark"] .tui-textarea--indigo,
+[data-theme="dark"] .tui-select--indigo,
+[data-theme="dark"] .tui-checkbox--indigo,
+[data-theme="dark"] .tui-radio--indigo,
+[data-theme="dark"] .tui-switch--indigo,
+[data-theme="dark"] .tui-tag--indigo,
+[data-theme="dark"] .tui-chip--indigo,
+[data-theme="dark"] .tui-pill--indigo,
+[data-theme="dark"] .tui-calendar--indigo,
+[data-theme="dark"] .tui-timeselector--indigo,
+[data-theme="dark"] .tui-list-item--indigo,
+[data-theme="dark"] .tui-list-group--indigo,
+[data-theme="dark"] .tui-dropdown__popover--indigo,
+[data-theme="dark"] .tui-datepicker__ok-btn--indigo,
+[data-theme="dark"] .tui-timepicker__ok-btn--indigo {
+  --tui-dark-intent-text: var(--tui-color-indigo-300);
+  --tui-dark-intent-muted: var(--tui-color-indigo-400);
+  --tui-dark-intent-border: var(--tui-color-indigo-400);
+  --tui-dark-intent-border-hover: var(--tui-color-indigo-300);
+  --tui-dark-intent-subtle: var(--tui-color-indigo-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-indigo-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-indigo-800);
+  --tui-dark-intent-solid: var(--tui-color-indigo-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-indigo-500);
+  --tui-dark-intent-solid-active: var(--tui-color-indigo-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-indigo-900);
+  --tui-dark-intent-focus: var(--tui-color-indigo-300);
+}
+
+[data-theme="dark"] .tui-btn--mint,
+[data-theme="dark"] .tui-input--mint,
+[data-theme="dark"] .tui-textarea--mint,
+[data-theme="dark"] .tui-select--mint,
+[data-theme="dark"] .tui-checkbox--mint,
+[data-theme="dark"] .tui-radio--mint,
+[data-theme="dark"] .tui-switch--mint,
+[data-theme="dark"] .tui-tag--mint,
+[data-theme="dark"] .tui-chip--mint,
+[data-theme="dark"] .tui-pill--mint,
+[data-theme="dark"] .tui-calendar--mint,
+[data-theme="dark"] .tui-timeselector--mint,
+[data-theme="dark"] .tui-list-item--mint,
+[data-theme="dark"] .tui-list-group--mint,
+[data-theme="dark"] .tui-dropdown__popover--mint,
+[data-theme="dark"] .tui-datepicker__ok-btn--mint,
+[data-theme="dark"] .tui-timepicker__ok-btn--mint {
+  --tui-dark-intent-text: var(--tui-color-mint-300);
+  --tui-dark-intent-muted: var(--tui-color-mint-400);
+  --tui-dark-intent-border: var(--tui-color-mint-400);
+  --tui-dark-intent-border-hover: var(--tui-color-mint-300);
+  --tui-dark-intent-subtle: var(--tui-color-mint-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-mint-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-mint-800);
+  --tui-dark-intent-solid: var(--tui-color-mint-700);
+  --tui-dark-intent-solid-hover: var(--tui-color-mint-600);
+  --tui-dark-intent-solid-active: var(--tui-color-mint-500);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-mint-900);
+  --tui-dark-intent-focus: var(--tui-color-mint-300);
+}
+
+[data-theme="dark"] .tui-btn--coal,
+[data-theme="dark"] .tui-input--coal,
+[data-theme="dark"] .tui-textarea--coal,
+[data-theme="dark"] .tui-select--coal,
+[data-theme="dark"] .tui-checkbox--coal,
+[data-theme="dark"] .tui-radio--coal,
+[data-theme="dark"] .tui-switch--coal,
+[data-theme="dark"] .tui-tag--coal,
+[data-theme="dark"] .tui-chip--coal,
+[data-theme="dark"] .tui-pill--coal,
+[data-theme="dark"] .tui-calendar--coal,
+[data-theme="dark"] .tui-timeselector--coal,
+[data-theme="dark"] .tui-list-item--coal,
+[data-theme="dark"] .tui-list-group--coal,
+[data-theme="dark"] .tui-dropdown__popover--coal,
+[data-theme="dark"] .tui-datepicker__ok-btn--coal,
+[data-theme="dark"] .tui-timepicker__ok-btn--coal {
+  --tui-dark-intent-text: var(--tui-color-coal-300);
+  --tui-dark-intent-muted: var(--tui-color-coal-400);
+  --tui-dark-intent-border: var(--tui-color-coal-400);
+  --tui-dark-intent-border-hover: var(--tui-color-coal-300);
+  --tui-dark-intent-subtle: var(--tui-color-coal-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-coal-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-coal-800);
+  --tui-dark-intent-solid: var(--tui-color-coal-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-coal-500);
+  --tui-dark-intent-solid-active: var(--tui-color-coal-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-coal-900);
+  --tui-dark-intent-focus: var(--tui-color-coal-300);
+}
+
+/* Literal white/black remain literal; only their surrounding control roles
+   change so the controls stay legible on a dark surface. */
+[data-theme="dark"] .tui-btn--white,
+[data-theme="dark"] .tui-input--white,
+[data-theme="dark"] .tui-textarea--white,
+[data-theme="dark"] .tui-select--white,
+[data-theme="dark"] .tui-checkbox--white,
+[data-theme="dark"] .tui-radio--white,
+[data-theme="dark"] .tui-switch--white,
+[data-theme="dark"] .tui-tag--white,
+[data-theme="dark"] .tui-chip--white,
+[data-theme="dark"] .tui-pill--white,
+[data-theme="dark"] .tui-calendar--white,
+[data-theme="dark"] .tui-timeselector--white,
+[data-theme="dark"] .tui-list-item--white,
+[data-theme="dark"] .tui-list-group--white,
+[data-theme="dark"] .tui-dropdown__popover--white,
+[data-theme="dark"] .tui-datepicker__ok-btn--white,
+[data-theme="dark"] .tui-timepicker__ok-btn--white {
+  --tui-dark-intent-text: var(--tui-color-white);
+  --tui-dark-intent-muted: var(--tui-color-brand-default-300);
+  --tui-dark-intent-border: var(--tui-color-brand-default-400);
+  --tui-dark-intent-border-hover: var(--tui-color-brand-default-300);
+  --tui-dark-intent-subtle: var(--tui-color-brand-default-800);
+  --tui-dark-intent-subtle-hover: var(--tui-color-brand-default-700);
+  --tui-dark-intent-subtle-active: var(--tui-color-brand-default-600);
+  --tui-dark-intent-solid: var(--tui-color-white);
+  --tui-dark-intent-solid-hover: var(--tui-color-brand-default-100);
+  --tui-dark-intent-solid-active: var(--tui-color-brand-default-200);
+  --tui-dark-intent-solid-text: var(--tui-color-black);
+  --tui-dark-intent-range: var(--tui-color-brand-default-700);
+  --tui-dark-intent-focus: var(--tui-color-brand-default-300);
+}
+
+[data-theme="dark"] .tui-btn--black,
+[data-theme="dark"] .tui-input--black,
+[data-theme="dark"] .tui-textarea--black,
+[data-theme="dark"] .tui-select--black,
+[data-theme="dark"] .tui-checkbox--black,
+[data-theme="dark"] .tui-radio--black,
+[data-theme="dark"] .tui-switch--black,
+[data-theme="dark"] .tui-tag--black,
+[data-theme="dark"] .tui-chip--black,
+[data-theme="dark"] .tui-pill--black,
+[data-theme="dark"] .tui-calendar--black,
+[data-theme="dark"] .tui-timeselector--black,
+[data-theme="dark"] .tui-list-item--black,
+[data-theme="dark"] .tui-list-group--black,
+[data-theme="dark"] .tui-dropdown__popover--black,
+[data-theme="dark"] .tui-datepicker__ok-btn--black,
+[data-theme="dark"] .tui-timepicker__ok-btn--black {
+  --tui-dark-intent-text: var(--tui-color-brand-default-50);
+  --tui-dark-intent-muted: var(--tui-color-brand-default-300);
+  --tui-dark-intent-border: var(--tui-color-brand-default-500);
+  --tui-dark-intent-border-hover: var(--tui-color-brand-default-300);
+  --tui-dark-intent-subtle: var(--tui-color-brand-default-800);
+  --tui-dark-intent-subtle-hover: var(--tui-color-brand-default-700);
+  --tui-dark-intent-subtle-active: var(--tui-color-brand-default-600);
+  --tui-dark-intent-solid: var(--tui-color-black);
+  --tui-dark-intent-solid-hover: var(--tui-color-brand-black-800);
+  --tui-dark-intent-solid-active: var(--tui-color-brand-black-700);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-brand-default-800);
+  --tui-dark-intent-focus: var(--tui-color-brand-default-300);
+}
+
+/* ─── Shared text, links, and focus ─────────────────────────────────────── */
+[data-theme="dark"] .tui-text--color-primary,
+[data-theme="dark"] .tui-label.tui-label--primary { color: var(--tui-color-brand-primary-300); }
+[data-theme="dark"] .tui-text--color-secondary,
+[data-theme="dark"] .tui-label.tui-label--secondary { color: var(--tui-color-brand-secondary-200); }
+[data-theme="dark"] .tui-text--color-tertiary,
+[data-theme="dark"] .tui-label.tui-label--tertiary { color: var(--tui-color-brand-tertiary-300); }
+[data-theme="dark"] .tui-text--color-danger,
+[data-theme="dark"] .tui-label.tui-label--danger { color: var(--tui-color-danger-300); }
+[data-theme="dark"] .tui-text--color-success,
+[data-theme="dark"] .tui-label.tui-label--success { color: var(--tui-color-success-300); }
+[data-theme="dark"] .tui-text--color-warning,
+[data-theme="dark"] .tui-label.tui-label--warning { color: var(--tui-color-warning-300); }
+[data-theme="dark"] .tui-text--color-info,
+[data-theme="dark"] .tui-label.tui-label--info { color: var(--tui-color-info-300); }
+[data-theme="dark"] .tui-text--color-teal,
+[data-theme="dark"] .tui-label.tui-label--teal { color: var(--tui-color-teal-300); }
+[data-theme="dark"] .tui-text--color-orange,
+[data-theme="dark"] .tui-label.tui-label--orange { color: var(--tui-color-orange-300); }
+[data-theme="dark"] .tui-text--color-rose,
+[data-theme="dark"] .tui-label.tui-label--rose { color: var(--tui-color-rose-300); }
+[data-theme="dark"] .tui-text--color-indigo,
+[data-theme="dark"] .tui-label.tui-label--indigo { color: var(--tui-color-indigo-300); }
+[data-theme="dark"] .tui-text--color-mint,
+[data-theme="dark"] .tui-label.tui-label--mint { color: var(--tui-color-mint-300); }
+[data-theme="dark"] .tui-text--color-coal,
+[data-theme="dark"] .tui-label.tui-label--coal { color: var(--tui-color-coal-300); }
+[data-theme="dark"] .tui-text--color-black,
+[data-theme="dark"] .tui-label.tui-label--black { color: var(--tui-color-brand-default-50); }
+[data-theme="dark"] .tui-label.tui-label--default { color: var(--tui-color-brand-default-200); }
+[data-theme="dark"] .tui-label.tui-label--white,
+[data-theme="dark"] .tui-text--color-white { color: var(--tui-color-white); }
+[data-theme="dark"] .tui-label,
+[data-theme="dark"] .tui-checkbox__label,
+[data-theme="dark"] .tui-radio__label,
+[data-theme="dark"] .tui-switch__label { color: var(--tui-color-text-primary); }
+[data-theme="dark"] .tui-label.tui-label--disabled,
+[data-theme="dark"] .tui-checkbox--disabled .tui-label,
+[data-theme="dark"] .tui-radio--disabled .tui-label,
+[data-theme="dark"] .tui-switch__label.tui-switch__label--disabled { color: var(--tui-color-text-disabled); }
+[data-theme="dark"] .tui-label__required { color: var(--tui-color-danger-300); }
+
+[data-theme="dark"] .tui-link-text--blue,
+[data-theme="dark"] .tui-link-text--primary { color: var(--tui-color-brand-blue-300); }
+[data-theme="dark"] .tui-link-text--blue:hover,
+[data-theme="dark"] .tui-link-text--primary:hover { color: var(--tui-color-brand-blue-200); }
+[data-theme="dark"] .tui-link-text--secondary { color: var(--tui-color-brand-secondary-200); }
+[data-theme="dark"] .tui-link-text--tertiary { color: var(--tui-color-brand-tertiary-300); }
+[data-theme="dark"] .tui-link-text--black { color: var(--tui-color-brand-default-50); }
+[data-theme="dark"] .tui-link-text--black:hover { color: var(--tui-color-white); }
+[data-theme="dark"] .tui-link-text--white { color: var(--tui-color-white); }
+[data-theme="dark"] .tui-link-text--disabled { color: var(--tui-color-text-disabled); }
+
+/* ─── Button matrix ─────────────────────────────────────────────────────── */
+[data-theme="dark"] .tui-btn--solid {
+  background-color: var(--tui-dark-intent-solid);
+  color: var(--tui-dark-intent-solid-text);
+  border-color: var(--tui-dark-intent-solid);
+}
+[data-theme="dark"] .tui-btn--solid:hover:not(:disabled) {
+  background-color: var(--tui-dark-intent-solid-hover);
+  border-color: var(--tui-dark-intent-solid-hover);
+}
+[data-theme="dark"] .tui-btn--solid:active:not(:disabled) {
+  background-color: var(--tui-dark-intent-solid-active);
+  border-color: var(--tui-dark-intent-solid-active);
+}
+[data-theme="dark"] .tui-btn--outline {
+  background-color: transparent;
+  color: var(--tui-dark-intent-text);
+  border-color: var(--tui-dark-intent-border);
+}
+[data-theme="dark"] .tui-btn--outline:hover:not(:disabled) {
+  background-color: var(--tui-dark-intent-subtle);
+  border-color: var(--tui-dark-intent-border-hover);
+}
+[data-theme="dark"] .tui-btn--outline:active:not(:disabled) {
+  background-color: var(--tui-dark-intent-subtle-active);
+}
+[data-theme="dark"] .tui-btn--soft {
+  background-color: var(--tui-dark-intent-subtle);
+  color: var(--tui-dark-intent-text);
+  border-color: transparent;
+}
+[data-theme="dark"] .tui-btn--soft:hover:not(:disabled) {
+  background-color: var(--tui-dark-intent-subtle-hover);
+}
+[data-theme="dark"] .tui-btn--soft:active:not(:disabled) {
+  background-color: var(--tui-dark-intent-subtle-active);
+}
+[data-theme="dark"] .tui-btn--plain {
+  color: var(--tui-dark-intent-text);
+}
+[data-theme="dark"] .tui-btn--plain:hover:not(:disabled) {
+  color: var(--tui-color-text-primary);
+}
+[data-theme="dark"] .tui-btn--plain:active:not(:disabled) {
+  color: var(--tui-dark-intent-text);
+}
+[data-theme="dark"] .tui-btn:disabled,
+[data-theme="dark"] .tui-btn--loading {
+  background-color: var(--tui-color-disabled-bg) !important;
+  color: var(--tui-color-disabled-text) !important;
+  border-color: var(--tui-color-disabled-border) !important;
+}
+[data-theme="dark"] .tui-btn:focus-visible {
+  --tui-ring-color: var(--tui-dark-intent-focus, var(--tui-color-focus-ring));
+}
+
+/* ─── Field matrix ───────────────────────────────────────────────────────── */
+[data-theme="dark"] .tui-input,
+[data-theme="dark"] .tui-select,
+[data-theme="dark"] .tui-textarea__native {
+  color: var(--tui-color-text-primary);
+}
+[data-theme="dark"] .tui-input--outline,
+[data-theme="dark"] .tui-select--outline,
+[data-theme="dark"] .tui-textarea--outline .tui-textarea__native {
+  border-color: var(--tui-dark-intent-border);
+}
+[data-theme="dark"] .tui-input--soft,
+[data-theme="dark"] .tui-select--soft,
+[data-theme="dark"] .tui-textarea--soft .tui-textarea__native {
+  border-color: var(--tui-dark-intent-border);
+  background-color: var(--tui-color-surface-secondary);
+}
+[data-theme="dark"] .tui-input--plain,
+[data-theme="dark"] .tui-select--plain,
+[data-theme="dark"] .tui-textarea--plain .tui-textarea__native {
+  border-color: var(--tui-dark-intent-subtle-hover);
+}
+[data-theme="dark"] .tui-input--outline:hover:not(.tui-input--disabled),
+[data-theme="dark"] .tui-input--soft:hover:not(.tui-input--disabled),
+[data-theme="dark"] .tui-input--plain:hover:not(.tui-input--disabled),
+[data-theme="dark"] .tui-select--outline:hover:not(.tui-select--disabled),
+[data-theme="dark"] .tui-select--soft:hover:not(.tui-select--disabled),
+[data-theme="dark"] .tui-select--plain:hover:not(.tui-select--disabled),
+[data-theme="dark"] .tui-textarea--outline .tui-textarea__native:hover:not(:disabled),
+[data-theme="dark"] .tui-textarea--soft .tui-textarea__native:hover:not(:disabled),
+[data-theme="dark"] .tui-textarea--plain .tui-textarea__native:hover:not(:disabled) {
+  border-color: var(--tui-dark-intent-border-hover);
+}
+[data-theme="dark"] .tui-input.tui-input--disabled,
+[data-theme="dark"] .tui-select.tui-select--disabled,
+[data-theme="dark"] .tui-textarea.tui-textarea--disabled .tui-textarea__native {
+  background-color: var(--tui-color-disabled-bg);
+  color: var(--tui-color-disabled-text);
+  border-color: var(--tui-color-disabled-border);
+}
+[data-theme="dark"] .tui-input--disabled .tui-input__native,
+[data-theme="dark"] .tui-select--disabled .tui-select__native,
+[data-theme="dark"] .tui-textarea--disabled .tui-textarea__native {
+  color: var(--tui-color-disabled-text);
+}
+[data-theme="dark"] .tui-input__native::placeholder,
+[data-theme="dark"] .tui-textarea__native::placeholder { color: var(--tui-color-text-tertiary); }
+[data-theme="dark"] .tui-input__leading,
+[data-theme="dark"] .tui-input__trailing,
+[data-theme="dark"] .tui-input__prefix,
+[data-theme="dark"] .tui-input__suffix,
+[data-theme="dark"] .tui-select__icon { color: var(--tui-color-text-secondary); }
+[data-theme="dark"] .tui-input__clear,
+[data-theme="dark"] .tui-datepicker__clear { color: var(--tui-color-text-tertiary); }
+[data-theme="dark"] .tui-input__clear:hover,
+[data-theme="dark"] .tui-datepicker__clear:hover { color: var(--tui-color-text-primary); background-color: var(--tui-color-bg-muted); }
+[data-theme="dark"] .tui-input:has(.tui-input__native:focus-visible),
+[data-theme="dark"] .tui-select:has(.tui-select__native:focus-visible),
+[data-theme="dark"] .tui-textarea__native:focus-visible {
+  --tui-ring-color: var(--tui-dark-intent-focus, var(--tui-color-border-focus));
+}
+
+/* ─── Checkbox, radio, and switch ───────────────────────────────────────── */
+[data-theme="dark"] .tui-checkbox,
+[data-theme="dark"] .tui-radio,
+[data-theme="dark"] .tui-switch {
+  --tui-checkbox-active: var(--tui-dark-intent-solid);
+  --tui-checkbox-active-hover: var(--tui-dark-intent-solid-hover);
+  --tui-checkbox-border: var(--tui-dark-intent-border);
+  --tui-checkbox-border-hover: var(--tui-dark-intent-border-hover);
+  --tui-radio-active: var(--tui-dark-intent-solid);
+  --tui-radio-active-hover: var(--tui-dark-intent-solid-hover);
+  --tui-radio-border: var(--tui-dark-intent-border);
+  --tui-radio-border-hover: var(--tui-dark-intent-border-hover);
+  --tui-switch-active: var(--tui-dark-intent-solid);
+  --tui-switch-active-hover: var(--tui-dark-intent-solid-hover);
+  --tui-switch-track-off: var(--tui-dark-intent-border);
+  --tui-switch-track-off-hover: var(--tui-dark-intent-border-hover);
+}
+[data-theme="dark"] .tui-checkbox__label,
+[data-theme="dark"] .tui-radio__label,
+[data-theme="dark"] .tui-checkbox__title,
+[data-theme="dark"] .tui-radio__title { color: var(--tui-color-text-primary); }
+[data-theme="dark"] .tui-checkbox__subtitle,
+[data-theme="dark"] .tui-radio__subtitle { color: var(--tui-color-text-secondary); }
+[data-theme="dark"] .tui-checkbox--text-intent .tui-checkbox__title,
+[data-theme="dark"] .tui-checkbox--text-intent .tui-checkbox__label,
+[data-theme="dark"] .tui-radio--text-intent .tui-radio__title,
+[data-theme="dark"] .tui-radio--text-intent .tui-radio__label { color: var(--tui-dark-intent-text); }
+[data-theme="dark"] .tui-checkbox--text-intent .tui-checkbox__subtitle,
+[data-theme="dark"] .tui-radio--text-intent .tui-radio__subtitle { color: var(--tui-dark-intent-muted); }
+[data-theme="dark"] .tui-checkbox--box,
+[data-theme="dark"] .tui-radio--box {
+  --tui-checkbox-box-bg: var(--tui-dark-intent-subtle);
+  --tui-checkbox-box-border: var(--tui-dark-intent-border);
+  --tui-checkbox-box-bg-hover: var(--tui-dark-intent-subtle-hover);
+  --tui-checkbox-box-border-hover: var(--tui-dark-intent-border-hover);
+  --tui-checkbox-box-bg-active: var(--tui-dark-intent-subtle-active);
+  --tui-checkbox-box-border-active: var(--tui-dark-intent-border-hover);
+  --tui-checkbox-box-bg-checked: var(--tui-dark-intent-subtle);
+  --tui-checkbox-box-border-checked: var(--tui-dark-intent-solid);
+  --tui-checkbox-box-border-checked-hover: var(--tui-dark-intent-solid-hover);
+  --tui-checkbox-box-ring: var(--tui-dark-intent-focus);
+  --tui-radio-box-bg: var(--tui-dark-intent-subtle);
+  --tui-radio-box-border: var(--tui-dark-intent-border);
+  --tui-radio-box-bg-hover: var(--tui-dark-intent-subtle-hover);
+  --tui-radio-box-border-hover: var(--tui-dark-intent-border-hover);
+  --tui-radio-box-bg-active: var(--tui-dark-intent-subtle-active);
+  --tui-radio-box-border-active: var(--tui-dark-intent-border-hover);
+  --tui-radio-box-bg-checked: var(--tui-dark-intent-subtle);
+  --tui-radio-box-border-checked: var(--tui-dark-intent-solid);
+  --tui-radio-box-border-checked-hover: var(--tui-dark-intent-solid-hover);
+  --tui-radio-box-ring: var(--tui-dark-intent-focus);
+}
+[data-theme="dark"] .tui-checkbox--disabled .tui-checkbox__indicator {
+  background-color: var(--tui-color-disabled-bg);
+  border-color: var(--tui-color-disabled-border);
+  color: var(--tui-color-disabled-text);
+}
+[data-theme="dark"] .tui-radio--disabled .tui-radio__indicator {
+  background-color: var(--tui-color-disabled-bg);
+  border-color: var(--tui-color-disabled-border);
+}
+[data-theme="dark"] .tui-radio--disabled .tui-radio__indicator--checked .tui-radio__dot,
+[data-theme="dark"] .tui-switch--disabled .tui-switch__thumb {
+  background-color: var(--tui-color-disabled-text);
+  color: var(--tui-color-disabled-text);
+}
+[data-theme="dark"] .tui-checkbox--disabled .tui-checkbox__label,
+[data-theme="dark"] .tui-radio--disabled .tui-radio__label,
+[data-theme="dark"] .tui-checkbox__text--disabled .tui-checkbox__title,
+[data-theme="dark"] .tui-checkbox__text--disabled .tui-checkbox__subtitle,
+[data-theme="dark"] .tui-radio__text--disabled .tui-radio__title,
+[data-theme="dark"] .tui-radio__text--disabled .tui-radio__subtitle,
+[data-theme="dark"] .tui-switch__label.tui-switch__label--disabled { color: var(--tui-color-disabled-text); }
+[data-theme="dark"] .tui-switch--disabled .tui-switch__track {
+  background-color: var(--tui-color-disabled-bg);
+}
+[data-theme="dark"] .tui-switch__thumb { background-color: var(--tui-color-white); box-shadow: var(--tui-shadow-xs); }
+[data-theme="dark"] .tui-switch__label:not(.tui-switch__label--disabled) { color: var(--tui-color-text-primary); }
+[data-theme="dark"] .tui-checkbox--box.tui-checkbox--disabled,
+[data-theme="dark"] .tui-radio--box.tui-radio--disabled {
+  background-color: var(--tui-color-disabled-bg);
+  border-color: var(--tui-color-disabled-border);
+  opacity: var(--tui-opacity-60);
+}
+
+/* ─── Status chips, tags, and pills ──────────────────────────────────────── */
+[data-theme="dark"] .tui-tag--filled,
+[data-theme="dark"] .tui-chip--filled,
+[data-theme="dark"] .tui-pill--subtle {
+  background-color: var(--tui-dark-intent-subtle);
+  color: var(--tui-dark-intent-text);
+  border-color: transparent;
+}
+[data-theme="dark"] .tui-tag--outlined,
+[data-theme="dark"] .tui-chip--outlined,
+[data-theme="dark"] .tui-pill--outlined {
+  background-color: transparent;
+  color: var(--tui-dark-intent-text);
+  border-color: var(--tui-dark-intent-border);
+}
+[data-theme="dark"] .tui-pill--solid {
+  background-color: var(--tui-dark-intent-solid);
+  color: var(--tui-dark-intent-solid-text);
+}
+[data-theme="dark"] .tui-tag--interactive.tui-tag--filled:hover:not(.tui-tag--disabled),
+[data-theme="dark"] .tui-chip--filled:hover:not(.tui-chip--disabled) { background-color: var(--tui-dark-intent-subtle-hover); }
+[data-theme="dark"] .tui-tag--interactive.tui-tag--outlined:hover:not(.tui-tag--disabled),
+[data-theme="dark"] .tui-chip--outlined:hover:not(.tui-chip--disabled) { background-color: var(--tui-dark-intent-subtle); }
+[data-theme="dark"] .tui-tag--filled.tui-tag--selected,
+[data-theme="dark"] .tui-tag--outlined.tui-tag--selected,
+[data-theme="dark"] .tui-chip--filled.tui-chip--selected,
+[data-theme="dark"] .tui-chip--outlined.tui-chip--selected {
+  background-color: var(--tui-dark-intent-solid);
+  border-color: var(--tui-dark-intent-solid);
+  color: var(--tui-dark-intent-solid-text);
+}
+[data-theme="dark"] .tui-tag--disabled,
+[data-theme="dark"] .tui-chip--disabled,
+[data-theme="dark"] .tui-pill--disabled { opacity: var(--tui-opacity-50); }
+[data-theme="dark"] .tui-tag--interactive:focus-visible,
+[data-theme="dark"] .tui-chip:focus-visible,
+[data-theme="dark"] .tui-pill:focus-visible {
+  --tui-color-focus-ring-gap: var(--tui-color-bg-base);
+  --tui-tag-ring: var(--tui-dark-intent-focus);
+  --tui-chip-ring: var(--tui-dark-intent-focus);
+  --tui-pill-ring: var(--tui-dark-intent-focus);
+}
+
+/* ─── Menus, lists, and surfaces ────────────────────────────────────────── */
+[data-theme="dark"] .tui-dropdown__menu,
+[data-theme="dark"] .tui-list-group,
+[data-theme="dark"] .tui-calendar,
+[data-theme="dark"] .tui-timeselector,
+[data-theme="dark"] .tui-datepicker__popup,
+[data-theme="dark"] .tui-timepicker__popup,
+[data-theme="dark"] .tui-modal {
+  background-color: var(--tui-color-surface-default);
+  color: var(--tui-color-text-primary);
+  border-color: var(--tui-dark-intent-border, var(--tui-color-border-default));
+}
+[data-theme="dark"] .tui-dropdown__menu { --tui-dropdown-border-color: var(--tui-dark-intent-border, var(--tui-color-border-default)); }
+[data-theme="dark"] .tui-dropdown__option--highlighted { background-color: var(--tui-dark-intent-subtle, var(--tui-color-bg-muted)); }
+[data-theme="dark"] .tui-dropdown__status { color: var(--tui-color-text-secondary); }
+[data-theme="dark"] .tui-dropdown__clear:hover { color: var(--tui-color-text-primary); background-color: var(--tui-color-bg-muted); }
+
+[data-theme="dark"] .tui-list-group {
+  --tui-list-group-border-color: var(--tui-dark-intent-border, var(--tui-color-border-default));
+  --tui-list-group-focus-color: var(--tui-dark-intent-focus, var(--tui-color-border-focus));
+}
+[data-theme="dark"] .tui-list-group__header,
+[data-theme="dark"] .tui-list-group__footer { color: var(--tui-color-text-primary); }
+[data-theme="dark"] .tui-list-item {
+  --tui-list-item-hover-default-bg: var(--tui-dark-intent-subtle, var(--tui-color-bg-muted));
+  --tui-list-item-selected-default-bg: var(--tui-dark-intent-subtle-hover, var(--tui-color-surface-secondary));
+  --tui-list-item-border-default-color: var(--tui-dark-intent-border, var(--tui-color-border-default));
+  --tui-list-item-focus-color: var(--tui-dark-intent-focus, var(--tui-color-border-focus));
+}
+[data-theme="dark"] .tui-list-item__title { color: var(--tui-color-text-primary); }
+[data-theme="dark"] .tui-list-item__subtitle { color: var(--tui-color-text-secondary); }
+[data-theme="dark"] .tui-list-item__icon { color: var(--tui-color-text-secondary); }
+[data-theme="dark"] .tui-list-item__icon--sub { color: var(--tui-color-text-tertiary); }
+[data-theme="dark"] .tui-list-item--disabled { opacity: var(--tui-opacity-60); }
+
+/* ─── Calendar, date picker, and time picker ─────────────────────────────── */
+[data-theme="dark"] .tui-calendar { border-color: var(--tui-color-border-default); }
+[data-theme="dark"] .tui-calendar__title,
+[data-theme="dark"] .tui-calendar__day,
+[data-theme="dark"] .tui-calendar__month-cell,
+[data-theme="dark"] .tui-calendar__year-cell { color: var(--tui-color-text-primary); }
+[data-theme="dark"] .tui-calendar__weekday,
+[data-theme="dark"] .tui-calendar__weeknumber,
+[data-theme="dark"] .tui-calendar__weeknumber-header { color: var(--tui-color-text-tertiary); }
+[data-theme="dark"] .tui-calendar__nav-btn { color: var(--tui-color-text-secondary); }
+[data-theme="dark"] .tui-calendar__title-btn:hover,
+[data-theme="dark"] .tui-calendar__nav-btn:hover,
+[data-theme="dark"] .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end),
+[data-theme="dark"] .tui-calendar__day--outside:hover:not(:disabled),
+[data-theme="dark"] .tui-calendar__month-cell:hover:not(.tui-calendar__month-cell--selected),
+[data-theme="dark"] .tui-calendar__year-cell:hover:not(.tui-calendar__year-cell--selected) {
+  background-color: var(--tui-dark-intent-subtle, var(--tui-color-bg-muted));
+}
+/* Visible current-month dates use the dark intent surface and a light text color on hover.
+   The extra calendar class keeps this override ahead of each base intent selector. */
+[data-theme="dark"] .tui-calendar .tui-calendar__day:hover:not(:disabled):not(.tui-calendar__day--selected):not(.tui-calendar__day--range-start):not(.tui-calendar__day--range-end):not(.tui-calendar__day--outside) {
+  background-color: var(--tui-dark-intent-subtle, var(--tui-color-bg-muted));
+  color: var(--tui-color-text-primary);
+}
+[data-theme="dark"] .tui-calendar__day--outside { color: var(--tui-color-text-disabled); }
+[data-theme="dark"] .tui-calendar__day--today,
+[data-theme="dark"] .tui-calendar__month-cell--today,
+[data-theme="dark"] .tui-calendar__year-cell--today { border-color: var(--tui-color-border-strong); }
+[data-theme="dark"] .tui-calendar .tui-calendar__day--selected,
+[data-theme="dark"] .tui-calendar .tui-calendar__day--range-start,
+[data-theme="dark"] .tui-calendar .tui-calendar__day--range-end {
+  background-color: var(--tui-dark-intent-solid);
+  color: var(--tui-dark-intent-solid-text);
+}
+[data-theme="dark"] .tui-calendar .tui-calendar__day--in-range { background-color: var(--tui-dark-intent-range); }
+[data-theme="dark"] .tui-calendar .tui-calendar__month-cell--selected,
+[data-theme="dark"] .tui-calendar .tui-calendar__year-cell--selected { 
+  background-color: var(--tui-dark-intent-solid);
+  color: var(--tui-dark-intent-solid-text);
+}
+[data-theme="dark"] .tui-calendar__overlay {
+  background-color: rgb(var(--tui-color-brand-default-950-rgb) / var(--tui-opacity-80));
+}
+[data-theme="dark"] .tui-calendar__overlay-cancel {
+  color: var(--tui-color-text-secondary);
+  background-color: var(--tui-color-surface-secondary);
+  border-color: var(--tui-color-border-default);
+}
+[data-theme="dark"] .tui-calendar__overlay-cancel:hover { background-color: var(--tui-color-bg-muted); }
+[data-theme="dark"] .tui-calendar__month-grid,
+[data-theme="dark"] .tui-calendar__year-grid { background-color: var(--tui-color-surface-raised); }
+
+[data-theme="dark"] .tui-datepicker__popup,
+[data-theme="dark"] .tui-timepicker__popup { border-color: var(--tui-color-border-default); }
+[data-theme="dark"] .tui-datepicker__footer,
+[data-theme="dark"] .tui-timepicker__footer,
+[data-theme="dark"] .tui-timepicker__tabs,
+[data-theme="dark"] .tui-datepicker__time-tabs { border-color: var(--tui-color-border-default); }
+[data-theme="dark"] .tui-datepicker__cancel-btn,
+[data-theme="dark"] .tui-timepicker__cancel-btn {
+  background-color: var(--tui-color-surface-secondary);
+  color: var(--tui-color-text-secondary);
+  border-color: var(--tui-color-border-default);
+}
+[data-theme="dark"] .tui-datepicker__cancel-btn:hover,
+[data-theme="dark"] .tui-timepicker__cancel-btn:hover { background-color: var(--tui-color-bg-muted); }
+[data-theme="dark"] .tui-datepicker__ok-btn,
+[data-theme="dark"] .tui-timepicker__ok-btn {
+  background-color: var(--tui-dark-intent-solid);
+  color: var(--tui-dark-intent-solid-text);
+}
+[data-theme="dark"] .tui-datepicker__ok-btn:hover,
+[data-theme="dark"] .tui-timepicker__ok-btn:hover:not(:disabled) { background-color: var(--tui-dark-intent-solid-hover); }
+[data-theme="dark"] .tui-datepicker__preset-btn,
+[data-theme="dark"] .tui-datepicker__time-tab,
+[data-theme="dark"] .tui-timepicker__tab { color: var(--tui-color-text-secondary); }
+[data-theme="dark"] .tui-datepicker__preset-btn:hover,
+[data-theme="dark"] .tui-datepicker__time-tab:hover,
+[data-theme="dark"] .tui-timepicker__tab:hover { background-color: var(--tui-color-bg-muted); color: var(--tui-color-text-primary); }
+[data-theme="dark"] .tui-datepicker__preset-btn--active,
+[data-theme="dark"] .tui-datepicker__time-tab--active,
+[data-theme="dark"] .tui-timepicker__tab--active {
+  background-color: var(--tui-dark-intent-subtle);
+  color: var(--tui-dark-intent-text);
+}
+[data-theme="dark"] .tui-datepicker__time-label { color: var(--tui-color-text-secondary); }
+
+[data-theme="dark"] .tui-timeselector__header { border-color: var(--tui-color-border-default); }
+[data-theme="dark"] .tui-timeselector__footer,
+[data-theme="dark"] .tui-timeselector__column { border-color: var(--tui-color-border-default); }
+[data-theme="dark"] .tui-timeselector__header-label,
+[data-theme="dark"] .tui-timeselector__scroll-item { color: var(--tui-color-text-secondary); }
+[data-theme="dark"] .tui-timeselector .tui-timeselector__scroll-item:hover:not(:disabled):not(.tui-timeselector__scroll-item--selected) {
+  background-color: var(--tui-dark-intent-subtle);
+  color: var(--tui-color-text-primary);
+}
+[data-theme="dark"] .tui-timeselector__scroll-item--selected,
+[data-theme="dark"] .tui-timeselector__scroll-item--selected:hover,
+[data-theme="dark"] .tui-timeselector__footer-btn--save {
+  background-color: var(--tui-dark-intent-solid);
+  color: var(--tui-dark-intent-solid-text);
+}
+[data-theme="dark"] .tui-timeselector__footer-btn--cancel { color: var(--tui-color-text-secondary); }
+[data-theme="dark"] .tui-timeselector__footer-btn--cancel:hover { background-color: var(--tui-color-bg-muted); }
+
+/* ─── Form field, table, modal, and shimmer ─────────────────────────────── */
+[data-theme="dark"] .tui-form-field--disabled,
+[data-theme="dark"] .tui-form-field--disabled .tui-form-field__helper { color: var(--tui-color-text-disabled); }
+[data-theme="dark"] .tui-form-field__helper { color: var(--tui-color-text-secondary); }
+[data-theme="dark"] .tui-form-field__error { color: var(--tui-color-danger-300); }
+
+[data-theme="dark"] .tui-table {
+  color: var(--tui-color-text-primary);
+}
+[data-theme="dark"] .tui-table__header,
+[data-theme="dark"] .tui-table__header-cell { background-color: var(--tui-color-surface-secondary); }
+[data-theme="dark"] .tui-table--hoverable .tui-table__body .tui-table__row:hover .tui-table__cell,
+[data-theme="dark"] .tui-table--hoverable .tui-table__body .tui-table__row:hover .tui-table__row-label,
+[data-theme="dark"] .tui-table__header-cell--sortable:hover { background-color: var(--tui-color-brand-tertiary-950); }
+[data-theme="dark"] .tui-table__row--selected .tui-table__cell,
+[data-theme="dark"] .tui-table__row--selected .tui-table__row-label { background-color: var(--tui-color-brand-blue-950); }
+[data-theme="dark"] .tui-table__row--disabled .tui-table__cell,
+[data-theme="dark"] .tui-table__row--disabled .tui-table__row-label,
+[data-theme="dark"] .tui-table--hoverable .tui-table__body .tui-table__row--disabled:hover .tui-table__cell,
+[data-theme="dark"] .tui-table--hoverable .tui-table__body .tui-table__row--disabled:hover .tui-table__row-label {
+  background-color: var(--tui-color-disabled-bg);
+  color: var(--tui-color-disabled-text);
+}
+[data-theme="dark"] .tui-table__cell-link { color: var(--tui-color-text-link); }
+[data-theme="dark"] .tui-table__cell-link:hover { color: var(--tui-color-text-link-hover); }
+[data-theme="dark"] .tui-table__cell-link:focus-visible { outline-color: var(--tui-color-border-focus); }
+[data-theme="dark"] .tui-table__sort-icon--asc { border-bottom-color: var(--tui-color-text-tertiary); }
+[data-theme="dark"] .tui-table__sort-icon--desc { border-top-color: var(--tui-color-text-tertiary); }
+[data-theme="dark"] .tui-table__sort--asc .tui-table__sort-icon--asc {
+  border-bottom-color: var(--tui-color-text-secondary);
+}
+[data-theme="dark"] .tui-table__sort--desc .tui-table__sort-icon--desc {
+  border-top-color: var(--tui-color-text-secondary);
+}
+[data-theme="dark"] .tui-table__expand-toggle:hover { background-color: var(--tui-color-bg-muted); color: var(--tui-color-text-primary); }
+[data-theme="dark"] .tui-table__expand-row .tui-table__cell { background-color: var(--tui-color-surface-secondary); }
+
+[data-theme="dark"] .tui-modal-overlay--backdrop {
+  background: rgb(var(--tui-color-black-rgb) / var(--tui-opacity-70));
+}
+[data-theme="dark"] .tui-modal {
+  background-color: var(--tui-color-surface-default);
+  color: var(--tui-color-text-primary);
+}
+[data-theme="dark"] .tui-modal__header,
+[data-theme="dark"] .tui-modal__footer { border-color: var(--tui-color-border-default); }
+[data-theme="dark"] .tui-modal__header-title,
+[data-theme="dark"] .tui-modal__body { color: var(--tui-color-text-primary); }
+[data-theme="dark"] .tui-modal__header-subtitle,
+[data-theme="dark"] .tui-modal__close { color: var(--tui-color-text-secondary); }
+[data-theme="dark"] .tui-modal__close:hover { background-color: var(--tui-color-bg-muted); color: var(--tui-color-text-primary); }
+[data-theme="dark"] .tui-modal__close:active { background-color: var(--tui-color-brand-default-700); }
+
+[data-theme="dark"] .tui-shimmer {
+  --tui-shimmer-from: var(--tui-color-shimmer-from);
+  --tui-shimmer-via: var(--tui-color-shimmer-via);
+}
+
+/* Focus rings use a dark surface gap and remain visible across every intent. */
+[data-theme="dark"] .tui-btn:focus-visible,
+[data-theme="dark"] .tui-link-text:focus-visible,
+[data-theme="dark"] .tui-tag--interactive:focus-visible,
+[data-theme="dark"] .tui-chip:focus-visible,
+[data-theme="dark"] .tui-pill:focus-visible,
+[data-theme="dark"] .tui-calendar__day:focus-visible,
+[data-theme="dark"] .tui-calendar__month-cell:focus-visible,
+[data-theme="dark"] .tui-calendar__year-cell:focus-visible,
+[data-theme="dark"] .tui-timeselector__scroll-item:focus-visible {
+  --tui-color-focus-ring-gap: var(--tui-color-bg-base);
+}
+
+/* ─── Portal picker intent contract ────────────────────────────────────────
+   DatePicker and TimePicker popovers render through a body portal, so their
+   intent class is not nested under the picker wrapper. Keep the same dark
+   intent variables on the portal root for presets, tabs, ranges, and footer
+   controls. */
+[data-theme="dark"] .tui-datepicker__popup--default,
+[data-theme="dark"] .tui-timepicker__popup--default {
+  --tui-dark-intent-text: var(--tui-color-brand-default-200);
+  --tui-dark-intent-muted: var(--tui-color-brand-default-300);
+  --tui-dark-intent-border: var(--tui-color-brand-default-400);
+  --tui-dark-intent-border-hover: var(--tui-color-brand-default-300);
+  --tui-dark-intent-subtle: var(--tui-color-brand-default-800);
+  --tui-dark-intent-subtle-hover: var(--tui-color-brand-default-700);
+  --tui-dark-intent-subtle-active: var(--tui-color-brand-default-600);
+  --tui-dark-intent-solid: var(--tui-color-brand-default-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-brand-default-500);
+  --tui-dark-intent-solid-active: var(--tui-color-brand-default-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-brand-default-700);
+  --tui-dark-intent-focus: var(--tui-color-brand-default-300);
+}
+
+[data-theme="dark"] .tui-datepicker__popup--primary,
+[data-theme="dark"] .tui-timepicker__popup--primary {
+  --tui-dark-intent-text: var(--tui-color-brand-primary-300);
+  --tui-dark-intent-muted: var(--tui-color-brand-primary-400);
+  --tui-dark-intent-border: var(--tui-color-brand-primary-400);
+  --tui-dark-intent-border-hover: var(--tui-color-brand-primary-300);
+  --tui-dark-intent-subtle: var(--tui-color-brand-primary-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-brand-primary-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-brand-primary-800);
+  --tui-dark-intent-solid: var(--tui-color-brand-primary-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-brand-primary-500);
+  --tui-dark-intent-solid-active: var(--tui-color-brand-primary-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-brand-primary-900);
+  --tui-dark-intent-focus: var(--tui-color-brand-primary-300);
+}
+
+[data-theme="dark"] .tui-datepicker__popup--secondary,
+[data-theme="dark"] .tui-timepicker__popup--secondary {
+  --tui-dark-intent-text: var(--tui-color-brand-secondary-200);
+  --tui-dark-intent-muted: var(--tui-color-brand-secondary-300);
+  --tui-dark-intent-border: var(--tui-color-brand-secondary-500);
+  --tui-dark-intent-border-hover: var(--tui-color-brand-secondary-400);
+  --tui-dark-intent-subtle: var(--tui-color-brand-secondary-900);
+  --tui-dark-intent-subtle-hover: var(--tui-color-brand-secondary-800);
+  --tui-dark-intent-subtle-active: var(--tui-color-brand-secondary-700);
+  --tui-dark-intent-solid: var(--tui-color-brand-secondary-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-brand-secondary-500);
+  --tui-dark-intent-solid-active: var(--tui-color-brand-secondary-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-brand-secondary-800);
+  --tui-dark-intent-focus: var(--tui-color-brand-secondary-300);
+}
+
+[data-theme="dark"] .tui-datepicker__popup--tertiary,
+[data-theme="dark"] .tui-timepicker__popup--tertiary {
+  --tui-dark-intent-text: var(--tui-color-brand-tertiary-300);
+  --tui-dark-intent-muted: var(--tui-color-brand-tertiary-400);
+  --tui-dark-intent-border: var(--tui-color-brand-tertiary-400);
+  --tui-dark-intent-border-hover: var(--tui-color-brand-tertiary-300);
+  --tui-dark-intent-subtle: var(--tui-color-brand-tertiary-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-brand-tertiary-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-brand-tertiary-800);
+  --tui-dark-intent-solid: var(--tui-color-brand-tertiary-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-brand-tertiary-500);
+  --tui-dark-intent-solid-active: var(--tui-color-brand-tertiary-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-brand-tertiary-900);
+  --tui-dark-intent-focus: var(--tui-color-brand-tertiary-300);
+}
+
+[data-theme="dark"] .tui-datepicker__popup--success,
+[data-theme="dark"] .tui-timepicker__popup--success {
+  --tui-dark-intent-text: var(--tui-color-success-300);
+  --tui-dark-intent-muted: var(--tui-color-success-400);
+  --tui-dark-intent-border: var(--tui-color-success-400);
+  --tui-dark-intent-border-hover: var(--tui-color-success-300);
+  --tui-dark-intent-subtle: var(--tui-color-success-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-success-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-success-800);
+  --tui-dark-intent-solid: var(--tui-color-success-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-success-500);
+  --tui-dark-intent-solid-active: var(--tui-color-success-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-success-900);
+  --tui-dark-intent-focus: var(--tui-color-success-300);
+}
+
+[data-theme="dark"] .tui-datepicker__popup--warning,
+[data-theme="dark"] .tui-timepicker__popup--warning {
+  --tui-dark-intent-text: var(--tui-color-warning-300);
+  --tui-dark-intent-muted: var(--tui-color-warning-400);
+  --tui-dark-intent-border: var(--tui-color-warning-400);
+  --tui-dark-intent-border-hover: var(--tui-color-warning-300);
+  --tui-dark-intent-subtle: var(--tui-color-warning-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-warning-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-warning-800);
+  --tui-dark-intent-solid: var(--tui-color-warning-400);
+  --tui-dark-intent-solid-hover: var(--tui-color-warning-300);
+  --tui-dark-intent-solid-active: var(--tui-color-warning-200);
+  --tui-dark-intent-solid-text: var(--tui-color-brand-default-950);
+  --tui-dark-intent-range: var(--tui-color-warning-900);
+  --tui-dark-intent-focus: var(--tui-color-warning-300);
+}
+
+[data-theme="dark"] .tui-datepicker__popup--danger,
+[data-theme="dark"] .tui-timepicker__popup--danger {
+  --tui-dark-intent-text: var(--tui-color-danger-300);
+  --tui-dark-intent-muted: var(--tui-color-danger-400);
+  --tui-dark-intent-border: var(--tui-color-danger-400);
+  --tui-dark-intent-border-hover: var(--tui-color-danger-300);
+  --tui-dark-intent-subtle: var(--tui-color-danger-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-danger-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-danger-800);
+  --tui-dark-intent-solid: var(--tui-color-danger-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-danger-500);
+  --tui-dark-intent-solid-active: var(--tui-color-danger-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-danger-900);
+  --tui-dark-intent-focus: var(--tui-color-danger-300);
+}
+
+[data-theme="dark"] .tui-datepicker__popup--info,
+[data-theme="dark"] .tui-timepicker__popup--info {
+  --tui-dark-intent-text: var(--tui-color-info-300);
+  --tui-dark-intent-muted: var(--tui-color-info-400);
+  --tui-dark-intent-border: var(--tui-color-info-400);
+  --tui-dark-intent-border-hover: var(--tui-color-info-300);
+  --tui-dark-intent-subtle: var(--tui-color-info-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-info-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-info-800);
+  --tui-dark-intent-solid: var(--tui-color-info-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-info-500);
+  --tui-dark-intent-solid-active: var(--tui-color-info-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-info-900);
+  --tui-dark-intent-focus: var(--tui-color-info-300);
+}
+
+[data-theme="dark"] .tui-datepicker__popup--teal,
+[data-theme="dark"] .tui-timepicker__popup--teal {
+  --tui-dark-intent-text: var(--tui-color-teal-300);
+  --tui-dark-intent-muted: var(--tui-color-teal-400);
+  --tui-dark-intent-border: var(--tui-color-teal-400);
+  --tui-dark-intent-border-hover: var(--tui-color-teal-300);
+  --tui-dark-intent-subtle: var(--tui-color-teal-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-teal-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-teal-800);
+  --tui-dark-intent-solid: var(--tui-color-teal-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-teal-500);
+  --tui-dark-intent-solid-active: var(--tui-color-teal-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-teal-900);
+  --tui-dark-intent-focus: var(--tui-color-teal-300);
+}
+
+[data-theme="dark"] .tui-datepicker__popup--orange,
+[data-theme="dark"] .tui-timepicker__popup--orange {
+  --tui-dark-intent-text: var(--tui-color-orange-300);
+  --tui-dark-intent-muted: var(--tui-color-orange-400);
+  --tui-dark-intent-border: var(--tui-color-orange-400);
+  --tui-dark-intent-border-hover: var(--tui-color-orange-300);
+  --tui-dark-intent-subtle: var(--tui-color-orange-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-orange-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-orange-800);
+  --tui-dark-intent-solid: var(--tui-color-orange-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-orange-500);
+  --tui-dark-intent-solid-active: var(--tui-color-orange-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-orange-900);
+  --tui-dark-intent-focus: var(--tui-color-orange-300);
+}
+
+[data-theme="dark"] .tui-datepicker__popup--rose,
+[data-theme="dark"] .tui-timepicker__popup--rose {
+  --tui-dark-intent-text: var(--tui-color-rose-300);
+  --tui-dark-intent-muted: var(--tui-color-rose-400);
+  --tui-dark-intent-border: var(--tui-color-rose-400);
+  --tui-dark-intent-border-hover: var(--tui-color-rose-300);
+  --tui-dark-intent-subtle: var(--tui-color-rose-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-rose-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-rose-800);
+  --tui-dark-intent-solid: var(--tui-color-rose-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-rose-500);
+  --tui-dark-intent-solid-active: var(--tui-color-rose-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-rose-900);
+  --tui-dark-intent-focus: var(--tui-color-rose-300);
+}
+
+[data-theme="dark"] .tui-datepicker__popup--indigo,
+[data-theme="dark"] .tui-timepicker__popup--indigo {
+  --tui-dark-intent-text: var(--tui-color-indigo-300);
+  --tui-dark-intent-muted: var(--tui-color-indigo-400);
+  --tui-dark-intent-border: var(--tui-color-indigo-400);
+  --tui-dark-intent-border-hover: var(--tui-color-indigo-300);
+  --tui-dark-intent-subtle: var(--tui-color-indigo-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-indigo-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-indigo-800);
+  --tui-dark-intent-solid: var(--tui-color-indigo-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-indigo-500);
+  --tui-dark-intent-solid-active: var(--tui-color-indigo-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-indigo-900);
+  --tui-dark-intent-focus: var(--tui-color-indigo-300);
+}
+
+[data-theme="dark"] .tui-datepicker__popup--mint,
+[data-theme="dark"] .tui-timepicker__popup--mint {
+  --tui-dark-intent-text: var(--tui-color-mint-300);
+  --tui-dark-intent-muted: var(--tui-color-mint-400);
+  --tui-dark-intent-border: var(--tui-color-mint-400);
+  --tui-dark-intent-border-hover: var(--tui-color-mint-300);
+  --tui-dark-intent-subtle: var(--tui-color-mint-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-mint-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-mint-800);
+  --tui-dark-intent-solid: var(--tui-color-mint-700);
+  --tui-dark-intent-solid-hover: var(--tui-color-mint-600);
+  --tui-dark-intent-solid-active: var(--tui-color-mint-500);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-mint-900);
+  --tui-dark-intent-focus: var(--tui-color-mint-300);
+}
+
+[data-theme="dark"] .tui-datepicker__popup--coal,
+[data-theme="dark"] .tui-timepicker__popup--coal {
+  --tui-dark-intent-text: var(--tui-color-coal-300);
+  --tui-dark-intent-muted: var(--tui-color-coal-400);
+  --tui-dark-intent-border: var(--tui-color-coal-400);
+  --tui-dark-intent-border-hover: var(--tui-color-coal-300);
+  --tui-dark-intent-subtle: var(--tui-color-coal-950);
+  --tui-dark-intent-subtle-hover: var(--tui-color-coal-900);
+  --tui-dark-intent-subtle-active: var(--tui-color-coal-800);
+  --tui-dark-intent-solid: var(--tui-color-coal-600);
+  --tui-dark-intent-solid-hover: var(--tui-color-coal-500);
+  --tui-dark-intent-solid-active: var(--tui-color-coal-400);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-coal-900);
+  --tui-dark-intent-focus: var(--tui-color-coal-300);
+}
+
+[data-theme="dark"] .tui-datepicker__popup--white,
+[data-theme="dark"] .tui-timepicker__popup--white {
+  --tui-dark-intent-text: var(--tui-color-white);
+  --tui-dark-intent-muted: var(--tui-color-brand-default-300);
+  --tui-dark-intent-border: var(--tui-color-brand-default-400);
+  --tui-dark-intent-border-hover: var(--tui-color-brand-default-300);
+  --tui-dark-intent-subtle: var(--tui-color-brand-default-800);
+  --tui-dark-intent-subtle-hover: var(--tui-color-brand-default-700);
+  --tui-dark-intent-subtle-active: var(--tui-color-brand-default-600);
+  --tui-dark-intent-solid: var(--tui-color-white);
+  --tui-dark-intent-solid-hover: var(--tui-color-brand-default-100);
+  --tui-dark-intent-solid-active: var(--tui-color-brand-default-200);
+  --tui-dark-intent-solid-text: var(--tui-color-black);
+  --tui-dark-intent-range: var(--tui-color-brand-default-700);
+  --tui-dark-intent-focus: var(--tui-color-brand-default-300);
+}
+
+[data-theme="dark"] .tui-datepicker__popup--black,
+[data-theme="dark"] .tui-timepicker__popup--black {
+  --tui-dark-intent-text: var(--tui-color-brand-default-50);
+  --tui-dark-intent-muted: var(--tui-color-brand-default-300);
+  --tui-dark-intent-border: var(--tui-color-brand-default-500);
+  --tui-dark-intent-border-hover: var(--tui-color-brand-default-400);
+  --tui-dark-intent-subtle: var(--tui-color-brand-default-700);
+  --tui-dark-intent-subtle-hover: var(--tui-color-brand-default-600);
+  --tui-dark-intent-subtle-active: var(--tui-color-brand-default-500);
+  --tui-dark-intent-solid: var(--tui-color-black);
+  --tui-dark-intent-solid-hover: var(--tui-color-brand-default-800);
+  --tui-dark-intent-solid-active: var(--tui-color-brand-default-700);
+  --tui-dark-intent-solid-text: var(--tui-color-white);
+  --tui-dark-intent-range: var(--tui-color-brand-default-800);
+  --tui-dark-intent-focus: var(--tui-color-brand-default-300);
+}

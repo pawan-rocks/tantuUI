@@ -15,6 +15,7 @@ export interface TokenEntry {
 const brandColors: Record<string, Record<string, string>> = {
   "brand-white": { "50": "#ffffff", "100": "#fefefe", "200": "#fafafa", "300": "#f5f5f5", "400": "#ededed", "500": "#e0e0e0", "600": "#c2c2c2", "700": "#9e9e9e", "800": "#757575", "900": "#4a4a4a", "950": "#2b2b2b" },
   "brand-black": { "50": "#f5f5f5", "100": "#e8e8e8", "200": "#d4d4d4", "300": "#b0b0b0", "400": "#8a8a8a", "500": "#616161", "600": "#4a4a4a", "700": "#363636", "800": "#242424", "900": "#141414", "950": "#000000" },
+  "brand-default": { "50": "#f8fafc", "100": "#f1f5f9", "200": "#e2e8f0", "300": "#cbd5e1", "400": "#94a3b8", "500": "#64748b", "600": "#475569", "700": "#334155", "800": "#1e293b", "900": "#0f172a", "950": "#020617" },
   "brand-tertiary": { "50": "#f3f4f7", "100": "#e7e8ef", "200": "#cacfe2", "300": "#9da8d2", "400": "#6377c5", "500": "#354eb0", "600": "#2c4091", "700": "#223272", "800": "#1a2656", "900": "#121a3b", "950": "#0a0e1f" },
   "brand-blue": { "50": "#eff4ff", "100": "#dbe6fe", "200": "#bfd3fe", "300": "#93b4fd", "400": "#6090fa", "500": "#3b6ef6", "600": "#2563eb", "700": "#1d50d8", "800": "#1e41af", "900": "#1e398a", "950": "#172554" },
   "brand-primary": { "50": "#f5f3ff", "100": "#ede8ff", "200": "#ddd6fe", "300": "#c4b5fc", "400": "#a78bfa", "500": "#8b5cf6", "600": "#7c3aed", "700": "#6d28d9", "800": "#5b21b6", "900": "#4c1d95", "950": "#2e1065" },
@@ -57,6 +58,7 @@ function generateColorTokens(): TokenEntry[] {
   const defaultColorHex: Record<string, string> = {
     "brand-white": "#ffffff",
     "brand-black": "#000000",
+    "brand-default": "#475569",
     "brand-tertiary": "#2c4091",
     "brand-blue": "#2563EB",
     "brand-primary": "#7C3AED",

@@ -1,7 +1,7 @@
 /* ─── ListGroup ───────────────────────────────────────────────────────────── */
 .tui-list-group {
-  --tui-list-group-border-color: var(--tui-color-brand-primary-200);
-  --tui-list-group-focus-color: var(--tui-color-brand-primary-400);
+  --tui-list-group-border-color: var(--tui-color-brand-default-200);
+  --tui-list-group-focus-color: var(--tui-color-brand-default-400);
   --tui-list-group-header-padding-y: var(--tui-spacing-3);
   --tui-list-group-header-padding-x: var(--tui-spacing-4);
   --tui-list-group-header-font-size: var(--tui-font-size-sm);
@@ -72,7 +72,7 @@
 .tui-list-group--lg {
   --tui-list-group-header-padding-y: var(--tui-spacing-4);
   --tui-list-group-header-padding-x: var(--tui-spacing-5);
-  --tui-list-group-header-font-size: var(--tui-font-size-base);
+  --tui-list-group-header-font-size: var(--tui-font-size-md);
 }
 
 .tui-list-group--xl {

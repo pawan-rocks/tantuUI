@@ -14,6 +14,20 @@ export const color = {
     white: "#ffffff",
     black: "#000000",
 
+    // ── Brand Default (dark neutral state) ──────────────────────────────────────
+    brandDefault50:  "#f8fafc",
+    brandDefault100: "#f1f5f9",
+    brandDefault200: "#e2e8f0",
+    brandDefault300: "#cbd5e1",
+    brandDefault400: "#94a3b8",
+    brandDefault500: "#64748b",
+    brandDefault600: "#475569",
+    brandDefault700: "#334155",
+    brandDefault800: "#1e293b",
+    brandDefault900: "#0f172a",
+    brandDefault950: "#020617",
+    brandDefault: "#475569",
+
     // ── Brand Primary (#7C3AED base) ────────────────────────────────────
     brandPrimary50:  "#f5f3ff",
     brandPrimary100: "#ede8ff",
@@ -280,6 +294,7 @@ export const color = {
     // Surface (cards, panels)
     surfaceDefault:  "var(--tui-color-white)",
     surfaceRaised:   "var(--tui-color-brand-black-50)",
+    surfaceSecondary:"var(--tui-color-brand-black-100)",
     surfaceOverlay:  "var(--tui-color-brand-black-100)",
 
     // Text
@@ -292,16 +307,15 @@ export const color = {
     textLinkHover:   "var(--tui-color-brand-blue-700)",
 
     // Border
-    borderDefault:   "var(--tui-color-secondary-200)",
-    borderStrong:    "var(--tui-color-secondary-400)",
-    borderFocus:     "var(--tui-color-primary-500)",
+    borderDefault:   "var(--tui-color-brand-default-200)",
+    borderStrong:    "var(--tui-color-brand-default-400)",
+    borderFocus:     "var(--tui-color-brand-default-500)",
 
     // Focus ring
     focusRing:       "var(--tui-color-brand-black-500)",
     focusRingGap:    "var(--tui-color-white)",
 
-    // Brand interactive (uses brand-pink as primary)
-    brandDefault:    "var(--tui-color-brand-primary-600)",
+    // Brand interactive (uses brand-primary as primary)
     brandHover:      "var(--tui-color-brand-primary-700)",
     brandActive:     "var(--tui-color-brand-primary-800)",
     brandSubtle:     "var(--tui-color-brand-primary-50)",

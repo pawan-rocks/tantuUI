@@ -9,7 +9,10 @@
 
 ### Changed
 - Updated component styles and stories to use the expanded semantic color system (`primary`, `secondary`, and `tertiary`)
-- Added exports and component styles for Dropdown, ListItem, and ListGroup
+- Replaced invalid `surface-secondary`, `font-size-base`, `neutral-*`, and legacy Storybook color references with defined tokens
+- Tokenized modal and switch shadow/color usage and added the missing Shimmer custom-class story
+- Added Sizing and surface token documentation to Foundations Storybook
+- Added a pinned `@tantuui/tokens` dependency version
 
 ## 0.0.8
 
