@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.0.10
+
+### Added
+- **InputOtp component** — configurable one-time-password input with controlled/uncontrolled values, custom length, numeric filtering, paste distribution, keyboard navigation, min/max constraints, intent/size variants, disabled and invalid states, accessibility labels, and ghost loading support
+- **Opt-in dark mode contract** — semantic background, surface, text, border, focus, disabled, shimmer, and intent roles under `[data-theme="dark"]`
+- Dark-mode intent styling across buttons, fields, selection controls, tags, lists, calendars, date pickers, time pickers, tables, modals, and forms
+- Storybook dark-mode theme switching and a Dark Mode Contract documentation story
+
+### Changed
+- Improved current-month calendar date hover contrast for every intent
+- Improved time-selector option hover background and text contrast for every intent
+- Added intent classes to date-picker and time-picker portal popups so dark-mode styling remains consistent outside the component tree
+
 ## 0.0.9
 
 ### Added

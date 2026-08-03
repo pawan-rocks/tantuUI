@@ -1,11 +1,14 @@
 # Changelog
 
-## Unreleased
+## 0.0.9
+
+### Added
+- **Brand default palette** — `brandDefault50`–`brandDefault950` plus `brandDefault`
+- Documented the Sizing token category and corrected the JavaScript API examples
 
 ### Fixed
 - Corrected `--tui-opacity-85` from `0.55` to `0.85`
 - Added `surfaceSecondary` and a backwards-compatible `fontSize.base` alias
-- Documented the Sizing token category and corrected the JavaScript API examples
 
 ## 0.0.8
 
