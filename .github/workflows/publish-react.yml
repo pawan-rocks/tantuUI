@@ -75,6 +75,10 @@ jobs:
               echo "TAG=latest" >> $GITHUB_OUTPUT
             fi
           fi
+      - name: Verify npm identity
+        run: npm whoami --registry=https://registry.npmjs.org
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish @tantuui/react to npm
         working-directory: packages/react
