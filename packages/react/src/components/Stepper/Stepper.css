@@ -1,0 +1,503 @@
+.tui-stepper {
+  --tui-stepper-accent: var(--tui-color-brand-primary-600);
+  --tui-stepper-accent-hover: var(--tui-color-brand-primary-700);
+  --tui-stepper-accent-soft: var(--tui-color-brand-primary-50);
+  --tui-stepper-accent-border: var(--tui-color-brand-primary-200);
+  --tui-stepper-accent-foreground: var(--tui-color-text-inverse);
+  --tui-stepper-active-border: var(--tui-stepper-accent);
+  --tui-stepper-active-text: var(--tui-stepper-accent);
+  --tui-stepper-hover-bg: var(--tui-stepper-accent-soft);
+  --tui-stepper-hover-border: var(--tui-stepper-accent-hover);
+  --tui-stepper-hover-text: var(--tui-stepper-accent-hover);
+  --tui-stepper-status-text: var(--tui-stepper-accent);
+  --tui-stepper-indicator-size: var(--tui-size-sm);
+  --tui-stepper-label-size: var(--tui-font-size-sm);
+  --tui-stepper-sublabel-size: var(--tui-font-size-xs);
+  --tui-stepper-meta-size: var(--tui-font-size-2xs);
+  --tui-stepper-step-label-color: var(--tui-color-text-tertiary);
+  --tui-stepper-label-color: var(--tui-color-text-secondary);
+  --tui-stepper-sublabel-color: var(--tui-color-text-tertiary);
+  --tui-stepper-active-label-color: var(--tui-color-text-primary);
+  --tui-stepper-gap: var(--tui-spacing-2);
+  --tui-stepper-completed: var(--tui-stepper-accent);
+  --tui-stepper-completed-hover: var(--tui-stepper-accent-hover);
+  --tui-stepper-completed-soft: var(--tui-stepper-accent-soft);
+  --tui-stepper-completed-soft-hover: var(--tui-stepper-accent-soft);
+  --tui-stepper-completed-text: var(--tui-stepper-accent);
+  --tui-stepper-completed-hover-text: var(--tui-stepper-accent-hover);
+  --tui-stepper-completed-foreground: var(--tui-stepper-accent-foreground);
+  --tui-stepper-disabled-bg: var(--tui-color-brand-black-100);
+  --tui-stepper-disabled-border: var(--tui-color-brand-black-100);
+  --tui-stepper-disabled-text: var(--tui-color-text-disabled);
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  color: var(--tui-color-text-primary);
+  font-family: inherit;
+}
+
+.tui-stepper--xs {
+  --tui-stepper-indicator-size: var(--tui-size-xs-1);
+  --tui-stepper-label-size: var(--tui-font-size-xs);
+  --tui-stepper-sublabel-size: var(--tui-font-size-2xs);
+  --tui-stepper-meta-size: var(--tui-font-size-3xs);
+  --tui-stepper-gap: var(--tui-spacing-1);
+}
+
+.tui-stepper--sm {
+  --tui-stepper-indicator-size: var(--tui-size-xs-2);
+  --tui-stepper-label-size: var(--tui-font-size-sm);
+  --tui-stepper-sublabel-size: var(--tui-font-size-xs);
+  --tui-stepper-meta-size: var(--tui-font-size-2xs);
+  --tui-stepper-gap: var(--tui-spacing-1_5);
+}
+
+.tui-stepper--md {
+  --tui-stepper-indicator-size: var(--tui-size-sm);
+  --tui-stepper-label-size: var(--tui-font-size-sm);
+  --tui-stepper-sublabel-size: var(--tui-font-size-xs);
+  --tui-stepper-meta-size: var(--tui-font-size-2xs);
+  --tui-stepper-gap: var(--tui-spacing-2);
+}
+
+.tui-stepper--lg {
+  --tui-stepper-indicator-size: var(--tui-size-md);
+  --tui-stepper-label-size: var(--tui-font-size-md);
+  --tui-stepper-sublabel-size: var(--tui-font-size-sm);
+  --tui-stepper-meta-size: var(--tui-font-size-xs);
+  --tui-stepper-gap: var(--tui-spacing-2_5);
+}
+
+.tui-stepper--xl {
+  --tui-stepper-indicator-size: var(--tui-size-lg);
+  --tui-stepper-label-size: var(--tui-font-size-lg);
+  --tui-stepper-sublabel-size: var(--tui-font-size-md);
+  --tui-stepper-meta-size: var(--tui-font-size-xs);
+  --tui-stepper-gap: var(--tui-spacing-3);
+}
+
+.tui-stepper--default {
+  --tui-stepper-accent: var(--tui-color-brand-default-600);
+  --tui-stepper-accent-hover: var(--tui-color-brand-default-700);
+  --tui-stepper-accent-soft: var(--tui-color-brand-default-50);
+  --tui-stepper-accent-border: var(--tui-color-brand-default-200);
+}
+
+.tui-stepper--primary {
+  --tui-stepper-accent: var(--tui-color-brand-primary-600);
+  --tui-stepper-accent-hover: var(--tui-color-brand-primary-700);
+  --tui-stepper-accent-soft: var(--tui-color-brand-primary-50);
+  --tui-stepper-accent-border: var(--tui-color-brand-primary-200);
+}
+
+.tui-stepper--secondary {
+  --tui-stepper-accent: var(--tui-color-brand-secondary-600);
+  --tui-stepper-accent-hover: var(--tui-color-brand-secondary-700);
+  --tui-stepper-accent-soft: var(--tui-color-brand-secondary-50);
+  --tui-stepper-accent-border: var(--tui-color-brand-secondary-200);
+}
+
+.tui-stepper--tertiary {
+  --tui-stepper-accent: var(--tui-color-brand-tertiary-600);
+  --tui-stepper-accent-hover: var(--tui-color-brand-tertiary-700);
+  --tui-stepper-accent-soft: var(--tui-color-brand-tertiary-50);
+  --tui-stepper-accent-border: var(--tui-color-brand-tertiary-200);
+}
+
+.tui-stepper--success {
+  --tui-stepper-accent: var(--tui-color-success-600);
+  --tui-stepper-accent-hover: var(--tui-color-success-700);
+  --tui-stepper-accent-soft: var(--tui-color-success-50);
+  --tui-stepper-accent-border: var(--tui-color-success-200);
+}
+
+.tui-stepper--warning {
+  --tui-stepper-accent: var(--tui-color-warning-600);
+  --tui-stepper-accent-hover: var(--tui-color-warning-700);
+  --tui-stepper-accent-soft: var(--tui-color-warning-50);
+  --tui-stepper-accent-border: var(--tui-color-warning-200);
+}
+
+.tui-stepper--danger {
+  --tui-stepper-accent: var(--tui-color-danger-600);
+  --tui-stepper-accent-hover: var(--tui-color-danger-700);
+  --tui-stepper-accent-soft: var(--tui-color-danger-50);
+  --tui-stepper-accent-border: var(--tui-color-danger-200);
+}
+
+.tui-stepper--info {
+  --tui-stepper-accent: var(--tui-color-info-600);
+  --tui-stepper-accent-hover: var(--tui-color-info-700);
+  --tui-stepper-accent-soft: var(--tui-color-info-50);
+  --tui-stepper-accent-border: var(--tui-color-info-200);
+}
+
+.tui-stepper--teal {
+  --tui-stepper-accent: var(--tui-color-teal-600);
+  --tui-stepper-accent-hover: var(--tui-color-teal-700);
+  --tui-stepper-accent-soft: var(--tui-color-teal-50);
+  --tui-stepper-accent-border: var(--tui-color-teal-200);
+}
+
+.tui-stepper--orange {
+  --tui-stepper-accent: var(--tui-color-orange-600);
+  --tui-stepper-accent-hover: var(--tui-color-orange-700);
+  --tui-stepper-accent-soft: var(--tui-color-orange-50);
+  --tui-stepper-accent-border: var(--tui-color-orange-200);
+}
+
+.tui-stepper--rose {
+  --tui-stepper-accent: var(--tui-color-rose-600);
+  --tui-stepper-accent-hover: var(--tui-color-rose-700);
+  --tui-stepper-accent-soft: var(--tui-color-rose-50);
+  --tui-stepper-accent-border: var(--tui-color-rose-200);
+}
+
+.tui-stepper--indigo {
+  --tui-stepper-accent: var(--tui-color-indigo-600);
+  --tui-stepper-accent-hover: var(--tui-color-indigo-700);
+  --tui-stepper-accent-soft: var(--tui-color-indigo-50);
+  --tui-stepper-accent-border: var(--tui-color-indigo-200);
+}
+
+.tui-stepper--mint {
+  --tui-stepper-accent: var(--tui-color-mint-600);
+  --tui-stepper-accent-hover: var(--tui-color-mint-700);
+  --tui-stepper-accent-soft: var(--tui-color-mint-50);
+  --tui-stepper-accent-border: var(--tui-color-mint-200);
+}
+
+.tui-stepper--coal {
+  --tui-stepper-accent: var(--tui-color-coal-600);
+  --tui-stepper-accent-hover: var(--tui-color-coal-700);
+  --tui-stepper-accent-soft: var(--tui-color-coal-50);
+  --tui-stepper-accent-border: var(--tui-color-coal-200);
+}
+
+.tui-stepper--white {
+  --tui-stepper-accent: var(--tui-color-white);
+  --tui-stepper-accent-hover: var(--tui-color-brand-black-50);
+  --tui-stepper-accent-soft: var(--tui-color-brand-black-50);
+  --tui-stepper-accent-border: var(--tui-color-brand-black-200);
+  --tui-stepper-accent-foreground: var(--tui-color-black);
+}
+
+.tui-stepper--black {
+  --tui-stepper-accent: var(--tui-color-black);
+  --tui-stepper-accent-hover: var(--tui-color-brand-black-800);
+  --tui-stepper-accent-soft: var(--tui-color-brand-black-50);
+  --tui-stepper-accent-border: var(--tui-color-brand-black-200);
+}
+
+.tui-stepper__list {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tui-stepper__item {
+  position: relative;
+  min-width: 0;
+}
+
+.tui-stepper--horizontal .tui-stepper__item {
+  display: flex;
+  flex: 1 1 0;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.tui-stepper--vertical .tui-stepper__list {
+  flex-direction: column;
+}
+
+.tui-stepper--vertical .tui-stepper__item {
+  padding-bottom: var(--tui-spacing-5);
+}
+
+.tui-stepper--vertical .tui-stepper__item:last-child {
+  padding-bottom: var(--tui-spacing-0);
+}
+
+.tui-stepper__row {
+  position: relative;
+  display: flex;
+  min-width: 0;
+}
+
+.tui-stepper__trigger,
+.tui-stepper__indicator-slot {
+  position: relative;
+  z-index: var(--tui-z-raised);
+  display: inline-flex;
+  flex: 0 0 var(--tui-stepper-indicator-size);
+  align-items: center;
+  justify-content: center;
+  width: var(--tui-stepper-indicator-size);
+  height: var(--tui-stepper-indicator-size);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: var(--tui-border-width-0);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: default;
+  text-decoration: none;
+}
+
+button.tui-stepper__trigger {
+  cursor: pointer;
+}
+
+button.tui-stepper__trigger:hover:not(:disabled) .tui-stepper__indicator {
+  border-color: var(--tui-stepper-hover-border);
+  background: var(--tui-stepper-hover-bg);
+  color: var(--tui-stepper-hover-text);
+}
+
+.tui-stepper__item--status-pending button.tui-stepper__trigger:hover:not(:disabled) .tui-stepper__indicator {
+  border-color: var(--tui-color-border-strong);
+  background: var(--tui-color-bg-muted);
+  color: var(--tui-color-text-primary);
+}
+
+button.tui-stepper__trigger:disabled {
+  cursor: not-allowed;
+}
+
+.tui-stepper__trigger .tui-stepper__indicator {
+  width: 100%;
+  height: 100%;
+}
+
+.tui-stepper--horizontal .tui-stepper__row {
+  flex: 1 1 auto;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--tui-stepper-gap);
+  text-align: center;
+}
+
+.tui-stepper--vertical .tui-stepper__row {
+  width: 100%;
+  align-items: flex-start;
+  gap: var(--tui-stepper-gap);
+  text-align: left;
+}
+
+.tui-stepper--vertical.tui-stepper--vertical-align-center .tui-stepper__row {
+  align-items: center;
+}
+
+.tui-stepper--vertical.tui-stepper--vertical-align-center .tui-stepper__connector {
+  bottom: calc(-1 * var(--tui-stepper-gap));
+}
+
+.tui-stepper__indicator {
+  display: inline-flex;
+  flex: 0 0 var(--tui-stepper-indicator-size);
+  align-items: center;
+  justify-content: center;
+  width: var(--tui-stepper-indicator-size);
+  height: var(--tui-stepper-indicator-size);
+  box-sizing: border-box;
+  border: var(--tui-border-width-1) solid var(--tui-color-border-strong);
+  border-radius: var(--tui-radius-full);
+  background: var(--tui-color-bg-base);
+  color: var(--tui-color-text-secondary);
+  font-size: var(--tui-stepper-sublabel-size);
+  font-weight: var(--tui-font-weight-semibold);
+  line-height: var(--tui-leading-none);
+  transition: background var(--tui-duration-normal) var(--tui-ease-in-out), border-color var(--tui-duration-normal) var(--tui-ease-in-out), color var(--tui-duration-normal) var(--tui-ease-in-out);
+}
+
+.tui-stepper__indicator svg,
+.tui-stepper__ghost-indicator svg {
+  display: block;
+  width: var(--tui-font-size-md);
+  height: var(--tui-font-size-md);
+}
+
+.tui-stepper__content {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--tui-spacing-0_5);
+}
+
+.tui-stepper--horizontal .tui-stepper__content {
+  align-items: center;
+}
+
+.tui-stepper--vertical .tui-stepper__content {
+  align-items: flex-start;
+}
+
+.tui-stepper__step-label {
+  color: var(--tui-stepper-step-label-color);
+  font-size: var(--tui-stepper-meta-size);
+  font-weight: var(--tui-font-weight-medium);
+  line-height: var(--tui-leading-tight);
+  text-transform: uppercase;
+}
+
+.tui-stepper__label,
+.tui-stepper__sublabel {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tui-stepper__label {
+  color: var(--tui-stepper-label-color);
+  font-size: var(--tui-stepper-label-size);
+  font-weight: var(--tui-font-weight-medium);
+  line-height: var(--tui-leading-tight);
+}
+
+.tui-stepper__sublabel {
+  color: var(--tui-stepper-sublabel-color);
+  font-size: var(--tui-stepper-sublabel-size);
+  line-height: var(--tui-leading-normal);
+}
+
+.tui-stepper__status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  max-width: 100%;
+  margin-top: var(--tui-spacing-1);
+  padding: var(--tui-spacing-0_5) var(--tui-spacing-2);
+  border: var(--tui-border-width-1) solid transparent;
+  border-radius: var(--tui-radius-full);
+  background: var(--tui-stepper-accent-soft);
+  color: var(--tui-stepper-status-text);
+  font-size: var(--tui-stepper-meta-size);
+  font-weight: var(--tui-font-weight-medium);
+  line-height: var(--tui-leading-tight);
+  white-space: nowrap;
+}
+
+.tui-stepper__status--completed {
+  background: var(--tui-stepper-completed-soft);
+  color: var(--tui-stepper-completed-text);
+}
+
+.tui-stepper__status--pending {
+  border-color: var(--tui-color-border-default);
+  background: var(--tui-color-surface-default);
+  color: var(--tui-stepper-sublabel-color);
+}
+
+.tui-stepper__connector {
+  display: block;
+  flex: 1 1 auto;
+  background: var(--tui-color-border-default);
+}
+
+.tui-stepper--horizontal .tui-stepper__connector {
+  position: absolute;
+  top: calc(var(--tui-stepper-indicator-size) / 2);
+  right: -50%;
+  left: 50%;
+  z-index: var(--tui-z-base);
+  height: var(--tui-border-width-1);
+  margin: 0;
+}
+
+.tui-stepper--vertical .tui-stepper__connector {
+  position: absolute;
+  top: var(--tui-stepper-indicator-size);
+  bottom: var(--tui-spacing-0);
+  left: calc(var(--tui-stepper-indicator-size) / 2 - var(--tui-border-width-0_5));
+  width: var(--tui-border-width-1);
+}
+
+.tui-stepper__item--status-completed .tui-stepper__indicator {
+  border-color: var(--tui-stepper-completed);
+  background: var(--tui-stepper-completed);
+  color: var(--tui-stepper-completed-foreground);
+}
+
+.tui-stepper__item--status-in-progress .tui-stepper__indicator {
+  border-color: var(--tui-stepper-active-border);
+  background: var(--tui-color-surface-default);
+  color: var(--tui-stepper-active-text);
+  box-shadow: 0 0 0 var(--tui-spacing-0_5) var(--tui-stepper-accent-soft);
+}
+
+.tui-stepper__item--status-completed .tui-stepper__label,
+.tui-stepper__item--status-in-progress .tui-stepper__label {
+  color: var(--tui-stepper-active-label-color);
+  font-weight: var(--tui-font-weight-semibold);
+}
+
+.tui-stepper__item--status-completed .tui-stepper__connector {
+  background: var(--tui-stepper-completed);
+}
+
+.tui-stepper__item--status-in-progress .tui-stepper__connector {
+  background: linear-gradient(to right, var(--tui-stepper-accent), var(--tui-color-border-default));
+}
+
+.tui-stepper__item--status-completed button.tui-stepper__trigger:hover:not(:disabled) .tui-stepper__indicator {
+  border-color: var(--tui-stepper-completed-hover);
+  background: var(--tui-stepper-completed-soft-hover);
+  color: var(--tui-stepper-completed-hover-text);
+}
+
+.tui-stepper__item--disabled .tui-stepper__indicator {
+  border-color: var(--tui-stepper-disabled-border);
+  background: var(--tui-stepper-disabled-bg);
+  color: var(--tui-stepper-disabled-text);
+}
+
+.tui-stepper__item--disabled .tui-stepper__step-label,
+.tui-stepper__item--disabled .tui-stepper__label,
+.tui-stepper__item--disabled .tui-stepper__sublabel,
+.tui-stepper__item--disabled .tui-stepper__status {
+  color: var(--tui-stepper-disabled-text);
+}
+
+.tui-stepper__item--disabled .tui-stepper__status {
+  border-color: var(--tui-stepper-disabled-border);
+  background: var(--tui-stepper-disabled-bg);
+}
+
+.tui-stepper__item--disabled .tui-stepper__connector {
+  background: var(--tui-stepper-disabled-bg);
+}
+
+.tui-stepper__ghost-step-label,
+.tui-stepper__ghost-label,
+.tui-stepper__ghost-sublabel,
+.tui-stepper__ghost-status,
+.tui-stepper__ghost-indicator {
+  visibility: hidden;
+}
+
+.tui-stepper__ghost-step-label,
+.tui-stepper__ghost-label,
+.tui-stepper__ghost-sublabel,
+.tui-stepper__ghost-status {
+  display: block;
+  white-space: nowrap;
+}
+
+.tui-stepper__ghost-sublabel {
+  margin-top: var(--tui-spacing-0_5);
+  font-size: var(--tui-stepper-sublabel-size);
+}
+
+.tui-stepper--ghost .tui-stepper__trigger {
+  cursor: default;
+}
+
+.tui-stepper--ghost .tui-stepper__connector {
+  background: var(--tui-color-border-default);
+}

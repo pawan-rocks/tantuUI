@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.0.11
+
+### Added
+- **Stepper component** — token-driven horizontal and vertical progress stepper with numbered or custom icon circles, labels, sublabels, status pills, active/completed/pending states, disabled steps, ghost loading, size variants, intent variants, and top/center vertical alignment
+- Circle-only Stepper interaction — enabled step circles support `onStepChange` or per-step `onClick`; labels, sublabels, descriptions, and status pills remain non-clickable
+- Stepper Storybook coverage for horizontal and vertical layouts, vertical alignment, intent states, dark mode, disabled and read-only steps, sizes, hover states, ghost mode, and custom class usage
+- Stepper component tests covering rendering, accessibility attributes, state classes, status content, interaction, disabled behavior, ghost mode, and wrapper usage
+
+### Changed
+- Completed Stepper states now use the selected `intent` palette instead of always using success green; pending steps retain a neutral design across all intents
+- Added dark-theme Stepper tokens for normal, hover, completed, active, pending, disabled, circle, connector, label, and status colors
+- Removed Storybook-only layout CSS from Stepper examples so vertical alignment and connector spacing are handled by the component
+- Aligned Storybook development dependencies to version `8.6.18`
+
+### Fixed
+- Storybook React `act(...)` warnings caused by mixed Storybook package versions
+- Dark-mode Stepper text contrast and circle hover contrast
+
 ## 0.0.10
 
 ### Added

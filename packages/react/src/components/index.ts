@@ -25,3 +25,4 @@ export * from "./Table";
 export * from "./Modal";
 export * from "./ListItem";
 export * from "./ListGroup";
+export * from "./Stepper";

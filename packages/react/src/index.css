@@ -33,5 +33,6 @@
 @import "./components/Modal/Modal.css";
 @import "./components/ListItem/ListItem.css";
 @import "./components/ListGroup/ListGroup.css";
+@import "./components/Stepper/Stepper.css";
 /* Dark-mode semantic roles and component state overrides must load last. */
 @import "./styles/dark-mode.css";
